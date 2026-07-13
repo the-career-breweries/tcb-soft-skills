@@ -11,7 +11,7 @@ mermaid.initialize({
   theme: 'dark',
   fontFamily: '"Outfit", sans-serif',
   flowchart: {
-    htmlLabels: true
+    htmlLabels: false
   }
 });
 
@@ -20,10 +20,12 @@ const Mermaid = ({ chart }: { chart: string }) => {
   
   useEffect(() => {
     if (ref.current) {
-      mermaid.render(`mermaid-${Math.random().toString(36).substring(7)}`, chart).then(({ svg }) => {
-        if (ref.current) {
-          ref.current.innerHTML = svg;
-        }
+      document.fonts.ready.then(() => {
+        mermaid.render(`mermaid-${Math.random().toString(36).substring(7)}`, chart).then(({ svg }) => {
+          if (ref.current) {
+            ref.current.innerHTML = svg;
+          }
+        });
       });
     }
   }, [chart]);
