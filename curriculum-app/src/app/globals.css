@@ -832,3 +832,8 @@ td strong {
     width: 100%;
   }
 }
+
+/* Mermaid Overrides */
+.mermaid-diagram svg { max-width: 100%; height: auto; font-family: 'Outfit', sans-serif; overflow: visible; }
+.mermaid-diagram .nodeLabel { font-family: 'Outfit', sans-serif; }
+

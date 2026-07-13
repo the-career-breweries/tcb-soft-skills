@@ -6,7 +6,14 @@ import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
 import PrintTemplates from './PrintTemplates';
 
-mermaid.initialize({ startOnLoad: false, theme: 'default' });
+mermaid.initialize({ 
+  startOnLoad: false, 
+  theme: 'dark',
+  fontFamily: '"Outfit", sans-serif',
+  flowchart: {
+    htmlLabels: true
+  }
+});
 
 const Mermaid = ({ chart }: { chart: string }) => {
   const ref = React.useRef<HTMLDivElement>(null);
