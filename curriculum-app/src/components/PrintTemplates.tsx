@@ -1031,6 +1031,244 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
         </div>
       )}
 
+      {templateId === 'BCA_SWEPath' && (
+        <div className="print-worksheet">
+          {renderHeader('Software Engineering Pathways')}
+          <p className="print-instructions">Select your primary pathway (Frontend, Backend, or Full-Stack) and map out the required tech stack.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Primary Pathway</h3>
+              <p className="form-prompt">Which SWE pathway are you focusing on?</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Core Tech Stack</h3>
+              <p className="form-prompt">List the top 3 technologies you need to master for this role:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. The First Project</h3>
+              <p className="form-prompt">What is the very first project you will build using this stack?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BCA_DataScience' && (
+        <div className="print-worksheet">
+          {renderHeader('Data Science Pipeline')}
+          <p className="print-instructions">Outline a basic data pipeline for a predictive business problem.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Business Problem</h3>
+              <p className="form-prompt">What is the core issue you are trying to predict or solve?</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Data Requirements</h3>
+              <p className="form-prompt">What specific datasets or features will you need to train your model?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Algorithm Choice</h3>
+              <p className="form-prompt">Which algorithm or model structure might be best suited for this, and why?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BCA_CloudArch' && (
+        <div className="print-worksheet">
+          {renderHeader('Cloud Architecture Design')}
+          <p className="print-instructions">Design a basic scalable cloud architecture for a web application.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Compute & Traffic</h3>
+              <p className="form-prompt">How will you handle incoming user traffic and distribute the load?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Data Storage</h3>
+              <p className="form-prompt">Where will user data and media files (images/videos) be stored?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Security Measures</h3>
+              <p className="form-prompt">List two security protocols or layers you will implement:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BCA_PortfolioAudit' && (
+        <div className="print-worksheet">
+          {renderHeader('GitHub Portfolio Audit')}
+          <p className="print-instructions">Review your current GitHub profile and plan your next technical project.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Current Profile Status</h3>
+              <p className="form-prompt">What is missing from your GitHub profile right now (e.g., READMEs, live links)?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Next Portfolio Project</h3>
+              <p className="form-prompt">Describe a complex, non-trivial project you plan to build next:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Deployment Plan</h3>
+              <p className="form-prompt">Where and how will you deploy this project so recruiters can view it?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BCA_CodingInterview' && (
+        <div className="print-worksheet">
+          {renderHeader('DSA Whiteboarding Practice')}
+          <p className="print-instructions">Simulate a technical coding interview using a structured thought process.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Problem Clarification</h3>
+              <p className="form-prompt">What clarifying questions did you ask before writing any code?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Approach</h3>
+              <p className="form-prompt">Briefly explain the optimal approach and data structure used:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Complexity Analysis</h3>
+              <p className="form-prompt">What is the Time Complexity (Big O) and Space Complexity of your solution?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BCA_SystemDesign' && (
+        <div className="print-worksheet">
+          {renderHeader('System Design Basics')}
+          <p className="print-instructions">Apply core design principles to architect a scalable system (e.g., URL Shortener).</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Core Requirements</h3>
+              <p className="form-prompt">Define the functional and non-functional requirements of the system:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. API Design</h3>
+              <p className="form-prompt">List the core API endpoints required (e.g., POST /shorten):</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Bottlenecks</h3>
+              <p className="form-prompt">Where is the system most likely to fail under heavy load?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BCA_TechPanel' && (
+        <div className="print-worksheet">
+          {renderHeader('Technical Panel Preparation')}
+          <p className="print-instructions">Prepare to defend your technical decisions and resume.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Resume Defense</h3>
+              <p className="form-prompt">Pick one technology on your resume. How would you explain its inner workings?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Unknown</h3>
+              <p className="form-prompt">How will you respond if asked a highly specific technical question you don't know?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Live Debugging</h3>
+              <p className="form-prompt">What is your step-by-step methodology when presented with broken code?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BCA_FinalAudit' && (
+        <div className="print-worksheet">
+          {renderHeader('BCA Capstone Readiness')}
+          <p className="print-instructions">Complete your final technical audit before applying for roles.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Technical Gaps</h3>
+              <p className="form-prompt">Identify the biggest weak point in your technical foundation right now:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Action Plan</h3>
+              <p className="form-prompt">What exactly will you build or practice over the next 4 weeks to close this gap?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Career Target</h3>
+              <p className="form-prompt">What specific role and industry are you targeting for your first job?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
