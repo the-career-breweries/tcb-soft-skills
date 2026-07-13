@@ -8,22 +8,22 @@ This week, we will focus on modern, tech-enabled roles that BBA graduates can tr
 
 ## The Big Three Modern Paths
 
-1. **Product<br/>Manager:** Sitting at the intersection of business, technology, and user experience.
+1. **Product Manager:** Sitting at the intersection of business, technology, and user experience.
 2. **Digital Marketing & Growth Hacking:** Data-driven customer acquisition and brand scaling.
 3. **Business Analytics:** Using data to drive strategic business decisions.
 
 ---
 
-## 1. Product<br/>Manager
+## 1. Product Manager
 
 Product managers (PMs) are often called the "CEOs of the product." They don't need to write code, but they need to understand it, and they definitely need to understand business strategy.
 
 ### The Product Roadmap
 ```mermaid
 flowchart TD
-    A[BBA<br/>Degree] --> B[Assoc Product<br/>Manager]
+    A[BBA Degree] --> B[Assoc Product Manager]
     B --> C[Product Manager]
-    C --> D[Senior Product<br/>Manager]
+    C --> D[Senior Product Manager]
     D --> E[Director of Product]
 ```
 
@@ -41,8 +41,8 @@ Modern marketing is highly quantifiable. It's less about billboards and more abo
 ### The Growth Roadmap
 ```mermaid
 flowchart LR
-    A[BBA<br/>Degree] --> B(SEO/SEM<br/>Executive)
-    B --> C(Digital Mktg<br/>Manager)
+    A[BBA Degree] --> B(SEO/SEM Executive)
+    B --> C(Digital Mktg Manager)
     C --> D{Growth Hacking}
     D --> E[Head of Growth]
 ```
@@ -61,9 +61,9 @@ Companies have more data than ever, but they need people who understand business
 ### The Analytics Workflow
 ```mermaid
 flowchart TD
-    A[Define<br/>Problem] --> B[Data<br/>Collection]
-    B --> C[Data<br/>Dashboards]
-    C --> D[Actionable<br/>Strategy]
+    A[Define Problem] --> B[Data Collection]
+    B --> C[Data Dashboards]
+    C --> D[Actionable Strategy]
 ```
 
 **Roles for BBA Graduates:**
@@ -78,4 +78,5 @@ flowchart TD
 Pick one modern path and identify three companies actively hiring for entry-level positions in that domain.
 
 <!-- PRINT: BBAModernRoles -->
+
 

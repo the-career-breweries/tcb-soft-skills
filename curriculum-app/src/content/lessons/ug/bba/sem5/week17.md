@@ -21,10 +21,10 @@ The HR route is highly structured and starts with administrative or recruitment 
 ### The HR Roadmap
 ```mermaid
 flowchart TD
-    A[BBA<br/>Degree] --> B[HR Executive / Recruiter]
-    B --> C[Talent<br/>Acquisition]
+    A[BBA Degree] --> B[HR Executive / Recruiter]
+    B --> C[Talent Acquisition]
     C --> D[HR Generalist]
-    D --> E[HR Business<br/>Partner]
+    D --> E[HR Business Partner]
 ```
 
 **Key Skills Required:**
@@ -41,10 +41,10 @@ This is the most common entry point for BBA graduates. It often involves high-pr
 ### The Marketing & Sales Roadmap
 ```mermaid
 flowchart LR
-    A[BBA<br/>Degree] --> B(Sales<br/>Trainee)
-    B --> C(BDE<br/>Executive)
+    A[BBA Degree] --> B(Sales Trainee)
+    B --> C(BDE Executive)
     C --> D{Target Achievement}
-    D -->|Consistent| E[Area Sales<br/>Manager]
+    D -->|Consistent| E[Area Sales Manager]
 ```
 
 **Key Skills Required:**
@@ -61,7 +61,7 @@ Operations roles are the backbone of e-commerce, manufacturing, and IT services.
 ### The Operations Roadmap
 ```mermaid
 flowchart TD
-    A[BBA<br/>Degree] --> B[Operations Analyst]
+    A[BBA Degree] --> B[Operations Analyst]
     B --> C[Logistics Coordinator]
     C --> D[Process Manager]
 ```
@@ -78,4 +78,5 @@ flowchart TD
 Identify which of the three traditional pillars aligns best with your strengths.
 
 <!-- PRINT: BBATraditionalPaths -->
+
 

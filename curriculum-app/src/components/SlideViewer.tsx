@@ -6,14 +6,7 @@ import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
 import PrintTemplates from './PrintTemplates';
 
-mermaid.initialize({ 
-  startOnLoad: false, 
-  theme: 'dark',
-  fontFamily: 'Arial, sans-serif',
-  flowchart: {
-    htmlLabels: true
-  }
-});
+
 
 const Mermaid = ({ chart }: { chart: string }) => {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -21,6 +14,14 @@ const Mermaid = ({ chart }: { chart: string }) => {
   useEffect(() => {
     if (ref.current) {
       document.fonts.ready.then(() => {
+        mermaid.initialize({ 
+          startOnLoad: false, 
+          theme: 'dark',
+          fontFamily: '"Outfit", sans-serif',
+          flowchart: {
+            htmlLabels: false
+          }
+        });
         mermaid.render(`mermaid-${Math.random().toString(36).substring(7)}`, chart).then(({ svg }) => {
           if (ref.current) {
             ref.current.innerHTML = svg;

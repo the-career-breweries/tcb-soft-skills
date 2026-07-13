@@ -76,3 +76,4 @@ The commerce degree is incredibly versatile. By adding just one or two tech-adja
 
 Next week, we will explore the Gig Economy and how to start **Freelancing & Consulting**!
 
+
