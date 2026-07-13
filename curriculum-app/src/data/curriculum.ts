@@ -46,12 +46,17 @@ const ugCoreWeeks: WeekData[] = [
 
 const generateUgLevel4 = (stream: string): WeekData[] => {
   return [
-    { week: 16, semester: 5, level: 4, theme: `${stream}: Traditional Career Paths`, focus: 'Entry barriers, exams, courses', task: 'Traditional career map', rubric: 'Accuracy of path details' },
-    // Sem 6 (Weeks 17-20)
-    { week: 17, semester: 6, level: 4, theme: `${stream}: Modern Career Paths`, focus: 'New tech, emerging roles', task: 'Modern roles research', rubric: 'Relevance to current market' },
-    { week: 18, semester: 6, level: 4, theme: `${stream}: Freelancing Opportunities`, focus: 'Gig economy, platforms, skills', task: 'Freelance profile draft', rubric: 'Marketability, skill fit' },
-    { week: 19, semester: 6, level: 4, theme: 'Demo Psychometric Assessment', focus: 'Taking a full mock test', task: 'Completed mock assessment', rubric: 'Completion, time management' },
-    { week: 20, semester: 6, level: 4, theme: 'Final Practice & Review', focus: 'Resume, Interview, Psychometrics', task: 'Final practical demonstration', rubric: 'Overall readiness' },
+    // Sem 5 (Weeks 17-20)
+    { week: 17, semester: 5, level: 4, theme: `${stream}: Traditional Career Paths`, focus: 'Entry barriers, exams, courses', task: 'Traditional career map', rubric: 'Accuracy of path details' },
+    { week: 18, semester: 5, level: 4, theme: `${stream}: Modern Career Paths`, focus: 'New tech, emerging roles', task: 'Modern roles research', rubric: 'Relevance to current market' },
+    { week: 19, semester: 5, level: 4, theme: `${stream}: Freelancing & Consulting`, focus: 'Gig economy, platforms, skills', task: 'Freelance profile draft', rubric: 'Marketability, skill fit' },
+    { week: 20, semester: 5, level: 4, theme: 'Industry Case Study', focus: 'Analyzing a business case', task: 'Case study presentation', rubric: 'Analytical depth' },
+    
+    // Sem 6 (Weeks 21-24)
+    { week: 21, semester: 6, level: 4, theme: 'Psychometric Assessments', focus: 'Taking a full mock test', task: 'Completed mock assessment', rubric: 'Completion, time management' },
+    { week: 22, semester: 6, level: 4, theme: 'Workplace Tools', focus: 'Word processing, presentation tools, file discipline', task: 'Digital submission task', rubric: 'Accuracy, formatting, file handling' },
+    { week: 23, semester: 6, level: 4, theme: 'Advanced Interview Defense', focus: 'Panel interviews, technical rounds', task: 'Mock Panel Interview', rubric: 'Confidence, structuring' },
+    { week: 24, semester: 6, level: 4, theme: 'Final Practice & Review', focus: 'Resume, Interview, Psychometrics', task: 'Final practical demonstration', rubric: 'Overall readiness' },
   ];
 };
 

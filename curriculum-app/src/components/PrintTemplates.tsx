@@ -622,6 +622,206 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
             </div>
           </div>
         </div>
+      {templateId === 'BComTraditionalPaths' && (
+        <div className="print-worksheet">
+          {renderHeader('B.Com Traditional Career Map')}
+          <p className="print-instructions">Map out the requirements for a traditional commerce pathway (e.g., CA, CS, Banking).</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Target Pathway</h3>
+              <p className="form-prompt">Which traditional path are you exploring (e.g., Chartered Accountancy)?</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Entry Barriers & Exams</h3>
+              <p className="form-prompt">What specific exams, registrations, or articleships are required?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. Timeline & Preparation</h3>
+              <p className="form-prompt">What is your realistic timeline for preparing for the next milestone?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BComModernPaths' && (
+        <div className="print-worksheet">
+          {renderHeader('Modern Finance Roles Research')}
+          <p className="print-instructions">Research an emerging field in commerce such as Fintech, Data Analytics, or Digital Marketing for Finance.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Emerging Role</h3>
+              <p className="form-prompt">Role Name & Industry:</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Tech Skill Requirements</h3>
+              <p className="form-prompt">What software or technical tools are mandatory for this role (e.g., Python, Advanced Excel, SQL)?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. Bridging the Gap</h3>
+              <p className="form-prompt">How will you acquire these skills outside of your standard B.Com syllabus?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BComFreelance' && (
+        <div className="print-worksheet">
+          {renderHeader('Freelance Consultant Profile')}
+          <p className="print-instructions">Draft your service offering for the gig economy (e.g., bookkeeping, tax filing, financial writing).</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Service</h3>
+              <p className="form-prompt">What specific financial or administrative service can you offer right now?</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Target Audience</h3>
+              <p className="form-prompt">Who is your ideal client (e.g., small business owners, freelancers, startups)?</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Pitch</h3>
+              <p className="form-prompt">Draft a 2-sentence bio for your Upwork or Fiverr profile:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BComCaseStudy' && (
+        <div className="print-worksheet">
+          {renderHeader('Industry Case Study Analysis')}
+          <p className="print-instructions">Break down a real-world commerce case study using a structured analytical framework.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Core Problem</h3>
+              <p className="form-prompt">Identify the primary financial, operational, or strategic issue the company is facing:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Financial Impact</h3>
+              <p className="form-prompt">How is this problem affecting the bottom line or cash flow?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. Proposed Solution</h3>
+              <p className="form-prompt">Detail 2 actionable steps the business should take to mitigate the issue:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BComPanelInterview' && (
+        <div className="print-worksheet">
+          {renderHeader('Panel Interview Strategy')}
+          <p className="print-instructions">Prepare for rigorous technical and HR panel rounds.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Technical Curveball</h3>
+              <p className="form-prompt">How will you respond if asked a commerce question you don't know the exact answer to?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Cross-Examination</h3>
+              <p className="form-prompt">Draft a response defending a resume point that a panelist might question:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      {templateId === 'BComMockAssessment' && (
+        <div className="print-worksheet">
+          {renderHeader('Demo Psychometric Assessment')}
+          <p className="print-instructions">Track your pacing and strategy during the mock aptitude test.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Quantitative Section</h3>
+              <p className="form-prompt">Time taken (target: 20 mins):</p>
+              <div className="dotted-line"></div>
+              <p className="form-prompt">Hardest topic encountered (e.g., Data Interpretation, Probability):</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Logical Reasoning</h3>
+              <p className="form-prompt">Time taken (target: 20 mins):</p>
+              <div className="dotted-line"></div>
+              <p className="form-prompt">Where did you get stuck?</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. Action Plan</h3>
+              <p className="form-prompt">Based on this baseline, which area needs the most practice before placement season?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BComWorkplaceTools' && (
+        <div className="print-worksheet">
+          {renderHeader('Workplace Tools Checklist')}
+          <p className="print-instructions">Use this audit to ensure your digital submissions are corporate-ready.</p>
+          
+          <table className="print-table">
+            <thead>
+              <tr>
+                <th style={{ width: '60%' }}>Professional Standard</th>
+                <th>Check</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>File Naming:</strong> Document is named clearly (e.g., "JohnDoe_FinancialModel_V1.xlsx")</td>
+                <td><div className="blank-space medium"></div></td>
+              </tr>
+              <tr>
+                <td><strong>Formatting:</strong> Fonts are consistent (Arial/Calibri), headings are bolded, margins aligned.</td>
+                <td><div className="blank-space medium"></div></td>
+              </tr>
+              <tr>
+                <td><strong>Data Hygiene:</strong> Excel cells are properly formatted (Currency vs. Percentage), no hardcoded numbers in formulas.</td>
+                <td><div className="blank-space medium"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
