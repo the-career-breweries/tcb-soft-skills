@@ -622,6 +622,8 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
             </div>
           </div>
         </div>
+      )}
+
       {templateId === 'BComTraditionalPaths' && (
         <div className="print-worksheet">
           {renderHeader('B.Com Traditional Career Map')}
@@ -762,6 +764,8 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
             </div>
           </div>
         </div>
+      )}
+
       {templateId === 'BComMockAssessment' && (
         <div className="print-worksheet">
           {renderHeader('Demo Psychometric Assessment')}
