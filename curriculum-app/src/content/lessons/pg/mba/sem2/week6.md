@@ -1,0 +1,37 @@
+# MBA Semester 2: Analytical Articulation
+
+An executive does not just speak; an executive *articulates*. Analytical articulation is the ability to take complex, multifaceted data and distill it into a clear, logical, and persuasive narrative.
+
+---
+
+## 1. The Pyramid Principle
+
+Consulting firms like McKinsey use the Pyramid Principle to structure their communication. 
+Instead of building up to a conclusion (like a mystery novel), you start with the conclusion, followed by the supporting arguments, and finally the granular data.
+
+### The Pyramid Structure
+`mermaid
+flowchart TD
+    A[Core Recommendation / Conclusion] --> B[Supporting Argument 1]
+    A --> C[Supporting Argument 2]
+    A --> D[Supporting Argument 3]
+    B --> E[Data / Evidence]
+    C --> F[Data / Evidence]
+    D --> G[Data / Evidence]
+`
+
+---
+
+## 2. Speaking with Evidence
+
+Never make an assertion without data to back it up. 
+*   **Weak:** "We should expand into the Asian market; it looks promising."
+*   **Strong:** "We must prioritize the Asian market this quarter. The data shows a 24% YoY growth in our sector there, while our domestic market has stagnated at 2%."
+
+---
+
+## Activity: The Concept Explanation
+
+Take a complex financial or operational concept and explain it clearly and logically to a non-expert audience using the Pyramid Principle.
+
+<!-- PRINT: PG_ConceptExplain -->

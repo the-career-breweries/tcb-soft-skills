@@ -1269,6 +1269,304 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
           </div>
         </div>
       )}
+      {templateId === 'PG_ProfBaseline' && (
+        <div className="print-worksheet">
+          {renderHeader('Professional Baseline Reflection')}
+          <p className="print-instructions">Assess your current executive capabilities and business acumen.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Commercial Acumen</h3>
+              <p className="form-prompt">How comfortably can you explain the strategic drivers of your industry?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Leadership Experience</h3>
+              <p className="form-prompt">Describe a situation where you had to lead without formal authority:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Critical Weakness</h3>
+              <p className="form-prompt">What is the one professional trait you must improve this semester?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'PG_CompetencyProfile' && (
+        <div className="print-worksheet">
+          {renderHeader('Competency Profile & Johari Window')}
+          <p className="print-instructions">Map your known strengths and identify your growth gaps.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Your Core Strength (Open Area)</h3>
+              <p className="form-prompt">What is the skill that your peers most associate with you?</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Growth Gaps (Blind Spots)</h3>
+              <p className="form-prompt">Based on recent feedback, what is a weakness you were previously unaware of?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Target Role Competency</h3>
+              <p className="form-prompt">What is the most critical skill required for your post-graduation target role?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'PG_PerfManagement' && (
+        <div className="print-worksheet">
+          {renderHeader('Performance & Energy Management')}
+          <p className="print-instructions">Design a system to manage your time and energy under high stress.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Peak Performance Hours</h3>
+              <p className="form-prompt">During which hours of the day are you most capable of deep, analytical work?</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Distraction Audit</h3>
+              <p className="form-prompt">What are your top three time-wasting habits, and how will you eliminate them?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Extreme Ownership</h3>
+              <p className="form-prompt">Describe a recent failure. How could you have taken ownership to prevent it?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'PG_AnalyticalListen' && (
+        <div className="print-worksheet">
+          {renderHeader('Analytical Listening Observation')}
+          <p className="print-instructions">Practice global listening and decode subtext during a live discussion.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Stated Argument</h3>
+              <p className="form-prompt">What was the speaker's primary, explicit argument?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Unsaid Subtext</h3>
+              <p className="form-prompt">What was the speaker omitting, avoiding, or hinting at?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. The Strategic Question</h3>
+              <p className="form-prompt">Formulate one probing question to expose the hidden assumptions:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'PG_OralBrief' && (
+        <div className="print-worksheet">
+          {renderHeader('Executive Oral Briefing')}
+          <p className="print-instructions">Structure a 2-minute high-impact presentation on a complex topic.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Bottom Line Up Front (BLUF)</h3>
+              <p className="form-prompt">State your core recommendation or conclusion in one sentence:</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Key Supporting Evidence</h3>
+              <p className="form-prompt">List the three strongest data points supporting your conclusion:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Delivery Focus</h3>
+              <p className="form-prompt">What aspect of your executive presence (pacing, eye contact) will you focus on?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'PG_ConceptExplain' && (
+        <div className="print-worksheet">
+          {renderHeader('Analytical Articulation')}
+          <p className="print-instructions">Explain a complex operational or financial concept to a non-expert.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Concept</h3>
+              <p className="form-prompt">What is the concept, and why does it matter to the business?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Analogy</h3>
+              <p className="form-prompt">Provide a simple, real-world analogy to make the concept accessible:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. The Strategic Implication</h3>
+              <p className="form-prompt">How should this concept influence the non-expert's decision making?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'PG_Facilitation' && (
+        <div className="print-worksheet">
+          {renderHeader('Discussion Facilitation Tracker')}
+          <p className="print-instructions">Guide a complex business discussion to a resolution.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Meeting Objective</h3>
+              <p className="form-prompt">What specific decision must be reached by the end of this discussion?</p>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Handling Disruption</h3>
+              <p className="form-prompt">How will you tactfully handle a participant who dominates the conversation?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Synthesis</h3>
+              <p className="form-prompt">Draft your summary statement to lock in the final consensus:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'PG_AnalyticalWriting' && (
+        <div className="print-worksheet">
+          {renderHeader('Executive Memo Draft')}
+          <p className="print-instructions">Draft the framework for a high-impact business memo.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Executive Summary</h3>
+              <p className="form-prompt">What is the problem, the proposed solution, and the cost?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Risks & Alternatives</h3>
+              <p className="form-prompt">What are the key risks of this proposal, and what is the next best alternative?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Action Items</h3>
+              <p className="form-prompt">Who needs to do what, by when, to execute this proposal?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'PG_MeetingLeadership' && (
+        <div className="print-worksheet">
+          {renderHeader('Meeting Chair Audit')}
+          <p className="print-instructions">Plan and execute a tightly controlled business meeting.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Agenda</h3>
+              <p className="form-prompt">List the 3 main agenda items and their time allocations:</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Parking Lot</h3>
+              <p className="form-prompt">What predictable off-topic issues might arise, and how will you defer them?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Post-Meeting Review</h3>
+              <p className="form-prompt">Did the meeting end on time? Were all action items assigned?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'PG_InterviewDesign' && (
+        <div className="print-worksheet">
+          {renderHeader('STAR Interview Response')}
+          <p className="print-instructions">Structure your response to a complex behavioral question.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Situation & Task</h3>
+              <p className="form-prompt">Briefly set the scene and define your specific responsibility (20% of time):</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Action</h3>
+              <p className="form-prompt">Detail the specific steps YOU took to solve the problem (60% of time):</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>3. Result</h3>
+              <p className="form-prompt">What was the quantifiable business outcome (20% of time)?</p>
+              <div className="dotted-line"></div>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
