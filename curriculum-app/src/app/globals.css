@@ -838,6 +838,10 @@ td strong {
 
 
 
-.mermaid-diagram * { font-family: sans-serif !important; }
+
+
+.mermaid-diagram * { font-family: Arial, sans-serif !important; }
+
+
 .mermaid-diagram .nodeLabel { overflow: visible !important; white-space: nowrap !important; }
 

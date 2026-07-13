@@ -75,3 +75,4 @@ Select one modern career path that excites you. Use this worksheet to map out th
 The commerce degree is incredibly versatile. By adding just one or two tech-adjacent skills (like Excel, SQL, or digital marketing) to your core financial knowledge, you make yourself exceptionally valuable in the modern job market.
 
 Next week, we will explore the Gig Economy and how to start **Freelancing & Consulting**!
+

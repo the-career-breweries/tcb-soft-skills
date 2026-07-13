@@ -47,7 +47,7 @@ If you want to enter the corporate sector immediately after graduation, your foc
 ### The Corporate Entry Roadmap
 ```mermaid
 flowchart LR
-    A[B.Com Degree] --> B(Learn Advanced Excel & Tally)
+    A[B.Com<br/>Degree] --> B(Learn Advanced Excel & Tally)
     B --> C(Build a Corporate Resume)
     C --> D{Campus Placement / Walk-ins}
     D --> E[Junior Analyst / Audit Associate]
@@ -100,3 +100,4 @@ Let's put this into practice. It's time to select one of these paths (even if ju
 Traditional career paths are "traditional" for a reason—they offer stability, prestige, and clear progression. However, they also come with high entry barriers and intense competition.
 
 Next week, we will explore **Modern Career Paths**, where we look at how technology, data, and the digital economy are creating entirely new roles for commerce graduates!
+

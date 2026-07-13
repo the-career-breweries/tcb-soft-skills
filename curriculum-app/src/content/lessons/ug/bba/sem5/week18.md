@@ -8,22 +8,22 @@ This week, we will focus on modern, tech-enabled roles that BBA graduates can tr
 
 ## The Big Three Modern Paths
 
-1. **Product Management:** Sitting at the intersection of business, technology, and user experience.
+1. **Product<br/>Manager:** Sitting at the intersection of business, technology, and user experience.
 2. **Digital Marketing & Growth Hacking:** Data-driven customer acquisition and brand scaling.
 3. **Business Analytics:** Using data to drive strategic business decisions.
 
 ---
 
-## 1. Product Management
+## 1. Product<br/>Manager
 
 Product managers (PMs) are often called the "CEOs of the product." They don't need to write code, but they need to understand it, and they definitely need to understand business strategy.
 
 ### The Product Roadmap
 ```mermaid
 flowchart TD
-    A[BBA Degree] --> B[Associate Product Manager (APM)]
+    A[BBA<br/>Degree] --> B[Assoc Product<br/>Manager]
     B --> C[Product Manager]
-    C --> D[Senior Product Manager]
+    C --> D[Senior Product<br/>Manager]
     D --> E[Director of Product]
 ```
 
@@ -41,8 +41,8 @@ Modern marketing is highly quantifiable. It's less about billboards and more abo
 ### The Growth Roadmap
 ```mermaid
 flowchart LR
-    A[BBA Degree] --> B(SEO/SEM Executive)
-    B --> C(Digital Marketing Manager)
+    A[BBA<br/>Degree] --> B(SEO/SEM<br/>Executive)
+    B --> C(Digital Mktg<br/>Manager)
     C --> D{Growth Hacking}
     D --> E[Head of Growth]
 ```
@@ -61,9 +61,9 @@ Companies have more data than ever, but they need people who understand business
 ### The Analytics Workflow
 ```mermaid
 flowchart TD
-    A[Define Business Problem] --> B[Data Collection]
-    B --> C[Data Visualization & Dashboarding]
-    C --> D[Actionable Business Strategy]
+    A[Define<br/>Problem] --> B[Data<br/>Collection]
+    B --> C[Data<br/>Dashboards]
+    C --> D[Actionable<br/>Strategy]
 ```
 
 **Roles for BBA Graduates:**
@@ -78,3 +78,4 @@ flowchart TD
 Pick one modern path and identify three companies actively hiring for entry-level positions in that domain.
 
 <!-- PRINT: BBAModernRoles -->
+

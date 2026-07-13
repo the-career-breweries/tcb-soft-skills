@@ -9,9 +9,9 @@ import PrintTemplates from './PrintTemplates';
 mermaid.initialize({ 
   startOnLoad: false, 
   theme: 'dark',
-  fontFamily: '"Outfit", sans-serif',
+  fontFamily: 'Arial, sans-serif',
   flowchart: {
-    htmlLabels: false
+    htmlLabels: true
   }
 });
 
