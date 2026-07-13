@@ -1,0 +1,54 @@
+# Welcome to Week 3
+## Speaking Comfort & Voice Confidence
+
+![Speaking Comfort](/images/w3_title_1783880953617.jpg)
+
+Welcome to Week 3! Now that we've covered how to listen, it's time to focus on how to speak.
+
+---
+
+# The Fear of Public Speaking
+
+![Fear of Speaking](/images/w3_fear_1783880967469.jpg)
+
+Glossophobia (the fear of public speaking) is one of the most common fears in the world. 
+
+It is completely natural to feel anxious when all eyes are on you. Our goal today is not to make you a master orator, but simply to help you build **comfort** and **confidence** when speaking up.
+
+---
+
+# The Mechanics of Voice Confidence
+
+![Mechanics](/images/w3_mechanics_1783911226899.jpg)
+
+Confidence is not just about what you say, it's about how you deliver it.
+
+1. **Volume:** Speak 10% louder than you think you need to.
+2. **Pacing:** When we are nervous, we rush. Force yourself to slow down.
+3. **Pausing:** Silence is powerful. Use a 2-second pause instead of saying "um" or "like".
+
+---
+
+# Activity: Pair Talk & Short Response
+
+![Activity](/images/w3_activity_1783911327389.jpg)
+
+<!-- PRINT: SpeakingComfort -->
+
+We are going to practice short, low-stakes sharing.
+
+1. Pair up with a new partner.
+2. Review the prompts on your worksheet.
+3. Take turns answering the prompts. Focus purely on volume, pacing, and pausing.
+4. Give each other constructive feedback on the mechanics of your delivery.
+
+---
+
+# Evaluation Rubric
+
+![Rubric](/images/w3_rubric_1783911383313.jpg)
+
+Your participation today will be evaluated on:
+
+* **Fluency:** Did you manage to reduce the use of filler words (um, like)?
+* **Confidence:** Did you speak at an appropriate volume and maintain a steady pace?
