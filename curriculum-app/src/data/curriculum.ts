@@ -25,26 +25,23 @@ const ugCoreWeeks: WeekData[] = [
   { week: 3, semester: 1, level: 1, theme: 'Speaking comfort', focus: 'Short sharing, voice confidence', task: 'Pair talk & short response', rubric: 'Fluency, confidence' },
   { week: 4, semester: 1, level: 1, theme: 'Soft skills basics', focus: 'Grooming, etiquette, presence', task: 'Soft-skills checklist', rubric: 'Awareness, professionalism' },
   
-  // Sem 2 (Weeks 5-7)
-  { week: 5, semester: 2, level: 1, theme: 'Articulation & Group discussion I', focus: 'Clarity, pronunciation, basics of GD', task: 'Structured GD round', rubric: 'Participation, clarity' },
-  { week: 6, semester: 2, level: 1, theme: 'Group discussion II', focus: 'Idea flow, teamwork', task: 'Advanced GD round', rubric: 'Logical contribution' },
-  { week: 7, semester: 2, level: 1, theme: 'Micro presentation', focus: 'Opening, body, closing', task: '2–3 min presentation', rubric: 'Structure, stage presence' },
+  // Sem 2 (Weeks 5-8)
+  { week: 5, semester: 2, level: 1, theme: 'Articulation & Clarity', focus: 'Clarity, pronunciation, basics of GD', task: 'Structured GD round', rubric: 'Participation, clarity' },
+  { week: 6, semester: 2, level: 1, theme: 'Group discussion I (The Basics)', focus: 'Idea flow, teamwork', task: 'Advanced GD round', rubric: 'Logical contribution' },
+  { week: 7, semester: 2, level: 1, theme: 'Group discussion II (Advanced Dynamics)', focus: 'Opening, body, closing', task: '2–3 min presentation', rubric: 'Structure, stage presence' },
+  { week: 8, semester: 2, level: 1, theme: 'The Micro Presentation', focus: 'Paragraphs, academic tone', task: 'Short writing assignment', rubric: 'Coherence, grammar' },
+
+  // Sem 3 (Weeks 9-12)
+  { week: 9, semester: 3, level: 2, theme: 'Writing skills I', focus: 'Paragraphs, academic tone', task: 'Short writing assignment', rubric: 'Coherence, grammar' },
+  { week: 10, semester: 3, level: 2, theme: 'Writing skills II', focus: 'Resume & Email basics', task: 'Resume draft', rubric: 'Format, accuracy' },
+  { week: 11, semester: 3, level: 2, theme: 'Body language', focus: 'Posture, non-verbal communication', task: 'Mock interview', rubric: 'Collaboration, posture' },
+  { week: 12, semester: 3, level: 2, theme: 'Meetings & Teamwork', focus: 'Meeting participation', task: 'Mock meeting', rubric: 'Collaboration' },
   
-  // Sem 3 (Weeks 8-10)
-  { week: 8, semester: 3, level: 2, theme: 'Writing skills I', focus: 'Paragraphs, academic tone', task: 'Short writing assignment', rubric: 'Coherence, grammar' },
-  { week: 9, semester: 3, level: 2, theme: 'Writing skills II', focus: 'Resume & Email basics', task: 'Resume draft', rubric: 'Format, accuracy' },
-  { week: 10, semester: 3, level: 2, theme: 'Body language & Teamwork', focus: 'Posture, meeting participation', task: 'Mock meeting', rubric: 'Collaboration, posture' },
-  
-  // Sem 4 (Weeks 11-13)
-  { week: 11, semester: 4, level: 2, theme: 'Career awareness', focus: 'Career paths, aspirations', task: 'Career mapping sheet', rubric: 'Thoughtfulness, alignment' },
-  { week: 12, semester: 4, level: 2, theme: 'Interview basics', focus: 'Interview process, prep', task: 'Interview prep worksheet', rubric: 'Preparation, understanding' },
-  { week: 13, semester: 4, level: 3, theme: 'Intro to Psychometrics', focus: 'Types of tests & evaluation metrics', task: 'Test format analysis', rubric: 'Comprehension of test types' },
-  
-  // Sem 5 (Weeks 14-16)
-  { week: 14, semester: 5, level: 3, theme: 'Approaching Psychometrics', focus: 'Section-wise answer strategies', task: 'Strategy breakdown sheet', rubric: 'Analytical approach' },
-  { week: 15, semester: 5, level: 3, theme: 'Psychometrics & Career Choice', focus: 'Aligning test results to roles', task: 'Career alignment reflection', rubric: 'Self-insight, realism' },
-  
-  // Note: Week 16 is start of Level 4
+  // Sem 4 (Weeks 13-16)
+  { week: 13, semester: 4, level: 2, theme: 'Career awareness', focus: 'Career paths, aspirations', task: 'Career mapping sheet', rubric: 'Thoughtfulness, alignment' },
+  { week: 14, semester: 4, level: 2, theme: 'Interview basics', focus: 'Interview process, prep', task: 'Interview prep worksheet', rubric: 'Preparation, understanding' },
+  { week: 15, semester: 4, level: 3, theme: 'Answers and Behavior', focus: 'STAR method', task: 'Mock Answer Practice', rubric: 'Comprehension' },
+  { week: 16, semester: 4, level: 3, theme: 'Digital Communication', focus: 'Email Etiquette', task: 'Professional Email Task', rubric: 'Analytical approach' },
 ];
 
 const generateUgLevel4 = (stream: string): WeekData[] => {
