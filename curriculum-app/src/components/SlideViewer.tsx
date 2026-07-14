@@ -19,6 +19,7 @@ const Mermaid = ({ chart, theme }: { chart: string, theme: 'light' | 'dark' }) =
           theme: 'base',
           themeVariables: {
             fontFamily: '"Outfit", sans-serif',
+            fontSize: '28px',
             primaryColor: theme === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(255, 255, 255, 0.7)',
             primaryTextColor: theme === 'dark' ? '#f8fafc' : '#0f172a',
             primaryBorderColor: theme === 'dark' ? '#818cf8' : '#4f46e5',
@@ -28,7 +29,7 @@ const Mermaid = ({ chart, theme }: { chart: string, theme: 'light' | 'dark' }) =
           },
           fontFamily: '"Outfit", sans-serif',
           flowchart: {
-            htmlLabels: false
+            htmlLabels: true
           }
         });
         mermaid.render(`mermaid-${Math.random().toString(36).substring(7)}`, chart).then(({ svg }) => {
