@@ -29,7 +29,7 @@ flowchart LR
     D --> E[CA Final Exam]
     E --> F((Chartered Accountant))
     
-    style A fill:#dcebea,stroke:#01696f,stroke-width:2px
+    style A fill:#dcebea,stroke:#01696f,stroke-width:2px,color:#0f172a
     style F fill:#437a22,stroke:#2b4d16,stroke-width:2px,color:#fff
 ```
 
@@ -52,7 +52,7 @@ flowchart LR
     C --> D{Campus Placement / Walk-ins}
     D --> E[Junior Analyst / Audit Associate]
     
-    style A fill:#dcebea,stroke:#01696f,stroke-width:2px
+    style A fill:#dcebea,stroke:#01696f,stroke-width:2px,color:#0f172a
     style E fill:#01696f,stroke:#0c4e54,stroke-width:2px,color:#fff
 ```
 
@@ -76,7 +76,7 @@ flowchart LR
     D --> E[Personal Interview]
     E --> F((Bank Probationary Officer))
     
-    style A fill:#dcebea,stroke:#01696f,stroke-width:2px
+    style A fill:#dcebea,stroke:#01696f,stroke-width:2px,color:#0f172a
     style F fill:#437a22,stroke:#2b4d16,stroke-width:2px,color:#fff
 ```
 

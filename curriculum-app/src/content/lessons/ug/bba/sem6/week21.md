@@ -18,9 +18,9 @@ flowchart LR
     B -- Passes cutoff --> D[Resume Screening]
     D --> E[Technical / HR Interview]
     
-    style B fill:#fef7e0,stroke:#f29900
-    style C fill:#fce8e8,stroke:#a13544
-    style D fill:#e6f4ea,stroke:#437a22
+    style B fill:#fef7e0,stroke:#f29900,color:#0f172a
+    style C fill:#fce8e8,stroke:#a13544,color:#0f172a
+    style D fill:#e6f4ea,stroke:#437a22,color:#0f172a
 ```
 
 ---

@@ -33,9 +33,9 @@ flowchart LR
     E --> F[Deliver Service]
     F --> G((Invoice & Get Paid))
     
-    style A fill:#dcebea,stroke:#01696f
-    style C fill:#fef7e0,stroke:#f29900
-    style G fill:#e6f4ea,stroke:#437a22
+    style A fill:#dcebea,stroke:#01696f,color:#0f172a
+    style C fill:#fef7e0,stroke:#f29900,color:#0f172a
+    style G fill:#e6f4ea,stroke:#437a22,color:#0f172a
 ```
 
 ---

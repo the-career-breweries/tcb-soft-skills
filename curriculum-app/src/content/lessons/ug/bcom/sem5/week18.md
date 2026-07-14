@@ -18,9 +18,9 @@ flowchart LR
     B -- Cleared --> D[Payment Gateway]
     D --> E(Settlement & Reconciliation)
     
-    style A fill:#dcebea,stroke:#01696f
-    style C fill:#fce8e8,stroke:#a13544
-    style E fill:#e6f4ea,stroke:#437a22
+    style A fill:#dcebea,stroke:#01696f,color:#0f172a
+    style C fill:#fce8e8,stroke:#a13544,color:#0f172a
+    style E fill:#e6f4ea,stroke:#437a22,color:#0f172a
 ```
 
 **Roles for B.Com Graduates:**
