@@ -22,7 +22,7 @@ If you are pursuing a professional certification, your roadmap is heavily struct
 
 ### The CA Roadmap
 ```mermaid
-flowchart TD
+flowchart LR
     A[B.Com<br/>Foundation] --> B[CA Foundation<br/>Exam]
     B --> C[CA<br/>Intermediate]
     C --> D{Articleship<br/>3 Years}
@@ -69,7 +69,7 @@ This route requires clearing highly competitive standardized tests.
 
 ### The Banking Roadmap
 ```mermaid
-flowchart TD
+flowchart LR
     A[Graduation] --> B(Prepare for IBPS/SBI PO)
     B --> C[Prelims]
     C --> D[Mains]
