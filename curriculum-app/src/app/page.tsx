@@ -214,10 +214,10 @@ export default function CurriculumApp() {
                     <button 
                       className="present-btn" 
                       onClick={() => setPresentingWeek(w)}
-                      title="Present Slides"
+                      title="View Slides"
                     >
                       <Presentation size={20} />
-                      Present
+                      View Slides
                     </button>
                   </td>
                 </tr>

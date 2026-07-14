@@ -299,20 +299,20 @@ table {
 
 th {
   background: rgba(0, 0, 0, 0.2);
-  padding: 1.5rem;
+  padding: 1rem;
   text-align: left;
   font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 0.9rem;
   letter-spacing: 1px;
 }
 
 td {
-  padding: 2.5rem;
+  padding: 1.5rem 1rem;
   border-bottom: 1px solid var(--surface-glass-border);
-  vertical-align: top;
-  font-size: 1.6rem;
+  vertical-align: middle;
+  font-size: 1.1rem;
 }
 
 tr:last-child td {
