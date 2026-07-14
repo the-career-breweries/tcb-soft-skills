@@ -21,23 +21,20 @@ For decades, the standard progression for a B.Com graduate has fallen into one o
 If you are pursuing a professional certification, your roadmap is heavily structured around exams and practical training (articleship).
 
 ### The CA Roadmap
+
+#### Phase 1: Foundation to Intermediate
 ```mermaid
-flowchart TB
-    subgraph Row1 [" "]
-        direction LR
-        A[B.Com<br/>Foundation] --> B[CA Foundation<br/>Exam] --> C[CA<br/>Intermediate<br/><br/>↙️]
-    end
-    
-    subgraph Row2 [" "]
-        direction LR
-        D{Articleship<br/>3 Years} --> E[CA Final<br/>Exam] --> F((Chartered<br/>Accountant))
-    end
-    
-    Row1 ~~~ Row2
-    
-    style Row1 fill:none,stroke:none,color:none
-    style Row2 fill:none,stroke:none,color:none
+flowchart LR
+    A[B.Com<br/>Foundation] --> B[CA Foundation<br/>Exam] --> C[CA<br/>Intermediate]
     style A fill:#dcebea,stroke:#01696f,stroke-width:2px,color:#0f172a
+```
+
+*After clearing the Intermediate exams, you begin your mandatory practical training:*
+
+#### Phase 2: Articleship to Final
+```mermaid
+flowchart LR
+    D{Articleship<br/>3 Years} --> E[CA Final<br/>Exam] --> F((Chartered<br/>Accountant))
     style F fill:#437a22,stroke:#2b4d16,stroke-width:2px,color:#fff
 ```
 
@@ -76,23 +73,20 @@ flowchart LR
 This route requires clearing highly competitive standardized tests.
 
 ### The Banking Roadmap
+
+#### Phase 1: Preparation & Prelims
 ```mermaid
-flowchart TB
-    subgraph Row1 [" "]
-        direction LR
-        A[Graduation] --> B(Prepare for<br/>IBPS/SBI PO) --> C[Prelims<br/><br/>↙️]
-    end
-    
-    subgraph Row2 [" "]
-        direction LR
-        D[Mains] --> E[Personal<br/>Interview] --> F((Bank<br/>Probationary Officer))
-    end
-    
-    Row1 ~~~ Row2
-    
-    style Row1 fill:none,stroke:none,color:none
-    style Row2 fill:none,stroke:none,color:none
+flowchart LR
+    A[Graduation] --> B(Prepare for<br/>IBPS/SBI PO) --> C[Prelims]
     style A fill:#dcebea,stroke:#01696f,stroke-width:2px,color:#0f172a
+```
+
+*Candidates who clear the Prelims move on to the final selection stages:*
+
+#### Phase 2: Mains & Interview
+```mermaid
+flowchart LR
+    D[Mains] --> E[Personal<br/>Interview] --> F((Bank<br/>Probationary Officer))
     style F fill:#437a22,stroke:#2b4d16,stroke-width:2px,color:#fff
 ```
 
