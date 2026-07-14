@@ -708,6 +708,11 @@ td strong {
 
   .is-printing-slide .mermaid-diagram {
     page-break-inside: avoid;
+    width: 100% !important;
+  }
+  .is-printing-slide .mermaid-diagram svg {
+    width: 100% !important;
+    max-width: 100% !important;
   }
   .is-printing-slide .mermaid-screen {
     display: none !important;
