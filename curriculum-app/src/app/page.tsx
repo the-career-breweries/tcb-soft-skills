@@ -59,6 +59,18 @@ export default function CurriculumApp() {
           }
         }
       }
+
+      if (e.key === 'd' || e.key === 'D') {
+        setTheme('dark');
+        localStorage.setItem('app-theme', 'dark');
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+
+      if (e.key === 'l' || e.key === 'L') {
+        setTheme('light');
+        localStorage.setItem('app-theme', 'light');
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
