@@ -85,7 +85,7 @@ html, body {
 }
 
 .brand h1 {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   font-weight: 700;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
@@ -95,7 +95,7 @@ html, body {
 
 .brand p {
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 1.4rem;
   font-weight: 300;
 }
 
@@ -112,6 +112,7 @@ select {
   padding: 0.75rem 3rem 0.75rem 1.5rem;
   border-radius: var(--radius-md);
   font-family: inherit;
+  font-size: 1.2rem;
   
   font-weight: 500;
   cursor: pointer;
@@ -141,14 +142,14 @@ select option {
 }
 
 .overview h2 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .overview p {
   color: var(--accent-secondary);
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: 400;
 }
 
