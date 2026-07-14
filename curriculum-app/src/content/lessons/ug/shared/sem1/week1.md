@@ -5,7 +5,13 @@
 
 Welcome to college! You are starting a brand new chapter of your life. 
 
-This week is all about hitting the pause button and understanding *who you are right now*.
+This week is all about hitting the pause button and understanding *who you are right now* before the chaos of assignments and exams begins.
+
+**What we will cover today:**
+* **The Transition:** Understanding the leap from high school to higher education.
+* **The Baseline:** Establishing where your soft skills currently stand.
+* **The Johari Window:** A psychological tool to map your self-awareness.
+* **The Goal:** Setting a personal development target for Semester 1.
 
 ---
 

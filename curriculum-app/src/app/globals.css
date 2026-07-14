@@ -419,7 +419,7 @@ td strong {
 }
 
 .markdown-slide h1 {
-  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-size: clamp(4rem, 6vw, 6rem);
   font-weight: 800;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
@@ -431,7 +431,7 @@ td strong {
 }
 
 .markdown-slide h2 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   color: var(--text-main);
   margin-bottom: 2rem;
   font-weight: 600;
@@ -440,7 +440,7 @@ td strong {
 }
 
 .markdown-slide h3 {
-  font-size: 2.2rem;
+  font-size: 3rem;
   color: var(--accent-secondary);
   margin-bottom: 1.5rem;
   font-weight: 600;
@@ -448,7 +448,7 @@ td strong {
 }
 
 .markdown-slide p {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   color: var(--text-muted);
   line-height: 1.6;
   font-weight: 300;
@@ -456,7 +456,7 @@ td strong {
 }
 
 .markdown-slide ul, .markdown-slide ol {
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   color: var(--text-muted);
   line-height: 1.6;
   font-weight: 300;
@@ -480,10 +480,10 @@ td strong {
 
 .markdown-slide img {
   float: right;
-  width: 45%;
-  max-width: 600px;
-  border-radius: 16px;
-  margin: 0 0 2rem 3rem;
+  width: 55%;
+  max-width: 900px;
+  border-radius: 20px;
+  margin: 0 0 3rem 4rem;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   object-fit: cover;
 }
