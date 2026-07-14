@@ -856,7 +856,7 @@ td strong {
 }
 
 /* Mermaid Overrides */
-.mermaid-diagram svg { max-width: 100%; height: auto;  overflow: visible; }
+.mermaid-diagram svg { width: 100%; max-width: 1200px; height: auto; overflow: visible; }
 
 
 
