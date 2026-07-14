@@ -23,6 +23,7 @@
 }
 
 body {
+  font-size: 20px;
   
   background: var(--bg-gradient);
   color: var(--text-main);
@@ -32,7 +33,7 @@ body {
 
 /* App Container */
 .app-container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -98,7 +99,7 @@ select {
   padding: 0.75rem 3rem 0.75rem 1.5rem;
   border-radius: var(--radius-md);
   font-family: inherit;
-  font-size: 1rem;
+  
   font-weight: 500;
   cursor: pointer;
   outline: none;
@@ -180,7 +181,7 @@ select option {
   border-radius: 99px;
   font-family: inherit;
   font-weight: 600;
-  font-size: 1rem;
+  
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -215,7 +216,7 @@ select option {
 
 .hint-text {
   color: var(--text-muted);
-  font-size: 1rem;
+  
 }
 
 .search-results {
@@ -404,7 +405,7 @@ td strong {
 }
 
 .markdown-slide h1 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 800;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
@@ -506,8 +507,9 @@ td strong {
 }
 
 .slide-body {
+  font-size: 20px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -670,7 +672,7 @@ td strong {
   }
 
   .print-header .brand-text {
-    font-size: 1rem;
+    
     font-weight: 600;
     text-transform: uppercase;
     color: #555;
@@ -752,6 +754,7 @@ td strong {
   }
 
   .johari-body {
+  font-size: 20px;
     display: flex;
     width: 100%;
   }
@@ -844,4 +847,5 @@ td strong {
 
 
 .mermaid-diagram .nodeLabel { overflow: visible !important; white-space: nowrap !important; }
+
 
