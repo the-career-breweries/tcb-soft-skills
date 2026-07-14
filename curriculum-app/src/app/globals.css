@@ -16,6 +16,19 @@
   --radius-sm: 8px;
 }
 
+:root[data-theme='light'] {
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --surface-glass: rgba(255, 255, 255, 0.7);
+  --surface-glass-border: rgba(0, 0, 0, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.9);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --accent-primary: #4f46e5;
+  --accent-secondary: #9333ea;
+  --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -117,7 +130,7 @@ select:hover, select:focus {
 }
 
 select option {
-  background: #1e1b4b;
+  background: var(--bg-gradient);
   color: var(--text-main);
 }
 
@@ -340,7 +353,7 @@ td strong {
   width: 90vw;
   height: 80vh;
   max-width: 1400px;
-  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+  background: var(--bg-gradient);
   border-radius: var(--radius-lg);
   border: 1px solid var(--accent-primary);
   box-shadow: 0 0 100px rgba(129, 140, 248, 0.2);

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { curriculumData, WeekData } from '@/data/curriculum';
-import { Search, Loader2, Sparkles, Presentation } from 'lucide-react';
+import { Search, Loader2, Sparkles, Presentation, Sun, Moon } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
 import './globals.css';
 
@@ -17,6 +17,24 @@ export default function CurriculumApp() {
   const semesters = Array.from({ length: maxSemesters }, (_, i) => i + 1);
   const [selectedSemester, setSelectedSemester] = useState<number>(1);
   
+  // Theme State
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('app-theme') as 'light' | 'dark' | null;
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('app-theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
+
   // Real-time search state
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState<{title: string, link: string, snippet: string}[] | null>(null);
@@ -100,6 +118,14 @@ export default function CurriculumApp() {
           </div>
         </div>
         <div className="controls">
+          <button 
+            className="present-btn" 
+            onClick={toggleTheme}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            style={{ padding: '0.8rem', borderRadius: 'var(--radius-md)' }}
+          >
+            {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+          </button>
           <select value={program} onChange={handleProgramChange}>
             <option value="ug">Undergraduate (UG)</option>
             <option value="pg">Postgraduate (PG)</option>
@@ -201,6 +227,7 @@ export default function CurriculumApp() {
           program={program}
           stream={selectedStream}
           semester={selectedSemester}
+          theme={theme}
           onClose={() => setPresentingWeek(null)} 
         />
       )}

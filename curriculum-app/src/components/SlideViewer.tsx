@@ -8,7 +8,7 @@ import PrintTemplates from './PrintTemplates';
 
 
 
-const Mermaid = ({ chart }: { chart: string }) => {
+const Mermaid = ({ chart, theme }: { chart: string, theme: 'light' | 'dark' }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -16,7 +16,7 @@ const Mermaid = ({ chart }: { chart: string }) => {
       document.fonts.ready.then(() => {
         mermaid.initialize({ 
           startOnLoad: false, 
-          theme: 'dark',
+          theme: theme === 'dark' ? 'dark' : 'default',
           fontFamily: '"Outfit", sans-serif',
           flowchart: {
             htmlLabels: false
@@ -39,10 +39,11 @@ interface SlideViewerProps {
   program: string;
   stream: string;
   semester: number;
+  theme: 'light' | 'dark';
   onClose: () => void;
 }
 
-export default function SlideViewer({ weekData, program, stream, semester, onClose }: SlideViewerProps) {
+export default function SlideViewer({ weekData, program, stream, semester, theme, onClose }: SlideViewerProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slides, setSlides] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -148,7 +149,7 @@ export default function SlideViewer({ weekData, program, stream, semester, onClo
                       code({ node, inline, className, children, ...props }: any) {
                         const match = /language-(\w+)/.exec(className || '');
                         if (!inline && match && match[1] === 'mermaid') {
-                          return <Mermaid chart={String(children).replace(/\n$/, '')} />;
+                          return <Mermaid chart={String(children).replace(/\n$/, '')} theme={theme} />;
                         }
                         return (
                           <code className={className} {...props}>
@@ -210,3 +211,4 @@ export default function SlideViewer({ weekData, program, stream, semester, onClo
     </div>
   );
 }
+
