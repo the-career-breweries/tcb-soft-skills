@@ -864,11 +864,10 @@ td strong {
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin: 3rem 0;
 }
 .mermaid-diagram svg { 
   max-width: 100% !important; 
-  max-height: 70vh !important; 
-  width: auto !important; 
   height: auto !important; 
   overflow: visible !important; 
 }
@@ -878,12 +877,12 @@ td strong {
 .mermaid-diagram .nodeLabel { 
   overflow: visible !important; 
   white-space: nowrap !important; 
-  font-size: 14px !important;
+  font-size: 20px !important;
 }
 
 .mermaid-diagram foreignObject * {
   color: var(--text-main) !important;
-  font-size: 14px !important;
+  font-size: 20px !important;
 }
 
 
