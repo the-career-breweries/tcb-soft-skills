@@ -876,11 +876,12 @@ td strong {
 
 .mermaid-diagram .nodeLabel { 
   overflow: visible !important; 
-  white-space: nowrap !important; 
+  font-size: 20px !important;
 }
 
 .mermaid-diagram foreignObject * {
   color: var(--text-main) !important;
+  font-size: 20px !important;
 }
 
 
