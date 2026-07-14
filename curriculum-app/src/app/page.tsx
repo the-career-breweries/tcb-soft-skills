@@ -158,7 +158,7 @@ export default function CurriculumApp() {
       <main className="content">
         <div className="overview">
           <h2>{program.toUpperCase()} - {selectedStream} - Semester {selectedSemester}</h2>
-          <p>Displaying the curriculum for Level {activeWeeks[0]?.level || 1}.</p>
+
         </div>
 
         {isLevel4 && (
