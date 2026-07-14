@@ -35,6 +35,8 @@ Most assessments for commerce graduates are broken down into three timed section
 | **Logical Reasoning** | Pattern recognition and deduction. | Syllogisms, Seating arrangements, Number series. | Use scratch paper to draw diagrams. Don't do it in your head. |
 | **Verbal Ability** | English comprehension and grammar. | Reading comprehension, Error spotting, Synonyms. | Read the questions *before* reading the passage. |
 
+<!-- PRINT_SLIDE -->
+
 ---
 
 ## 3. The Behavioural / Personality Test

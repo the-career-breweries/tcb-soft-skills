@@ -16,6 +16,8 @@ While there are many specialized software tools in finance, 90% of your daily wo
 | **Word / Docs** | Audit reports, memos, policy drafts. | Styles, Headers, Table of Contents, Track Changes. |
 | **PowerPoint / Slides** | Management reporting, pitch decks. | Master slides, alignment, chart integration. |
 
+<!-- PRINT_SLIDE -->
+
 ---
 
 ## 2. Digital Hygiene Rules

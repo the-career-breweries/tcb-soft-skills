@@ -61,6 +61,7 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
   const [printTemplateId, setPrintTemplateId] = useState<string | null>(null);
   const [isPrintingSlide, setIsPrintingSlide] = useState(false);
   const hasMermaid = slides.length > 0 && slides[currentSlide]?.includes('```mermaid');
+  const hasPrintSlideMarker = slides.length > 0 && slides[currentSlide]?.includes('<!-- PRINT_SLIDE -->');
 
   // Check for print tag on slide change
   useEffect(() => {
@@ -171,7 +172,7 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
                       }
                     }}
                   >
-                    {slides[currentSlide].replace(/<!-- PRINT: (.*?) -->/g, '')}
+                    {slides[currentSlide].replace(/<!-- PRINT: (.*?) -->/g, '').replace(/<!-- PRINT_SLIDE -->/g, '')}
                   </ReactMarkdown>
                 )}
              </div>
@@ -195,10 +196,10 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
             </div>
 
             <div style={{ display: 'flex', gap: '1rem' }}>
-              {(printTemplateId || hasMermaid) && (
+              {(printTemplateId || hasMermaid || hasPrintSlideMarker) && (
                 <button 
                   onClick={() => {
-                    if (hasMermaid && !printTemplateId) {
+                    if ((hasMermaid || hasPrintSlideMarker) && !printTemplateId) {
                       setIsPrintingSlide(true);
                       setTimeout(() => {
                         window.print();
@@ -209,7 +210,7 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
                     }
                   }}
                   className="nav-btn print-btn-trigger"
-                  title="Print Roadmap or Worksheet"
+                  title="Print Slide or Worksheet"
                 >
                   <Printer size={32} />
                 </button>
