@@ -22,13 +22,23 @@ If you are pursuing a professional certification, your roadmap is heavily struct
 
 ### The CA Roadmap
 ```mermaid
-flowchart LR
-    A[B.Com Foundation] --> B[CA Foundation Exam]
-    B --> C[CA Intermediate]
-    C --> D{Articleship 3 Years}
-    D --> E[CA Final Exam]
-    E --> F((Chartered Accountant))
+flowchart TB
+    subgraph Row1 [" "]
+        direction LR
+        A[B.Com<br/>Foundation] --> B[CA Foundation<br/>Exam]
+        B --> C[CA<br/>Intermediate]
+    end
     
+    subgraph Row2 [" "]
+        direction LR
+        D{Articleship<br/>3 Years} --> E[CA Final<br/>Exam]
+        E --> F((Chartered<br/>Accountant))
+    end
+    
+    C --> D
+    
+    style Row1 fill:none,stroke:none,color:none
+    style Row2 fill:none,stroke:none,color:none
     style A fill:#dcebea,stroke:#01696f,stroke-width:2px,color:#0f172a
     style F fill:#437a22,stroke:#2b4d16,stroke-width:2px,color:#fff
 ```
@@ -47,10 +57,10 @@ If you want to enter the corporate sector immediately after graduation, your foc
 ### The Corporate Entry Roadmap
 ```mermaid
 flowchart LR
-    A[B.Com Degree] --> B(Learn Advanced Excel & Tally)
-    B --> C(Build a Corporate Resume)
-    C --> D{Campus Placement / Walk-ins}
-    D --> E[Junior Analyst / Audit Associate]
+    A[B.Com<br/>Degree] --> B(Learn Advanced<br/>Excel & Tally)
+    B --> C(Build a Corporate<br/>Resume)
+    C --> D{Campus Placement<br/>/ Walk-ins}
+    D --> E[Junior Analyst /<br/>Audit Associate]
     
     style A fill:#dcebea,stroke:#01696f,stroke-width:2px,color:#0f172a
     style E fill:#01696f,stroke:#0c4e54,stroke-width:2px,color:#fff
@@ -69,13 +79,23 @@ This route requires clearing highly competitive standardized tests.
 
 ### The Banking Roadmap
 ```mermaid
-flowchart LR
-    A[Graduation] --> B(Prepare for IBPS/SBI PO)
-    B --> C[Prelims]
-    C --> D[Mains]
-    D --> E[Personal Interview]
-    E --> F((Bank Probationary Officer))
+flowchart TB
+    subgraph Row1 [" "]
+        direction LR
+        A[Graduation] --> B(Prepare for<br/>IBPS/SBI PO)
+        B --> C[Prelims]
+    end
     
+    subgraph Row2 [" "]
+        direction LR
+        D[Mains] --> E[Personal<br/>Interview]
+        E --> F((Bank<br/>Probationary Officer))
+    end
+    
+    C --> D
+    
+    style Row1 fill:none,stroke:none,color:none
+    style Row2 fill:none,stroke:none,color:none
     style A fill:#dcebea,stroke:#01696f,stroke-width:2px,color:#0f172a
     style F fill:#437a22,stroke:#2b4d16,stroke-width:2px,color:#fff
 ```
