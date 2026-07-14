@@ -193,11 +193,9 @@ select option {
   background: var(--accent-gradient);
   color: white;
   border: none;
-  padding: 1rem 2rem;
   border-radius: 99px;
   font-family: inherit;
   font-weight: 600;
-  font-size: 1.4rem;
   
   cursor: pointer;
   display: flex;
@@ -207,9 +205,14 @@ select option {
   box-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
 }
 
+.search-btn {
+  padding: 1rem 2rem;
+  font-size: 1.4rem;
+}
+
 .present-btn {
-  padding: 1.5rem 3rem;
-  font-size: 2rem;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.5rem;
   box-shadow: 0 4px 10px rgba(129, 140, 248, 0.2);
 }
 
@@ -863,6 +866,9 @@ td strong {
 .mermaid-diagram .nodeLabel { 
   overflow: visible !important; 
   white-space: nowrap !important; 
+}
+
+.mermaid-diagram foreignObject * {
   color: var(--text-main) !important;
 }
 
