@@ -69,6 +69,15 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
   const [isPrintingSlide, setIsPrintingSlide] = useState(false);
   const hasMermaid = slides.length > 0 && slides[currentSlide]?.includes('```mermaid');
   const hasPrintSlideMarker = slides.length > 0 && slides[currentSlide]?.includes('<!-- PRINT_SLIDE -->');
+  
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  // Reset scroll on slide change
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo(0, 0);
+    }
+  }, [currentSlide]);
 
   // Check for print tag on slide change
   useEffect(() => {
@@ -147,7 +156,7 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
              <p style={{marginTop: '1rem', color: '#94a3b8'}}>Loading lesson content...</p>
           </div>
         ) : (
-          <div className="slide-content markdown-slide">
+          <div ref={scrollRef} className="slide-content markdown-slide">
              {error && currentSlide === 0 && (
                <div style={{
                  background: 'rgba(239, 68, 68, 0.1)', 
