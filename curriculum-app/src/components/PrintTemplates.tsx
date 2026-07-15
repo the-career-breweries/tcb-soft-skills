@@ -1919,6 +1919,148 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
           </div>
         </div>
       )}
+      {templateId === 'TechnicalDefensePrep' && (
+        <div className="print-worksheet">
+          {renderHeader('Technical Defense Prep')}
+          <p className="print-instructions">Prepare your strategies for the hostile technical interview environment.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Delay & Process Tactic</h3>
+              <p className="form-prompt">How will you pause to buy 3 seconds of thinking time before answering a brain teaser?</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Clarifying Question</h3>
+              <p className="form-prompt">Write out a script for how you will politely narrow the scope of a vague modeling question.</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Pushback Script</h3>
+              <p className="form-prompt">Script out your polite but firm response when the MD incorrectly challenges your accurate answer.</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'First90DaysStrategy' && (
+        <div className="print-worksheet">
+          {renderHeader('The 90-Day Desk Strategy')}
+          <p className="print-instructions">Map out your success metrics for the first 90 days on the job.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Reality Check</h3>
+              <p className="form-prompt">Summarize the harsh daily reality of your chosen persona (Auditor, CorpFin, IB).</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The First Week Objective</h3>
+              <p className="form-prompt">Identify the 3 key people you need to build immediate rapport with, and how you will do it.</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. Month 3 Milestone</h3>
+              <p className="form-prompt">What is the one complex task you want to be trusted to execute autonomously by day 90?</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'CrisisTriageShock' && (
+        <div className="print-worksheet">
+          {renderHeader('The War Room: External Shock Triage')}
+          <p className="print-instructions">Draft your emergency briefing for the CFO following a major macroeconomic shock.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Liquidity Assessment (Cash Preservation)</h3>
+              <p className="form-prompt">Identify 3 immediate levers you can pull to preserve cash within 24 hours.</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Exposure Mapping</h3>
+              <p className="form-prompt">Which of your major clients, suppliers, or divisions are most at risk of bankruptcy?</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Executive Summary</h3>
+              <p className="form-prompt">Write the exact 3-sentence, action-oriented opening statement you will deliver to the CFO.</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'CompPortfolioBreakdown' && (
+        <div className="print-worksheet">
+          {renderHeader('Total Compensation Breakdown')}
+          <p className="print-instructions">Evaluate the two competing job offers based on guaranteed cash and expected equity value.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Guaranteed Year 1 Cash</h3>
+              <div className="checkbox-group" style={{ display: 'flex', gap: '2rem', marginTop: '1rem' }}>
+                <div style={{ flex: 1 }}>
+                  <p className="form-prompt">Offer A (Big 4 Bank):</p>
+                  <div className="blank-space small"></div>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <p className="form-prompt">Offer B (FinTech Startup):</p>
+                  <div className="blank-space small"></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Equity Risk Assessment</h3>
+              <p className="form-prompt">What are the specific risks associated with the RSUs in Offer B (vesting cliff, valuation risk, liquidity)?</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Final Decision</h3>
+              <p className="form-prompt">Which offer do you accept, and what is your mathematical/strategic justification?</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'MarketLaunchpadChecklist' && (
+        <div className="print-worksheet">
+          {renderHeader('The Launchpad Checklist')}
+          <p className="print-instructions">Finalize your transition strategy from M.Com student to Financial Analyst.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The 3-Year Vision</h3>
+              <p className="form-prompt">What is your exact target title and target compensation 36 months from today?</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Upskilling Gap</h3>
+              <p className="form-prompt">What is the one major technical skill or certification (e.g., CFA, Python) you still need to acquire?</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Burnout Protocol</h3>
+              <p className="form-prompt">What is your non-negotiable hard boundary to protect your physical and mental health?</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
