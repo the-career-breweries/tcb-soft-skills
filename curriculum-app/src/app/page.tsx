@@ -41,13 +41,18 @@ export default function CurriculumApp() {
     document.documentElement.setAttribute('data-theme', newTheme);
   };
 
-  // Keyboard Shortcuts (Fullscreen, Light/Dark mode)
+  // Keyboard Shortcuts (Fullscreen, Light/Dark mode, Navigation)
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       // Ignore if user is typing in an input
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
 
-      if (e.key === 'f' || e.key === 'F') {
+      if (e.key === 'ArrowLeft') {
+        // Return to welcome screen if on dashboard
+        if (!showWelcome && !activeLesson) {
+          setShowWelcome(true);
+        }
+      } else if (e.key === 'f' || e.key === 'F') {
         if (!document.fullscreenElement) {
           document.documentElement.requestFullscreen().catch(err => console.error(err));
         } else {
@@ -66,7 +71,7 @@ export default function CurriculumApp() {
 
     window.addEventListener('keydown', handleGlobalKeyDown);
     return () => window.removeEventListener('keydown', handleGlobalKeyDown);
-  }, []);
+  }, [showWelcome, activeLesson]);
 
   // Real-time search state
   const [isSearching, setIsSearching] = useState(false);

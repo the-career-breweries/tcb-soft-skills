@@ -1410,21 +1410,20 @@ html, body {
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: var(--bg-gradient);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: var(--bg-surface);
   overflow-y: auto;
   animation: fadeIn 0.5s ease-out;
 }
 
 .welcome-container {
-  width: 100vw;
+  width: 100%;
+  max-width: 1200px;
   min-height: 100vh;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 4rem;
-  background: var(--bg-surface);
+  justify-content: center;
+  padding: 4rem 2rem;
 }
 
 .welcome-header {
@@ -1475,9 +1474,8 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 2rem 0;
+  margin: 3rem 0;
   position: relative;
-  flex: 1;
 }
 
 .roadmap-node {
