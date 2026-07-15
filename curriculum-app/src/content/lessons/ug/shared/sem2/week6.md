@@ -1,7 +1,7 @@
 # Welcome to Semester 2: Week 6
 ## Group Discussion I (The Basics)
 
-![Week 2 Title](/images/sem2_w2_title.jpg)
+![Week 2 Title](/images/slides/ug_week6.jpg)
 
 Last week we focused on individual clarity and articulation. This week, we apply those skills to a group setting. Group discussions are a fundamental part of the professional world—from classroom projects to corporate boardrooms. 
 

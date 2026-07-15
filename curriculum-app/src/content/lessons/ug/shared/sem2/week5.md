@@ -1,7 +1,7 @@
 # Welcome to Semester 2: Week 5
 ## Articulation & Clarity
 
-![Week 1 Title](/images/sem2_w1_title.jpg)
+![Week 1 Title](/images/slides/ug_week5.jpg)
 
 Welcome back! In Semester 1, we focused on understanding yourself, being present, and getting comfortable speaking. In Semester 2, we are leveling up. We begin with **Articulation**—the art of speaking clearly and precisely so you are always understood.
 

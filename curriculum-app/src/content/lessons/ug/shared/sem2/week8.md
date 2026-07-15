@@ -1,7 +1,7 @@
 # Welcome to Semester 2: Week 8
 ## The Micro Presentation
 
-![Week 4 Title](/images/sem2_w4_title.jpg)
+![Week 4 Title](/images/slides/ug_week8.jpg)
 
 This week marks the culmination of Semester 2. We have worked on articulation and group dynamics. Now, you will combine those skills to own the room in a solo presentation.
 

@@ -1,7 +1,7 @@
 # Welcome to Semester 2: Week 7
 ## Group Discussion II (Advanced Dynamics)
 
-![Week 3 Title](/images/sem2_w3_title.jpg)
+![Week 3 Title](/images/slides/ug_week7.jpg)
 
 Now that we know the basics of entering a discussion and listening actively, it is time to master advanced group dynamics. A truly effective group discussion is not a series of monologues; it is a collaborative process where ideas merge and evolve.
 
