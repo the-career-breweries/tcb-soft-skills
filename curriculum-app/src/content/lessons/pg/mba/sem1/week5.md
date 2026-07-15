@@ -47,6 +47,7 @@ Deliver a 2-minute, highly structured oral brief on a complex business topic to 
 
 
 
+
 ---
 
 ## Executive Interpersonal Skills: Advanced Conflict Resolution

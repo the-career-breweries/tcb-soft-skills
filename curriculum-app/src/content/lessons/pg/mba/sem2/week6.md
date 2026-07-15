@@ -48,6 +48,7 @@ Take a complex financial or operational concept and explain it clearly and logic
 
 
 
+
 ---
 
 ## Executive Interpersonal Skills: Overcoming Resistance to Ideas

@@ -49,6 +49,7 @@ Complete your professional baseline reflection, focusing on your financial commu
 
 
 
+
 ---
 
 ## Executive Interpersonal Skills: The Transactional Model in Academia

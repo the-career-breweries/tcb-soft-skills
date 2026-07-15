@@ -51,6 +51,7 @@ Complete your professional baseline reflection. This will serve as the foundatio
 
 
 
+
 ---
 
 ## Executive Interpersonal Skills: The Transactional Model in Academia

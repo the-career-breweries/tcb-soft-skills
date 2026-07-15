@@ -66,6 +66,7 @@ Review your current GitHub profile and plan your next portfolio project.
 
 
 
+
 ---
 
 ## Interpersonal Skills Focus: Netiquette (Online Etiquette)

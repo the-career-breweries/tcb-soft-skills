@@ -65,6 +65,7 @@ Design a basic cloud architecture for a scalable web application.
 
 
 
+
 ---
 
 ## Interpersonal Skills Focus: Media Richness Theory

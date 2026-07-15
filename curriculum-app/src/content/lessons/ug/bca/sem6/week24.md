@@ -63,6 +63,7 @@ Complete the capstone readiness checklist and identify your final gaps before pl
 
 
 
+
 ---
 
 ## Interpersonal Skills Focus: Receiving Feedback Gracefully

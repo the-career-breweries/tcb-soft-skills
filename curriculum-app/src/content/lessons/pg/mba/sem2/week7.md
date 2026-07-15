@@ -47,6 +47,7 @@ Act as the neutral facilitator for a complex, 15-minute business case discussion
 
 
 
+
 ---
 
 ## Executive Interpersonal Skills: Evaluating Collaborative Styles

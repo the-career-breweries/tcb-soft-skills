@@ -45,6 +45,7 @@ Deliver a 2-minute oral brief on a recent corporate financial event, focusing on
 
 
 
+
 ---
 
 ## Executive Interpersonal Skills: Advanced Conflict Resolution

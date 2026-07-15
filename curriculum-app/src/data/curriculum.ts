@@ -60,7 +60,7 @@ const generateUgLevel4 = (stream: string): WeekData[] => {
   ];
 };
 
-const pgCoreWeeks: WeekData[] = [
+const pgSem12Weeks: WeekData[] = [
   // Semester 1 (Level 1: Weeks 1-5)
   { week: 1, semester: 1, level: 1, theme: 'Professional orientation', focus: 'Academic-professional identity', task: 'Professional baseline reflection', rubric: 'Clarity, seriousness' },
   { week: 2, semester: 1, level: 1, theme: 'Advanced self-awareness', focus: 'Strengths, growth gaps', task: 'Professional competency profile', rubric: 'Depth, accuracy' },
@@ -74,13 +74,24 @@ const pgCoreWeeks: WeekData[] = [
   { week: 8, semester: 2, level: 2, theme: 'Analytical writing', focus: 'Professional note writing', task: 'Writing assignment', rubric: 'Coherence, depth' },
   { week: 9, semester: 2, level: 2, theme: 'Meetings & Leadership', focus: 'Chairing meetings', task: 'Mock meeting leadership', rubric: 'Leadership, process control' },
   { week: 10, semester: 2, level: 2, theme: 'Interview design & response', focus: 'STAR-style response', task: 'Mock response lab', rubric: 'Structure, relevance' },
-  
+];
+
+const pgSem3Weeks: WeekData[] = [
   // Semester 3 (Level 3: Weeks 11-15)
   { week: 11, semester: 3, level: 3, theme: 'Intro to Psychometrics', focus: 'Types of tests & evaluation metrics', task: 'Test format analysis', rubric: 'Comprehension of test types' },
   { week: 12, semester: 3, level: 3, theme: 'Approaching Psychometrics', focus: 'Section-wise answer strategies', task: 'Strategy breakdown sheet', rubric: 'Analytical approach' },
   { week: 13, semester: 3, level: 3, theme: 'Psychometrics & Career Choice', focus: 'Aligning test results to roles', task: 'Career alignment reflection', rubric: 'Self-insight, realism' },
   { week: 14, semester: 3, level: 3, theme: 'Advanced Body Language', focus: 'Poise, controlled gestures', task: 'Presence review task', rubric: 'Confidence signals' },
   { week: 15, semester: 3, level: 3, theme: 'Digital Professionalism', focus: 'Email etiquette, online presence', task: 'Professional comms task', rubric: 'Tone, digital maturity' },
+];
+
+const mbaSem3Weeks: WeekData[] = [
+  // Semester 3 (Level 3: Weeks 11-15)
+  { week: 11, semester: 3, level: 3, theme: 'Capstone Synthesis', focus: 'Reviewing Sem 2 skills', task: 'Practical worksheets', rubric: 'Comprehension, application' },
+  { week: 12, semester: 3, level: 3, theme: 'Advanced Executive Processes', focus: 'High-level C-Suite skills', task: 'Case study analysis', rubric: 'Strategic thinking' },
+  { week: 13, semester: 3, level: 3, theme: 'The Digital Business', focus: 'AI, MarTech, FinTech', task: 'Digital strategy brief', rubric: 'Tech fluency, innovation' },
+  { week: 14, semester: 3, level: 3, theme: 'Building the Foundation', focus: 'Startups, scaling, product-market fit', task: 'Foundation mapping', rubric: 'Logical structure' },
+  { week: 15, semester: 3, level: 3, theme: 'Commitment & Action', focus: 'First steps on your journey', task: 'Action plan execution', rubric: 'Commitment, realism' },
 ];
 
 const generatePgLevel4 = (stream: string): WeekData[] => {
@@ -106,9 +117,9 @@ export const curriculumData: { ug: ProgramCurriculum, pg: ProgramCurriculum } = 
   pg: {
     programName: 'PG',
     streams: [
-      { streamName: 'M.Com', weeks: [...pgCoreWeeks, ...generatePgLevel4('M.Com')] },
-      { streamName: 'MBA', weeks: [...pgCoreWeeks, ...generatePgLevel4('MBA')] },
-      { streamName: 'MCA', weeks: [...pgCoreWeeks, ...generatePgLevel4('MCA')] },
+      { streamName: 'M.Com', weeks: [...pgSem12Weeks, ...pgSem3Weeks, ...generatePgLevel4('M.Com')] },
+      { streamName: 'MBA', weeks: [...pgSem12Weeks, ...mbaSem3Weeks, ...generatePgLevel4('MBA')] },
+      { streamName: 'MCA', weeks: [...pgSem12Weeks, ...pgSem3Weeks, ...generatePgLevel4('MCA')] },
     ]
   }
 };
