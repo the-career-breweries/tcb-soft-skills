@@ -41,6 +41,13 @@ export default function CurriculumApp() {
     document.documentElement.setAttribute('data-theme', newTheme);
   };
 
+  // Real-time search state
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchResults, setSearchResults] = useState<{title: string, link: string, snippet: string}[] | null>(null);
+
+  // Active Lesson State
+  const [activeLesson, setActiveLesson] = useState<WeekData | null>(null);
+
   // Keyboard Shortcuts (Fullscreen, Light/Dark mode, Navigation)
   useEffect(() => {
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
@@ -72,13 +79,6 @@ export default function CurriculumApp() {
     window.addEventListener('keydown', handleGlobalKeyDown);
     return () => window.removeEventListener('keydown', handleGlobalKeyDown);
   }, [showWelcome, activeLesson]);
-
-  // Real-time search state
-  const [isSearching, setIsSearching] = useState(false);
-  const [searchResults, setSearchResults] = useState<{title: string, link: string, snippet: string}[] | null>(null);
-
-  // Active Lesson State
-  const [activeLesson, setActiveLesson] = useState<WeekData | null>(null);
 
   // Handle program change
   const changeProgram = (newProgram: 'ug' | 'pg') => {
