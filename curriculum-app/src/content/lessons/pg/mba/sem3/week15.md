@@ -33,9 +33,9 @@ The MBA offers broad optionality, which can lead to analysis paralysis. You must
 A strategy without execution is a hallucination.
 
 **Immediate Actions:**
-*   If **Corporate**: Identify 3 target companies. Find 1 alumni at each. Send a connection request today.
-*   If **Entrepreneurial**: Secure the domain name. Draft the 1-page lean canvas. Talk to 1 potential customer today.
-*   If **Consultant**: Publish 1 long-form thought-leadership piece on LinkedIn or Medium today.
+*   If **Corporate**: Identify 3 target companies, research about the company, its history, hierarchy, departments, hiring trends, document these and submit.
+*   If **Entrepreneurial**: Start from Idea Generation. Use technology, frame your chain of thoughts into a professional document. Connect with your peers, pitch them the idea, make notes of their responses, submit.
+*   If **Consultant**: Pick a case study, identify the problem statement, work on Root Cause Analysis (RCA), build a fishbone diagram, propose a solutioning framework and submit.
 
 ---
 
@@ -47,9 +47,8 @@ A strategy without execution is a hallucination.
 Commitment requires stakes.
 
 **The Task:**
-1.  Write down your chosen path and your immediate 30-day goal.
-2.  Share this with your cohort group.
-3.  Set a calendar invite for 30 days from now for a progress review.
+1.  Complete the respective assignment for your chosen path above.
+2.  **Submission deadline:** Day 1 of your 4th semester.
 
 *The journey of a thousand miles begins with this single step. Take it now.*
 
