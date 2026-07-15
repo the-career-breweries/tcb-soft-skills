@@ -18,6 +18,9 @@
   --radius-lg: 12px;
   --radius-md: 8px;
   --radius-sm: 4px;
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --accent-secondary: #9333ea;
+  --accent-gradient: linear-gradient(135deg, #2563eb 0%, #9333ea 100%);
 }
 
 :root[data-theme='dark'] {
@@ -34,6 +37,9 @@
   --border-sidebar: #1e293b;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  --accent-secondary: #c084fc;
+  --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #c084fc 100%);
 }
 
 * {
