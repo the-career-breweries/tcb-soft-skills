@@ -56,6 +56,7 @@ This separates your professional mandate from your personal relationship.
 ---
 
 ## Today's Deliverable
+<!-- PRINT: BudgetDenialRoleplay -->
 
 **Roleplay Simulation:**
 You are the Financial Controller. The Head of Sales is aggressively demanding you approve a lavish client dinner that violates the company's anti-bribery policy. They claim that if you don't approve it, they will lose a $2M account, and it will be your fault.

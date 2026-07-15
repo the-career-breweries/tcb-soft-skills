@@ -1776,6 +1776,149 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
           </div>
         </div>
       )}
+      {templateId === 'DataNarrative' && (
+        <div className="print-worksheet">
+          {renderHeader('Data Narrative Breakdown')}
+          <p className="print-instructions">Pass the financial data through the "So What?" filter to create an actionable insight for non-finance stakeholders.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Metric</h3>
+              <p className="form-prompt">What is the exact number or trend you are highlighting?</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Impact</h3>
+              <p className="form-prompt">Why does this matter to the business? (The "So What?")</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Actionable Insight</h3>
+              <p className="form-prompt">What specific action should the stakeholder take based on this data?</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'BudgetDenialRoleplay' && (
+        <div className="print-worksheet">
+          {renderHeader('The Sandwich Method: Budget Denial')}
+          <p className="print-instructions">Script out your response to deny the budget request without destroying the relationship.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Context</h3>
+              <p className="form-prompt">Acknowledge the importance of their project/request.</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Reality (The "No")</h3>
+              <p className="form-prompt">Deliver the clear denial based on policy or constraints.</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Pivot (The "How")</h3>
+              <p className="form-prompt">Offer a compliant, alternative solution or next step.</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'EthicsEscalation' && (
+        <div className="print-worksheet">
+          {renderHeader('Ethics Escalation Brief')}
+          <p className="print-instructions">Document the compliance violation and outline your mitigation strategy.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Violation</h3>
+              <p className="form-prompt">State the exact nature of the ethical breach or policy violation.</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Immediate Next Steps</h3>
+              <p className="form-prompt">Who do you report this to? What documentation do you need to secure?</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. Risk Mitigation</h3>
+              <p className="form-prompt">What are the potential career risks to yourself, and how will you protect yourself?</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'ProcurementNegotiation' && (
+        <div className="print-worksheet">
+          {renderHeader('Procurement Negotiation Strategy')}
+          <p className="print-instructions">Prepare your leverage and counter-offers before entering the negotiation.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Your BATNA</h3>
+              <p className="form-prompt">What is your Best Alternative to a Negotiated Agreement?</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. Target & Walk-Away</h3>
+              <div className="checkbox-group" style={{ display: 'flex', gap: '2rem', marginTop: '1rem' }}>
+                <div style={{ flex: 1 }}>
+                  <p className="form-prompt">Opening Counter-Offer:</p>
+                  <div className="blank-space small"></div>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <p className="form-prompt">Maximum Price (Walk-Away):</p>
+                  <div className="blank-space small"></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Opening Script</h3>
+              <p className="form-prompt">Write out the first 2 minutes of your response to their $120k renewal proposal (include the flinch).</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'FinancialPersona' && (
+        <div className="print-worksheet">
+          {renderHeader('The Strategic Financial Persona')}
+          <p className="print-instructions">Declare your financial niche and map out your targeted networking strategy.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Persona Declaration</h3>
+              <div className="checkbox-group" style={{ display: 'flex', flexDirection: 'row', gap: '20px', marginTop: '15px' }}>
+                <label><input type="checkbox" /> Big 4 Auditor</label>
+                <label><input type="checkbox" /> Corporate Finance Strategist</label>
+                <label><input type="checkbox" /> Investment Banker / PE Analyst</label>
+              </div>
+            </div>
+
+            <div className="form-section">
+              <h3>2. The Networking Plan</h3>
+              <p className="form-prompt">Step 1: The Target (Who are you reaching out to?)</p>
+              <div className="blank-space small"></div>
+              <p className="form-prompt">Step 2: The Medium (LinkedIn, Alumni Event, Cold Email?)</p>
+              <div className="blank-space small"></div>
+              <p className="form-prompt">Step 3: The "Give" (What value are you providing before asking for anything?)</p>
+              <div className="blank-space medium"></div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

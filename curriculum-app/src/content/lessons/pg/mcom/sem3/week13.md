@@ -37,7 +37,7 @@ How do you survive when pressured to do something unethical?
 
 ## The Ultimate Protection
 
-![Professional](/assets/professional.jpg)
+![Finance](/assets/finance.jpg)
 
 The best defense against ethical compromise is financial independence.
 
@@ -49,6 +49,7 @@ Your personal finances dictate your professional courage.
 ---
 
 ## Today's Deliverable
+<!-- PRINT: EthicsEscalation -->
 
 **Ethics Case Study Simulation:**
 You discover that a senior partner at your firm has been intentionally misclassifying personal expenses as corporate travel. The partner is highly respected and responsible for your upcoming promotion.

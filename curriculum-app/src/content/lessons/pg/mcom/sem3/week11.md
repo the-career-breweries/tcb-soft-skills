@@ -51,6 +51,7 @@ You must master visual hierarchy.
 ---
 
 ## Today's Deliverable
+<!-- PRINT: DataNarrative -->
 
 You have been provided with a raw CSV file containing 5 years of P&L data for a struggling retail company.
 

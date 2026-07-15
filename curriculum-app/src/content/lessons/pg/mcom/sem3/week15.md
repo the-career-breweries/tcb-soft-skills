@@ -1,6 +1,6 @@
 ## The Financial Specialist Persona
 
-![Professional](/assets/professional.jpg)
+![Finance](/assets/finance.jpg)
 
 The market does not reward generalists. The market rewards deep, niche specialization. 
 
@@ -41,6 +41,7 @@ Your long-term value in finance is determined by your "Book of Business"—the c
 ---
 
 ## Today's Deliverable
+<!-- PRINT: FinancialPersona -->
 
 **The Persona Declaration:**
 
