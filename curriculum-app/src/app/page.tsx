@@ -76,13 +76,16 @@ export default function CurriculumApp() {
   const [activeLesson, setActiveLesson] = useState<WeekData | null>(null);
 
   // Handle program change
-  const handleProgramChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newProgram = e.target.value as 'ug' | 'pg';
+  const changeProgram = (newProgram: 'ug' | 'pg') => {
     setProgram(newProgram);
     setSelectedStream(curriculumData[newProgram].streams[0].streamName);
     setSelectedSemester(1);
     setSearchResults(null);
     setActiveLesson(null);
+  };
+
+  const handleProgramChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    changeProgram(e.target.value as 'ug' | 'pg');
   };
 
   const handleStreamChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -123,7 +126,7 @@ export default function CurriculumApp() {
   return (
     <>
       {showWelcome ? (
-        <WelcomeScreen program={program} onNext={() => setShowWelcome(false)} />
+        <WelcomeScreen program={program} onProgramChange={changeProgram} onNext={() => setShowWelcome(false)} />
       ) : (
         <div className="lms-container">
           {/* Top Navbar */}

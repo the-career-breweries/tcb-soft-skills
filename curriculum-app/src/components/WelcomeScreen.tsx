@@ -3,10 +3,11 @@ import { ChevronRight, Target, Compass, Zap, Award, BookOpen, Presentation, Brie
 
 interface WelcomeScreenProps {
   program: 'ug' | 'pg';
+  onProgramChange: (program: 'ug' | 'pg') => void;
   onNext: () => void;
 }
 
-export default function WelcomeScreen({ program, onNext }: WelcomeScreenProps) {
+export default function WelcomeScreen({ program, onProgramChange, onNext }: WelcomeScreenProps) {
   // Keyboard navigation for 'Next'
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -101,7 +102,38 @@ export default function WelcomeScreen({ program, onNext }: WelcomeScreenProps) {
 
         {/* Navigation Prompt */}
         <div className="welcome-footer">
-          <p>Press <kbd>Space</kbd> or <kbd>→</kbd> to enter the dashboard</p>
+          <div className="welcome-program-toggle" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', background: 'var(--bg-app)', padding: '0.5rem', borderRadius: '30px', border: '1px solid var(--border-color)' }}>
+            <button 
+              onClick={() => onProgramChange('ug')}
+              style={{
+                padding: '0.5rem 1.5rem',
+                borderRadius: '20px',
+                border: 'none',
+                background: isUG ? 'var(--accent-primary)' : 'transparent',
+                color: isUG ? '#fff' : 'var(--text-muted)',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+            >
+              Undergraduate (UG)
+            </button>
+            <button 
+              onClick={() => onProgramChange('pg')}
+              style={{
+                padding: '0.5rem 1.5rem',
+                borderRadius: '20px',
+                border: 'none',
+                background: !isUG ? 'var(--accent-primary)' : 'transparent',
+                color: !isUG ? '#fff' : 'var(--text-muted)',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.2s'
+              }}
+            >
+              Postgraduate (PG)
+            </button>
+          </div>
           <button className="welcome-next-btn" onClick={onNext}>
             Enter Platform <ChevronRight size={24} />
           </button>

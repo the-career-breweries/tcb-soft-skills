@@ -1419,16 +1419,12 @@ html, body {
 }
 
 .welcome-container {
-  width: 90vw;
-  max-width: 1200px;
-  min-height: 80vh;
+  width: 100vw;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: 4rem;
   background: var(--bg-surface);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-color);
 }
 
 .welcome-header {
