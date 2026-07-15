@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { curriculumData, WeekData } from '@/data/curriculum';
 import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight } from 'lucide-react';
-import LessonViewer from '@/components/LessonViewer';
+import SlideViewer from '@/components/SlideViewer';
 import './globals.css';
 
 export default function CurriculumApp() {
@@ -170,20 +170,11 @@ export default function CurriculumApp() {
 
         {/* Main Content Area */}
         <main className="lms-main">
-          {activeLesson ? (
-            <LessonViewer 
-              weekData={activeLesson}
-              program={program}
-              stream={selectedStream}
-              semester={selectedSemester}
-              theme={theme}
-            />
-          ) : (
-            <div className="lms-dashboard">
-              <div className="dashboard-header">
-                <h2>{program.toUpperCase()} / {selectedStream} / Semester {selectedSemester}</h2>
-                <p>Select a module from the sidebar to begin learning.</p>
-              </div>
+          <div className="lms-dashboard">
+            <div className="dashboard-header">
+              <h2>{program.toUpperCase()} / {selectedStream} / Semester {selectedSemester}</h2>
+              <p>Select a module from the sidebar to begin learning.</p>
+            </div>
 
               {isLevel4 && (
                 <div className="realtime-card">
@@ -230,9 +221,19 @@ export default function CurriculumApp() {
                 ))}
               </div>
             </div>
-          )}
         </main>
       </div>
+
+      {activeLesson && (
+        <SlideViewer 
+          weekData={activeLesson}
+          program={program}
+          stream={selectedStream}
+          semester={selectedSemester}
+          theme={theme}
+          onClose={() => setActiveLesson(null)}
+        />
+      )}
     </div>
   );
 }
