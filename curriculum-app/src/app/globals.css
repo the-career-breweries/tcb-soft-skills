@@ -594,39 +594,7 @@ html, body {
 @media print {
   @page { margin: 0.5cm; }
   
-  body * {
-    visibility: hidden;
-  }
-  
-  .print-only,
-  .print-only * {
-    visibility: visible !important;
-  }
-  
-  .print-only {
-    display: block !important;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
-
-  .is-printing-slide .slide-content,
-  .is-printing-slide .slide-content * {
-    visibility: visible !important;
-  }
-
-  .lesson-container .lesson-body,
-  .lesson-container .lesson-body * {
-    visibility: visible;
-  }
-
-  .lesson-container .lesson-body {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
+  /* Print visibility logic is handled by display: none on background elements */
   
   .mermaid-print {
     display: block !important;
@@ -1034,33 +1002,44 @@ html, body {
 
 @media print {
   /* Hide the entire app background and UI */
-  body, html {
+  body, html, #__next, .lms-container {
     background: white !important;
     color: black !important;
-    height: auto;
-    overflow: visible;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    display: block !important;
   }
   
-  .topbar, .content, .slide-modal-overlay > *:not(.slide-container) {
+  /* Hide background layout elements when printing */
+  .lms-topbar, .lms-layout, .welcome-container {
+    display: none !important;
+  }
+  
+  /* Hide modal backdrop overlay contents except the actual container */
+  .slide-modal-overlay > *:not(.slide-container) {
     display: none !important;
   }
 
   /* Make modal take up full page for printing without borders */
   .slide-modal-overlay {
-    position: static;
+    position: static !important;
     background: white !important;
     backdrop-filter: none;
-    display: block;
+    display: block !important;
   }
 
   .slide-container {
+    position: static !important;
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
+    min-height: auto !important;
     border: none !important;
     box-shadow: none !important;
     background: white !important;
     overflow: visible !important;
+    display: block !important;
   }
 
   /* Hide slide content and controls */
