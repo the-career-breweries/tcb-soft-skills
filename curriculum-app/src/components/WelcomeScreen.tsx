@@ -102,7 +102,7 @@ export default function WelcomeScreen({ program, onProgramChange, onNext }: Welc
 
         {/* Navigation Prompt */}
         <div className="welcome-footer">
-          <div className="welcome-program-toggle" style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', background: 'var(--bg-app)', padding: '0.5rem', borderRadius: '30px', border: '1px solid var(--border-color)' }}>
+          <div className="welcome-program-toggle" style={{ display: 'flex', gap: '1rem', background: 'var(--bg-app)', padding: '0.5rem', borderRadius: '30px', border: '1px solid var(--border-color)' }}>
             <button 
               onClick={() => onProgramChange('ug')}
               style={{
