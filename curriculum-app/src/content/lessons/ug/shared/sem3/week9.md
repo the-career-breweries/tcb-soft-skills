@@ -1,7 +1,7 @@
 # Welcome to Semester 3: Week 9
 ## Writing Skills I
 
-![Week 9 Title](/images/sem3_w9_title.jpg)
+![Week 9 Title](/images/slides/ug_week9.jpg)
 
 Welcome to Semester 3! We are shifting our focus from spoken communication to written communication. Your ability to write clearly, concisely, and professionally is one of the most critical employability skills you can develop.
 

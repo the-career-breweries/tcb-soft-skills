@@ -1,7 +1,7 @@
 # Welcome to Semester 3: Week 12
 ## Meetings and Teamwork
 
-![Week 12 Title](/images/sem3_w12_title.jpg)
+![Week 12 Title](/images/slides/ug_week12.jpg)
 
 The modern workplace is collaborative. Knowing how to conduct yourself in meetings and work effectively as part of a team is essential for your success.
 

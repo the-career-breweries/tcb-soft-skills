@@ -1,7 +1,7 @@
 # Welcome to Semester 3: Week 11
 ## Body Language
 
-![Week 11 Title](/images/sem3_w11_title.jpg)
+![Week 11 Title](/images/slides/ug_week11.jpg)
 
 While what you say and write is crucial, how you present yourself non-verbally often speaks louder. This week, we focus on controlling the signals your body sends.
 

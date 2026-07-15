@@ -1,7 +1,7 @@
 # Welcome to Semester 3: Week 10
 ## Writing Skills II
 
-![Week 10 Title](/images/sem3_w10_title.jpg)
+![Week 10 Title](/images/slides/ug_week10.jpg)
 
 Last week, we focused on the building blocks of professional writing. This week, we will apply those skills to the two most important documents in your early career: your Resume and your Professional Email.
 
