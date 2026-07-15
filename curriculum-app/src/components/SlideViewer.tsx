@@ -25,7 +25,16 @@ const Mermaid = ({ chart, theme }: { chart: string, theme: 'light' | 'dark' }) =
             lineColor: theme === 'dark' ? '#a5b4fc' : '#4f46e5',
             secondaryColor: theme === 'dark' ? '#d8b4fe' : '#9333ea',
             tertiaryColor: theme === 'dark' ? '#1e293b' : '#e2e8f0',
-            fontSize: '26px'
+            fontSize: '26px',
+            pieTitleTextColor: theme === 'dark' ? '#ffffff' : '#0f172a',
+            pieSectionTextColor: theme === 'dark' ? '#ffffff' : '#0f172a',
+            pieLegendTextColor: theme === 'dark' ? '#ffffff' : '#0f172a',
+            pie1: theme === 'dark' ? '#818cf8' : '#6366f1',
+            pie2: theme === 'dark' ? '#c084fc' : '#a855f7',
+            pie3: theme === 'dark' ? '#38bdf8' : '#0ea5e9',
+            pie4: theme === 'dark' ? '#34d399' : '#10b981',
+            pie5: theme === 'dark' ? '#f472b6' : '#ec4899',
+            pie6: theme === 'dark' ? '#fbbf24' : '#f59e0b'
           },
           fontFamily: '"Outfit", sans-serif',
           flowchart: {
