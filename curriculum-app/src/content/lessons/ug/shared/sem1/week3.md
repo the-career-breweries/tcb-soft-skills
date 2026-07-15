@@ -1,7 +1,7 @@
 # Welcome to Week 3
 ## Speaking Comfort & Voice Confidence
 
-![Speaking Comfort](/images/w3_title_1783880953617.jpg)
+![Speaking Comfort](/images/slides/ug_week3.jpg)
 
 Welcome to Week 3! Now that we've covered how to listen, it's time to focus on how to speak.
 

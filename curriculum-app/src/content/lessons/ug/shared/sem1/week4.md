@@ -1,7 +1,7 @@
 # Welcome to Week 4
 ## Professional Presence & Soft Skills Basics
 
-![Title](/images/w4_title_1783911399626.jpg)
+![Title](/images/slides/ug_week4.jpg)
 
 Welcome to the final week of Semester 1! We've covered self-awareness, active listening, and speaking comfort. Now, we pull it all together into how you present yourself to the world.
 

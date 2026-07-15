@@ -1,7 +1,7 @@
 # Welcome to Week 1
 ## Course Orientation & Self-Awareness
 
-![Course Orientation](/images/better_navigating_college.jpg)
+![Course Orientation](/images/slides/ug_week1.jpg)
 
 Welcome to college! You are starting a brand new chapter of your life. 
 

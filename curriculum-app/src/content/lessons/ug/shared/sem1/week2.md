@@ -1,7 +1,7 @@
 # Welcome to Week 2
 ## Learning Habits & Active Listening
 
-![Active Listening](/images/week2_visual.jpg)
+![Active Listening](/images/slides/ug_week2.jpg)
 
 Welcome back! Last week we looked inward. This week, we focus on how you absorb information from the world around you.
 
