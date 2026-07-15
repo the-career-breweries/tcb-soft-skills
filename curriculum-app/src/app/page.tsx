@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { curriculumData, WeekData } from '@/data/curriculum';
 import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
+import WelcomeScreen from '@/components/WelcomeScreen';
 import './globals.css';
 
 export default function CurriculumApp() {
@@ -11,6 +12,7 @@ export default function CurriculumApp() {
   const streams = curriculumData[program].streams;
   
   const [selectedStream, setSelectedStream] = useState<string>(streams[0].streamName);
+  const [showWelcome, setShowWelcome] = useState<boolean>(true);
   
   // Semesters depend on the program
   const maxSemesters = program === 'ug' ? 6 : 4;
@@ -119,148 +121,153 @@ export default function CurriculumApp() {
   };
 
   return (
-    <div className="lms-container">
-      {/* Top Navbar */}
-      <header className="lms-topbar">
-        <div className="lms-brand">
-          <div className="lms-logo"><GraduationCap size={28} /></div>
-          <h1>Soft Skills Studio</h1>
-        </div>
-        <div className="lms-topbar-actions">
-          <button 
-            className="theme-toggle-btn" 
-            onClick={toggleTheme}
-            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-          >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <div className="user-avatar">SC</div>
-        </div>
-      </header>
-
-      <div className="lms-layout">
-        {/* Sidebar Navigation */}
-        <aside className="lms-sidebar">
-          <div className="lms-sidebar-section">
-            <h3 className="sidebar-heading">Course Selection</h3>
-            <div className="sidebar-select-group">
-              <label>Program</label>
-              <select value={program} onChange={handleProgramChange}>
+    <>
+      {showWelcome ? (
+        <WelcomeScreen program={program} onNext={() => setShowWelcome(false)} />
+      ) : (
+        <div className="lms-container">
+          {/* Top Navbar */}
+          <header className="lms-topbar">
+            <div className="lms-brand">
+              <div className="lms-logo"><GraduationCap size={28} /></div>
+              <h1>Soft Skills Studio</h1>
+            </div>
+            
+            <div className="lms-topbar-actions">
+              <select className="lms-select" value={program} onChange={handleProgramChange}>
                 <option value="ug">Undergraduate (UG)</option>
                 <option value="pg">Postgraduate (PG)</option>
               </select>
-            </div>
-            <div className="sidebar-select-group">
-              <label>Specialization</label>
-              <select value={selectedStream} onChange={handleStreamChange}>
-                {streams.map(s => (
-                  <option key={s.streamName} value={s.streamName}>{s.streamName}</option>
-                ))}
-              </select>
-            </div>
-            <div className="sidebar-select-group">
-              <label>Semester</label>
-              <select value={selectedSemester} onChange={handleSemesterChange}>
-                {semesters.map(s => (
-                  <option key={s} value={s}>Semester {s}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="lms-sidebar-section modules-section">
-            <h3 className="sidebar-heading">Modules</h3>
-            <ul className="module-list">
-              <li 
-                className={`module-item ${activeLesson === null ? 'active' : ''}`}
-                onClick={() => setActiveLesson(null)}
+              <button 
+                className="theme-toggle-btn" 
+                onClick={toggleTheme}
+                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               >
-                <LayoutDashboard size={18} />
-                <span>Semester Overview</span>
-              </li>
-              {activeWeeks.map((week) => (
-                <li 
-                  key={week.week} 
-                  className={`module-item ${activeLesson?.week === week.week ? 'active' : ''}`}
-                  onClick={() => setActiveLesson(week)}
-                >
-                  <BookOpen size={18} />
-                  <div className="module-item-text">
-                    <span className="module-week-label">Week {week.week}</span>
-                    <span className="module-theme-label" title={week.theme}>{week.theme}</span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </aside>
-
-        {/* Main Content Area */}
-        <main className="lms-main">
-          <div className="lms-dashboard">
-            <div className="dashboard-header">
-              <h2>{program.toUpperCase()} / {selectedStream} / Semester {selectedSemester}</h2>
-              <p>Select a module from the sidebar to begin learning.</p>
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+              <div className="user-avatar">SC</div>
             </div>
+          </header>
 
-              {isLevel4 && (
-                <div className="realtime-card">
-                  <div className="card-header">
-                    <h3><Sparkles size={24} color="#6366f1"/> Live Career Intelligence</h3>
-                    <button className="search-btn" onClick={fetchLatestPaths} disabled={isSearching}>
-                      {isSearching ? <Loader2 className="spinner" size={18} /> : <Search size={18} />}
-                      Check for latest updates
-                    </button>
-                  </div>
-                  {searchResults && (
-                    <div className="search-results">
-                      {searchResults.length === 0 ? (
-                        <p>No results found.</p>
-                      ) : (
-                        searchResults.map((res, i) => (
-                          <div key={i} className="result-item">
-                            <a href={res.link} target="_blank" rel="noreferrer"><h4>{res.title}</h4></a>
-                            <p>{res.snippet}</p>
-                          </div>
-                        ))
+          <div className="lms-layout">
+            {/* Sidebar Navigation */}
+            <aside className="lms-sidebar">
+              <div className="lms-sidebar-section">
+                <h3 className="sidebar-heading">Course Selection</h3>
+                <div className="sidebar-select-group">
+                  <label>Specialization</label>
+                  <select value={selectedStream} onChange={handleStreamChange}>
+                    {streams.map(s => (
+                      <option key={s.streamName} value={s.streamName}>{s.streamName}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="sidebar-select-group">
+                  <label>Semester</label>
+                  <select value={selectedSemester} onChange={handleSemesterChange}>
+                    {semesters.map(s => (
+                      <option key={s} value={s}>Semester {s}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="lms-sidebar-section modules-section">
+                <h3 className="sidebar-heading">Modules</h3>
+                <ul className="module-list">
+                  <li 
+                    className={`module-item ${activeLesson === null ? 'active' : ''}`}
+                    onClick={() => setActiveLesson(null)}
+                  >
+                    <LayoutDashboard size={18} />
+                    <span>Semester Overview</span>
+                  </li>
+                  {activeWeeks.map((week) => (
+                    <li 
+                      key={week.week} 
+                      className={`module-item ${activeLesson?.week === week.week ? 'active' : ''}`}
+                      onClick={() => setActiveLesson(week)}
+                    >
+                      <BookOpen size={18} />
+                      <div className="module-item-text">
+                        <span className="module-week-label">Week {week.week}</span>
+                        <span className="module-theme-label" title={week.theme}>{week.theme}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
+
+            {/* Main Content Area */}
+            <main className="lms-main">
+              <div className="lms-dashboard">
+                <div className="dashboard-header">
+                  <h2>{program.toUpperCase()} / {selectedStream} / Semester {selectedSemester}</h2>
+                  <p>Select a module from the sidebar to begin learning.</p>
+                </div>
+
+                  {isLevel4 && (
+                    <div className="realtime-card">
+                      <div className="card-header">
+                        <h3><Sparkles size={24} color="#6366f1"/> Live Career Intelligence</h3>
+                        <button className="search-btn" onClick={fetchLatestPaths} disabled={isSearching}>
+                          {isSearching ? <Loader2 className="spinner" size={18} /> : <Search size={18} />}
+                          Check for latest updates
+                        </button>
+                      </div>
+                      {searchResults && (
+                        <div className="search-results">
+                          {searchResults.length === 0 ? (
+                            <p>No results found.</p>
+                          ) : (
+                            searchResults.map((res, i) => (
+                              <div key={i} className="result-item">
+                                <a href={res.link} target="_blank" rel="noreferrer"><h4>{res.title}</h4></a>
+                                <p>{res.snippet}</p>
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      )}
+                      {!searchResults && !isSearching && (
+                        <p className="hint-text">Click the button to fetch real-time certifications and career paths from the web for {selectedStream}.</p>
                       )}
                     </div>
                   )}
-                  {!searchResults && !isSearching && (
-                    <p className="hint-text">Click the button to fetch real-time certifications and career paths from the web for {selectedStream}.</p>
-                  )}
-                </div>
-              )}
 
-              <div className="modules-grid">
-                {activeWeeks.map((week) => (
-                  <div key={week.week} className="module-card" onClick={() => setActiveLesson(week)}>
-                    <div className="module-card-header">
-                      <span className="week-badge">Week {week.week}</span>
-                    </div>
-                    <h3>{week.theme}</h3>
-                    <p className="module-focus">{week.focus}</p>
-                    <div className="module-card-footer">
-                      <span>Begin Module</span>
-                      <ChevronRight size={16} />
-                    </div>
+                  <div className="modules-grid">
+                    {activeWeeks.map((week) => (
+                      <div key={week.week} className="module-card" onClick={() => setActiveLesson(week)}>
+                        <div className="module-card-header">
+                          <span className="week-badge">Week {week.week}</span>
+                        </div>
+                        <h3>{week.theme}</h3>
+                        <p className="module-focus">{week.focus}</p>
+                        <div className="module-card-footer">
+                          <span>Begin Module</span>
+                          <ChevronRight size={16} />
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-        </main>
-      </div>
+                </div>
+            </main>
+          </div>
 
-      {activeLesson && (
-        <SlideViewer 
-          weekData={activeLesson}
-          program={program}
-          stream={selectedStream}
-          semester={selectedSemester}
-          theme={theme}
-          onClose={() => setActiveLesson(null)}
-        />
+          {/* Presentation Slide Viewer Modal */}
+          {activeLesson && (
+            <SlideViewer
+              weekData={activeLesson}
+              program={program}
+              stream={selectedStream}
+              semester={selectedSemester}
+              theme={theme}
+              onClose={() => setActiveLesson(null)}
+            />
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 }
