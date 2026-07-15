@@ -1718,6 +1718,64 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
           </div>
         </div>
       )}
+      {templateId === 'CrisisSimulation' && (
+        <div className="print-worksheet">
+          {renderHeader('The Death Spiral Strategy')}
+          <p className="print-instructions">Document your team's rapid response strategy as the crisis unfolds.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>Initial Strategy (First 10 Minutes)</h3>
+              <p className="form-prompt">What is your immediate response to "Crisis Zero"?</p>
+              <div className="blank-space large"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>Inject 1 Response</h3>
+              <p className="form-prompt">How does your strategy pivot based on the new variable?</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>Inject 2 Response</h3>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>Inject 3 Response</h3>
+              <div className="blank-space medium"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'ResilienceReflection' && (
+        <div className="print-worksheet">
+          {renderHeader('Resilience Reflection')}
+          <p className="print-instructions">Process your psychological response to extreme pressure.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Breaking Point</h3>
+              <p className="form-prompt">Describe the exact moment during the simulation you felt the most overwhelmed.</p>
+              <div className="blank-space medium"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>2. Your Natural Response</h3>
+              <p className="form-prompt">How did you react under pressure? Check one: [ ] Fight [ ] Flight [ ] Freeze</p>
+              <p className="form-prompt">Briefly explain how this response manifested in your behavior:</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Grounding Technique</h3>
+              <p className="form-prompt">What is one concrete grounding technique you will use in your career when a real crisis hits?</p>
+              <div className="blank-space medium"></div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

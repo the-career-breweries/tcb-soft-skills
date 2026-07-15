@@ -22,6 +22,7 @@ The scenario is live, the clock is ticking, and every decision has immediate, ps
 ## Simulation Mechanics: "The Death Spiral"
 
 ![Time Management](/assets/time_management.jpg)
+<!-- PRINT: CrisisSimulation -->
 
 **The Setup:**
 1. You will be grouped into pods of 5.
@@ -56,6 +57,7 @@ Which one did you default to today?
 ---
 
 ## Today's Deliverable
+<!-- PRINT: ResilienceReflection -->
 
 Submit your **Resilience Reflection**:
 1. Describe the moment during the simulation you felt the most overwhelmed.
