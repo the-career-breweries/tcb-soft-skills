@@ -1659,6 +1659,65 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
           </div>
         </div>
       )}
+
+      {templateId === 'AccountabilityContract' && (
+        <div className="print-worksheet">
+          {renderHeader('The Accountability Contract')}
+          <p className="print-instructions">Select your path and formally define your commitment deliverables.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>Chosen Path</h3>
+              <p className="form-prompt">Check one: [ ] Corporate [ ] Entrepreneurial [ ] Consultant</p>
+            </div>
+            
+            <div className="form-section">
+              <h3>Deliverable 1: Target Definition</h3>
+              <p className="form-prompt">(Corporate: Target Companies | Entrepreneurial: Idea Generation | Consultant: Problem Statement)</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>Deliverable 2: Execution Framework</h3>
+              <p className="form-prompt">(Corporate: History & Hiring Trends | Entrepreneurial: Chain of Thoughts | Consultant: RCA / Fishbone)</p>
+              <div className="blank-space large"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>Deliverable 3: Stakeholder Interaction</h3>
+              <p className="form-prompt">(Entrepreneurial only: Peer pitch notes / responses)</p>
+              <div className="blank-space medium"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'RevisionBrief' && (
+        <div className="print-worksheet">
+          {renderHeader('Revision Brief')}
+          <p className="print-instructions">Process the peer feedback from your Execution Review ("Shark Tank") session.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. The Harshest Feedback</h3>
+              <p className="form-prompt">What was the most difficult critique you received during your pitch?</p>
+              <div className="blank-space medium"></div>
+            </div>
+            
+            <div className="form-section">
+              <h3>2. The Reality Check</h3>
+              <p className="form-prompt">Why were they right? Be brutally honest about the flaws in your initial assumption.</p>
+              <div className="blank-space medium"></div>
+            </div>
+
+            <div className="form-section">
+              <h3>3. The Pivot Strategy</h3>
+              <p className="form-prompt">Detail exactly how you are changing your strategy/framework based on this feedback.</p>
+              <div className="blank-space large"></div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

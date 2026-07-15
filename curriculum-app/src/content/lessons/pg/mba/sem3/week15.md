@@ -81,7 +81,7 @@ A strategy without execution is a hallucination.
 ## 3. The Accountability Contract
 
 ![Technology](/assets/technology.jpg)
-<!-- PRINT_SLIDE -->
+<!-- PRINT: AccountabilityContract -->
 
 Commitment requires stakes. This is your official Accountability Contract.
 
