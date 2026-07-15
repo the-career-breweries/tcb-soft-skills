@@ -11,7 +11,7 @@ Your soft skills (communication, pushback, ethics, and networking) are what will
 
 ## Continuous Upskilling
 
-![Professional](/assets/professional.jpg)
+![Technology](/assets/technology.jpg)
 
 The market does not stand still, and neither can you. 
 If you stop learning the day you graduate, your skills will be obsolete in 3 years.
