@@ -98,7 +98,37 @@ html, body {
 .lms-topbar-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+}
+
+.lms-program-toggle {
+  display: flex;
+  background: var(--bg-surface);
+  border-radius: 20px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.lms-program-toggle .toggle-btn {
+  background: transparent;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 16px;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lms-program-toggle .toggle-btn:hover {
+  color: var(--text-main);
+}
+
+.lms-program-toggle .toggle-btn.active {
+  background: var(--accent-primary);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
 }
 
 .theme-toggle-btn {

@@ -142,10 +142,20 @@ export default function CurriculumApp() {
             </div>
             
             <div className="lms-topbar-actions">
-              <select className="lms-select" value={program} onChange={handleProgramChange}>
-                <option value="ug">Undergraduate (UG)</option>
-                <option value="pg">Postgraduate (PG)</option>
-              </select>
+              <div className="lms-program-toggle">
+                <button 
+                  className={`toggle-btn ${program === 'ug' ? 'active' : ''}`}
+                  onClick={() => changeProgram('ug')}
+                >
+                  UG
+                </button>
+                <button 
+                  className={`toggle-btn ${program === 'pg' ? 'active' : ''}`}
+                  onClick={() => changeProgram('pg')}
+                >
+                  PG
+                </button>
+              </div>
               <button 
                 className="theme-toggle-btn" 
                 onClick={toggleTheme}
