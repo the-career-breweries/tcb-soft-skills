@@ -78,7 +78,7 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
         setCurrentSlide(prev => Math.min(prev + 1, slides.length > 0 ? slides.length - 1 : 0));
       } else if (e.key === 'ArrowLeft') {
         setCurrentSlide(prev => Math.max(prev - 1, 0));
-      } else if (e.key === 'Escape') {
+      } else if (e.key === 'Escape' || e.key === 'c' || e.key === 'C') {
         onClose();
       }
     };
