@@ -28,6 +28,8 @@ Today is a fully practical session. We will transition from theory to execution.
 2.  Use the "Bottom-Line Up Front" (BLUF) method.
 3.  Include 3 key metrics and 2 immediate action items.
 
+<!-- PRINT_SLIDE -->
+
 ---
 
 ## Practical Worksheet 2: The High-Stakes Meeting
@@ -43,6 +45,8 @@ Today is a fully practical session. We will transition from theory to execution.
 1.  Draft your opening statement as the Chairperson to de-escalate the room.
 2.  List three active listening phrases you will use.
 3.  Write the final consensus statement you aim to achieve.
+
+<!-- PRINT_SLIDE -->
 
 ---
 
@@ -62,6 +66,8 @@ Map it out:
 *   **Result:** What was the hard metric of success, and what did you learn?
 
 *This must be written out fully, as if spoken in an interview.*
+
+<!-- PRINT_SLIDE -->
 
 
 ---
