@@ -31,15 +31,15 @@ const THEME_ICONS: Record<string, LucideIcon[]> = {
 };
 
 const THEME_COLORS: Record<string, string> = {
-  finance: 'from-emerald-500 to-teal-900',
-  marketing: 'from-pink-500 to-rose-900',
-  leadership: 'from-amber-400 to-orange-900',
-  technology: 'from-blue-500 to-indigo-900',
-  career: 'from-cyan-400 to-blue-900',
-  operations: 'from-slate-400 to-gray-900',
-  global: 'from-violet-500 to-purple-900',
-  strategy: 'from-red-500 to-rose-900',
-  general: 'from-indigo-500 to-purple-900',
+  finance: 'linear-gradient(135deg, #10b981, #134e4a)',
+  marketing: 'linear-gradient(135deg, #ec4899, #881337)',
+  leadership: 'linear-gradient(135deg, #fbbf24, #78350f)',
+  technology: 'linear-gradient(135deg, #3b82f6, #312e81)',
+  career: 'linear-gradient(135deg, #22d3ee, #1e3a8a)',
+  operations: 'linear-gradient(135deg, #94a3b8, #111827)',
+  global: 'linear-gradient(135deg, #8b5cf6, #581c87)',
+  strategy: 'linear-gradient(135deg, #ef4444, #881337)',
+  general: 'linear-gradient(135deg, #6366f1, #312e81)',
 };
 
 const LAYOUTS = ['centered-glow', 'grid-nodes', 'asymmetric-cards', 'wave-backdrop'];
@@ -57,7 +57,7 @@ export default function ThematicVisual({ theme = 'general', seed }: ThematicVisu
   
   return (
     <div className={`thematic-visual-container ${layout}`}>
-      <div className={`thematic-bg bg-gradient-to-br ${colorGradient}`}></div>
+      <div className="thematic-bg" style={{ background: colorGradient }}></div>
       
       {/* Decorative elements based on layout */}
       <div className="thematic-decorations">
@@ -80,7 +80,7 @@ export default function ThematicVisual({ theme = 'general', seed }: ThematicVisu
 
       {/* Main Icon */}
       <div className="icon-wrapper">
-        <IconComponent size={64} className="main-icon text-white" strokeWidth={1.5} />
+        <IconComponent size={64} className="main-icon" color="white" strokeWidth={1.5} />
       </div>
     </div>
   );
