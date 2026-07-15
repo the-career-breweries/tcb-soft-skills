@@ -28,7 +28,7 @@ Today is a fully practical session. We will transition from theory to execution.
 2.  Use the "Bottom-Line Up Front" (BLUF) method.
 3.  Include 3 key metrics and 2 immediate action items.
 
-<!-- PRINT_SLIDE -->
+<!-- PRINT: ExecutiveSummary -->
 
 ---
 
@@ -46,7 +46,7 @@ Today is a fully practical session. We will transition from theory to execution.
 2.  List three active listening phrases you will use.
 3.  Write the final consensus statement you aim to achieve.
 
-<!-- PRINT_SLIDE -->
+<!-- PRINT: HighStakesMeeting -->
 
 ---
 
@@ -67,8 +67,7 @@ Map it out:
 
 *This must be written out fully, as if spoken in an interview.*
 
-<!-- PRINT_SLIDE -->
-
+<!-- PRINT: StarResponse -->
 
 ---
 

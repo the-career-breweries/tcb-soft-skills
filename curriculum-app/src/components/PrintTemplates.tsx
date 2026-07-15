@@ -20,6 +20,98 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
 
   return (
     <div className="print-container">
+      {templateId === 'ExecutiveSummary' && (
+        <div className="print-worksheet">
+          {renderHeader('The Executive Summary')}
+          <p className="print-instructions">Synthesize a complex topic into a 1-page, 3-minute brief using the BLUF method.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>Scenario Context</h3>
+              <p className="form-prompt">You have just stepped out of a highly contentious board meeting regarding a sudden drop in quarterly revenue. Brief your team.</p>
+            </div>
+            <div className="form-section">
+              <h3>1. Bottom-Line Up Front (BLUF)</h3>
+              <div className="blank-space large"></div>
+            </div>
+            <div className="form-section">
+              <h3>2. Three Key Metrics</h3>
+              <ol className="print-list">
+                <li><div className="dotted-line"></div></li>
+                <li><div className="dotted-line"></div></li>
+                <li><div className="dotted-line"></div></li>
+              </ol>
+            </div>
+            <div className="form-section">
+              <h3>3. Two Immediate Action Items</h3>
+              <ol className="print-list">
+                <li><div className="dotted-line"></div></li>
+                <li><div className="dotted-line"></div></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'HighStakesMeeting' && (
+        <div className="print-worksheet">
+          {renderHeader('The High-Stakes Meeting')}
+          <p className="print-instructions">Demonstrate meeting leadership and conflict resolution.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>Scenario Context</h3>
+              <p className="form-prompt">Two department heads are fiercely arguing over budget allocations. You are the Chairperson.</p>
+            </div>
+            <div className="form-section">
+              <h3>1. Opening De-escalation Statement</h3>
+              <div className="blank-space medium"></div>
+            </div>
+            <div className="form-section">
+              <h3>2. Three Active Listening Phrases</h3>
+              <ol className="print-list">
+                <li><div className="dotted-line"></div></li>
+                <li><div className="dotted-line"></div></li>
+                <li><div className="dotted-line"></div></li>
+              </ol>
+            </div>
+            <div className="form-section">
+              <h3>3. Final Consensus Statement</h3>
+              <div className="blank-space medium"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'StarResponse' && (
+        <div className="print-worksheet">
+          {renderHeader('The Ultimate STAR Response')}
+          <p className="print-instructions">Master behavioral interview framing by mapping out the most challenging professional or academic failure you have experienced.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>Situation (S)</h3>
+              <p className="form-prompt">Set the scene (briefly).</p>
+              <div className="blank-space small"></div>
+            </div>
+            <div className="form-section">
+              <h3>Task (T)</h3>
+              <p className="form-prompt">What was the impossible goal?</p>
+              <div className="blank-space small"></div>
+            </div>
+            <div className="form-section">
+              <h3>Action (A)</h3>
+              <p className="form-prompt">What did *you* specifically do?</p>
+              <div className="blank-space medium"></div>
+            </div>
+            <div className="form-section">
+              <h3>Result (R)</h3>
+              <p className="form-prompt">What was the hard metric of success, and what did you learn?</p>
+              <div className="blank-space medium"></div>
+            </div>
+          </div>
+        </div>
+      )}
       {templateId === 'JohariWindow' && (
         <div className="print-worksheet">
           {renderHeader('The Johari Window')}
