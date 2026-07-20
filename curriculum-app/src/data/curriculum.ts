@@ -6,6 +6,7 @@ export type WeekData = {
   focus: string;
   task: string;
   rubric: string;
+  label?: string;
 };
 
 export type StreamCurriculum = {
@@ -32,6 +33,7 @@ const ugCoreWeeks: WeekData[] = [
   { week: 8, semester: 2, level: 1, theme: 'The Micro Presentation', focus: 'Paragraphs, academic tone', task: 'Short writing assignment', rubric: 'Coherence, grammar' },
 
   // Sem 3 (Weeks 9-12)
+  { week: 8.5, semester: 3, level: 2, label: 'Bridge Module', theme: 'Sem 1 & 2 Crash Course', focus: 'Self-awareness, Core Communication, GD basics', task: 'Bridge Review', rubric: 'Participation' },
   { week: 9, semester: 3, level: 2, theme: 'Writing skills I', focus: 'Paragraphs, academic tone', task: 'Short writing assignment', rubric: 'Coherence, grammar' },
   { week: 10, semester: 3, level: 2, theme: 'Writing skills II', focus: 'Resume & Email basics', task: 'Resume draft', rubric: 'Format, accuracy' },
   { week: 11, semester: 3, level: 2, theme: 'Body language', focus: 'Posture, non-verbal communication', task: 'Mock interview', rubric: 'Collaboration, posture' },
@@ -47,6 +49,7 @@ const ugCoreWeeks: WeekData[] = [
 const generateUgLevel4 = (stream: string): WeekData[] => {
   return [
     // Sem 5 (Weeks 17-20)
+    { week: 16.5, semester: 5, level: 4, label: 'Bridge Module', theme: 'Sem 1-4 Master Crash Course', focus: 'Self-awareness, GD, Writing, Interview Basics', task: 'Comprehensive Review', rubric: 'Participation' },
     { week: 17, semester: 5, level: 4, theme: `${stream}: Traditional Career Paths`, focus: 'Entry barriers, exams, courses', task: 'Traditional career map', rubric: 'Accuracy of path details' },
     { week: 18, semester: 5, level: 4, theme: `${stream}: Modern Career Paths`, focus: 'New tech, emerging roles', task: 'Modern roles research', rubric: 'Relevance to current market' },
     { week: 19, semester: 5, level: 4, theme: `${stream}: Freelancing & Consulting`, focus: 'Gig economy, platforms, skills', task: 'Freelance profile draft', rubric: 'Marketability, skill fit' },

@@ -272,7 +272,7 @@ export default function CurriculumApp() {
                     >
                       <BookOpen size={18} />
                       <div className="module-item-text">
-                        <span className="module-week-label">Week {week.week}</span>
+                        <span className="module-week-label">{week.label || `Week ${week.week}`}</span>
                         <span className="module-theme-label" title={week.theme}>{week.theme}</span>
                       </div>
                     </li>
@@ -365,7 +365,7 @@ export default function CurriculumApp() {
                     {activeWeeks.map((week) => (
                       <div key={week.week} className="module-card" onClick={() => setActiveLesson(week)}>
                         <div className="module-card-header">
-                          <span className="week-badge">Week {week.week}</span>
+                          <span className="week-badge">{week.label || `Week ${week.week}`}</span>
                         </div>
                         <h3>{week.theme}</h3>
                         <p className="module-focus">{week.focus}</p>

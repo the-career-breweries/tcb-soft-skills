@@ -462,7 +462,7 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
               <div className="dotted-line"></div>
             </div>
 
-            <div className="form-section">
+            <div className="form-section" style={{ borderBottom: 'none' }}>
               <h3>2. Your Draft</h3>
               <div className="dotted-line"></div>
               <div className="dotted-line"></div>
@@ -470,31 +470,6 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
               <div className="dotted-line"></div>
               <div className="dotted-line"></div>
               <div className="dotted-line"></div>
-            </div>
-
-            <div className="form-section">
-              <h3>3. Peer Review</h3>
-              <table className="print-table">
-                <thead>
-                  <tr>
-                    <th>Criteria</th>
-                    <th>Yes/No</th>
-                    <th>Notes</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Is the tone formal?</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>No slang/contractions?</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
             </div>
           </div>
         </div>
