@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { curriculumData, WeekData } from '@/data/curriculum';
-import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight } from 'lucide-react';
+import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import './globals.css';
@@ -223,6 +223,32 @@ export default function CurriculumApp() {
                   <h2>{program.toUpperCase()} / {selectedStream} / Semester {selectedSemester}</h2>
                   <p>Select a module from the sidebar to begin learning.</p>
                 </div>
+
+                  {program === 'ug' && (
+                    <div className="batch-tracker-card">
+                      <div className="card-header">
+                        <h3><Users size={24} color="#4f46e5" /> Section Progress Tracker</h3>
+                      </div>
+                      <div className="batch-progress-grid">
+                        {[
+                          { section: 'Section 1', progress: 85 },
+                          { section: 'Section 2', progress: 60 },
+                          { section: 'Section 3', progress: 40 },
+                          { section: 'Section 4', progress: 25 },
+                        ].map(batch => (
+                          <div key={batch.section} className="batch-progress-item">
+                            <div className="batch-info">
+                              <span className="batch-name">{batch.section}</span>
+                              <span className="batch-percent">{batch.progress}%</span>
+                            </div>
+                            <div className="progress-bar-bg">
+                              <div className="progress-bar-fill" style={{ width: `${batch.progress}%`, backgroundColor: batch.progress > 75 ? '#10b981' : batch.progress > 50 ? '#f59e0b' : '#ef4444' }}></div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {isLevel4 && (
                     <div className="realtime-card">
