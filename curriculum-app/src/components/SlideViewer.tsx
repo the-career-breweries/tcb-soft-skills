@@ -57,10 +57,11 @@ interface SlideViewerProps {
   stream: string;
   semester: number;
   theme: 'light' | 'dark';
+  activeSection?: string;
   onClose: () => void;
 }
 
-export default function SlideViewer({ weekData, program, stream, semester, theme, onClose }: SlideViewerProps) {
+export default function SlideViewer({ weekData, program, stream, semester, theme, activeSection, onClose }: SlideViewerProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slides, setSlides] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -86,6 +87,48 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
       setPrintTemplateId(match ? match[1].trim() : null);
     }
   }, [currentSlide, slides]);
+
+  // Save progress when slide changes
+  useEffect(() => {
+    if (weekData && slides.length > 0 && activeSection) {
+      try {
+        const data = JSON.parse(localStorage.getItem('tcb-progress') || '{}');
+        const key = `${program}-${stream}-${semester}-${activeSection}-week${weekData.week}`;
+        const existing = data[key] || {};
+        
+        // Only update if not already marked as completed
+        if (!existing.completed) {
+          data[key] = {
+            ...existing,
+            currentSlide,
+            totalSlides: slides.length,
+            completed: false
+          };
+          localStorage.setItem('tcb-progress', JSON.stringify(data));
+        }
+      } catch (e) {
+        console.error("Error saving progress", e);
+      }
+    }
+  }, [currentSlide, slides, weekData, program, stream, semester, activeSection]);
+
+  const handleSessionComplete = () => {
+    if (weekData && activeSection) {
+      try {
+        const data = JSON.parse(localStorage.getItem('tcb-progress') || '{}');
+        const key = `${program}-${stream}-${semester}-${activeSection}-week${weekData.week}`;
+        data[key] = {
+          currentSlide,
+          totalSlides: slides.length,
+          completed: true
+        };
+        localStorage.setItem('tcb-progress', JSON.stringify(data));
+      } catch (e) {
+        console.error("Error completing session", e);
+      }
+      onClose(); // return to dashboard
+    }
+  };
 
   // Keyboard navigation
   useEffect(() => {
@@ -213,13 +256,21 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
 
         {!isLoading && slides.length > 0 && (
           <div className="slide-controls">
-            <button 
-              onClick={() => setCurrentSlide(prev => Math.max(prev - 1, 0))}
-              disabled={currentSlide === 0}
-              className="nav-btn"
-            >
-              <ChevronLeft size={48} />
-            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+              <button 
+                onClick={() => setCurrentSlide(prev => Math.max(prev - 1, 0))}
+                disabled={currentSlide === 0}
+                className="nav-btn"
+              >
+                <ChevronLeft size={48} />
+              </button>
+              
+              <div className="slide-brand-watermark">
+                <strong>S D Sandarsh</strong><br/>
+                Employability & Softskills Trainer<br/>
+                Training & Placement Officer
+              </div>
+            </div>
             
             <div className="slide-indicators">
               {slides.map((_, i) => (
@@ -255,18 +306,18 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
                 <ChevronRight size={48} />
               </button>
             </div>
+            
+            {activeSection && currentSlide === slides.length - 1 && (
+              <button onClick={handleSessionComplete} className="session-complete-btn">
+                Mark Session Complete
+              </button>
+            )}
           </div>
         )}
         
         {/* Hidden print templates container */}
         <div className="print-only">
           <PrintTemplates templateId={printTemplateId || ''} />
-        </div>
-        
-        <div className="slide-brand-watermark">
-          <strong>S D Sandarsh</strong><br/>
-          Employability & Softskills Trainer<br/>
-          Training & Placement Officer
         </div>
       </div>
     </div>

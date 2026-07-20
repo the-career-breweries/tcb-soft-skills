@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { curriculumData, WeekData } from '@/data/curriculum';
-import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users } from 'lucide-react';
+import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import './globals.css';
@@ -47,6 +47,71 @@ export default function CurriculumApp() {
 
   // Active Lesson State
   const [activeLesson, setActiveLesson] = useState<WeekData | null>(null);
+
+  // Section Tracking State
+  const SECTIONS = ['Section 1', 'Section 2', 'Section 3', 'Section 4'];
+  const [activeSection, setActiveSection] = useState<string>('Section 1');
+  const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({
+    'Section 1': 0, 'Section 2': 0, 'Section 3': 0, 'Section 4': 0
+  });
+
+  const handleResetSection = (e: React.MouseEvent, targetSection: string) => {
+    e.stopPropagation();
+    try {
+      const data = JSON.parse(localStorage.getItem('tcb-progress') || '{}');
+      const currentStreamData = curriculumData[program].streams.find(s => s.streamName === selectedStream);
+      const currentActiveWeeks = currentStreamData?.weeks.filter(w => w.semester === selectedSemester) || [];
+      
+      currentActiveWeeks.forEach(week => {
+        const key = `${program}-${selectedStream}-${selectedSemester}-${targetSection}-week${week.week}`;
+        delete data[key];
+      });
+      
+      localStorage.setItem('tcb-progress', JSON.stringify(data));
+      setSectionProgress(prev => ({ ...prev, [targetSection]: 0 }));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Calculate progress from localStorage
+  useEffect(() => {
+    if (!activeLesson) {
+      try {
+        const data = JSON.parse(localStorage.getItem('tcb-progress') || '{}');
+        const newProgress: Record<string, number> = {};
+        
+        // Filter weeks
+        const currentStreamData = curriculumData[program].streams.find(s => s.streamName === selectedStream);
+        const currentActiveWeeks = currentStreamData?.weeks.filter(w => w.semester === selectedSemester) || [];
+        const totalWeeks = currentActiveWeeks.length || 1;
+        
+        SECTIONS.forEach(sec => {
+          let completedWeeks = 0;
+          let partialProgress = 0;
+          
+          currentActiveWeeks.forEach(week => {
+            const key = `${program}-${selectedStream}-${selectedSemester}-${sec}-week${week.week}`;
+            const record = data[key];
+            if (record) {
+              if (record.completed) {
+                completedWeeks += 1;
+              } else if (record.totalSlides > 1) {
+                partialProgress += (record.currentSlide / (record.totalSlides - 1));
+              }
+            }
+          });
+          
+          const totalProgress = ((completedWeeks + partialProgress) / totalWeeks) * 100;
+          newProgress[sec] = Math.min(100, Math.round(totalProgress));
+        });
+        setSectionProgress(newProgress);
+      } catch (e) {
+        console.error("Error reading progress", e);
+      }
+    }
+  }, [activeLesson, program, selectedStream, selectedSemester]);
+
 
   // Keyboard Shortcuts (Fullscreen, Light/Dark mode, Navigation)
   useEffect(() => {
@@ -230,22 +295,39 @@ export default function CurriculumApp() {
                         <h3><Users size={24} color="#4f46e5" /> Section Progress Tracker</h3>
                       </div>
                       <div className="batch-progress-grid">
-                        {[
-                          { section: 'Section 1', progress: 85 },
-                          { section: 'Section 2', progress: 60 },
-                          { section: 'Section 3', progress: 40 },
-                          { section: 'Section 4', progress: 25 },
-                        ].map(batch => (
-                          <div key={batch.section} className="batch-progress-item">
-                            <div className="batch-info">
-                              <span className="batch-name">{batch.section}</span>
-                              <span className="batch-percent">{batch.progress}%</span>
+                        {SECTIONS.map(section => {
+                          const progress = sectionProgress[section] || 0;
+                          const isActive = activeSection === section;
+                          return (
+                            <div 
+                              key={section} 
+                              className={`batch-progress-item ${isActive ? 'active' : ''}`}
+                              onClick={() => setActiveSection(section)}
+                            >
+                              <div className="batch-info" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                                  <span className="batch-name" style={{ fontWeight: '700', whiteSpace: 'nowrap', color: isActive ? 'var(--accent-primary)' : 'var(--text-main)' }}>{section}</span>
+                                  <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', height: '20px' }}>
+                                    {isActive && <span style={{ fontSize: '0.65rem', padding: '0.1rem 0.4rem', background: 'var(--accent-primary)', color: 'white', borderRadius: '12px', width: 'fit-content', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Active</span>}
+                                    {isActive && progress > 0 && (
+                                      <button 
+                                        onClick={(e) => handleResetSection(e, section)}
+                                        className="reset-progress-btn"
+                                        title="Reset Demo Progress"
+                                      >
+                                        <RotateCcw size={14} />
+                                      </button>
+                                    )}
+                                  </div>
+                                </div>
+                                <span className="batch-percent" style={{ fontWeight: '700', fontSize: '1.25rem', color: isActive ? 'var(--text-main)' : 'var(--text-muted)' }}>{progress}%</span>
+                              </div>
+                              <div className="progress-bar-bg" style={{ background: isActive ? 'var(--border-color)' : 'var(--bg-app)' }}>
+                                <div className="progress-bar-fill" style={{ width: `${progress}%`, backgroundColor: progress > 75 ? '#10b981' : progress > 50 ? '#f59e0b' : isActive ? '#4f46e5' : '#94a3b8' }}></div>
+                              </div>
                             </div>
-                            <div className="progress-bar-bg">
-                              <div className="progress-bar-fill" style={{ width: `${batch.progress}%`, backgroundColor: batch.progress > 75 ? '#10b981' : batch.progress > 50 ? '#f59e0b' : '#ef4444' }}></div>
-                            </div>
-                          </div>
-                        ))}
+                          );
+                        })}
                       </div>
                     </div>
                   )}
@@ -305,6 +387,7 @@ export default function CurriculumApp() {
               program={program}
               stream={selectedStream}
               semester={selectedSemester}
+              activeSection={activeSection}
               theme={theme}
               onClose={() => setActiveLesson(null)}
             />
