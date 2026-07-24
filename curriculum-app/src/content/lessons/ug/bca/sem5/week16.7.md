@@ -17,6 +17,22 @@ Before we start building, here is what makes a resume stand out:
 
 ---
 
+# The Resume Comparison Test
+
+When reviewing resumes, recruiters look for immediate clarity. Consider the difference:
+
+### ❌ The Bad Resume
+*   Messy, multi-column format with graphics that confuse ATS scanners.
+*   Vague descriptions like "Responsible for developing the app."
+*   Missing demo links; recruiters have to guess if the project actually works.
+
+### ✅ The Good Resume
+*   Clean, single-column layout readable by both humans and machines.
+*   Action-oriented bullets: "Developed a travel website using React, improving load times by 20%."
+*   Clickable GitHub and Live Demo links right next to the project title.
+
+---
+
 # Step 1: General Info & Portfolios
 
 Your contact section must be flawless. Include:
@@ -82,3 +98,5 @@ Once your draft is ready, you must evaluate it:
 4.  **Evaluate:** Run your draft through an ATS scanner later today!
 
 **Task:** You have 30 minutes to draft the first version of your professional fresher resume.
+
+<!-- PRINT: FresherResumeBuilder -->

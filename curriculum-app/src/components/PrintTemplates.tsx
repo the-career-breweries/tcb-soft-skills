@@ -2165,6 +2165,67 @@ export default function PrintTemplates({ templateId }: PrintTemplatesProps) {
           </div>
         </div>
       )}
+      {templateId === 'FresherResumeBuilder' && (
+        <div className="print-worksheet">
+          {renderHeader('Fresher Resume Builder')}
+          <p className="print-instructions">Draft the core sections of your entry-level resume using this framework.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. Resume Objective</h3>
+              <p className="form-prompt">Write a concise 2-sentence objective (Who you are + What you want + Value you bring).</p>
+              <div className="blank-space medium"></div>
+            </div>
+            <div className="form-section">
+              <h3>2. Top 3 Skills (Categorized)</h3>
+              <ol className="print-list">
+                <li><strong>Core:</strong> <div className="dotted-line"></div></li>
+                <li><strong>Tools/Software:</strong> <div className="dotted-line"></div></li>
+                <li><strong>Soft Skills:</strong> <div className="dotted-line"></div></li>
+              </ol>
+            </div>
+            <div className="form-section">
+              <h3>3. Best Project or Internship (STAR Method)</h3>
+              <p className="form-prompt">Project Name:</p>
+              <div className="dotted-line"></div>
+              <p className="form-prompt" style={{marginTop: '1rem'}}>Bullet 1 (Action Verb + Task):</p>
+              <div className="dotted-line"></div>
+              <p className="form-prompt" style={{marginTop: '1rem'}}>Bullet 2 (Action + Quantifiable Result):</p>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {templateId === 'InterviewPrep' && (
+        <div className="print-worksheet">
+          {renderHeader('Interview Preparation')}
+          <p className="print-instructions">Prepare for the 3 most common behavioral interview questions.</p>
+          
+          <div className="self-profile-form">
+            <div className="form-section">
+              <h3>1. "Tell me about yourself."</h3>
+              <p className="form-prompt">Draft your 60-second elevator pitch (Present, Past, Future).</p>
+              <div className="blank-space medium"></div>
+            </div>
+            <div className="form-section">
+              <h3>2. "What is your biggest weakness?"</h3>
+              <p className="form-prompt">State a real weakness + How you are actively improving it.</p>
+              <div className="blank-space medium"></div>
+            </div>
+            <div className="form-section">
+              <h3>3. "Tell me about a time you failed." (STAR Method)</h3>
+              <p className="form-prompt">Situation & Task:</p>
+              <div className="dotted-line"></div>
+              <p className="form-prompt" style={{marginTop: '1rem'}}>Action (What you learned):</p>
+              <div className="dotted-line"></div>
+              <p className="form-prompt" style={{marginTop: '1rem'}}>Result (How you improved):</p>
+              <div className="dotted-line"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }

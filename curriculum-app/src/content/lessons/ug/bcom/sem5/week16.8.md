@@ -44,3 +44,5 @@ When asked a situational question (e.g., "Tell me about a time when..."), use **
     *   **Person B (Candidate):** Answer using the STAR method.
 3.  **Feedback (5 mins):** Interviewer gives constructive feedback on body language, clarity, and structure.
 4.  **Switch Roles!**
+
+<!-- PRINT: InterviewPrep -->
