@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { WeekData } from '@/data/curriculum';
-import { X, ChevronLeft, ChevronRight, Loader2, Printer } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Loader2, Printer, ZoomIn, ZoomOut } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
@@ -69,6 +69,8 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
   const [error, setError] = useState<string | null>(null);
   const [printTemplateId, setPrintTemplateId] = useState<string | null>(null);
   const [isPrintingSlide, setIsPrintingSlide] = useState(false);
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
   const hasMermaid = slides.length > 0 && slides[currentSlide]?.includes('```mermaid');
   const hasPrintSlideMarker = slides.length > 0 && slides[currentSlide]?.includes('<!-- PRINT_SLIDE -->');
   
@@ -245,6 +247,20 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
                             {children}
                           </a>
                         );
+                      },
+                      img({ node, alt, src, ...props }: any) {
+                        return (
+                          <img 
+                            src={src} 
+                            alt={alt} 
+                            onClick={() => {
+                              setZoomedImage(src);
+                              setZoomLevel(1);
+                            }}
+                            style={{ cursor: 'zoom-in' }}
+                            {...props} 
+                          />
+                        );
                       }
                     }}
                   >
@@ -329,6 +345,59 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
           <PrintTemplates templateId={printTemplateId || ''} />
         </div>
       </div>
+
+      {/* Image Zoom Modal */}
+      {zoomedImage && (
+        <div 
+          style={{
+            position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+            backgroundColor: 'rgba(0,0,0,0.9)', zIndex: 99999,
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'
+          }}
+        >
+          <div style={{ position: 'absolute', top: '20px', right: '20px', display: 'flex', gap: '1rem', zIndex: 100000 }}>
+            <button 
+              onClick={() => setZoomLevel(prev => Math.max(0.5, prev - 0.25))}
+              style={{ background: '#333', color: 'white', border: 'none', padding: '10px', borderRadius: '5px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+            >
+              <ZoomOut size={24} />
+            </button>
+            <button 
+              onClick={() => setZoomLevel(prev => Math.min(3, prev + 0.25))}
+              style={{ background: '#333', color: 'white', border: 'none', padding: '10px', borderRadius: '5px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+            >
+              <ZoomIn size={24} />
+            </button>
+            <button 
+              onClick={() => setZoomedImage(null)}
+              style={{ background: '#ef4444', color: 'white', border: 'none', padding: '10px', borderRadius: '5px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
+            >
+              <X size={24} />
+            </button>
+          </div>
+          
+          <div 
+            style={{ 
+              width: '100%', height: '100%', overflow: 'auto', 
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'zoom-in'
+            }}
+            onClick={() => setZoomLevel(prev => Math.min(3, prev + 0.5))}
+          >
+            <img 
+              src={zoomedImage} 
+              alt="Zoomed" 
+              style={{ 
+                transform: `scale(${zoomLevel})`, 
+                transition: 'transform 0.2s ease-out',
+                maxWidth: '90%', maxHeight: '90%',
+                objectFit: 'contain'
+              }}
+              onClick={(e) => e.stopPropagation()} 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
