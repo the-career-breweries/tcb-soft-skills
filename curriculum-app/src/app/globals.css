@@ -939,6 +939,15 @@ html, body {
   object-fit: cover;
 }
 
+.markdown-slide img[alt="Bad Resume Example"],
+.markdown-slide img[alt="Good Resume Example"] {
+  float: none;
+  display: inline-block;
+  width: 48%;
+  margin: 0 1%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
 .markdown-slide table {
   width: 100%;
   border-collapse: collapse;
