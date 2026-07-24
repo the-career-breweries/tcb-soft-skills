@@ -943,9 +943,10 @@ html, body {
 .markdown-slide img[alt="Good Resume Example"] {
   float: none;
   display: inline-block;
-  width: 48%;
+  width: 45%;
   margin: 0 1%;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  vertical-align: top;
 }
 
 .markdown-slide table {

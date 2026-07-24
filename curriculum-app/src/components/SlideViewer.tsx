@@ -248,6 +248,14 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
                           </a>
                         );
                       },
+                      p({ node, children, ...props }: any) {
+                        // If paragraph contains multiple images, display them as flex
+                        const hasMultipleImages = node?.children?.filter((c: any) => c.tagName === 'img').length > 1;
+                        if (hasMultipleImages) {
+                          return <p style={{ display: 'flex', gap: '2%', justifyContent: 'center', alignItems: 'flex-start' }} {...props}>{children}</p>;
+                        }
+                        return <p {...props}>{children}</p>;
+                      },
                       img({ node, alt, src, ...props }: any) {
                         return (
                           <img 
