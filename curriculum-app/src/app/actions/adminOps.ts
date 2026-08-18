@@ -343,7 +343,7 @@ export async function approveRegistrationAction(registrationId: string, skipShee
     } else {
       const batchDoc = batchesSnapshot.docs[0];
       batchId = batchDoc.id;
-      emailTemplate = batchDoc.data().emailTemplate;
+      emailTemplate = batchDoc.data().emailTemplate || `Welcome to the ${masterBatchName} Bootcamp!\nYour login credentials are:\nEmail: {{email}}\nPassword: {{password}}\n\nLogin at: https://yourdomain.com/workshops/student\n`;
       
       await adminDb.collection('batches').doc(batchId).update({
         studentCount: (batchDoc.data().studentCount || 0) + 1
