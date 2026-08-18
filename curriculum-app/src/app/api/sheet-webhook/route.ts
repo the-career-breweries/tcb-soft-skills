@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAdminDb } from '@/lib/firebase/admin';
+import { getAdminDb } from '@/lib/firebase/firebaseAdmin';
 import { approveRegistrationAction } from '@/app/actions/adminOps';
 
 export async function POST(req: Request) {
