@@ -365,84 +365,116 @@ export default function AdminDashboard() {
 
       {/* View: Batch Manager */}
       {activeTab === 'batches' && (
-        <div className="admin-table-container admin-card" style={{ padding: 0 }}>
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th>College Name</th>
-                <th>Status</th>
-                <th>Batch</th>
-                <th>Enrolled</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {isLoadingBatches ? (
-                <tr><td colSpan={5} style={{ textAlign: 'center', padding: '2rem' }}><Loader2 className="animate-spin" /> Loading batches...</td></tr>
-              ) : batches.length === 0 ? (
-                <tr><td colSpan={5} style={{ textAlign: 'center', padding: '2rem', color: '#64748b' }}>No batches created yet.</td></tr>
-              ) : (
-                batches.map((batch) => (
-                  <React.Fragment key={batch.id}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+          {isLoadingBatches ? (
+            <div className="admin-card" style={{ textAlign: 'center', padding: '3rem' }}>
+              <Loader2 className="animate-spin" size={24} style={{ margin: '0 auto 1rem', color: '#3b82f6' }} />
+              <p style={{ color: '#64748b' }}>Loading batches...</p>
+            </div>
+          ) : batches.length === 0 ? (
+            <div className="admin-card" style={{ textAlign: 'center', padding: '3rem', color: '#64748b' }}>
+              No batches created yet.
+            </div>
+          ) : (
+            Object.entries(
+              batches.reduce((acc, batch) => {
+                const days = batch.totalDays || 5;
+                if (!acc[days]) acc[days] = [];
+                acc[days].push(batch);
+                return acc;
+              }, {} as Record<number, any[]>)
+            )
+            .sort(([a], [b]) => Number(a) - Number(b))
+            .map(([days, groupBatches]) => (
+              <div key={days} className="admin-table-container admin-card" style={{ padding: 0, overflow: 'hidden' }}>
+                <div style={{ 
+                  backgroundColor: '#f1f5f9', 
+                  padding: '1rem 1.5rem', 
+                  borderBottom: '1px solid #e2e8f0',
+                  fontWeight: 600,
+                  fontSize: '1.125rem',
+                  color: '#0f172a',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem'
+                }}>
+                  {days}-Day Workshops
+                  <span style={{ fontSize: '0.75rem', fontWeight: 500, backgroundColor: '#e2e8f0', color: '#475569', padding: '0.125rem 0.5rem', borderRadius: '9999px' }}>
+                    {(groupBatches as any[]).length}
+                  </span>
+                </div>
+                <table className="admin-table">
+                  <thead>
                     <tr>
-                      <td>
-                        <div style={{ fontWeight: 600 }}>{batch.name.replace(/ \(\d+-Day\)$/, '')}</div>
-                        <div style={{ fontSize: '0.75rem', color: '#64748b' }}>{batch.id}</div>
-                      </td>
-                      <td><span className="admin-badge badge-green">Active</span></td>
-                      <td>{batch.totalDays || 5}-Day</td>
-                      <td>
-                        <button 
-                          onClick={() => handleExpandBatch(batch.id)} 
-                          style={{ background: 'none', border: 'none', color: '#3b82f6', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem', padding: 0 }}
-                        >
-                          {batch.studentCount || 0} Students
-                          <span style={{ fontSize: '0.6rem' }}>{expandedBatchId === batch.id ? '▲' : '▼'}</span>
-                        </button>
-                      </td>
-                      <td>
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
-                          <button onClick={() => viewBatch(batch.id)} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', border: '1px solid #cbd5e1' }}>
-                            Manage
-                          </button>
-                          <button onClick={() => openEmailModal(batch)} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: '#e0f2fe', color: '#0284c7', border: 'none' }}>
-                            <Mail size={14} style={{ marginRight: '0.25rem' }} /> Email
-                          </button>
-                        </div>
-                      </td>
+                      <th>College Name</th>
+                      <th>Status</th>
+                      <th>Enrolled</th>
+                      <th>Actions</th>
                     </tr>
-                    {expandedBatchId === batch.id && (
-                      <tr>
-                        <td colSpan={5} style={{ padding: '0', borderBottom: '1px solid #e2e8f0' }}>
-                          <div style={{ backgroundColor: '#f8fafc', padding: '1rem 1.5rem', borderLeft: '3px solid #3b82f6' }}>
-                            {isExpanding ? (
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#64748b', fontSize: '0.875rem' }}>
-                                <Loader2 size={16} className="animate-spin" /> Loading students...
-                              </div>
-                            ) : (
-                              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxHeight: '200px', overflowY: 'auto' }}>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', fontWeight: 600, fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', paddingBottom: '0.25rem', borderBottom: '1px solid #e2e8f0' }}>
-                                  <div>Student Name</div>
-                                  <div>Email Address</div>
-                                </div>
-                                {expandedStudents.map(s => (
-                                  <div key={s.id} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', fontSize: '0.875rem' }}>
-                                    <div style={{ fontWeight: 500 }}>{s.name || 'N/A'}</div>
-                                    <div style={{ color: '#475569' }}>{s.email}</div>
+                  </thead>
+                  <tbody>
+                    {(groupBatches as any[]).map((batch) => (
+                      <React.Fragment key={batch.id}>
+                        <tr>
+                          <td>
+                            <div style={{ fontWeight: 600 }}>{batch.name.replace(/ \(\d+-Day\)$/, '')}</div>
+                            <div style={{ fontSize: '0.75rem', color: '#64748b' }}>{batch.id}</div>
+                          </td>
+                          <td><span className="admin-badge badge-green">Active</span></td>
+                          <td>
+                            <button 
+                              onClick={() => handleExpandBatch(batch.id)} 
+                              style={{ background: 'none', border: 'none', color: '#3b82f6', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem', padding: 0 }}
+                            >
+                              {batch.studentCount || 0} Students
+                              <span style={{ fontSize: '0.6rem' }}>{expandedBatchId === batch.id ? '▲' : '▼'}</span>
+                            </button>
+                          </td>
+                          <td>
+                            <div style={{ display: 'flex', gap: '0.5rem' }}>
+                              <button onClick={() => viewBatch(batch.id)} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', border: '1px solid #cbd5e1' }}>
+                                Manage
+                              </button>
+                              <button onClick={() => openEmailModal(batch)} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: '#e0f2fe', color: '#0284c7', border: 'none' }}>
+                                <Mail size={14} style={{ marginRight: '0.25rem' }} /> Email
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                        {expandedBatchId === batch.id && (
+                          <tr>
+                            <td colSpan={4} style={{ padding: '0', borderBottom: '1px solid #e2e8f0' }}>
+                              <div style={{ backgroundColor: '#f8fafc', padding: '1rem 1.5rem', borderLeft: '3px solid #3b82f6' }}>
+                                {isExpanding ? (
+                                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#64748b', fontSize: '0.875rem' }}>
+                                    <Loader2 size={16} className="animate-spin" /> Loading students...
                                   </div>
-                                ))}
-                                {expandedStudents.length === 0 && <div style={{ fontSize: '0.875rem', color: '#64748b' }}>No students found.</div>}
+                                ) : (
+                                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxHeight: '200px', overflowY: 'auto' }}>
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', fontWeight: 600, fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', paddingBottom: '0.25rem', borderBottom: '1px solid #e2e8f0' }}>
+                                      <div>Student Name</div>
+                                      <div>Email Address</div>
+                                    </div>
+                                    {expandedStudents.map(s => (
+                                      <div key={s.id} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', fontSize: '0.875rem' }}>
+                                        <div style={{ fontWeight: 500 }}>{s.name || 'N/A'}</div>
+                                        <div style={{ color: '#475569' }}>{s.email}</div>
+                                      </div>
+                                    ))}
+                                    {expandedStudents.length === 0 && <div style={{ fontSize: '0.875rem', color: '#64748b' }}>No students found.</div>}
+                                  </div>
+                                )}
                               </div>
-                            )}
-                          </div>
-                        </td>
-                      </tr>
-                    )}
-                  </React.Fragment>
-                ))
-              )}
-            </tbody>
-          </table>
+                            </td>
+                          </tr>
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ))
+          )}
         </div>
       )}
 
