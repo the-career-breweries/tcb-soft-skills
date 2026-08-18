@@ -1,12 +1,15 @@
 "use client";
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { LayoutDashboard, Users, Settings, LogOut, CodeSquare, Lock } from 'lucide-react';
 import './admin.css';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
   const [passkey, setPasskey] = useState<string>('');
+  const pathname = usePathname();
 
   if (!isUnlocked) {
     return (
@@ -53,25 +56,25 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
         
         <nav className="admin-nav">
-          <a href="/workshops/admin" className="admin-nav-item active">
+          <Link href="/workshops/admin" className={`admin-nav-item ${pathname === '/workshops/admin' ? 'active' : ''}`}>
             <LayoutDashboard size={20} />
             Dashboard
-          </a>
-          <a href="/workshops/admin/batches" className="admin-nav-item">
+          </Link>
+          <Link href="/workshops/admin/batches" className={`admin-nav-item ${pathname.includes('/workshops/admin/batches') ? 'active' : ''}`}>
             <Users size={20} />
             Batches & Students
-          </a>
-          <a href="/workshops/admin/settings" className="admin-nav-item">
+          </Link>
+          <Link href="/workshops/admin/settings" className={`admin-nav-item ${pathname.includes('/workshops/admin/settings') ? 'active' : ''}`}>
             <Settings size={20} />
             Settings
-          </a>
+          </Link>
         </nav>
         
         <div style={{ marginTop: 'auto' }}>
-          <a href="/" className="admin-nav-item">
+          <Link href="/" className="admin-nav-item">
             <LogOut size={20} />
             Exit Admin
-          </a>
+          </Link>
         </div>
       </aside>
 
