@@ -450,18 +450,34 @@ export default function AdminDashboard() {
                                     <Loader2 size={16} className="animate-spin" /> Loading students...
                                   </div>
                                 ) : (
-                                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxHeight: '200px', overflowY: 'auto' }}>
-                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', fontWeight: 600, fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', paddingBottom: '0.25rem', borderBottom: '1px solid #e2e8f0' }}>
+                                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0', maxHeight: '300px', overflowY: 'auto' }}>
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1.5fr', fontWeight: 600, fontSize: '0.75rem', color: '#64748b', textTransform: 'uppercase', paddingBottom: '0.5rem', borderBottom: '1px solid #e2e8f0', marginBottom: '0.5rem' }}>
                                       <div>Student Name</div>
                                       <div>Email Address</div>
+                                      <div>Progress</div>
                                     </div>
-                                    {expandedStudents.map(s => (
-                                      <div key={s.id} style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', fontSize: '0.875rem' }}>
-                                        <div style={{ fontWeight: 500 }}>{s.name || 'N/A'}</div>
-                                        <div style={{ color: '#475569' }}>{s.email}</div>
-                                      </div>
-                                    ))}
-                                    {expandedStudents.length === 0 && <div style={{ fontSize: '0.875rem', color: '#64748b' }}>No students found.</div>}
+                                    {expandedStudents.map(s => {
+                                      const currentDay = s.progress?.day || 1;
+                                      const totalDays = batch.totalDays || 5;
+                                      // If state is not started and it's day 1, progress is 0%. If completed, 100%. Otherwise proportional.
+                                      const progressPercent = s.progress?.state === 'COMPLETED' ? 100 : s.progress?.state === 'NOT_STARTED' && currentDay === 1 ? 0 : Math.min(100, Math.max(0, (currentDay / totalDays) * 100));
+                                      
+                                      return (
+                                        <div key={s.id} style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1.5fr', fontSize: '0.875rem', alignItems: 'center', padding: '0.5rem 0', borderBottom: '1px solid #f1f5f9' }}>
+                                          <div style={{ fontWeight: 500 }}>{s.name || 'N/A'}</div>
+                                          <div style={{ color: '#475569' }}>{s.email}</div>
+                                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                            <div style={{ flex: 1, height: '6px', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
+                                              <div style={{ width: `${progressPercent}%`, height: '100%', backgroundColor: progressPercent === 100 ? '#22c55e' : '#3b82f6', transition: 'width 0.3s ease' }} />
+                                            </div>
+                                            <span style={{ fontSize: '0.75rem', color: '#64748b', whiteSpace: 'nowrap', width: '100px' }}>
+                                              Day {currentDay} ({s.progress?.state ? s.progress.state.replace('_', ' ') : 'Not Started'})
+                                            </span>
+                                          </div>
+                                        </div>
+                                      );
+                                    })}
+                                    {expandedStudents.length === 0 && <div style={{ fontSize: '0.875rem', color: '#64748b', padding: '1rem 0' }}>No students found.</div>}
                                   </div>
                                 )}
                               </div>
