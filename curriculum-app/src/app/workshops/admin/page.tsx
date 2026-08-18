@@ -470,15 +470,43 @@ export default function AdminDashboard() {
                                         ? 100 
                                         : Math.min(99, Math.max(0, ((completedDays + intraDayProgress) / totalDays) * 100));
                                       
+                                      const radius = 16;
+                                      const circumference = 2 * Math.PI * radius;
+                                      const offset = circumference - (progressPercent / 100) * circumference;
+                                      
                                       return (
                                         <div key={s.id} style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1.5fr', fontSize: '0.875rem', alignItems: 'center', padding: '0.5rem 0', borderBottom: '1px solid #f1f5f9' }}>
                                           <div style={{ fontWeight: 500 }}>{s.name || 'N/A'}</div>
                                           <div style={{ color: '#475569' }}>{s.email}</div>
-                                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                            <div style={{ flex: 1, height: '6px', backgroundColor: '#e2e8f0', borderRadius: '9999px', overflow: 'hidden' }}>
-                                              <div style={{ width: `${progressPercent}%`, height: '100%', backgroundColor: progressPercent === 100 ? '#22c55e' : '#3b82f6', transition: 'width 0.3s ease' }} />
+                                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                            <div style={{ position: 'relative', width: '40px', height: '40px', flexShrink: 0 }}>
+                                              <svg width="40" height="40" style={{ transform: 'rotate(-90deg)' }}>
+                                                <circle 
+                                                  cx="20" cy="20" r={radius} 
+                                                  fill="transparent" 
+                                                  stroke="#e2e8f0" 
+                                                  strokeWidth="3" 
+                                                />
+                                                <circle 
+                                                  cx="20" cy="20" r={radius} 
+                                                  fill="transparent" 
+                                                  stroke={progressPercent === 100 ? '#22c55e' : '#3b82f6'} 
+                                                  strokeWidth="3" 
+                                                  strokeDasharray={circumference}
+                                                  strokeDashoffset={offset}
+                                                  strokeLinecap="round"
+                                                  style={{ transition: 'stroke-dashoffset 0.5s ease' }}
+                                                />
+                                              </svg>
+                                              <div style={{ 
+                                                position: 'absolute', inset: 0, 
+                                                display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                                                fontSize: '0.65rem', fontWeight: 600, color: progressPercent === 100 ? '#22c55e' : '#334155'
+                                              }}>
+                                                {Math.round(progressPercent)}%
+                                              </div>
                                             </div>
-                                            <span style={{ fontSize: '0.75rem', color: '#64748b', whiteSpace: 'nowrap', width: '100px' }}>
+                                            <span style={{ fontSize: '0.75rem', color: '#64748b' }}>
                                               Day {currentDay} ({s.progress?.state ? s.progress.state.replace('_', ' ') : 'Not Started'})
                                             </span>
                                           </div>
