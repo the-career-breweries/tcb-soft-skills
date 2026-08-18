@@ -66,11 +66,45 @@ Login at: https://yourdomain.com/workshops/student
           createdAt: new Date().toISOString()
         });
 
-        results.push({ email: cleanEmail, password, success: true });
+        results.push({ 
+          email: cleanEmail, 
+          password, 
+          success: true, 
+          uid: userRecord.uid,
+          name: `Student (${batchName})`,
+          phone: 'N/A'
+        });
       } catch (userErr: any) {
         console.error(`Error creating user ${cleanEmail}:`, userErr);
         results.push({ email: cleanEmail, password: '', success: false, error: userErr.message });
       }
+    }
+
+    // Push to Google Sheets (Bulk)
+    try {
+      const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+      const successfulStudents = results.filter(r => r.success).map(r => ({
+        id: r.uid || 'N/A',
+        name: r.name,
+        email: r.email,
+        phone: r.phone,
+        workshopDays: totalDays,
+        batchName: batchName,
+        password: r.password
+      }));
+
+      if (gasUrl && successfulStudents.length > 0) {
+        await fetch(gasUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'bulk_create',
+            students: successfulStudents
+          })
+        });
+      }
+    } catch (err) {
+      console.error("Failed to sync bulk students to Google Sheets:", err);
     }
 
     return {
@@ -165,7 +199,16 @@ Login at: https://yourdomain.com/workshops/student
             createdAt: new Date().toISOString()
           }, { merge: true });
           
-          results.push({ name: student.name, email: cleanEmail, password, success: true, batchId, days });
+          results.push({ 
+            name: student.name, 
+            email: cleanEmail, 
+            password, 
+            success: true, 
+            batchId, 
+            days,
+            uid: userRecord.uid,
+            phone: student.phone
+          });
         } catch (userErr: any) {
           console.error(`Error creating user ${cleanEmail}:`, userErr);
           results.push({ name: student.name, email: cleanEmail, password: '', success: false, error: userErr.message, batchId, days });
@@ -173,6 +216,33 @@ Login at: https://yourdomain.com/workshops/student
       }
     }
     
+    // Push to Google Sheets (Bulk)
+    try {
+      const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+      const successfulStudents = results.filter(r => r.success).map(r => ({
+        id: r.uid || 'N/A',
+        name: r.name,
+        email: r.email,
+        phone: r.phone || 'N/A',
+        workshopDays: r.days,
+        batchName: `${batchBaseName} (${r.days}-Day)`,
+        password: r.password
+      }));
+
+      if (gasUrl && successfulStudents.length > 0) {
+        await fetch(gasUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'bulk_create',
+            students: successfulStudents
+          })
+        });
+      }
+    } catch (err) {
+      console.error("Failed to sync CSV bulk students to Google Sheets:", err);
+    }
+
     return {
       success: true,
       batchIds: batchIdsCreated,
