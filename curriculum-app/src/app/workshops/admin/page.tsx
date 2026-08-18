@@ -101,7 +101,8 @@ export default function AdminDashboard() {
     if (!file) return;
     
     if (!newBatchName) {
-      alert("Please provide a Base Batch Name first (e.g. 'August Intake').");
+      alert("Please provide an Institution Name first (e.g. 'Delhi University').");
+      e.target.value = ''; // Clear the input so they can select the same file again later
       return;
     }
 
@@ -621,15 +622,23 @@ export default function AdminDashboard() {
                     style={{ display: 'none' }}
                     ref={fileInputRef}
                     onChange={handleFileUpload}
-                    disabled={isCreating || !newBatchName}
                   />
-                  <label 
-                    htmlFor="csv-upload"
+                  <button 
+                    onClick={() => {
+                      if (!newBatchName) {
+                        alert("Please enter an Institution Name first before uploading the CSV.");
+                        return;
+                      }
+                      if (!isCreating && fileInputRef.current) {
+                        fileInputRef.current.click();
+                      }
+                    }}
+                    disabled={isCreating}
                     className="admin-btn admin-btn-primary"
-                    style={{ display: 'inline-flex', cursor: (isCreating || !newBatchName) ? 'not-allowed' : 'pointer', opacity: (isCreating || !newBatchName) ? 0.7 : 1 }}
+                    style={{ display: 'inline-flex', cursor: isCreating ? 'not-allowed' : 'pointer', opacity: isCreating ? 0.7 : 1 }}
                   >
                     {isCreating ? <Loader2 size={18} className="animate-spin" /> : 'Select CSV File'}
-                  </label>
+                  </button>
                   {!newBatchName && <p style={{fontSize: '0.75rem', color: '#ef4444', marginTop: '0.5rem'}}>Please enter an Institution Name first</p>}
                 </div>
               </div>
