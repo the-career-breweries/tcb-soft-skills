@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAdminDb } from '@/lib/firebase/firebaseAdmin';
+import { adminDb } from '@/lib/firebase/firebaseAdmin';
 import { approveRegistrationAction } from '@/app/actions/adminOps';
 
 export async function POST(req: Request) {
@@ -21,7 +21,6 @@ export async function POST(req: Request) {
       console.log(`Successfully synced status '${data.status}' AND enrolled student ${data.id}`);
     } else {
       // Just update status (e.g. rejected)
-      const adminDb = getAdminDb();
       const docRef = adminDb.collection('registrations').doc(data.id);
       await docRef.update({
         status: data.status,
