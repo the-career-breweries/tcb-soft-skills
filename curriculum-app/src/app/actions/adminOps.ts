@@ -300,7 +300,7 @@ export async function getStudentsByBatchAction(batchId: string) {
   }
 }
 
-export async function approveRegistrationAction(registrationId: string) {
+export async function approveRegistrationAction(registrationId: string, skipSheetSync: boolean = false) {
   try {
     // 1. Fetch registration
     const regRef = adminDb.collection('registrations').doc(registrationId);
@@ -376,23 +376,25 @@ export async function approveRegistrationAction(registrationId: string) {
     });
 
     // 5.5 Push status update to Google Sheets
-    try {
-      const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
-      if (gasUrl) {
-        await fetch(gasUrl, {
-          method: 'POST',
-          // no-cors is important for Google Apps Script Web Apps from browser, but since we are server-side here, 
-          // we can just omit it or keep it. Let's send a normal POST since CORS is a browser concept.
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({
-            action: 'update_status',
-            id: registrationId,
-            status: 'approved'
-          })
-        });
+    if (!skipSheetSync) {
+      try {
+        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+        if (gasUrl) {
+          await fetch(gasUrl, {
+            method: 'POST',
+            // no-cors is important for Google Apps Script Web Apps from browser, but since we are server-side here, 
+            // we can just omit it or keep it. Let's send a normal POST since CORS is a browser concept.
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              action: 'update_status',
+              id: registrationId,
+              status: 'approved'
+            })
+          });
+        }
+      } catch (err) {
+        console.error("Failed to sync status to Google Sheets:", err);
       }
-    } catch (err) {
-      console.error("Failed to sync status to Google Sheets:", err);
     }
 
     // 6. Send Email using Nodemailer

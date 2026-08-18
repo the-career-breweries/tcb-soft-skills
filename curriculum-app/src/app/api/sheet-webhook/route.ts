@@ -13,7 +13,8 @@ export async function POST(req: Request) {
 
     if (data.status === 'approved') {
       // Execute the full approval workflow (creates auth, master batch, sends email)
-      const res = await approveRegistrationAction(data.id);
+      // Pass true to skipSheetSync to avoid infinite loops back to Google Sheets
+      const res = await approveRegistrationAction(data.id, true);
       if (!res.success) {
         console.error("Webhook approval failed:", res.error);
         return NextResponse.json({ error: res.error }, { status: 500 });
