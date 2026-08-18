@@ -402,22 +402,32 @@ export async function approveRegistrationAction(registrationId: string, skipShee
     const gmailPass = process.env.GMAIL_APP_PASSWORD;
 
     if (gmailUser && gmailPass) {
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: { user: gmailUser, pass: gmailPass },
-      });
+      try {
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: { user: gmailUser, pass: gmailPass },
+        });
 
-      let personalizedContent = emailTemplate
-        .replace(/{{email}}/g, cleanEmail)
-        .replace(/{{password}}/g, password)
-        .replace(/{{name}}/g, regData?.name || 'Student');
+        let personalizedContent = emailTemplate
+          .replace(/{{email}}/g, cleanEmail)
+          .replace(/{{password}}/g, password)
+          .replace(/{{name}}/g, regData?.name || 'Student');
+          
+        console.log(`Sending email to: ${cleanEmail}`);
 
-      await transporter.sendMail({
-        from: `"The Career Breweries" <${gmailUser}>`,
-        to: cleanEmail,
-        subject: 'Your Workshop Credentials',
-        text: personalizedContent,
-      });
+        await transporter.sendMail({
+          from: `"The Career Breweries" <${gmailUser}>`,
+          to: cleanEmail,
+          subject: 'Your Workshop Credentials',
+          text: personalizedContent,
+        });
+        
+        console.log(`Successfully sent email to: ${cleanEmail}`);
+      } catch (emailErr) {
+        console.error(`Failed to send email to ${cleanEmail}:`, emailErr);
+      }
+    } else {
+      console.log(`Skipping email to ${cleanEmail}: GMAIL_USER or GMAIL_APP_PASSWORD is not set in environment.`);
     }
 
     return { success: true };
