@@ -459,8 +459,16 @@ export default function AdminDashboard() {
                                     {expandedStudents.map(s => {
                                       const currentDay = s.progress?.day || 1;
                                       const totalDays = batch.totalDays || 5;
-                                      // If state is not started and it's day 1, progress is 0%. If completed, 100%. Otherwise proportional.
-                                      const progressPercent = s.progress?.state === 'COMPLETED' ? 100 : s.progress?.state === 'NOT_STARTED' && currentDay === 1 ? 0 : Math.min(100, Math.max(0, (currentDay / totalDays) * 100));
+                                      
+                                      // If a student is ON Day 1, they have completed 0 full days.
+                                      const completedDays = currentDay - 1;
+                                      
+                                      // Add a small visual bump if they are actively working on the day
+                                      const intraDayProgress = (!s.progress?.state || s.progress?.state === 'NOT_STARTED') ? 0 : 0.5;
+                                      
+                                      const progressPercent = s.progress?.state === 'COMPLETED' 
+                                        ? 100 
+                                        : Math.min(99, Math.max(0, ((completedDays + intraDayProgress) / totalDays) * 100));
                                       
                                       return (
                                         <div key={s.id} style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr 1.5fr', fontSize: '0.875rem', alignItems: 'center', padding: '0.5rem 0', borderBottom: '1px solid #f1f5f9' }}>
