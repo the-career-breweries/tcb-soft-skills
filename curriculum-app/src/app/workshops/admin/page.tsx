@@ -19,7 +19,7 @@ export default function AdminDashboard() {
   const [newBatchDays, setNewBatchDays] = useState(5);
   const [isCreating, setIsCreating] = useState(false);
   const [uploadMode, setUploadMode] = useState<'manual' | 'csv'>('manual');
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [pastedData, setPastedData] = useState('');
 
   const [batches, setBatches] = useState<any[]>([]);
   const [isLoadingBatches, setIsLoadingBatches] = useState(true);
@@ -96,19 +96,17 @@ export default function AdminDashboard() {
     setIsCreating(false);
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  const handleDataPaste = () => {
+    if (!pastedData.trim()) return;
     
     if (!newBatchName) {
       alert("Please provide an Institution Name first (e.g. 'Delhi University').");
-      e.target.value = ''; // Clear the input so they can select the same file again later
       return;
     }
 
     setIsCreating(true);
     
-    Papa.parse(file, {
+    Papa.parse(pastedData, {
       header: true,
       skipEmptyLines: true,
       complete: async (results) => {
@@ -138,19 +136,17 @@ export default function AdminDashboard() {
 
           setIsCreateModalOpen(false);
           setNewBatchName('');
-          if (fileInputRef.current) fileInputRef.current.value = '';
+          setPastedData('');
           fetchBatches();
           alert('Batches created successfully! Master Credentials downloaded.');
         } else {
-          if (fileInputRef.current) fileInputRef.current.value = '';
-          alert('Error processing CSV: ' + res.error);
+          alert('Error processing data: ' + res.error);
         }
         setIsCreating(false);
       },
       error: (error) => {
         console.error(error);
-        if (fileInputRef.current) fileInputRef.current.value = '';
-        alert('Error parsing CSV file');
+        alert('Error parsing pasted data');
         setIsCreating(false);
       }
     });
@@ -612,36 +608,42 @@ export default function AdminDashboard() {
               </div>
 
               <div style={{ marginTop: '0.5rem' }}>
-                <div style={{ border: '2px dashed #cbd5e1', borderRadius: '0.5rem', padding: '2rem', textAlign: 'center', backgroundColor: '#f8fafc' }}>
-                  <FileSpreadsheet size={32} style={{ color: '#94a3b8', margin: '0 auto 1rem auto' }} />
-                  <p style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '1rem' }}>
-                    Upload CSV file with columns: <strong>Name, Email, Phone, Workshop Chosen</strong> (Days).
-                  </p>
-                  <input 
-                    type="file" 
-                    accept=".csv, .xlsx" 
-                    id="csv-upload" 
-                    style={{ display: 'none' }}
-                    ref={fileInputRef}
-                    onChange={handleFileUpload}
-                  />
-                  <button 
-                    onClick={() => {
-                      if (!newBatchName) {
-                        alert("Please enter an Institution Name first before uploading the CSV.");
-                        return;
-                      }
-                      if (!isCreating && fileInputRef.current) {
-                        fileInputRef.current.click();
-                      }
+                <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, marginBottom: '0.25rem' }}>Paste Student Data</label>
+                <div style={{ border: '1px solid #cbd5e1', borderRadius: '0.5rem', overflow: 'hidden', backgroundColor: '#f8fafc' }}>
+                  <div style={{ padding: '0.75rem', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f1f5f9', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <FileSpreadsheet size={18} style={{ color: '#64748b' }} />
+                    <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 500 }}>
+                      Copy from Excel/Sheets and paste below. Headers required: <strong>Name, Email, Phone, Workshop Chosen</strong>
+                    </span>
+                  </div>
+                  <textarea 
+                    value={pastedData}
+                    onChange={(e) => setPastedData(e.target.value)}
+                    placeholder="Name&#9;Email&#9;Phone&#9;Workshop Chosen&#10;John Doe&#9;john@example.com&#9;9876543210&#9;5&#10;Jane Smith&#9;jane@example.com&#9;1234567890&#9;2"
+                    rows={8}
+                    style={{ 
+                      width: '100%', 
+                      padding: '0.75rem', 
+                      border: 'none', 
+                      resize: 'vertical', 
+                      fontFamily: 'monospace', 
+                      fontSize: '0.75rem',
+                      whiteSpace: 'pre',
+                      outline: 'none',
+                      backgroundColor: 'transparent'
                     }}
-                    disabled={isCreating}
+                  />
+                </div>
+                <div style={{ marginTop: '1rem' }}>
+                  <button 
+                    onClick={handleDataPaste}
+                    disabled={isCreating || !pastedData.trim() || !newBatchName}
                     className="admin-btn admin-btn-primary"
-                    style={{ display: 'inline-flex', cursor: isCreating ? 'not-allowed' : 'pointer', opacity: isCreating ? 0.7 : 1 }}
+                    style={{ width: '100%', justifyContent: 'center', cursor: (isCreating || !pastedData.trim() || !newBatchName) ? 'not-allowed' : 'pointer', opacity: (isCreating || !pastedData.trim() || !newBatchName) ? 0.7 : 1 }}
                   >
-                    {isCreating ? <Loader2 size={18} className="animate-spin" /> : 'Select CSV File'}
+                    {isCreating ? <Loader2 size={18} className="animate-spin" /> : 'Import Students'}
                   </button>
-                  {!newBatchName && <p style={{fontSize: '0.75rem', color: '#ef4444', marginTop: '0.5rem'}}>Please enter an Institution Name first</p>}
+                  {!newBatchName && <p style={{fontSize: '0.75rem', color: '#ef4444', marginTop: '0.5rem', textAlign: 'center'}}>Please enter an Institution Name first</p>}
                 </div>
               </div>
             </div>
