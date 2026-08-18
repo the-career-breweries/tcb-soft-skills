@@ -418,7 +418,7 @@ export async function approveRegistrationAction(registrationId: string, skipShee
           
         console.log(`Sending email via GAS to: ${cleanEmail}`);
 
-        await fetch(gasUrl, {
+        const gasRes = await fetch(gasUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
@@ -429,7 +429,8 @@ export async function approveRegistrationAction(registrationId: string, skipShee
           })
         });
         
-        console.log(`Successfully sent email request to GAS for: ${cleanEmail}`);
+        const responseText = await gasRes.text();
+        console.log(`GAS Email Response for ${cleanEmail}: Status ${gasRes.status}, Body: ${responseText}`);
       } else {
         console.log(`Skipping email to ${cleanEmail}: NEXT_PUBLIC_GOOGLE_SHEET_URL is not set.`);
       }
