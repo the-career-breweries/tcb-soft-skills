@@ -273,10 +273,21 @@ export async function getRegistrationsAction() {
     const snapshot = await adminDb.collection('registrations').orderBy('createdAt', 'desc').get();
     const registrations = snapshot.docs.map(doc => {
       const data = doc.data();
+      
+      // Helper to safely serialize timestamps
+      const serializeDate = (val: any) => {
+        if (!val) return val;
+        if (typeof val.toDate === 'function') return val.toDate().toISOString();
+        if (val instanceof Date) return val.toISOString();
+        if (val._seconds !== undefined) return new Date(val._seconds * 1000).toISOString();
+        return val;
+      };
+
       return {
         id: doc.id,
         ...data,
-        createdAt: data.createdAt?.toDate ? data.createdAt.toDate().toISOString() : data.createdAt
+        createdAt: serializeDate(data.createdAt),
+        updatedAt: serializeDate(data.updatedAt)
       };
     });
     return { success: true, registrations };
