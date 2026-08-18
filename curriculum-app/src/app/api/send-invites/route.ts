@@ -1,12 +1,5 @@
 import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase/firebaseAdmin';
-import nodemailer from 'nodemailer';
-import dns from 'dns';
-
-// Fix for Render/Vercel IPv6 ENETUNREACH SMTP errors
-if (typeof dns.setDefaultResultOrder === 'function') {
-  dns.setDefaultResultOrder('ipv4first');
-}
 
 export async function POST(request: Request) {
   try {
@@ -16,27 +9,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: 'Missing batchId or template' }, { status: 400 });
     }
 
-    const gmailUser = process.env.GMAIL_USER;
-    const gmailPass = process.env.GMAIL_APP_PASSWORD;
+    const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
 
-    if (!gmailUser || !gmailPass) {
+    if (!gasUrl) {
       return NextResponse.json({ 
         success: false, 
-        error: 'Gmail SMTP credentials missing. Please configure GMAIL_USER and GMAIL_APP_PASSWORD in .env.local' 
+        error: 'Google Sheet Webhook URL missing. Please configure NEXT_PUBLIC_GOOGLE_SHEET_URL in .env.local' 
       }, { status: 500 });
     }
-
-    // Configure Nodemailer transporter
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: gmailUser,
-        pass: gmailPass,
-      },
-      ...({ family: 4 } as any),
-    });
 
     // Fetch students in this batch
     const studentsSnapshot = await adminDb.collection('students').where('batchId', '==', batchId).get();
@@ -47,7 +27,7 @@ export async function POST(request: Request) {
 
     const results = [];
 
-    // Send emails
+    // Send emails via Google Apps Script
     for (const doc of studentsSnapshot.docs) {
       const studentData = doc.data();
       const email = studentData.email;
@@ -61,16 +41,20 @@ export async function POST(request: Request) {
         .replace(/{{name}}/g, name);
 
       try {
-        await transporter.sendMail({
-          from: `"The Career Breweries" <${gmailUser}>`,
-          to: email,
-          subject: subject || 'Your Workshop Credentials',
-          text: personalizedContent,
+        await fetch(gasUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'send_email',
+            to: email,
+            subject: subject || 'Your Workshop Credentials',
+            body: personalizedContent
+          })
         });
 
         results.push({ email, success: true });
       } catch (err: any) {
-        console.error(`Error sending email to ${email}:`, err);
+        console.error(`Error sending email request to GAS for ${email}:`, err);
         results.push({ email, success: false, error: err.message });
       }
     }

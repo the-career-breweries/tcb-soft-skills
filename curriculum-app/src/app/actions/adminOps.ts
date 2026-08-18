@@ -1,13 +1,6 @@
 "use server";
 
 import { adminAuth, adminDb } from '@/lib/firebase/firebaseAdmin';
-import nodemailer from 'nodemailer';
-import dns from 'dns';
-
-// Fix for Render/Vercel IPv6 ENETUNREACH SMTP errors
-if (typeof dns.setDefaultResultOrder === 'function') {
-  dns.setDefaultResultOrder('ipv4first');
-}
 
 function generateRandomPassword(length = 8) {
   const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -414,41 +407,34 @@ export async function approveRegistrationAction(registrationId: string, skipShee
       }
     }
 
-    // 6. Send Email using Nodemailer
-    const gmailUser = process.env.GMAIL_USER;
-    const gmailPass = process.env.GMAIL_APP_PASSWORD;
-
-    if (gmailUser && gmailPass) {
-      try {
-        const transporter = nodemailer.createTransport({
-          host: 'smtp.gmail.com',
-          port: 465,
-          secure: true,
-          auth: { user: gmailUser, pass: gmailPass },
-          // Pass underlying socket options to force IPv4
-          ...({ family: 4 } as any),
-        });
-
+    // 6. Send Email using Google Apps Script
+    try {
+      const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+      if (gasUrl) {
         let personalizedContent = emailTemplate
           .replace(/{{email}}/g, cleanEmail)
           .replace(/{{password}}/g, password)
           .replace(/{{name}}/g, regData?.name || 'Student');
           
-        console.log(`Sending email to: ${cleanEmail}`);
+        console.log(`Sending email via GAS to: ${cleanEmail}`);
 
-        await transporter.sendMail({
-          from: `"The Career Breweries" <${gmailUser}>`,
-          to: cleanEmail,
-          subject: 'Your Workshop Credentials',
-          text: personalizedContent,
+        await fetch(gasUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            action: 'send_email',
+            to: cleanEmail,
+            subject: 'Your Workshop Credentials',
+            body: personalizedContent
+          })
         });
         
-        console.log(`Successfully sent email to: ${cleanEmail}`);
-      } catch (emailErr) {
-        console.error(`Failed to send email to ${cleanEmail}:`, emailErr);
+        console.log(`Successfully sent email request to GAS for: ${cleanEmail}`);
+      } else {
+        console.log(`Skipping email to ${cleanEmail}: NEXT_PUBLIC_GOOGLE_SHEET_URL is not set.`);
       }
-    } else {
-      console.log(`Skipping email to ${cleanEmail}: GMAIL_USER or GMAIL_APP_PASSWORD is not set in environment.`);
+    } catch (emailErr) {
+      console.error(`Failed to send email to ${cleanEmail}:`, emailErr);
     }
 
     return { success: true };
