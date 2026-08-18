@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase/firebaseAdmin';
 import nodemailer from 'nodemailer';
+import dns from 'dns';
+
+// Fix for Render/Vercel IPv6 ENETUNREACH SMTP errors
+if (typeof dns.setDefaultResultOrder === 'function') {
+  dns.setDefaultResultOrder('ipv4first');
+}
 
 export async function POST(request: Request) {
   try {

@@ -2,6 +2,12 @@
 
 import { adminAuth, adminDb } from '@/lib/firebase/firebaseAdmin';
 import nodemailer from 'nodemailer';
+import dns from 'dns';
+
+// Fix for Render/Vercel IPv6 ENETUNREACH SMTP errors
+if (typeof dns.setDefaultResultOrder === 'function') {
+  dns.setDefaultResultOrder('ipv4first');
+}
 
 function generateRandomPassword(length = 8) {
   const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
