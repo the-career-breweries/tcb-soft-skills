@@ -594,99 +594,45 @@ export default function AdminDashboard() {
             >
               <X size={20} />
             </button>
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1.5rem' }}>Create New Cohort Batch</h2>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1.5rem' }}>Upload Institution CSV</h2>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              
-              <div style={{ display: 'flex', gap: '1rem', marginBottom: '0.5rem', borderBottom: '1px solid #cbd5e1', paddingBottom: '0.5rem' }}>
-                <button 
-                  onClick={() => setUploadMode('manual')}
-                  style={{ background: 'none', border: 'none', fontWeight: uploadMode === 'manual' ? 600 : 400, color: uploadMode === 'manual' ? '#0f172a' : '#64748b', cursor: 'pointer', padding: '0 0.5rem' }}
-                >
-                  Manual Entry
-                </button>
-                <button 
-                  onClick={() => setUploadMode('csv')}
-                  style={{ background: 'none', border: 'none', fontWeight: uploadMode === 'csv' ? 600 : 400, color: uploadMode === 'csv' ? '#0f172a' : '#64748b', cursor: 'pointer', padding: '0 0.5rem' }}
-                >
-                  CSV Upload
-                </button>
-              </div>
-
               <div>
-                <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, marginBottom: '0.25rem' }}>Batch Name / Prefix</label>
+                <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, marginBottom: '0.25rem' }}>Institution Name</label>
                 <input 
                   type="text" 
                   value={newBatchName}
                   onChange={(e) => setNewBatchName(e.target.value)}
-                  placeholder="e.g., September Intake"
+                  placeholder="e.g., Delhi University"
                   style={{ width: '100%', padding: '0.5rem', borderRadius: '0.375rem', border: '1px solid #cbd5e1' }}
                 />
               </div>
 
-              {uploadMode === 'manual' && (
-                <>
-                  <div>
-                    <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, marginBottom: '0.25rem' }}>Workshop Length (Days)</label>
-                    <select 
-                      value={newBatchDays}
-                      onChange={(e) => setNewBatchDays(parseInt(e.target.value, 10))}
-                      style={{ width: '100%', padding: '0.5rem', borderRadius: '0.375rem', border: '1px solid #cbd5e1' }}
-                    >
-                      <option value={3}>3-Day Workshop</option>
-                      <option value={5}>5-Day Workshop</option>
-                      <option value={10}>10-Day Workshop</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, marginBottom: '0.25rem' }}>Student Emails (one per line)</label>
-                    <textarea 
-                      rows={6}
-                      value={newBatchEmails}
-                      onChange={(e) => setNewBatchEmails(e.target.value)}
-                      placeholder="student1@example.com\nstudent2@example.com"
-                      style={{ width: '100%', padding: '0.5rem', borderRadius: '0.375rem', border: '1px solid #cbd5e1', resize: 'vertical' }}
-                    />
-                  </div>
-                  <button 
-                    onClick={handleCreateBatch}
-                    disabled={isCreating || !newBatchName || !newBatchEmails}
-                    className="admin-btn admin-btn-primary" 
-                    style={{ width: '100%', justifyContent: 'center', marginTop: '1rem', opacity: (isCreating || !newBatchName || !newBatchEmails) ? 0.7 : 1 }}
+              <div style={{ marginTop: '0.5rem' }}>
+                <div style={{ border: '2px dashed #cbd5e1', borderRadius: '0.5rem', padding: '2rem', textAlign: 'center', backgroundColor: '#f8fafc' }}>
+                  <FileSpreadsheet size={32} style={{ color: '#94a3b8', margin: '0 auto 1rem auto' }} />
+                  <p style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '1rem' }}>
+                    Upload CSV file with columns: <strong>Name, Email, Phone, Workshop Chosen</strong> (Days).
+                  </p>
+                  <input 
+                    type="file" 
+                    accept=".csv, .xlsx" 
+                    id="csv-upload" 
+                    style={{ display: 'none' }}
+                    ref={fileInputRef}
+                    onChange={handleFileUpload}
+                    disabled={isCreating || !newBatchName}
+                  />
+                  <label 
+                    htmlFor="csv-upload"
+                    className="admin-btn admin-btn-primary"
+                    style={{ display: 'inline-flex', cursor: (isCreating || !newBatchName) ? 'not-allowed' : 'pointer', opacity: (isCreating || !newBatchName) ? 0.7 : 1 }}
                   >
-                    {isCreating ? <Loader2 size={18} className="animate-spin" /> : <Plus size={18} />}
-                    {isCreating ? 'Generating Accounts...' : 'Generate Batch & Download CSV'}
-                  </button>
-                </>
-              )}
-
-              {uploadMode === 'csv' && (
-                <div style={{ marginTop: '0.5rem' }}>
-                  <div style={{ border: '2px dashed #cbd5e1', borderRadius: '0.5rem', padding: '2rem', textAlign: 'center', backgroundColor: '#f8fafc' }}>
-                    <FileSpreadsheet size={32} style={{ color: '#94a3b8', margin: '0 auto 1rem auto' }} />
-                    <p style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '1rem' }}>
-                      Upload CSV file with columns: <strong>Name, Email, Phone, Workshop Chosen</strong> (Days).
-                    </p>
-                    <input 
-                      type="file" 
-                      accept=".csv, .xlsx" 
-                      id="csv-upload" 
-                      style={{ display: 'none' }}
-                      ref={fileInputRef}
-                      onChange={handleFileUpload}
-                      disabled={isCreating}
-                    />
-                    <label 
-                      htmlFor="csv-upload"
-                      className="admin-btn admin-btn-primary"
-                      style={{ display: 'inline-flex', cursor: isCreating ? 'not-allowed' : 'pointer', opacity: isCreating ? 0.7 : 1 }}
-                    >
-                      {isCreating ? <Loader2 size={18} className="animate-spin" /> : 'Select CSV File'}
-                    </label>
-                  </div>
+                    {isCreating ? <Loader2 size={18} className="animate-spin" /> : 'Select CSV File'}
+                  </label>
+                  {!newBatchName && <p style={{fontSize: '0.75rem', color: '#ef4444', marginTop: '0.5rem'}}>Please enter an Institution Name first</p>}
                 </div>
-              )}
-
+              </div>
             </div>
           </div>
         </div>
