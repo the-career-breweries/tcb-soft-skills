@@ -28,11 +28,14 @@ export async function POST(request: Request) {
 
     // Configure Nodemailer transporter
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
         user: gmailUser,
         pass: gmailPass,
       },
+      ...({ family: 4 } as any),
     });
 
     // Fetch students in this batch

@@ -421,8 +421,12 @@ export async function approveRegistrationAction(registrationId: string, skipShee
     if (gmailUser && gmailPass) {
       try {
         const transporter = nodemailer.createTransport({
-          service: 'gmail',
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true,
           auth: { user: gmailUser, pass: gmailPass },
+          // Pass underlying socket options to force IPv4
+          ...({ family: 4 } as any),
         });
 
         let personalizedContent = emailTemplate
