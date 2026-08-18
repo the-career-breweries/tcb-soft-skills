@@ -142,12 +142,14 @@ export default function AdminDashboard() {
           fetchBatches();
           alert('Batches created successfully! Master Credentials downloaded.');
         } else {
+          if (fileInputRef.current) fileInputRef.current.value = '';
           alert('Error processing CSV: ' + res.error);
         }
         setIsCreating(false);
       },
       error: (error) => {
         console.error(error);
+        if (fileInputRef.current) fileInputRef.current.value = '';
         alert('Error parsing CSV file');
         setIsCreating(false);
       }
