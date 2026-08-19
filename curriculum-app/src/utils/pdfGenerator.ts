@@ -36,7 +36,7 @@ export async function generateInstitutionalProgressReport(batch: any, students: 
   doc.setTextColor(50, 50, 50);
   const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').trim();
   doc.text(`Institution: ${institutionName}`, 110, 75);
-  doc.text(`Workshop: ${batch.workshopDays}-Days Soft Skills & Employability Workshop`, 110, 90);
+  doc.text(`Workshop: ${(batch.totalDays || 5)}-Days Soft Skills & Employability Workshop`, 110, 90);
   
   const completedCount = students.filter(s => s.status === 'APPROVED' && s.progress === 100).length;
   doc.text(`Total Enrolled: ${students.length} | Completed: ${completedCount}`, 110, 105);
@@ -130,9 +130,7 @@ async function drawCertificateLayout(doc: jsPDF, title: string, logoBase64: stri
   doc.setLineWidth(1);
   doc.rect(26, 26, width - 52, height - 52);
 
-  // Background tint (very light brew)
-  doc.setFillColor(252, 250, 248);
-  doc.rect(27, 27, width - 54, height - 54, "F");
+
 
   // Logo (Left for TCB, Right for Institution placeholder if institutional)
   if (logoBase64) {
@@ -154,12 +152,12 @@ async function drawCertificateLayout(doc: jsPDF, title: string, logoBase64: stri
   doc.setFont("helvetica", "bold");
   doc.setTextColor(BRAND_COLOR[0], BRAND_COLOR[1], BRAND_COLOR[2]);
   doc.setFontSize(36);
-  doc.text(title, width / 2, 120, { align: 'center' });
+  doc.text(title, width / 2, 160, { align: 'center' });
   
   // Decorative line
   doc.setDrawColor(BRAND_COLOR[0], BRAND_COLOR[1], BRAND_COLOR[2]);
   doc.setLineWidth(1.5);
-  doc.line(width / 2 - 150, 135, width / 2 + 150, 135);
+  doc.line(width / 2 - 150, 175, width / 2 + 150, 175);
 }
 
 // ---------------------------------------------------------
@@ -181,21 +179,21 @@ export async function generateInstitutionalCertificate(batch: any) {
   doc.setFont("helvetica", "normal");
   doc.setTextColor(50, 50, 50);
   doc.setFontSize(16);
-  doc.text("Proudly presented to", width / 2, 220, { align: 'center' });
+  doc.text("Proudly presented to", width / 2, 240, { align: 'center' });
 
   // Institution Name
   const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').trim();
   doc.setFont("helvetica", "bold");
   doc.setFontSize(32);
   doc.setTextColor(BRAND_COLOR[0], BRAND_COLOR[1], BRAND_COLOR[2]);
-  doc.text(institutionName, width / 2, 270, { align: 'center' });
+  doc.text(institutionName, width / 2, 290, { align: 'center' });
 
   // Body
   doc.setFont("helvetica", "normal");
   doc.setTextColor(50, 50, 50);
   doc.setFontSize(16);
-  const text = `for their outstanding commitment to student development by successfully\norganizing and hosting the ${batch.workshopDays}-Days Soft Skills & Employability Workshop.`;
-  doc.text(text, width / 2, 330, { align: 'center', lineHeightFactor: 1.5 });
+  const text = `for their outstanding commitment to student development by successfully\norganizing and hosting the ${(batch.totalDays || 5)}-Days Soft Skills & Employability Workshop.`;
+  doc.text(text, width / 2, 350, { align: 'center', lineHeightFactor: 1.5 });
 
   // Date
   doc.setFontSize(12);
@@ -240,20 +238,20 @@ async function renderStudentCertificatePage(doc: jsPDF, student: any, batch: any
   doc.setFont("helvetica", "normal");
   doc.setTextColor(50, 50, 50);
   doc.setFontSize(16);
-  doc.text("This certifies that", width / 2, 200, { align: 'center' });
+  doc.text("This certifies that", width / 2, 230, { align: 'center' });
 
   // Student Name
   doc.setFont("helvetica", "bold");
   doc.setFontSize(36);
   doc.setTextColor(BRAND_COLOR[0], BRAND_COLOR[1], BRAND_COLOR[2]);
-  doc.text(student.name.toUpperCase(), width / 2, 260, { align: 'center' });
+  doc.text(student.name.toUpperCase(), width / 2, 280, { align: 'center' });
 
   // Body
   doc.setFont("helvetica", "normal");
   doc.setTextColor(50, 50, 50);
   doc.setFontSize(16);
-  const text = `has successfully completed the rigorous ${batch.workshopDays}-Days Soft Skills & Employability Workshop\ncovering Resume Building, LinkedIn Optimization, and Interview Readiness.`;
-  doc.text(text, width / 2, 330, { align: 'center', lineHeightFactor: 1.5 });
+  const text = `has successfully completed the rigorous ${(batch.totalDays || 5)}-Days Soft Skills & Employability Workshop\ncovering Resume Building, LinkedIn Optimization, and Interview Readiness.`;
+  doc.text(text, width / 2, 350, { align: 'center', lineHeightFactor: 1.5 });
 
   // Date and ID
   doc.setFontSize(12);
