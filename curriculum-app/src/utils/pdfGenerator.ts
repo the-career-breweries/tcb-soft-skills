@@ -244,7 +244,17 @@ async function renderStudentCertificatePage(doc: jsPDF, student: any, batch: any
   doc.setFont("helvetica", "bold");
   doc.setFontSize(36);
   doc.setTextColor(BRAND_COLOR[0], BRAND_COLOR[1], BRAND_COLOR[2]);
-  doc.text(student.name.toUpperCase(), width / 2, 280, { align: 'center' });
+  doc.text(student.name.toUpperCase(), width / 2, 270, { align: 'center' });
+
+  // Sub text
+  const isMaster = batch.name.startsWith('Master:');
+  const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').replace('-Day', '-Days').trim();
+  if (!isMaster && institutionName) {
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(14);
+    doc.setTextColor(80, 80, 80);
+    doc.text(`from ${institutionName}`, width / 2, 300, { align: 'center' });
+  }
 
   // Body
   doc.setFont("helvetica", "normal");
