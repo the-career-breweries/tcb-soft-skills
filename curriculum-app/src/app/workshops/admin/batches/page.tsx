@@ -472,7 +472,7 @@ export default function AdminDashboard() {
                                               <div style={{ 
                                                 position: 'absolute', inset: 0, 
                                                 display: 'flex', alignItems: 'center', justifyContent: 'center', 
-                                                fontSize: '0.65rem', fontWeight: 600, color: progressPercent === 100 ? '#22c55e' : '#334155'
+                                                fontSize: '0.55rem', fontWeight: 600, color: progressPercent === 100 ? '#22c55e' : '#334155'
                                               }}>
                                                 {Math.round(progressPercent)}%
                                               </div>
