@@ -99,22 +99,23 @@ export default function WorkshopDayView() {
     setIsUploading(true);
     setUploadError('');
     try {
-      // Create a reference in Firebase Storage
-      // students/{uid}/submissions/{dayId}/{filename}
-      const fileRef = ref(storage, `students/${user.uid}/submissions/day_${dayId}/${selectedFile.name}`);
-      await uploadBytes(fileRef, selectedFile);
-      const downloadURL = await getDownloadURL(fileRef);
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      formData.append('userId', user.uid);
+      formData.append('dayId', dayId);
 
-      // Save submission metadata to student document
-      await updateDoc(doc(db, 'students', user.uid), {
-        [`submissions.day_${dayId}`]: {
-          url: downloadURL,
-          filename: selectedFile.name,
-          submittedAt: new Date().toISOString()
-        }
+      const res = await fetch('/api/upload-submission', {
+        method: 'POST',
+        body: formData,
       });
 
-      // Update state to COMPLETED
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || "Failed to upload file to Google Drive");
+      }
+
+      // Update local state to COMPLETED
       await handleStateChange('COMPLETED');
       setUploadSuccess(true);
       setSelectedFile(null);
