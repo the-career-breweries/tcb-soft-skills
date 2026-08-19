@@ -300,7 +300,7 @@ export async function generateIndividualCertificate(student: any, batch: any) {
     sigBase64 = await getBase64ImageFromUrl('/signature.jpg');
   } catch (e) { console.error(e); }
 
-  await renderStudentCertificatePage(doc, student, batch, logoBase64);
+  await renderStudentCertificatePage(doc, student, batch, logoBase64, sigBase64);
   
   doc.save(`${student.name}_Certificate.pdf`);
 }
@@ -326,7 +326,7 @@ export async function generateBatchStudentCertificates(batch: any, students: any
 
   for (let i = 0; i < completedStudents.length; i++) {
     if (i > 0) doc.addPage();
-    await renderStudentCertificatePage(doc, completedStudents[i], batch, logoBase64);
+    await renderStudentCertificatePage(doc, completedStudents[i], batch, logoBase64, sigBase64);
   }
   
   const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').replace('-Day', '-Days').trim();
