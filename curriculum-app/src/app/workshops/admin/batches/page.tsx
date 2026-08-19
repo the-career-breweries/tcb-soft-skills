@@ -376,8 +376,8 @@ export default function AdminDashboard() {
                       <React.Fragment key={batch.id}>
                         <tr>
                           <td>
-                            <div style={{ fontWeight: 600 }}>{batch.name.replace(/ \(\d+-Day\)$/, '')}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748b' }}>{batch.id}</div>
+                            <div style={{ fontWeight: 600 }}>{batch.name.replace(/ \(\d+-Days?\)$/, '')}</div>
+                            <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.25rem' }}>{batch.id}</div>
                           </td>
                           <td><span className="admin-badge badge-green">Active</span></td>
                           <td>

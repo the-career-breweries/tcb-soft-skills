@@ -34,7 +34,7 @@ export async function generateInstitutionalProgressReport(batch: any, students: 
   
   doc.setFontSize(12);
   doc.setTextColor(50, 50, 50);
-  const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').trim();
+  const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').replace('-Day', '-Days').trim();
   doc.text(`Institution: ${institutionName}`, 110, 75);
   doc.text(`Workshop: ${(batch.totalDays || 5)}-Days Soft Skills & Employability Workshop`, 110, 90);
   
@@ -85,7 +85,7 @@ export async function generateIndividualProgressReport(student: any, batch: any)
   doc.text(`Student Name: ${student.name}`, 110, 75);
   doc.text(`Email: ${student.email}`, 110, 90);
   
-  const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').trim();
+  const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').replace('-Day', '-Days').trim();
   doc.text(`Institution / Batch: ${institutionName}`, 110, 105);
 
   doc.setFontSize(10);
@@ -182,7 +182,7 @@ export async function generateInstitutionalCertificate(batch: any) {
   doc.text("Proudly presented to", width / 2, 240, { align: 'center' });
 
   // Institution Name
-  const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').trim();
+  const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').replace('-Day', '-Days').trim();
   doc.setFont("helvetica", "bold");
   doc.setFontSize(32);
   doc.setTextColor(BRAND_COLOR[0], BRAND_COLOR[1], BRAND_COLOR[2]);
@@ -315,6 +315,6 @@ export async function generateBatchStudentCertificates(batch: any, students: any
     await renderStudentCertificatePage(doc, completedStudents[i], batch, logoBase64);
   }
   
-  const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').trim();
+  const institutionName = batch.name.replace(/\s*\(\d+-Days?\)/i, '').replace('-Day', '-Days').trim();
   doc.save(`${institutionName}_All_Student_Certificates.pdf`);
 }

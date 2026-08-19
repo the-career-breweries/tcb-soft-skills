@@ -141,7 +141,7 @@ export async function uploadStudentsCSVAction(batchBaseName: string, students: C
     
     for (const [daysStr, group] of Object.entries(groupedStudents)) {
       const days = parseInt(daysStr, 10);
-      const batchName = `${batchBaseName} (${days}-Day)`;
+      const batchName = `${batchBaseName} (${days}-Days)`;
       
       const batchRef = adminDb.collection('batches').doc();
       const batchId = batchRef.id;
@@ -224,7 +224,7 @@ Login at: https://yourdomain.com/workshops/student
         email: r.email,
         phone: r.phone || 'N/A',
         workshopDays: r.days,
-        batchName: `${batchBaseName} (${r.days}-Day)`,
+        batchName: `${batchBaseName} (${r.days}-Days)`,
         password: r.password
       }));
 
@@ -321,7 +321,7 @@ export async function approveRegistrationAction(registrationId: string, skipShee
     if (regData?.status === 'approved') return { success: false, error: 'Already approved' };
 
     const workshopDays = regData?.workshopDays || 5;
-    const masterBatchName = `Master: ${workshopDays}-Day Workshop`;
+    const masterBatchName = `Master: ${workshopDays}-Days Workshop`;
 
     // 2. Find or Create Master Batch
     const batchesSnapshot = await adminDb.collection('batches').where('name', '==', masterBatchName).get();

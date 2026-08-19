@@ -39,8 +39,8 @@ export async function POST(request: Request) {
       const batchDoc = await adminDb.collection('batches').doc(batchId).get();
       const batchData = batchDoc.data();
       if (batchData && batchData.name && !batchData.name.startsWith('Master:')) {
-        // e.g., "XYZ College (5-Day)" -> "XYZ College"
-        institutionName = batchData.name.replace(/\s*\(\d+-Day\)/i, '').trim();
+        // e.g., "XYZ College (5-Days)" -> "XYZ College"
+        institutionName = batchData.name.replace(/\s*\(\d+-Days?\)/i, '').trim();
       }
     }
 
