@@ -8,7 +8,8 @@ export default function AdminDashboardRoot() {
   const [stats, setStats] = useState({
     totalInstitutions: 0,
     totalStudents: 0,
-    pendingIndividuals: 0
+    pendingIndividuals: 0,
+    totalRevenue: 0
   });
   const [isLoading, setIsLoading] = useState(true);
 
@@ -25,19 +26,28 @@ export default function AdminDashboardRoot() {
         let institutions = 0;
         
         if (batchesRes.success && batchesRes.batches) {
-          institutions = batchesRes.batches.length;
+          institutions = batchesRes.batches.filter((b: any) => !b.name.startsWith('Master:')).length;
           students = batchesRes.batches.reduce((acc: number, b: any) => acc + (b.studentCount || 0), 0);
         }
         
         let pending = 0;
+        let revenue = 0;
         if (regRes.success && regRes.registrations) {
-          pending = regRes.registrations.filter((r: any) => r.status === 'pending' || r.status === 'verification').length;
+          pending = regRes.registrations.filter((r: any) => r.status === 'pending' || r.status === 'verification' || r.status === 'pending_verification').length;
+          
+          const approvedRegs = regRes.registrations.filter((r: any) => r.status === 'approved');
+          revenue = approvedRegs.reduce((acc: number, r: any) => {
+            const days = parseInt(r.workshopDays) || 5;
+            const price = days === 3 ? 1999 : (days === 5 ? 2999 : 0);
+            return acc + price;
+          }, 0);
         }
 
         setStats({
           totalInstitutions: institutions,
           totalStudents: students,
-          pendingIndividuals: pending
+          pendingIndividuals: pending,
+          totalRevenue: revenue
         });
       } catch (e) {
         console.error(e);
@@ -104,7 +114,7 @@ export default function AdminDashboardRoot() {
           <div>
             <div style={{ color: '#64748b', fontSize: '0.875rem', fontWeight: 500 }}>Revenue Collected</div>
             <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f172a' }}>
-              {isLoading ? '...' : '₹0.00'}
+              {isLoading ? '...' : `₹${stats.totalRevenue.toLocaleString('en-IN')}`}
             </div>
           </div>
         </div>
