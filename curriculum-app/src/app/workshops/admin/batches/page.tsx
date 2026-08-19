@@ -6,6 +6,7 @@ import { createBatchAction, uploadStudentsCSVAction, CSVStudentData, getBatchesA
 import Papa from 'papaparse';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import { generateInstitutionalProgressReport, generateIndividualProgressReport, generateInstitutionalCertificate, generateIndividualCertificate, generateBatchStudentCertificates } from '@/utils/pdfGenerator';
 
 type TabType = 'batches' | 'builder' | 'roster' | 'registrations';
 
@@ -234,65 +235,23 @@ export default function AdminDashboard() {
   };
 
   const handleGenerateReports = async () => {
-    if (selectedStudents.length === 0) return;
+    if (selectedStudents.length === 0 || !selectedBatch) return;
     setIsGeneratingPdfs(true);
-    
     try {
       const studentsToReport = batchStudents.filter(s => selectedStudents.includes(s.id));
-      
-      for (const student of studentsToReport) {
-        const doc = new jsPDF();
-        
-        // Header
-        doc.setFontSize(22);
-        doc.setTextColor(44, 40, 38); // Espresso
-        doc.text('The Career Breweries', 14, 20);
-        
-        doc.setFontSize(14);
-        doc.setTextColor(100);
-        doc.text('Student Progress Report', 14, 30);
-        
-        // Student Info
-        doc.setFontSize(12);
-        doc.setTextColor(0);
-        doc.text(`Name: ${student.name || 'Student'}`, 14, 45);
-        doc.text(`Email: ${student.email}`, 14, 52);
-        doc.text(`Phone: ${student.phone || 'N/A'}`, 14, 59);
-        
-        // Progress Info
-        doc.setFontSize(14);
-        doc.setTextColor(44, 40, 38);
-        doc.text('Current Status', 14, 75);
-        
-        const progress = student.progress || { day: 1, state: 'NOT_STARTED' };
-        
-        autoTable(doc, {
-          startY: 80,
-          head: [['Metric', 'Value']],
-          body: [
-            ['Current Day', `Day ${progress.day}`],
-            ['Current State', progress.state],
-            ['Enrolled On', new Date(student.createdAt).toLocaleDateString()]
-          ],
-          theme: 'grid',
-          headStyles: { fillColor: [44, 40, 38] }
-        });
-        
-        // Save PDF
-        doc.save(`${student.name || 'Student'}_Progress_Report.pdf`);
-        
-        // Small delay so browser handles multiple downloads smoothly
-        await new Promise(r => setTimeout(r, 500));
+      const batch = batches.find(b => b.id === selectedBatch);
+      if (batch) {
+        for (const student of studentsToReport) {
+          await generateIndividualProgressReport(student, batch);
+        }
+        alert('Reports generated successfully!');
       }
-      
-      setSelectedStudents([]);
-      alert('Reports generated successfully!');
     } catch (err) {
       console.error(err);
       alert('Error generating reports');
     }
-    
     setIsGeneratingPdfs(false);
+    setSelectedStudents([]);
   };
 
   const viewBatch = (batchId: string) => {
@@ -452,13 +411,13 @@ export default function AdminDashboard() {
                                 ) : (
                                   <>
                                     <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e2e8f0' }}>
-                                      <button onClick={() => alert('Institution-wise progress report generation coming soon!')} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
+                                      <button onClick={() => generateInstitutionalProgressReport(batch, batchStudents)} disabled={!batchStudents || batchStudents.length === 0} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
                                         <FileSpreadsheet size={14} style={{ marginRight: '0.25rem' }} /> Institution Progress Report
                                       </button>
-                                      <button onClick={() => alert('Institutional certificate generation coming soon!')} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
+                                      <button onClick={() => generateInstitutionalCertificate(batch)} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
                                         <Download size={14} style={{ marginRight: '0.25rem' }} /> Institutional Certificate
                                       </button>
-                                      <button onClick={() => alert('Students certificate generation coming soon!')} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
+                                      <button onClick={() => generateBatchStudentCertificates(batch, batchStudents)} disabled={!batchStudents || batchStudents.length === 0} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
                                         <Download size={14} style={{ marginRight: '0.25rem' }} /> Students' Certificates
                                       </button>
                                     </div>
@@ -603,10 +562,10 @@ export default function AdminDashboard() {
                     <td>
                       {reg.status === 'approved' && (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                          <button onClick={() => alert('Individual progress report coming soon!')} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: 'white', border: '1px solid #cbd5e1', width: 'fit-content' }}>
+                          <button onClick={() => { const b = batches.find(x => x.id === reg.batchId); if (b) generateIndividualProgressReport(reg, b); }} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: 'white', border: '1px solid #cbd5e1', width: 'fit-content' }}>
                             <FileSpreadsheet size={12} style={{ marginRight: '0.25rem' }} /> Progress Report
                           </button>
-                          <button onClick={() => alert('Completion certificate coming soon!')} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: 'white', border: '1px solid #cbd5e1', width: 'fit-content' }}>
+                          <button onClick={() => { const b = batches.find(x => x.id === reg.batchId); if (b) generateIndividualCertificate(reg, b); }} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: 'white', border: '1px solid #cbd5e1', width: 'fit-content' }}>
                             <Download size={12} style={{ marginRight: '0.25rem' }} /> Certificate
                           </button>
                         </div>
