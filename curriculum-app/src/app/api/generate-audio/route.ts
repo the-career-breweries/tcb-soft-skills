@@ -16,7 +16,7 @@ export async function POST(request: Request) {
     }
 
     // Call ElevenLabs API
-    const response = await fetch(https://api.elevenlabs.io/v1/text-to-speech/ + voiceId, {
+    const response = await fetch("https://api.elevenlabs.io/v1/text-to-speech/" + voiceId, {
       method: 'POST',
       headers: {
         'Accept': 'audio/mpeg',
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
 
     if (!response.ok) {
       const errorText = await response.text();
-      throw new Error(ElevenLabs API error:  + errorText);
+      throw new Error("ElevenLabs API error: " + errorText);
     }
 
     const arrayBuffer = await response.arrayBuffer();

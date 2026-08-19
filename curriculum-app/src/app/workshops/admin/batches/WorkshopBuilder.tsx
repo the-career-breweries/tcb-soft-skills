@@ -29,14 +29,14 @@ export default function WorkshopBuilder({ batch }: { batch: any }) {
       setConfig(batch.curriculum[day.toString()]);
     } else {
       setConfig({
-        videoTitle: Day  + day +  Briefing,
-        videoDescription: Welcome to Day  + day + .,
+        videoTitle: "Day " + day + " Briefing",
+        videoDescription: "Welcome to Day " + day + ".",
         videoUrl: '',
         audioUrl: '',
-        blockATitle: Block A,
-        blockADescription: Task description...,
-        blockBTitle: Block B,
-        blockBDescription: Task description...,
+        blockATitle: "Block A",
+        blockADescription: "Task description...",
+        blockBTitle: "Block B",
+        blockBDescription: "Task description...",
       });
     }
   }, [batch, day]);
@@ -61,8 +61,8 @@ export default function WorkshopBuilder({ batch }: { batch: any }) {
       if (!data.success) throw new Error(data.error);
 
       // Upload to Firebase Storage
-      const storageRef = ref(storage, udio/ + batch.id + /day_ + day + _ + Date.now() + .mp3);
-      await uploadString(storageRef, data:audio/mpeg;base64, + data.base64Audio, 'data_url');
+      const storageRef = ref(storage, "audio/" + batch.id + "/day_" + day + "_" + Date.now() + ".mp3");
+      await uploadString(storageRef, "data:audio/mpeg;base64," + data.base64Audio, 'data_url');
       const url = await getDownloadURL(storageRef);
       
       setConfig({ ...config, audioUrl: url, videoUrl: '' });
