@@ -44,6 +44,7 @@ export default function AdminDashboard() {
   const [emailSubject, setEmailSubject] = useState('Your Workshop Credentials');
   const [emailTemplate, setEmailTemplate] = useState('');
   const [isSendingEmails, setIsSendingEmails] = useState(false);
+  const [sendingCertTo, setSendingCertTo] = useState<string | null>(null);
 
   useEffect(() => {
     fetchBatches();
@@ -567,6 +568,25 @@ export default function AdminDashboard() {
                           </button>
                           <button onClick={() => { const b = batches.find(x => x.id === reg.batchId) || batches.find(x => x.name === `Master: ${reg.workshopDays}-Days Workshop`) || batches.find(x => x.name === `Master: ${reg.workshopDays}-Day Workshop`); if (b) generateIndividualCertificate(reg, b); else alert('Could not locate the Master batch for this student.'); }} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: 'white', border: '1px solid #cbd5e1', width: 'fit-content' }}>
                             <Download size={12} style={{ marginRight: '0.25rem' }} /> Certificate
+                          </button>
+                          <button onClick={async () => {
+                            const b = batches.find(x => x.id === reg.batchId) || batches.find(x => x.name === `Master: ${reg.workshopDays}-Days Workshop`) || batches.find(x => x.name === `Master: ${reg.workshopDays}-Day Workshop`);
+                            if (!b) { alert('Could not locate the Master batch for this student.'); return; }
+                            setSendingCertTo(reg.id);
+                            try {
+                              const { generateIndividualCertificateBase64 } = await import('@/utils/pdfGenerator');
+                              const base64Pdf = await generateIndividualCertificateBase64(reg, b);
+                              const res = await fetch('/api/email-certificate', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ email: reg.email, studentName: reg.name, base64Pdf, fileName: `${reg.name}_TCB_Certificate.pdf` })
+                              });
+                              const data = await res.json();
+                              if (data.success) alert('Certificate emailed successfully!');
+                              else alert('Failed to email: ' + data.error);
+                            } catch(err: any) { alert('Error: ' + err.message); } finally { setSendingCertTo(null); }
+                          }} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: '#e0f2fe', color: '#0284c7', border: '1px solid #bae6fd', width: 'fit-content' }}>
+                            {sendingCertTo === reg.id ? <Loader2 size={12} className="animate-spin" style={{ marginRight: '0.25rem' }} /> : <Mail size={12} style={{ marginRight: '0.25rem' }} />} Email Cert
                           </button>
                         </div>
                       )}

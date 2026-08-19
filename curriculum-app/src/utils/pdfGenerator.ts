@@ -306,6 +306,21 @@ export async function generateIndividualCertificate(student: any, batch: any) {
 }
 
 // ---------------------------------------------------------
+
+export async function generateIndividualCertificateBase64(student: any, batch: any): Promise<string> {
+  const doc = new jsPDF('l', 'pt', 'a4');
+  let logoBase64 = null;
+  let sigBase64 = null;
+  try { 
+    logoBase64 = await getBase64ImageFromUrl('/tcb-logo.png'); 
+    sigBase64 = await getBase64ImageFromUrl('/signature.jpg');
+  } catch (e) { console.error(e); }
+
+  await renderStudentCertificatePage(doc, student, batch, logoBase64, sigBase64);
+  
+  return doc.output('datauristring').split(',')[1];
+}
+
 // 5. Bulk Batch Student Certificates
 // ---------------------------------------------------------
 export async function generateBatchStudentCertificates(batch: any, students: any[]) {
