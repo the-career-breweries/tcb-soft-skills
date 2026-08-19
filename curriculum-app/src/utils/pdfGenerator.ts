@@ -170,7 +170,11 @@ export async function generateInstitutionalCertificate(batch: any) {
   const width = doc.internal.pageSize.getWidth();
   
   let logoBase64 = null;
-  try { logoBase64 = await getBase64ImageFromUrl('/tcb-logo.png'); } catch (e) { console.error(e); }
+  let sigBase64 = null;
+  try { 
+    logoBase64 = await getBase64ImageFromUrl('/tcb-logo.png'); 
+    sigBase64 = await getBase64ImageFromUrl('/signature.jpg');
+  } catch (e) { console.error(e); }
 
   await drawCertificateLayout(doc, "CERTIFICATE OF APPRECIATION", logoBase64, true);
 
@@ -202,6 +206,9 @@ export async function generateInstitutionalCertificate(batch: any) {
   doc.setLineWidth(1);
   
   // Left Signature
+  if (sigBase64) {
+    doc.addImage(sigBase64, 'JPEG', 180, 435, 90, 45);
+  }
   doc.line(150, 480, 300, 480);
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
@@ -225,7 +232,7 @@ export async function generateInstitutionalCertificate(batch: any) {
 // ---------------------------------------------------------
 // 4. Individual Certificate (Single)
 // ---------------------------------------------------------
-async function renderStudentCertificatePage(doc: jsPDF, student: any, batch: any, logoBase64: string | null) {
+async function renderStudentCertificatePage(doc: jsPDF, student: any, batch: any, logoBase64: string | null, sigBase64: string | null = null) {
   const width = doc.internal.pageSize.getWidth();
   
   await drawCertificateLayout(doc, "CERTIFICATE OF COMPLETION", logoBase64, false);
@@ -269,6 +276,9 @@ async function renderStudentCertificatePage(doc: jsPDF, student: any, batch: any
   doc.setLineWidth(1);
   
   // Center Signature
+  if (sigBase64) {
+    doc.addImage(sigBase64, 'JPEG', width / 2 - 45, 445, 90, 45);
+  }
   doc.line(width / 2 - 75, 490, width / 2 + 75, 490);
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
@@ -281,7 +291,11 @@ async function renderStudentCertificatePage(doc: jsPDF, student: any, batch: any
 export async function generateIndividualCertificate(student: any, batch: any) {
   const doc = new jsPDF('l', 'pt', 'a4');
   let logoBase64 = null;
-  try { logoBase64 = await getBase64ImageFromUrl('/tcb-logo.png'); } catch (e) { console.error(e); }
+  let sigBase64 = null;
+  try { 
+    logoBase64 = await getBase64ImageFromUrl('/tcb-logo.png'); 
+    sigBase64 = await getBase64ImageFromUrl('/signature.jpg');
+  } catch (e) { console.error(e); }
 
   await renderStudentCertificatePage(doc, student, batch, logoBase64);
   
@@ -301,7 +315,11 @@ export async function generateBatchStudentCertificates(batch: any, students: any
 
   const doc = new jsPDF('l', 'pt', 'a4');
   let logoBase64 = null;
-  try { logoBase64 = await getBase64ImageFromUrl('/tcb-logo.png'); } catch (e) { console.error(e); }
+  let sigBase64 = null;
+  try { 
+    logoBase64 = await getBase64ImageFromUrl('/tcb-logo.png'); 
+    sigBase64 = await getBase64ImageFromUrl('/signature.jpg');
+  } catch (e) { console.error(e); }
 
   for (let i = 0; i < completedStudents.length; i++) {
     if (i > 0) doc.addPage();
