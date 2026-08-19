@@ -45,6 +45,7 @@ export default function AdminDashboard() {
   const [emailTemplate, setEmailTemplate] = useState('');
   const [isSendingEmails, setIsSendingEmails] = useState(false);
   const [sendingCertTo, setSendingCertTo] = useState<string | null>(null);
+  const [bulkEmailProgress, setBulkEmailProgress] = useState<{ batchId: string, current: number, total: number } | null>(null);
 
   useEffect(() => {
     fetchBatches();
@@ -420,6 +421,52 @@ export default function AdminDashboard() {
                                       </button>
                                       <button onClick={() => generateBatchStudentCertificates(batch, expandedStudents)} disabled={!expandedStudents || expandedStudents.length === 0} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
                                         <Download size={14} style={{ marginRight: '0.25rem' }} /> Students' Certificates
+                                      </button>
+                                      <button 
+                                        onClick={async () => {
+                                          const completedStudents = expandedStudents.filter(s => s.status === 'APPROVED' && s.progress === 100);
+                                          if (completedStudents.length === 0) {
+                                            alert("No students have completed the workshop yet (100% progress required).");
+                                            return;
+                                          }
+                                          if (!confirm(`Are you sure you want to send certificates to ${completedStudents.length} completed student(s)?`)) return;
+                                          
+                                          setBulkEmailProgress({ batchId: batch.id, current: 0, total: completedStudents.length });
+                                          let successCount = 0;
+                                          
+                                          try {
+                                            const { generateIndividualCertificateBase64 } = await import('@/utils/pdfGenerator');
+                                            
+                                            for (let i = 0; i < completedStudents.length; i++) {
+                                              const student = completedStudents[i];
+                                              setBulkEmailProgress({ batchId: batch.id, current: i + 1, total: completedStudents.length });
+                                              
+                                              const base64Pdf = await generateIndividualCertificateBase64(student, batch);
+                                              
+                                              const res = await fetch('/api/email-certificate', {
+                                                method: 'POST',
+                                                headers: { 'Content-Type': 'application/json' },
+                                                body: JSON.stringify({ email: student.email, studentName: student.name, base64Pdf, fileName: `${student.name}_TCB_Certificate.pdf` })
+                                              });
+                                              const data = await res.json();
+                                              if (data.success) successCount++;
+                                            }
+                                            alert(`Successfully emailed ${successCount} out of ${completedStudents.length} certificates.`);
+                                          } catch (err: any) {
+                                            alert("Error during bulk email: " + err.message);
+                                          } finally {
+                                            setBulkEmailProgress(null);
+                                          }
+                                        }} 
+                                        disabled={!expandedStudents || expandedStudents.length === 0 || bulkEmailProgress?.batchId === batch.id} 
+                                        className="admin-btn" 
+                                        style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: '#e0f2fe', color: '#0284c7', border: '1px solid #bae6fd' }}
+                                      >
+                                        {bulkEmailProgress?.batchId === batch.id ? (
+                                          <><Loader2 size={14} className="animate-spin" style={{ marginRight: '0.25rem' }} /> Sending {bulkEmailProgress.current}/{bulkEmailProgress.total}</>
+                                        ) : (
+                                          <><Mail size={14} style={{ marginRight: '0.25rem' }} /> Bulk Email Certs</>
+                                        )}
                                       </button>
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0', maxHeight: '300px', overflowY: 'auto' }}>
