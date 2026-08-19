@@ -3,18 +3,28 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useParams, useRouter } from 'next/navigation';
-import { Loader2, PlayCircle, Clock, UploadCloud, CheckCircle2 } from 'lucide-react';
+import { Loader2, PlayCircle, Clock, UploadCloud, CheckCircle2, FileText, X } from 'lucide-react';
 import { getStudentProgress, updateStudentProgress, WorkState } from '@/lib/firebase/studentOps';
+import { storage, db } from '@/lib/firebase/config';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { doc, updateDoc } from 'firebase/firestore';
 import '../../../../workshops.css';
 
 export default function WorkshopDayView() {
   const { user, loading } = useAuth();
   const router = useRouter();
   const params = useParams();
+  const dayId = params.dayId as string;
   
-  const [currentState, setCurrentState] = useState<WorkState>('MORNING_VIDEO');
+  const [currentState, setCurrentState] = useState<WorkState | 'COMPLETED'>('MORNING_VIDEO');
   const [breakTimeRemaining, setBreakTimeRemaining] = useState(1800); 
   const [isInitializing, setIsInitializing] = useState(true);
+
+  // Upload State
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState('');
+  const [uploadSuccess, setUploadSuccess] = useState(false);
   
   useEffect(() => {
     if (!loading && !user) {
@@ -67,6 +77,55 @@ export default function WorkshopDayView() {
     }
     return () => clearInterval(interval);
   }, [currentState, breakTimeRemaining]);
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUploadError('');
+    setUploadSuccess(false);
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      if (file.size > 5 * 1024 * 1024) {
+        setUploadError("File exceeds 5MB limit.");
+        return;
+      }
+      setSelectedFile(file);
+    }
+  };
+
+  const submitWork = async () => {
+    if (!selectedFile || !user) {
+      setUploadError("Please select a file to upload.");
+      return;
+    }
+    setIsUploading(true);
+    setUploadError('');
+    try {
+      // Create a reference in Firebase Storage
+      // students/{uid}/submissions/{dayId}/{filename}
+      const fileRef = ref(storage, `students/${user.uid}/submissions/day_${dayId}/${selectedFile.name}`);
+      await uploadBytes(fileRef, selectedFile);
+      const downloadURL = await getDownloadURL(fileRef);
+
+      // Save submission metadata to student document
+      await updateDoc(doc(db, 'students', user.uid), {
+        [`submissions.day_${dayId}`]: {
+          url: downloadURL,
+          filename: selectedFile.name,
+          submittedAt: new Date().toISOString()
+        }
+      });
+
+      // Update state to COMPLETED
+      await handleStateChange('COMPLETED');
+      setUploadSuccess(true);
+      setSelectedFile(null);
+    } catch (err: any) {
+      console.error("Upload error:", err);
+      setUploadError(err.message || "Failed to upload file.");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
 
   if (loading || !user || isInitializing) return (
     <div className="wk-container wk-center-layout"><Loader2 size={32} className="animate-spin text-blue-600"/></div>
@@ -202,24 +261,63 @@ export default function WorkshopDayView() {
              <h2 className="wk-title" style={{ textAlign: 'left' }}>Submit Your Work</h2>
              <p className="wk-subtitle" style={{ textAlign: 'left' }}>Upload your finalized Master Resume (PDF) to complete Day 1.</p>
              
-             <div className="wk-upload-box">
-                <input type="file" style={{ display: 'none' }} id="file-upload" accept=".pdf" />
+             <div className="wk-upload-box" style={{ 
+                border: '2px dashed var(--wk-border)', 
+                borderRadius: '0.75rem', 
+                padding: '2rem', 
+                textAlign: 'center',
+                backgroundColor: 'var(--wk-bg-secondary)',
+                marginBottom: '1rem'
+             }}>
+                <input type="file" style={{ display: 'none' }} id="file-upload" accept=".pdf" onChange={handleFileSelect} />
                 <label htmlFor="file-upload" style={{ cursor: 'pointer' }}>
-                  <span style={{ padding: '0.5rem 1rem', border: '1px solid var(--wk-border)', borderRadius: '0.5rem', fontSize: '0.875rem', fontWeight: 500 }}>
+                  <span style={{ padding: '0.5rem 1rem', border: '1px solid var(--wk-border)', borderRadius: '0.5rem', fontSize: '0.875rem', fontWeight: 500, backgroundColor: 'white' }}>
                     Choose File
                   </span>
                 </label>
-                <p style={{ fontSize: '0.75rem', color: 'var(--wk-text-secondary)', marginTop: '0.5rem' }}>PDF files only (Max 5MB)</p>
+                <p style={{ fontSize: '0.75rem', color: 'var(--wk-text-secondary)', marginTop: '1rem' }}>PDF files only (Max 5MB)</p>
+                
+                {selectedFile && (
+                  <div style={{ marginTop: '1rem', padding: '0.75rem', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: '#166534', fontSize: '0.875rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <FileText size={16} />
+                      <span style={{ fontWeight: 500 }}>{selectedFile.name}</span>
+                    </div>
+                    <button onClick={() => setSelectedFile(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#166534' }}>
+                      <X size={16} />
+                    </button>
+                  </div>
+                )}
              </div>
 
+             {uploadError && <p style={{ color: '#ef4444', fontSize: '0.875rem', marginBottom: '1rem' }}>{uploadError}</p>}
+
              <button 
-                onClick={() => alert("Submission Complete! You have finished Day 1.")}
+                onClick={submitWork}
+                disabled={isUploading || !selectedFile}
                 className="wk-btn-primary"
-                style={{ backgroundColor: '#16a34a' }}
+                style={{ backgroundColor: (isUploading || !selectedFile) ? '#94a3b8' : '#16a34a' }}
               >
-                <CheckCircle2 size={20} /> Submit & Complete Day
+                {isUploading ? <Loader2 size={20} className="animate-spin" /> : <CheckCircle2 size={20} />}
+                {isUploading ? 'Uploading & Submitting...' : 'Submit & Complete Day'}
               </button>
             </div>
+          </div>
+        )}
+
+        {/* State 6: Completed */}
+        {currentState === 'COMPLETED' && (
+          <div className="wk-block-card" style={{ textAlign: 'center', padding: '3rem 1.5rem' }}>
+            <div className="wk-header-icon" style={{ margin: '0 auto 1.5rem auto', backgroundColor: '#f0fdf4', color: '#16a34a' }}>
+              <CheckCircle2 size={48} />
+            </div>
+            <h2 className="wk-title" style={{ fontSize: '1.5rem' }}>Day Completed!</h2>
+            <p className="wk-subtitle" style={{ maxWidth: '400px', margin: '0 auto' }}>
+              You have successfully submitted your work and finished today's workshop module. Great job!
+            </p>
+            <button onClick={() => router.push('/workshops/student')} className="wk-btn-primary" style={{ marginTop: '2rem' }}>
+              Return to Dashboard
+            </button>
           </div>
         )}
 

@@ -1,7 +1,7 @@
 import { db } from './config';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
-export type WorkState = 'MORNING_VIDEO' | 'DEEP_WORK_1' | 'BREAK' | 'DEEP_WORK_2' | 'RECAP_VIDEO' | 'SUBMISSION';
+export type WorkState = 'NOT_STARTED' | 'MORNING_VIDEO' | 'DEEP_WORK_1' | 'BREAK' | 'DEEP_WORK_2' | 'RECAP_VIDEO' | 'SUBMISSION' | 'COMPLETED';
 
 export interface StudentProgress {
   day: number;
