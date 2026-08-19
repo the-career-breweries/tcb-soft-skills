@@ -246,23 +246,14 @@ async function renderStudentCertificatePage(doc: jsPDF, student: any, batch: any
   doc.setFont("helvetica", "bold");
   doc.setFontSize(36);
   doc.setTextColor(BRAND_COLOR[0], BRAND_COLOR[1], BRAND_COLOR[2]);
-  doc.text(student.name.toUpperCase(), width / 2, 250, { align: 'center' });
-
-  // Sub text
-  const institutionName = batch.name.startsWith('Master:') ? '' : batch.name.replace(/\s*\(\d+-Days?\)/i, '').trim();
-  if (institutionName) {
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(14);
-    doc.setTextColor(80, 80, 80);
-    doc.text(`from ${institutionName}`, width / 2, 280, { align: 'center' });
-  }
+  doc.text(student.name.toUpperCase(), width / 2, 260, { align: 'center' });
 
   // Body
   doc.setFont("helvetica", "normal");
   doc.setTextColor(50, 50, 50);
   doc.setFontSize(16);
   const text = `has successfully completed the rigorous ${batch.workshopDays}-Days Soft Skills & Employability Workshop\ncovering Resume Building, LinkedIn Optimization, and Interview Readiness.`;
-  doc.text(text, width / 2, 340, { align: 'center', lineHeightFactor: 1.5 });
+  doc.text(text, width / 2, 330, { align: 'center', lineHeightFactor: 1.5 });
 
   // Date and ID
   doc.setFontSize(12);
