@@ -145,23 +145,69 @@ export default function WorkshopsDashboard() {
 
       <main className="wk-dashboard-main">
         {studentData && batchData ? (
-          <div className="wk-cohort-card">
-            <div>
-              <span className="wk-badge">Active Cohort</span>
-              <h2 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0 0 0.25rem 0' }}>{batchData.name || 'Bootcamp'}</h2>
-              <p style={{ color: 'var(--wk-text-secondary)', margin: 0 }}>Batch ID: {batchData.id}</p>
-              
-              <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', fontWeight: 500 }}>
-                <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--wk-accent)' }}></div>
-                Current Day: {studentData.progress?.day || 1}
+          <>
+            <div className="wk-cohort-card" style={{ marginBottom: '2rem' }}>
+              <div>
+                <span className="wk-badge">Active Cohort</span>
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 700, margin: '0 0 0.25rem 0' }}>{batchData.name || 'Bootcamp'}</h2>
+                <p style={{ color: 'var(--wk-text-secondary)', margin: 0 }}>Batch ID: {batchData.id}</p>
+                
+                <div style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', fontWeight: 500 }}>
+                  <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--wk-accent)' }}></div>
+                  Current Progress: Day {studentData.progress?.day || 1}
+                </div>
               </div>
+              
+              <a href={`/workshops/student/${batchData.id}/day/${studentData.progress?.day || 1}`} className="wk-btn-primary" style={{ textDecoration: 'none', width: 'auto' }}>
+                <PlayCircle size={20} />
+                Continue Workshop
+              </a>
             </div>
-            
-            <a href={`/workshops/student/${batchData.id}/day/${studentData.progress?.day || 1}`} className="wk-btn-primary" style={{ textDecoration: 'none', width: 'auto' }}>
-              <PlayCircle size={20} />
-              Continue Workshop
-            </a>
-          </div>
+
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1rem' }}>Curriculum Overview</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1rem' }}>
+              {Array.from({ length: batchData.name?.includes('5') ? 5 : 3 }).map((_, i) => {
+                const dayNum = i + 1;
+                const isLocked = dayNum > (studentData.progress?.day || 1);
+                const isCompleted = dayNum < (studentData.progress?.day || 1);
+                const dayConfig = batchData.curriculum?.[dayNum.toString()] || {
+                  videoTitle: `Day ${dayNum} Curriculum Placeholder`,
+                  videoDescription: `Topics and assignments for Day ${dayNum} will be unlocked here.`
+                };
+
+                return (
+                  <div key={dayNum} style={{ 
+                    border: '1px solid var(--wk-border)', 
+                    borderRadius: '0.75rem', 
+                    padding: '1.5rem', 
+                    backgroundColor: isLocked ? '#f8fafc' : 'white',
+                    opacity: isLocked ? 0.7 : 1
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                      <span style={{ fontWeight: 700, color: 'var(--wk-accent)' }}>Day {dayNum}</span>
+                      {isCompleted ? (
+                        <span style={{ fontSize: '0.75rem', backgroundColor: '#dcfce7', color: '#166534', padding: '0.25rem 0.5rem', borderRadius: '1rem', fontWeight: 600 }}>Completed</span>
+                      ) : isLocked ? (
+                        <Lock size={16} style={{ color: '#94a3b8' }} />
+                      ) : (
+                        <span style={{ fontSize: '0.75rem', backgroundColor: '#fef3c7', color: '#b45309', padding: '0.25rem 0.5rem', borderRadius: '1rem', fontWeight: 600 }}>In Progress</span>
+                      )}
+                    </div>
+                    <h4 style={{ margin: '0 0 0.5rem 0', fontSize: '1rem' }}>{dayConfig.videoTitle}</h4>
+                    <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--wk-text-secondary)', lineHeight: '1.5' }}>
+                      {dayConfig.videoDescription}
+                    </p>
+                    
+                    {!isLocked && (
+                      <a href={`/workshops/student/${batchData.id}/day/${dayNum}`} className="wk-btn-primary" style={{ textDecoration: 'none', width: '100%', marginTop: '1.5rem', padding: '0.5rem', fontSize: '0.875rem', justifyContent: 'center' }}>
+                        {isCompleted ? 'Review Material' : 'Start Day'}
+                      </a>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </>
         ) : (
           <div className="wk-cohort-card">
             <p>No active workshop batch found for your account.</p>
