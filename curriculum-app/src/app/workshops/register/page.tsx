@@ -51,8 +51,7 @@ export default function RegisterPage() {
     name: '',
     email: '',
     phone: '',
-    workshopDays: '',
-    utr: ''
+    workshopDays: ''
   });
   
   const [isLocked, setIsLocked] = useState(false);
@@ -99,52 +98,124 @@ export default function RegisterPage() {
     setIsLocked(true);
   };
 
-  const handlePaymentComplete = async () => {
-    setIsSubmitting(true);
-    try {
-      const registrationsRef = collection(db, 'registrations');
-      const docRef = await addDoc(registrationsRef, {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        workshopDays: parseInt(formData.workshopDays, 10),
-        utr: formData.utr,
-        status: 'pending_verification',
-        createdAt: serverTimestamp()
-      });
 
-      // Push to Google Sheets Pipeline
-      try {
-        const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
-        if (gasUrl) {
-          await fetch(gasUrl, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-              'Content-Type': 'text/plain;charset=utf-8',
-            },
-            body: JSON.stringify({
-              id: docRef.id,
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const handleRazorpayCheckout = async () => {
+    setIsSubmitting(true);
+    const res = await loadRazorpayScript();
+    if (!res) {
+      alert('Razorpay SDK failed to load. Are you online?');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // 1. Create order
+      const orderData = await fetch('/api/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: selectedWorkshop?.price || 0 })
+      }).then(t => t.json());
+
+      if (!orderData.success) throw new Error(orderData.error);
+
+      // 2. Open Razorpay
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Use the public key
+        amount: orderData.order.amount,
+        currency: orderData.order.currency,
+        name: "The Career Breweries",
+        description: selectedWorkshop?.title,
+        order_id: orderData.order.id,
+        handler: async function (response: any) {
+          try {
+            // 3. Verify Payment
+            const verifyRes = await fetch('/api/verify-payment', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature
+              })
+            }).then(t => t.json());
+
+            if (!verifyRes.success) throw new Error("Payment verification failed.");
+
+            // 4. Create Registration
+            const registrationsRef = collection(db, 'registrations');
+            const docRef = await addDoc(registrationsRef, {
               name: formData.name,
               email: formData.email,
               phone: formData.phone,
-              workshopDays: formData.workshopDays,
-              utr: formData.utr,
-              status: 'pending_verification'
-            })
-          });
-        }
-      } catch (err) {
-        console.error("Failed to push to Google Sheets pipeline:", err);
-        // We don't block the user if Sheets fail, as long as it hit Firestore.
-      }
+              workshopDays: parseInt(formData.workshopDays, 10),
+              status: 'approved', // Auto-approved via Razorpay!
+              paymentId: response.razorpay_payment_id,
+              createdAt: serverTimestamp()
+            });
 
-      setIsSuccess(true);
-    } catch (error) {
-      console.error("Error submitting registration:", error);
-      alert("There was an error processing your registration. Please try again.");
+            // 5. Trigger Backend Server Action to provision credentials and email
+            const { approveRegistrationAction } = await import('@/app/actions/adminOps');
+            await approveRegistrationAction(docRef.id);
+            
+            // Push to Google Sheets Pipeline
+            try {
+              const gasUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEET_URL;
+              if (gasUrl) {
+                await fetch(gasUrl, {
+                  method: 'POST',
+                  mode: 'no-cors',
+                  headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                  body: JSON.stringify({
+                    id: docRef.id,
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    workshopDays: formData.workshopDays,
+                    utr: response.razorpay_payment_id, // Save payment ID in UTR col
+                    status: 'approved'
+                  })
+                });
+              }
+            } catch (err) {}
+
+            setIsSuccess(true);
+          } catch(err: any) {
+            alert('Error processing registration: ' + err.message);
+          }
+          setIsSubmitting(false);
+        },
+        prefill: {
+          name: formData.name,
+          email: formData.email,
+          contact: formData.phone,
+        },
+        theme: {
+          color: "#4A3B32"
+        }
+      };
+
+      const paymentObject = new (window as any).Razorpay(options);
+      paymentObject.open();
+
+      paymentObject.on('payment.failed', function (response: any) {
+        alert('Payment failed: ' + response.error.description);
+        setIsSubmitting(false);
+      });
+
+    } catch(err: any) {
+      alert('Error initiating payment: ' + err.message);
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   if (isSuccess) {
@@ -382,7 +453,6 @@ export default function RegisterPage() {
             </div>
           )}
 
-          {/* Payment Section (Revealed upon locking) */}
           {isLocked && (
             <div className="payment-section">
               <h2 className="card-title">
@@ -390,18 +460,11 @@ export default function RegisterPage() {
                 Complete Payment
               </h2>
               <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: '1.5', fontSize: '0.9rem' }}>
-                Scan the QR code below using any UPI app (GPay, PhonePe, Paytm) to complete your registration.
+                You are about to register for the <strong>{selectedWorkshop?.title}</strong>. 
+                Click below to pay securely via Razorpay (UPI, Credit/Debit Card, NetBanking).
               </p>
               
-              <div className="qr-container">
-                <div className="qr-placeholder" style={{ opacity: 1, mixBlendMode: 'normal' }}>
-                  <img 
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(`upi://pay?pa=9743711584@ybl&pn=The Career Breweries&am=${selectedWorkshop?.price}&cu=INR`)}`} 
-                    alt="UPI QR Code" 
-                    style={{ opacity: 1, mixBlendMode: 'normal' }}
-                  />
-                </div>
-                
+              <div className="qr-container" style={{ padding: '2rem' }}>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ color: 'var(--text-muted)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: '600', marginBottom: '0.5rem' }}>Amount to Pay</div>
                   <div style={{ fontSize: '2.5rem', fontFamily: "'Playfair Display', serif", color: 'var(--text-espresso)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.25rem' }}>
@@ -410,30 +473,15 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              <div className="form-group" style={{ marginBottom: '2rem' }}>
-                <label className="form-label" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span>Transaction Reference No. (UTR)</span>
-                  <span style={{ color: 'var(--accent-copper)' }}>*Required</span>
-                </label>
-                <input 
-                  type="text" 
-                  name="utr"
-                  required
-                  value={formData.utr}
-                  onChange={handleInputChange}
-                  className="form-input"
-                  placeholder="Enter 12-digit UTR from your UPI app"
-                />
-              </div>
-
-              <div>
+              <div style={{ marginTop: '2rem' }}>
                 <button 
-                  onClick={handlePaymentComplete}
-                  disabled={isSubmitting || formData.utr.length < 5}
+                  onClick={handleRazorpayCheckout}
+                  disabled={isSubmitting}
                   className="btn-primary"
+                  style={{ backgroundColor: '#2b6cb0', borderColor: '#2b6cb0' }}
                 >
                   {isSubmitting ? <Loader2 size={18} className="animate-spin" /> : <CheckCircle2 size={18} />}
-                  {isSubmitting ? 'Submitting...' : 'Submit Registration'}
+                  {isSubmitting ? 'Processing...' : 'Pay & Register Securely'}
                 </button>
                 <button 
                   onClick={() => setIsLocked(false)}
