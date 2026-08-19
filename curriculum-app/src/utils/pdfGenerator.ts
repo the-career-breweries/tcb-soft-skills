@@ -132,9 +132,13 @@ async function drawCertificateLayout(doc: jsPDF, title: string, logoBase64: stri
 
 
 
-  // Logo (Left for TCB, Right for Institution placeholder if institutional)
+  // Logo (Left for TCB if institutional, Center if individual)
   if (logoBase64) {
-    doc.addImage(logoBase64, 'PNG', 40, 40, 80, 80);
+    if (isInstitutional) {
+      doc.addImage(logoBase64, 'PNG', 40, 40, 80, 80);
+    } else {
+      doc.addImage(logoBase64, 'PNG', (width / 2) - 40, 40, 80, 80);
+    }
   }
 
   if (isInstitutional) {
