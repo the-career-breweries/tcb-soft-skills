@@ -143,6 +143,7 @@ export default function WorkshopDayView() {
 
   const dayConfig = batchData?.curriculum?.[dayId] || {
     videoUrl: '',
+    audioUrl: '',
     videoTitle: `Morning Kickoff Video (Placeholder)`,
     videoDescription: `Watch this 15-minute briefing to understand today's objectives before unlocking your deep work materials.`,
     blockATitle: `Block A: Master Resume Drafting`,
@@ -185,8 +186,13 @@ export default function WorkshopDayView() {
         {/* State 1: Morning Video */}
         {currentState === 'MORNING_VIDEO' && (
           <div className="wk-block-card">
-            <div className="wk-video-placeholder">
-              {dayConfig.videoUrl ? (
+            <div className="wk-video-placeholder" style={{ backgroundColor: dayConfig.audioUrl ? '#f8fafc' : undefined }}>
+              {dayConfig.audioUrl ? (
+                <div style={{ width: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+                  <p style={{ fontWeight: 600, color: '#1e293b', marginBottom: '1rem', fontSize: '1.125rem' }}>AI Audio Briefing</p>
+                  <audio controls src={dayConfig.audioUrl} style={{ width: '100%', maxWidth: '400px' }} />
+                </div>
+              ) : dayConfig.videoUrl ? (
                 <iframe 
                   width="100%" 
                   height="100%" 

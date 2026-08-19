@@ -6,6 +6,7 @@ import { createBatchAction, uploadStudentsCSVAction, CSVStudentData, getBatchesA
 import Papa from 'papaparse';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
+import WorkshopBuilder from './WorkshopBuilder';
 import { generateInstitutionalProgressReport, generateIndividualProgressReport, generateInstitutionalCertificate, generateIndividualCertificate, generateBatchStudentCertificates } from '@/utils/pdfGenerator';
 
 type TabType = 'batches' | 'builder' | 'roster' | 'registrations';
@@ -648,51 +649,7 @@ export default function AdminDashboard() {
 
       {/* View: Workshop Builder */}
       {activeTab === 'builder' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
-          
-          <div className="admin-card">
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1.5rem' }}>Day 1 Configuration</h2>
-            
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              
-              {/* Builder Block */}
-              <div style={{ border: '1px solid #e2e8f0', borderRadius: '0.5rem', padding: '1.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                  <div style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <PlayCircle size={18} style={{ color: '#3b82f6' }} />
-                    Module 1: Morning Briefing Video
-                  </div>
-                  <span className="admin-badge badge-blue">Video Block</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>YouTube Unlisted URL</label>
-                  <input type="text" defaultValue="https://youtu.be/placeholder_id_1" style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
-                </div>
-              </div>
-
-              {/* Builder Block */}
-              <div style={{ border: '1px solid #e2e8f0', borderRadius: '0.5rem', padding: '1.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-                  <div style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <Settings2 size={18} style={{ color: '#8b5cf6' }} />
-                    Module 2: Deep Work A
-                  </div>
-                  <span className="admin-badge" style={{ backgroundColor: '#ede9fe', color: '#8b5cf6' }}>Activity Block</span>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                  <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>Activity Description</label>
-                  <textarea rows={3} defaultValue="Spend the next 2 hours drafting your master resume..." style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
-                  
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.5rem' }}>
-                    <input type="checkbox" id="ai-tool" defaultChecked />
-                    <label htmlFor="ai-tool" style={{ fontSize: '0.875rem' }}>Enable AI Resume Builder Token</label>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        <WorkshopBuilder batch={batches.find(b => b.id === selectedBatch)} />
       )}
 
       {/* View: Student Roster & Submissions */}

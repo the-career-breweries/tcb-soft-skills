@@ -446,3 +446,17 @@ export async function approveRegistrationAction(registrationId: string, skipShee
   }
 }
 
+
+export async function updateBatchCurriculumAction(batchId: string, day: number, dayConfig: any) {
+  try {
+    const batchRef = adminDb.collection('batches').doc(batchId);
+    await batchRef.set({
+      curriculum: {
+        [day.toString()]: dayConfig
+      }
+    }, { merge: true });
+    return { success: true };
+  } catch (err: any) {
+    return { success: false, error: err.message };
+  }
+}
