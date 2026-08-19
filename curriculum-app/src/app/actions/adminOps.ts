@@ -382,6 +382,7 @@ export async function approveRegistrationAction(registrationId: string, skipShee
     // 5. Update Registration Status
     await regRef.update({
       status: 'approved',
+      batchId: batchId,
       updatedAt: new Date().toISOString()
     });
 

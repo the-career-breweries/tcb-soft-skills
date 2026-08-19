@@ -411,13 +411,13 @@ export default function AdminDashboard() {
                                 ) : (
                                   <>
                                     <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', paddingBottom: '1rem', borderBottom: '1px solid #e2e8f0' }}>
-                                      <button onClick={() => generateInstitutionalProgressReport(batch, batchStudents)} disabled={!batchStudents || batchStudents.length === 0} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
+                                      <button onClick={() => generateInstitutionalProgressReport(batch, expandedStudents)} disabled={!expandedStudents || expandedStudents.length === 0} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
                                         <FileSpreadsheet size={14} style={{ marginRight: '0.25rem' }} /> Institution Progress Report
                                       </button>
                                       <button onClick={() => generateInstitutionalCertificate(batch)} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
                                         <Download size={14} style={{ marginRight: '0.25rem' }} /> Institutional Certificate
                                       </button>
-                                      <button onClick={() => generateBatchStudentCertificates(batch, batchStudents)} disabled={!batchStudents || batchStudents.length === 0} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
+                                      <button onClick={() => generateBatchStudentCertificates(batch, expandedStudents)} disabled={!expandedStudents || expandedStudents.length === 0} className="admin-btn" style={{ fontSize: '0.75rem', padding: '0.25rem 0.75rem', backgroundColor: 'white', border: '1px solid #cbd5e1' }}>
                                         <Download size={14} style={{ marginRight: '0.25rem' }} /> Students' Certificates
                                       </button>
                                     </div>
@@ -562,10 +562,10 @@ export default function AdminDashboard() {
                     <td>
                       {reg.status === 'approved' && (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                          <button onClick={() => { const b = batches.find(x => x.id === reg.batchId); if (b) generateIndividualProgressReport(reg, b); }} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: 'white', border: '1px solid #cbd5e1', width: 'fit-content' }}>
+                          <button onClick={() => { const b = batches.find(x => x.id === reg.batchId) || batches.find(x => x.name === `Master: ${reg.workshopDays}-Days Workshop`) || batches.find(x => x.name === `Master: ${reg.workshopDays}-Day Workshop`); if (b) generateIndividualProgressReport(reg, b); else alert('Could not locate the Master batch for this student.'); }} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: 'white', border: '1px solid #cbd5e1', width: 'fit-content' }}>
                             <FileSpreadsheet size={12} style={{ marginRight: '0.25rem' }} /> Progress Report
                           </button>
-                          <button onClick={() => { const b = batches.find(x => x.id === reg.batchId); if (b) generateIndividualCertificate(reg, b); }} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: 'white', border: '1px solid #cbd5e1', width: 'fit-content' }}>
+                          <button onClick={() => { const b = batches.find(x => x.id === reg.batchId) || batches.find(x => x.name === `Master: ${reg.workshopDays}-Days Workshop`) || batches.find(x => x.name === `Master: ${reg.workshopDays}-Day Workshop`); if (b) generateIndividualCertificate(reg, b); else alert('Could not locate the Master batch for this student.'); }} className="admin-btn" style={{ fontSize: '0.7rem', padding: '0.25rem 0.5rem', backgroundColor: 'white', border: '1px solid #cbd5e1', width: 'fit-content' }}>
                             <Download size={12} style={{ marginRight: '0.25rem' }} /> Certificate
                           </button>
                         </div>
