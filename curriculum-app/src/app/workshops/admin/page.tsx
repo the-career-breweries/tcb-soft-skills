@@ -95,6 +95,19 @@ export default function AdminDashboardRoot() {
             </div>
           </div>
         </div>
+
+        {/* Stat Card 4 */}
+        <div className="admin-card" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ padding: '1rem', backgroundColor: '#fdf4ff', color: '#d946ef', borderRadius: '0.75rem' }}>
+            <TrendingUp size={24} />
+          </div>
+          <div>
+            <div style={{ color: '#64748b', fontSize: '0.875rem', fontWeight: 500 }}>Revenue Collected</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f172a' }}>
+              {isLoading ? '...' : '₹0.00'}
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="admin-card" style={{ minHeight: '300px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#64748b' }}>
