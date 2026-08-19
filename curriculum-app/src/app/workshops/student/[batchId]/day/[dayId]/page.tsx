@@ -19,6 +19,7 @@ export default function WorkshopDayView() {
   const [currentState, setCurrentState] = useState<WorkState | 'COMPLETED'>('MORNING_VIDEO');
   const [breakTimeRemaining, setBreakTimeRemaining] = useState(1800); 
   const [isInitializing, setIsInitializing] = useState(true);
+  const [batchData, setBatchData] = useState<any>(null);
 
   // Upload State
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -36,6 +37,8 @@ export default function WorkshopDayView() {
     const fetchProgress = async () => {
       if (user) {
         const progress = await getStudentProgress(user.uid);
+        const batchDoc = await import('firebase/firestore').then(m => m.getDoc(doc(db, 'batches', params.batchId as string)));
+        if (batchDoc.exists()) setBatchData(batchDoc.data());
         if (progress) {
           setCurrentState(progress.state);
           if (progress.state === 'BREAK' && progress.breakStartTime) {
@@ -173,12 +176,27 @@ export default function WorkshopDayView() {
         {currentState === 'MORNING_VIDEO' && (
           <div className="wk-block-card">
             <div className="wk-video-placeholder">
-              <PlayCircle size={64} style={{ opacity: 0.5, marginBottom: '1rem' }} />
-              <p style={{ fontWeight: 500, zIndex: 10 }}>Morning Kickoff Video (Placeholder)</p>
+              {dayConfig.videoUrl ? (
+                <iframe 
+                  width="100%" 
+                  height="100%" 
+                  src={dayConfig.videoUrl} 
+                  title="YouTube video player" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '0.75rem 0.75rem 0 0' }}
+                ></iframe>
+              ) : (
+                <>
+                  <PlayCircle size={64} style={{ opacity: 0.5, marginBottom: '1rem' }} />
+                  <p style={{ fontWeight: 500, zIndex: 10 }}>{dayConfig.videoTitle}</p>
+                </>
+              )}
             </div>
             <div className="wk-block-content">
-              <h2 className="wk-title" style={{ textAlign: 'left' }}>Welcome to Day 1</h2>
-              <p className="wk-subtitle" style={{ textAlign: 'left' }}>Watch this 15-minute briefing to understand today's objectives before unlocking your deep work materials.</p>
+              <h2 className="wk-title" style={{ textAlign: 'left' }}>Welcome to Day {dayId}</h2>
+              <p className="wk-subtitle" style={{ textAlign: 'left' }}>{dayConfig.videoDescription}</p>
               <button 
                 onClick={() => handleStateChange('DEEP_WORK_1')}
                 className="wk-btn-primary"
@@ -193,8 +211,8 @@ export default function WorkshopDayView() {
         {currentState === 'DEEP_WORK_1' && (
           <div className="wk-block-card">
             <div className="wk-block-content">
-              <h2 className="wk-title" style={{ textAlign: 'left' }}>Block A: Master Resume Drafting</h2>
-              <p className="wk-subtitle" style={{ textAlign: 'left' }}>Spend the next 2 hours drafting your master resume using the STAR method.</p>
+              <h2 className="wk-title" style={{ textAlign: 'left' }}>{dayConfig.blockATitle}</h2>
+              <p className="wk-subtitle" style={{ textAlign: 'left' }}>{dayConfig.blockADescription}</p>
               
               <div className="wk-promo-box">
                 <div>
@@ -240,8 +258,8 @@ export default function WorkshopDayView() {
         {currentState === 'DEEP_WORK_2' && (
           <div className="wk-block-card">
             <div className="wk-block-content">
-             <h2 className="wk-title" style={{ textAlign: 'left' }}>Block B: LinkedIn Optimization</h2>
-             <p className="wk-subtitle" style={{ textAlign: 'left' }}>Update your LinkedIn based on your new master resume.</p>
+             <h2 className="wk-title" style={{ textAlign: 'left' }}>{dayConfig.blockBTitle}</h2>
+             <p className="wk-subtitle" style={{ textAlign: 'left' }}>{dayConfig.blockBDescription}</p>
              <button 
                 onClick={() => handleStateChange('SUBMISSION')}
                 className="wk-btn-primary"
