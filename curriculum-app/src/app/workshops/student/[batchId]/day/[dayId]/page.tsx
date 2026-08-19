@@ -141,6 +141,16 @@ export default function WorkshopDayView() {
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
+  const dayConfig = batchData?.curriculum?.[dayId] || {
+    videoUrl: '',
+    videoTitle: `Morning Kickoff Video (Placeholder)`,
+    videoDescription: `Watch this 15-minute briefing to understand today's objectives before unlocking your deep work materials.`,
+    blockATitle: `Block A: Master Resume Drafting`,
+    blockADescription: `Spend the next 2 hours drafting your master resume using the STAR method.`,
+    blockBTitle: `Block B: LinkedIn Optimization`,
+    blockBDescription: `Update your LinkedIn based on your new master resume.`,
+  };
+
   return (
     <div className="wk-container">
       <header className="wk-dashboard-header">
