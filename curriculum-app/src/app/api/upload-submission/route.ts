@@ -27,10 +27,31 @@ export async function POST(request: Request) {
       }, { status: 500 });
     }
 
+    // Fetch student info
+    const studentDoc = await adminDb.collection('students').doc(userId).get();
+    const studentData = studentDoc.data() || {};
+    const studentName = studentData.name || 'Unknown Student';
+    const batchId = studentData.batchId;
+
+    // Fetch batch info
+    let institutionName = '';
+    if (batchId) {
+      const batchDoc = await adminDb.collection('batches').doc(batchId).get();
+      const batchData = batchDoc.data();
+      if (batchData && batchData.name && !batchData.name.startsWith('Master:')) {
+        // e.g., "XYZ College (5-Day)" -> "XYZ College"
+        institutionName = batchData.name.replace(/\s*\(\d+-Day\)/i, '').trim();
+      }
+    }
+
     // Convert file to Base64
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     const base64Data = buffer.toString('base64');
+
+    // Create formatted filename: "Student Name_Day X Submission.pdf"
+    const extension = file.name.split('.').pop() || 'pdf';
+    const formattedFilename = `${studentName}_Day ${dayId} Submission.${extension}`;
 
     // Send to Google Apps Script
     const gasRes = await fetch(gasUrl, {
@@ -38,10 +59,11 @@ export async function POST(request: Request) {
       headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // Apps Script requires plain text or x-www-form-urlencoded
       body: JSON.stringify({
         action: 'upload_file',
-        filename: file.name,
+        filename: formattedFilename,
         mimeType: file.type || 'application/pdf',
         fileData: base64Data,
-        folderName: `Student_Submissions_${userId}`
+        studentName: studentName,
+        institutionName: institutionName // Will be empty for individuals
       })
     });
 
