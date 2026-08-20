@@ -138,6 +138,13 @@ export default function WorkshopDayView() {
 
       <main className="wk-dashboard-main">
         
+        <style>{`
+          .markdown-prose h3 { font-size: 1.125rem; font-weight: 600; color: #1e293b; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+          .markdown-prose p { margin-bottom: 1rem; }
+          .markdown-prose ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+          .markdown-prose li { margin-bottom: 0.25rem; }
+          .markdown-prose strong { color: #0f172a; font-weight: 600; }
+        `}</style>
         {/* Timeline Tracker */}
         {hasModules && currentModuleIndex !== -1 && (
           <div className="wk-timeline-container">
@@ -173,33 +180,37 @@ export default function WorkshopDayView() {
             if (mod.type === 'AUDIO_BRIEFING') {
               return (
                 <div className="wk-block-card">
-                  <div className="wk-video-placeholder" style={{ backgroundColor: mod.audioUrl ? '#f8fafc' : undefined }}>
-                    {mod.audioUrl ? (
-                      <div style={{ width: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
-                        <p style={{ fontWeight: 600, color: '#1e293b', marginBottom: '1rem', fontSize: '1.125rem' }}>AI Audio Briefing</p>
-                        <audio controls src={mod.audioUrl} style={{ width: '100%', maxWidth: '400px' }} />
-                      </div>
-                    ) : mod.videoUrl ? (
-                      <iframe 
-                        width="100%" 
-                        height="100%" 
-                        src={mod.videoUrl} 
-                        title="YouTube video player" 
-                        frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowFullScreen
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '0.75rem 0.75rem 0 0' }}
-                      ></iframe>
-                    ) : (
-                      <>
-                        <PlayCircle size={64} style={{ opacity: 0.5, marginBottom: '1rem' }} />
-                        <p style={{ fontWeight: 500, zIndex: 10 }}>{mod.title}</p>
-                      </>
-                    )}
-                  </div>
+                  {/* Small Audio Player pinned to the top of the card */}
+                  {mod.audioUrl ? (
+                    <div style={{ padding: '1.5rem', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f8fafc', borderRadius: '0.75rem 0.75rem 0 0', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                      <p style={{ fontWeight: 600, color: '#0369a1', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <PlayCircle size={18} /> Listen to Briefing
+                      </p>
+                      <audio controls src={mod.audioUrl} style={{ width: '100%' }} />
+                    </div>
+                  ) : mod.videoUrl && (
+                     <div className="wk-video-placeholder">
+                        <iframe 
+                          width="100%" 
+                          height="100%" 
+                          src={mod.videoUrl} 
+                          title="YouTube video player" 
+                          frameBorder="0" 
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                          allowFullScreen
+                          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '0.75rem 0.75rem 0 0' }}
+                        ></iframe>
+                     </div>
+                  )}
+                  
                   <div className="wk-block-content">
-                    <h2 className="wk-title" style={{ textAlign: 'left' }}>{mod.title}</h2>
-                    <p className="wk-subtitle" style={{ textAlign: 'left' }}>{mod.description}</p>
+                    <h2 className="wk-title" style={{ textAlign: 'left', marginBottom: '1rem' }}>{mod.title}</h2>
+                    
+                    {/* Render Gemini's markdown instructions beautifully */}
+                    <div className="markdown-prose" style={{ textAlign: 'left', color: '#475569', lineHeight: '1.7', marginBottom: '2rem' }}>
+                      <ReactMarkdown>{mod.description}</ReactMarkdown>
+                    </div>
+
                     <button 
                       onClick={() => advanceModule(dayConfig.modules.length)}
                       className="wk-btn-primary"
@@ -213,17 +224,22 @@ export default function WorkshopDayView() {
 
             if (mod.type === 'ACTIVITY') {
               return (
-                <div className="wk-block-card wk-center-layout">
-                  <Settings2 size={48} style={{ color: '#8b5cf6', marginBottom: '1rem' }} />
-                  <h2 className="wk-title">{mod.title}</h2>
-                  <p className="wk-subtitle" style={{ maxWidth: '600px' }}>{mod.description}</p>
-                  <button 
-                    onClick={() => advanceModule(dayConfig.modules.length)}
-                    className="wk-btn-primary"
-                    style={{ marginTop: '2rem' }}
-                  >
-                    Mark Activity Complete
-                  </button>
+                <div className="wk-block-card">
+                  <div style={{ padding: '1.5rem 2rem', backgroundColor: '#faf5ff', borderBottom: '1px solid #e9d5ff', borderRadius: '0.75rem 0.75rem 0 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <Settings2 size={24} style={{ color: '#8b5cf6' }} />
+                    <h2 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#5b21b6', margin: 0 }}>{mod.title}</h2>
+                  </div>
+                  <div className="wk-block-content" style={{ textAlign: 'left' }}>
+                    <div className="markdown-prose" style={{ color: '#475569', lineHeight: '1.7', marginBottom: '2rem' }}>
+                      <ReactMarkdown>{mod.description}</ReactMarkdown>
+                    </div>
+                    <button 
+                      onClick={() => advanceModule(dayConfig.modules.length)}
+                      className="wk-btn-primary"
+                    >
+                      Mark Activity Complete
+                    </button>
+                  </div>
                 </div>
               );
             }
