@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { useAuth } from '@/context/AuthContext';
 import { useParams, useRouter } from 'next/navigation';
 import { Loader2, PlayCircle, UploadCloud, CheckCircle2, FileText, Settings2 } from 'lucide-react';
