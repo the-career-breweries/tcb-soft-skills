@@ -132,17 +132,18 @@ export default function MasterCurriculumBuilder({ workshopType }: { workshopType
       const res = await fetch('/api/generate-audio', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: mod.description })
+        body: JSON.stringify({ 
+          text: mod.description,
+          modId: mod.id,
+          workshopType,
+          day
+        })
       });
       const data = await res.json();
       if (!data.success) throw new Error(data.error);
-
-      const storageRef = ref(storage, `audio/master_${workshopType}/day_${day}_${mod.id}_${Date.now()}.mp3`);
-      await uploadString(storageRef, `data:audio/mpeg;base64,${data.base64Audio}`, 'data_url');
-      const url = await getDownloadURL(storageRef);
       
-      updateModule(mod.id, { audioUrl: url, videoUrl: '' });
-      alert('AI Audio generated and saved!');
+      updateModule(mod.id, { audioUrl: data.audioUrl, videoUrl: '' });
+      alert('AI Audio generated and saved to Google Drive!');
     } catch (e: any) {
       alert('Error generating audio: ' + e.message);
     } finally {
