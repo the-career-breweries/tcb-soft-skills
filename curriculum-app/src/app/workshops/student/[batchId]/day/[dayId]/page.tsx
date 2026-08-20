@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useParams, useRouter } from 'next/navigation';
-import { Loader2, PlayCircle, Clock, UploadCloud, CheckCircle2, FileText, X } from 'lucide-react';
-import { getStudentProgress, updateStudentProgress, WorkState } from '@/lib/firebase/studentOps';
+import { Loader2, PlayCircle, UploadCloud, CheckCircle2, FileText, Settings2 } from 'lucide-react';
+import { getStudentProgress, updateStudentProgress } from '@/lib/firebase/studentOps';
 import { storage, db } from '@/lib/firebase/config';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import '../../../../workshops.css';
 
 export default function WorkshopDayView() {
@@ -16,8 +16,7 @@ export default function WorkshopDayView() {
   const params = useParams();
   const dayId = params.dayId as string;
   
-  const [currentState, setCurrentState] = useState<WorkState | 'COMPLETED'>('MORNING_VIDEO');
-  const [breakTimeRemaining, setBreakTimeRemaining] = useState(1800); 
+  const [currentModuleIndex, setCurrentModuleIndex] = useState(0);
   const [isInitializing, setIsInitializing] = useState(true);
   const [batchData, setBatchData] = useState<any>(null);
 
@@ -37,70 +36,45 @@ export default function WorkshopDayView() {
     const fetchProgress = async () => {
       if (user) {
         const progress = await getStudentProgress(user.uid);
-        const batchDoc = await import('firebase/firestore').then(m => m.getDoc(doc(db, 'batches', params.batchId as string)));
+        const batchDoc = await getDoc(doc(db, 'batches', params.batchId as string));
         if (batchDoc.exists()) setBatchData(batchDoc.data());
-        if (progress) {
-          setCurrentState(progress.state);
-          if (progress.state === 'BREAK' && progress.breakStartTime) {
-            const elapsed = Math.floor((Date.now() - new Date(progress.breakStartTime).getTime()) / 1000);
-            const remaining = Math.max(1800 - elapsed, 0);
-            setBreakTimeRemaining(remaining);
-            if (remaining === 0) {
-              handleStateChange('DEEP_WORK_2');
-            }
-          }
+        
+        if (progress?.completedDays?.includes(dayId)) {
+          // If already completed, just show the last state or a success screen
+          setCurrentModuleIndex(-1); // -1 means completed
+        } else {
+          // In a real app we'd save `currentModuleIndex` to Firebase to persist state,
+          // for now we start at 0 or read from progress
+          setCurrentModuleIndex(0);
         }
         setIsInitializing(false);
       }
     };
     if (user && !loading) fetchProgress();
-  }, [user, loading]);
+  }, [user, loading, params.batchId, dayId]);
 
-  const handleStateChange = async (newState: WorkState) => {
-    setCurrentState(newState);
-    if (!user) return;
-    
-    const updates: any = { state: newState };
-    if (newState === 'BREAK') {
-      updates.breakStartTime = new Date().toISOString();
-      setBreakTimeRemaining(1800);
-    }
-    
-    await updateStudentProgress(user.uid, updates);
-  };
-
-  useEffect(() => {
-    let interval: NodeJS.Timeout;
-    if (currentState === 'BREAK' && breakTimeRemaining > 0) {
-      interval = setInterval(() => {
-        setBreakTimeRemaining(prev => prev - 1);
-      }, 1000);
-    } else if (currentState === 'BREAK' && breakTimeRemaining === 0) {
-      handleStateChange('DEEP_WORK_2');
-    }
-    return () => clearInterval(interval);
-  }, [currentState, breakTimeRemaining]);
-
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUploadError('');
-    setUploadSuccess(false);
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      if (file.size > 5 * 1024 * 1024) {
-        setUploadError("File exceeds 5MB limit.");
-        return;
-      }
-      setSelectedFile(file);
+  const advanceModule = async (totalModules: number) => {
+    if (currentModuleIndex + 1 >= totalModules) {
+      // Completed all modules for the day
+      await updateStudentProgress(user!.uid, { 
+        state: 'COMPLETED',
+        [`completedDays`]: (prev: any) => {
+           const arr = prev || [];
+           if(!arr.includes(dayId)) return [...arr, dayId];
+           return arr;
+        }
+      });
+      setCurrentModuleIndex(-1);
+    } else {
+      setCurrentModuleIndex(prev => prev + 1);
     }
   };
 
-  const submitWork = async () => {
-    if (!selectedFile || !user) {
-      setUploadError("Please select a file to upload.");
-      return;
-    }
+  const handleFileUpload = async () => {
+    if (!selectedFile || !user) return;
     setIsUploading(true);
     setUploadError('');
+    
     try {
       const formData = new FormData();
       formData.append('file', selectedFile);
@@ -113,15 +87,14 @@ export default function WorkshopDayView() {
       });
 
       const data = await res.json();
-
       if (!res.ok || !data.success) {
-        throw new Error(data.error || "Failed to upload file to Google Drive");
+        throw new Error(data.error || "Failed to upload file");
       }
 
-      // Update local state to COMPLETED
-      await handleStateChange('COMPLETED');
       setUploadSuccess(true);
       setSelectedFile(null);
+      // Auto advance after upload
+      setTimeout(() => advanceModule(dayConfig.modules.length), 1500);
     } catch (err: any) {
       console.error("Upload error:", err);
       setUploadError(err.message || "Failed to upload file.");
@@ -135,29 +108,16 @@ export default function WorkshopDayView() {
     <div className="wk-container wk-center-layout"><Loader2 size={32} className="animate-spin text-blue-600"/></div>
   );
 
-  const formatTime = (seconds: number) => {
-    const m = Math.floor(seconds / 60);
-    const s = seconds % 60;
-    return `${m}:${s < 10 ? '0' : ''}${s}`;
-  };
-
-  const dayConfig = batchData?.curriculum?.[dayId] || {
-    videoUrl: '',
-    audioUrl: '',
-    videoTitle: `Morning Kickoff Video (Placeholder)`,
-    videoDescription: `Watch this 15-minute briefing to understand today's objectives before unlocking your deep work materials.`,
-    blockATitle: `Block A: Master Resume Drafting`,
-    blockADescription: `Spend the next 2 hours drafting your master resume using the STAR method.`,
-    blockBTitle: `Block B: LinkedIn Optimization`,
-    blockBDescription: `Update your LinkedIn based on your new master resume.`,
-  };
-
+  // Use the new dynamic format or fallback to empty
+  const dayConfig = batchData?.curriculum?.[dayId] || { dayTitle: `Day ${dayId}`, modules: [] };
+  const hasModules = dayConfig.modules && dayConfig.modules.length > 0;
+  
   return (
     <div className="wk-container">
       <header className="wk-dashboard-header">
         <div>
           <p style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--wk-accent)', textTransform: 'uppercase', letterSpacing: '0.05em', margin: 0 }}>Day {params.dayId as string}</p>
-          <h1 style={{ fontSize: '1.125rem', fontWeight: 700, margin: 0 }}>Resume & Profile Building</h1>
+          <h1 style={{ fontSize: '1.125rem', fontWeight: 700, margin: 0 }}>{dayConfig.dayTitle}</h1>
         </div>
         <button onClick={() => router.push('/workshops/student')} className="wk-link-btn">
           Back to Dashboard
@@ -167,190 +127,149 @@ export default function WorkshopDayView() {
       <main className="wk-dashboard-main">
         
         {/* Timeline Tracker */}
-        <div className="wk-timeline-container">
-          <div className="wk-timeline">
-            <div className={`wk-timeline-pill ${currentState === 'MORNING_VIDEO' ? 'active' : ''}`}>1. Briefing</div>
-            <div className="wk-timeline-line"></div>
-            <div className={`wk-timeline-pill ${currentState === 'DEEP_WORK_1' ? 'active' : ''}`}>2. Block A</div>
-            <div className="wk-timeline-line"></div>
-            <div className={`wk-timeline-pill ${currentState === 'BREAK' ? 'active' : ''}`}>3. Break</div>
-            <div className="wk-timeline-line"></div>
-            <div className={`wk-timeline-pill ${currentState === 'DEEP_WORK_2' ? 'active' : ''}`}>4. Block B</div>
-            <div className="wk-timeline-line"></div>
-            <div className={`wk-timeline-pill ${currentState === 'SUBMISSION' ? 'active' : ''}`}>5. Submit</div>
-          </div>
-        </div>
-
-        {/* Dynamic State Rendering */}
-        
-        {/* State 1: Morning Video */}
-        {currentState === 'MORNING_VIDEO' && (
-          <div className="wk-block-card">
-            <div className="wk-video-placeholder" style={{ backgroundColor: dayConfig.audioUrl ? '#f8fafc' : undefined }}>
-              {dayConfig.audioUrl ? (
-                <div style={{ width: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
-                  <p style={{ fontWeight: 600, color: '#1e293b', marginBottom: '1rem', fontSize: '1.125rem' }}>AI Audio Briefing</p>
-                  <audio controls src={dayConfig.audioUrl} style={{ width: '100%', maxWidth: '400px' }} />
-                </div>
-              ) : dayConfig.videoUrl ? (
-                <iframe 
-                  width="100%" 
-                  height="100%" 
-                  src={dayConfig.videoUrl} 
-                  title="YouTube video player" 
-                  frameBorder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowFullScreen
-                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '0.75rem 0.75rem 0 0' }}
-                ></iframe>
-              ) : (
-                <>
-                  <PlayCircle size={64} style={{ opacity: 0.5, marginBottom: '1rem' }} />
-                  <p style={{ fontWeight: 500, zIndex: 10 }}>{dayConfig.videoTitle}</p>
-                </>
-              )}
-            </div>
-            <div className="wk-block-content">
-              <h2 className="wk-title" style={{ textAlign: 'left' }}>Welcome to Day {dayId}</h2>
-              <p className="wk-subtitle" style={{ textAlign: 'left' }}>{dayConfig.videoDescription}</p>
-              <button 
-                onClick={() => handleStateChange('DEEP_WORK_1')}
-                className="wk-btn-primary"
-              >
-                I have finished the video. Start Block A
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* State 2: Deep Work 1 */}
-        {currentState === 'DEEP_WORK_1' && (
-          <div className="wk-block-card">
-            <div className="wk-block-content">
-              <h2 className="wk-title" style={{ textAlign: 'left' }}>{dayConfig.blockATitle}</h2>
-              <p className="wk-subtitle" style={{ textAlign: 'left' }}>{dayConfig.blockADescription}</p>
-              
-              <div className="wk-promo-box">
-                <div>
-                  <h3 style={{ fontWeight: 700, color: 'var(--wk-accent-hover)', margin: '0 0 0.25rem 0' }}>Premium Tool Access</h3>
-                  <p style={{ fontSize: '0.875rem', color: 'var(--wk-accent)', margin: 0 }}>Use your 1-time token to generate your resume.</p>
-                </div>
-                <button className="wk-btn-primary" style={{ width: 'auto', padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
-                  Launch AI Builder
-                </button>
-              </div>
-
-              <button 
-                onClick={() => handleStateChange('BREAK')}
-                className="wk-btn-primary"
-                style={{ backgroundColor: '#0f172a' }}
-              >
-                Complete Block A & Take Break
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* State 3: Mandatory Break */}
-        {currentState === 'BREAK' && (
-          <div className="wk-break-screen">
-            <Clock size={64} style={{ color: 'var(--wk-accent)', margin: '0 auto 1rem auto' }} />
-            <h2 className="wk-title">Mandatory Screen Break</h2>
-            <p className="wk-subtitle">Step away from your laptop. Your next block unlocks in:</p>
-            <div className="wk-timer">
-              {formatTime(breakTimeRemaining)}
-            </div>
-            <button 
-              onClick={() => setBreakTimeRemaining(0)}
-              className="wk-link-btn"
-              style={{ fontSize: '0.75rem', textDecoration: 'underline' }}
-            >
-              [Dev Override: Skip Break]
-            </button>
-          </div>
-        )}
-
-        {/* State 4: Deep Work 2 */}
-        {currentState === 'DEEP_WORK_2' && (
-          <div className="wk-block-card">
-            <div className="wk-block-content">
-             <h2 className="wk-title" style={{ textAlign: 'left' }}>{dayConfig.blockBTitle}</h2>
-             <p className="wk-subtitle" style={{ textAlign: 'left' }}>{dayConfig.blockBDescription}</p>
-             <button 
-                onClick={() => handleStateChange('SUBMISSION')}
-                className="wk-btn-primary"
-              >
-                Proceed to Daily Submission
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* State 5: Submission Gateway */}
-        {currentState === 'SUBMISSION' && (
-          <div className="wk-block-card">
-            <div className="wk-block-content">
-             <div className="wk-header-icon" style={{ marginLeft: 0 }}>
-               <UploadCloud size={24} />
-             </div>
-             <h2 className="wk-title" style={{ textAlign: 'left' }}>Submit Your Work</h2>
-             <p className="wk-subtitle" style={{ textAlign: 'left' }}>Upload your finalized Master Resume (PDF) to complete Day 1.</p>
-             
-             <div className="wk-upload-box" style={{ 
-                border: '2px dashed var(--wk-border)', 
-                borderRadius: '0.75rem', 
-                padding: '2rem', 
-                textAlign: 'center',
-                backgroundColor: 'var(--wk-bg-secondary)',
-                marginBottom: '1rem'
-             }}>
-                <input type="file" style={{ display: 'none' }} id="file-upload" accept=".pdf" onChange={handleFileSelect} />
-                <label htmlFor="file-upload" style={{ cursor: 'pointer' }}>
-                  <span style={{ padding: '0.5rem 1rem', border: '1px solid var(--wk-border)', borderRadius: '0.5rem', fontSize: '0.875rem', fontWeight: 500, backgroundColor: 'white' }}>
-                    Choose File
-                  </span>
-                </label>
-                <p style={{ fontSize: '0.75rem', color: 'var(--wk-text-secondary)', marginTop: '1rem' }}>PDF files only (Max 5MB)</p>
-                
-                {selectedFile && (
-                  <div style={{ marginTop: '1rem', padding: '0.75rem', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: '#166534', fontSize: '0.875rem' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                      <FileText size={16} />
-                      <span style={{ fontWeight: 500 }}>{selectedFile.name}</span>
+        {hasModules && currentModuleIndex !== -1 && (
+          <div className="wk-timeline-container">
+            <div className="wk-timeline">
+              {dayConfig.modules.map((mod: any, idx: number) => {
+                const isCompleted = idx < currentModuleIndex;
+                const isActive = idx === currentModuleIndex;
+                return (
+                  <div key={mod.id} className={`wk-timeline-step ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}`}>
+                    <div className="wk-timeline-dot">
+                      {isCompleted ? <CheckCircle2 size={12} style={{ color: 'white' }}/> : (idx + 1)}
                     </div>
-                    <button onClick={() => setSelectedFile(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#166534' }}>
-                      <X size={16} />
+                    <span className="wk-timeline-label">{mod.title}</span>
+                    {idx < dayConfig.modules.length - 1 && <div className="wk-timeline-connector" />}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {!hasModules && currentModuleIndex !== -1 && (
+           <div className="wk-block-card wk-center-layout">
+             <h2>No curriculum configured for this day yet.</h2>
+           </div>
+        )}
+
+        {/* Dynamic Module Renderer */}
+        {hasModules && currentModuleIndex !== -1 && dayConfig.modules[currentModuleIndex] && (
+          (() => {
+            const mod = dayConfig.modules[currentModuleIndex];
+            
+            if (mod.type === 'AUDIO_BRIEFING') {
+              return (
+                <div className="wk-block-card">
+                  <div className="wk-video-placeholder" style={{ backgroundColor: mod.audioUrl ? '#f8fafc' : undefined }}>
+                    {mod.audioUrl ? (
+                      <div style={{ width: '100%', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 10 }}>
+                        <p style={{ fontWeight: 600, color: '#1e293b', marginBottom: '1rem', fontSize: '1.125rem' }}>AI Audio Briefing</p>
+                        <audio controls src={mod.audioUrl} style={{ width: '100%', maxWidth: '400px' }} />
+                      </div>
+                    ) : mod.videoUrl ? (
+                      <iframe 
+                        width="100%" 
+                        height="100%" 
+                        src={mod.videoUrl} 
+                        title="YouTube video player" 
+                        frameBorder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowFullScreen
+                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '0.75rem 0.75rem 0 0' }}
+                      ></iframe>
+                    ) : (
+                      <>
+                        <PlayCircle size={64} style={{ opacity: 0.5, marginBottom: '1rem' }} />
+                        <p style={{ fontWeight: 500, zIndex: 10 }}>{mod.title}</p>
+                      </>
+                    )}
+                  </div>
+                  <div className="wk-block-content">
+                    <h2 className="wk-title" style={{ textAlign: 'left' }}>{mod.title}</h2>
+                    <p className="wk-subtitle" style={{ textAlign: 'left' }}>{mod.description}</p>
+                    <button 
+                      onClick={() => advanceModule(dayConfig.modules.length)}
+                      className="wk-btn-primary"
+                    >
+                      Complete Briefing & Continue
                     </button>
                   </div>
-                )}
-             </div>
+                </div>
+              );
+            }
 
-             {uploadError && <p style={{ color: '#ef4444', fontSize: '0.875rem', marginBottom: '1rem' }}>{uploadError}</p>}
+            if (mod.type === 'ACTIVITY') {
+              return (
+                <div className="wk-block-card wk-center-layout">
+                  <Settings2 size={48} style={{ color: '#8b5cf6', marginBottom: '1rem' }} />
+                  <h2 className="wk-title">{mod.title}</h2>
+                  <p className="wk-subtitle" style={{ maxWidth: '600px' }}>{mod.description}</p>
+                  <button 
+                    onClick={() => advanceModule(dayConfig.modules.length)}
+                    className="wk-btn-primary"
+                    style={{ marginTop: '2rem' }}
+                  >
+                    Mark Activity Complete
+                  </button>
+                </div>
+              );
+            }
 
-             <button 
-                onClick={submitWork}
-                disabled={isUploading || !selectedFile}
-                className="wk-btn-primary"
-                style={{ backgroundColor: (isUploading || !selectedFile) ? '#94a3b8' : '#16a34a' }}
-              >
-                {isUploading ? <Loader2 size={20} className="animate-spin" /> : <CheckCircle2 size={20} />}
-                {isUploading ? 'Uploading & Submitting...' : 'Submit & Complete Day'}
-              </button>
-            </div>
-          </div>
+            if (mod.type === 'UPLOAD') {
+              return (
+                <div className="wk-block-card wk-center-layout">
+                  <div className="wk-upload-area">
+                    <UploadCloud size={48} style={{ color: 'var(--wk-accent)', marginBottom: '1rem' }} />
+                    <h2 className="wk-title">{mod.title}</h2>
+                    <p className="wk-subtitle">{mod.description}</p>
+                    
+                    <input 
+                      type="file" 
+                      id="file-upload" 
+                      style={{ display: 'none' }}
+                      onChange={(e) => setSelectedFile(e.target.files?.[0] || null)}
+                      accept=".pdf,.doc,.docx"
+                    />
+                    
+                    {!selectedFile ? (
+                      <label htmlFor="file-upload" className="wk-btn-primary" style={{ cursor: 'pointer', marginTop: '1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <FileText size={18} /> Select File
+                      </label>
+                    ) : (
+                      <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                        <p style={{ fontWeight: 500, color: 'var(--wk-success)' }}>Selected: {selectedFile.name}</p>
+                        <div style={{ display: 'flex', gap: '1rem' }}>
+                          <button onClick={() => setSelectedFile(null)} className="wk-btn-outline">Change</button>
+                          <button onClick={handleFileUpload} disabled={isUploading} className="wk-btn-primary">
+                            {isUploading ? <Loader2 size={16} className="animate-spin" /> : 'Submit Assignment'}
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {uploadError && <p style={{ color: '#ef4444', marginTop: '1rem', fontSize: '0.875rem' }}>{uploadError}</p>}
+                    {uploadSuccess && <p style={{ color: 'var(--wk-success)', marginTop: '1rem', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.25rem' }}><CheckCircle2 size={16}/> Upload successful!</p>}
+                  </div>
+                </div>
+              );
+            }
+
+            return null;
+          })()
         )}
 
-        {/* State 6: Completed */}
-        {currentState === 'COMPLETED' && (
-          <div className="wk-block-card" style={{ textAlign: 'center', padding: '3rem 1.5rem' }}>
-            <div className="wk-header-icon" style={{ margin: '0 auto 1.5rem auto', backgroundColor: '#f0fdf4', color: '#16a34a' }}>
-              <CheckCircle2 size={48} />
-            </div>
-            <h2 className="wk-title" style={{ fontSize: '1.5rem' }}>Day Completed!</h2>
-            <p className="wk-subtitle" style={{ maxWidth: '400px', margin: '0 auto' }}>
-              You have successfully submitted your work and finished today's workshop module. Great job!
-            </p>
-            <button onClick={() => router.push('/workshops/student')} className="wk-btn-primary" style={{ marginTop: '2rem' }}>
+        {/* Day Completed State */}
+        {currentModuleIndex === -1 && (
+          <div className="wk-block-card wk-center-layout" style={{ border: '2px solid var(--wk-success)', backgroundColor: '#f0fdf4' }}>
+            <CheckCircle2 size={64} style={{ color: 'var(--wk-success)', marginBottom: '1rem' }} />
+            <h2 className="wk-title" style={{ color: '#166534' }}>Day {dayId} Completed!</h2>
+            <p className="wk-subtitle" style={{ color: '#15803d' }}>Amazing work today. You can safely return to your dashboard.</p>
+            <button 
+              onClick={() => router.push('/workshops/student')}
+              className="wk-btn-primary"
+              style={{ marginTop: '2rem', backgroundColor: 'var(--wk-success)' }}
+            >
               Return to Dashboard
             </button>
           </div>

@@ -1,76 +1,111 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Loader2, Save, PlayCircle, Settings2, Mic } from 'lucide-react';
+import { Loader2, Save, PlayCircle, Settings2, Mic, Plus, Trash2, GripVertical, UploadCloud } from 'lucide-react';
 import { updateBatchCurriculumAction } from '@/app/actions/adminOps';
 import { storage } from '@/lib/firebase/config';
 import { ref, uploadString, getDownloadURL } from 'firebase/storage';
 
+export type ModuleType = 'AUDIO_BRIEFING' | 'ACTIVITY' | 'UPLOAD';
+
+export interface CurriculumModule {
+  id: string;
+  type: ModuleType;
+  title: string;
+  description: string;
+  audioUrl?: string;
+  videoUrl?: string;
+}
+
 export default function WorkshopBuilder({ batch }: { batch: any }) {
   const [day, setDay] = useState(1);
-  const totalDays = batch?.name?.includes('5') ? 5 : 3;
+  const totalDays = batch?.name?.includes('5') ? 5 : (batch?.name?.includes('10') ? 10 : 3);
 
-  const [config, setConfig] = useState({
-    videoTitle: '',
-    videoDescription: '',
-    videoUrl: '',
-    audioUrl: '',
-    blockATitle: '',
-    blockADescription: '',
-    blockBTitle: '',
-    blockBDescription: '',
-  });
+  const [modules, setModules] = useState<CurriculumModule[]>([]);
+  const [dayTitle, setDayTitle] = useState('');
 
   const [isSaving, setIsSaving] = useState(false);
-  const [isGeneratingAudio, setIsGeneratingAudio] = useState(false);
+  const [isGeneratingAudio, setIsGeneratingAudio] = useState<string | null>(null);
 
   useEffect(() => {
-    if (batch?.curriculum && batch.curriculum[day.toString()]) {
-      setConfig(batch.curriculum[day.toString()]);
+    if (batch?.curriculum && batch.curriculum[day.toString()]?.modules) {
+      setModules(batch.curriculum[day.toString()].modules);
+      setDayTitle(batch.curriculum[day.toString()].dayTitle || `Day ${day} Overview`);
     } else {
-      setConfig({
-        videoTitle: "Day " + day + " Briefing",
-        videoDescription: "Welcome to Day " + day + ".",
-        videoUrl: '',
-        audioUrl: '',
-        blockATitle: "Block A",
-        blockADescription: "Task description...",
-        blockBTitle: "Block B",
-        blockBDescription: "Task description...",
-      });
+      // Provide a default template if none exists
+      setDayTitle(`Day ${day} Overview`);
+      setModules([
+        { id: `mod_${Date.now()}_1`, type: 'AUDIO_BRIEFING', title: 'Morning Briefing', description: 'Welcome to Day ' + day, audioUrl: '', videoUrl: '' },
+        { id: `mod_${Date.now()}_2`, type: 'ACTIVITY', title: 'Deep Work A', description: 'Task description...' },
+        { id: `mod_${Date.now()}_3`, type: 'UPLOAD', title: 'Submit Your Work', description: 'Upload your assignment here.' }
+      ]);
     }
   }, [batch, day]);
 
   const handleSave = async () => {
     setIsSaving(true);
-    await updateBatchCurriculumAction(batch.id, day, config);
+    await updateBatchCurriculumAction(batch.id, day, {
+      dayTitle,
+      modules
+    });
     alert('Curriculum saved successfully!');
     setIsSaving(false);
   };
 
-  const generateAudio = async () => {
-    if (!config.videoDescription) return alert('Enter a script in Video Description first!');
-    setIsGeneratingAudio(true);
+  const addModule = (type: ModuleType) => {
+    let newMod: CurriculumModule = { id: `mod_${Date.now()}`, type, title: 'New Module', description: '' };
+    if (type === 'AUDIO_BRIEFING') {
+      newMod.title = 'AI Audio Briefing';
+      newMod.videoUrl = '';
+      newMod.audioUrl = '';
+    } else if (type === 'ACTIVITY') {
+      newMod.title = 'New Activity';
+    } else if (type === 'UPLOAD') {
+      newMod.title = 'Assignment Submission';
+    }
+    setModules([...modules, newMod]);
+  };
+
+  const updateModule = (id: string, updates: Partial<CurriculumModule>) => {
+    setModules(modules.map(m => m.id === id ? { ...m, ...updates } : m));
+  };
+
+  const deleteModule = (id: string) => {
+    setModules(modules.filter(m => m.id !== id));
+  };
+
+  const moveModule = (index: number, direction: 'up' | 'down') => {
+    if (direction === 'up' && index === 0) return;
+    if (direction === 'down' && index === modules.length - 1) return;
+    
+    const newModules = [...modules];
+    const targetIndex = direction === 'up' ? index - 1 : index + 1;
+    [newModules[index], newModules[targetIndex]] = [newModules[targetIndex], newModules[index]];
+    setModules(newModules);
+  };
+
+  const generateAudio = async (mod: CurriculumModule) => {
+    if (!mod.description) return alert('Enter a script in the description field first!');
+    setIsGeneratingAudio(mod.id);
     try {
       const res = await fetch('/api/generate-audio', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: config.videoDescription })
+        body: JSON.stringify({ text: mod.description })
       });
       const data = await res.json();
       if (!data.success) throw new Error(data.error);
 
-      // Upload to Firebase Storage
-      const storageRef = ref(storage, "audio/" + batch.id + "/day_" + day + "_" + Date.now() + ".mp3");
-      await uploadString(storageRef, "data:audio/mpeg;base64," + data.base64Audio, 'data_url');
+      const storageRef = ref(storage, `audio/${batch.id}/day_${day}_${mod.id}_${Date.now()}.mp3`);
+      await uploadString(storageRef, `data:audio/mpeg;base64,${data.base64Audio}`, 'data_url');
       const url = await getDownloadURL(storageRef);
       
-      setConfig({ ...config, audioUrl: url, videoUrl: '' });
+      updateModule(mod.id, { audioUrl: url, videoUrl: '' });
       alert('AI Audio generated and saved!');
     } catch (e: any) {
       alert('Error generating audio: ' + e.message);
     } finally {
-      setIsGeneratingAudio(false);
+      setIsGeneratingAudio(null);
     }
   };
 
@@ -93,71 +128,76 @@ export default function WorkshopBuilder({ batch }: { batch: any }) {
 
       <div className="admin-card">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Day {day} Configuration</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Day {day} Engine</h2>
+            <input type="text" value={dayTitle} onChange={e => setDayTitle(e.target.value)} placeholder="Day Title (e.g. Resume Building)" style={{ padding: '0.25rem 0.5rem', border: '1px solid #cbd5e1', borderRadius: '0.25rem', width: '300px' }} />
+          </div>
           <button onClick={handleSave} disabled={isSaving} className="admin-btn admin-btn-primary" style={{ width: 'auto', padding: '0.5rem 1rem' }}>
-            {isSaving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />} Save Day {day}
+            {isSaving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />} Save Day {day} Curriculum
           </button>
         </div>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          {/* Briefing Block */}
-          <div style={{ border: '1px solid #e2e8f0', borderRadius: '0.5rem', padding: '1.5rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-              <div style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <PlayCircle size={18} style={{ color: '#3b82f6' }} />
-                Module 1: Morning Briefing
-              </div>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div>
-                <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>Title</label>
-                <input type="text" value={config.videoTitle} onChange={e => setConfig({...config, videoTitle: e.target.value})} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
-              </div>
-              <div>
-                <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>Briefing Script / Description</label>
-                <textarea rows={4} value={config.videoDescription} onChange={e => setConfig({...config, videoDescription: e.target.value})} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
-              </div>
-              <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end' }}>
-                <div style={{ flex: 1 }}>
-                  <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>YouTube URL (Optional fallback)</label>
-                  <input type="text" value={config.videoUrl} onChange={e => setConfig({...config, videoUrl: e.target.value})} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
+          {modules.map((mod, index) => (
+            <div key={mod.id} style={{ border: '1px solid #e2e8f0', borderRadius: '0.5rem', padding: '1.5rem', position: 'relative' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <div style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem', marginRight: '0.5rem' }}>
+                    <button onClick={() => moveModule(index, 'up')} disabled={index === 0} style={{ border: 'none', background: 'none', cursor: index === 0 ? 'not-allowed' : 'pointer', opacity: index === 0 ? 0.2 : 1 }}>▲</button>
+                    <button onClick={() => moveModule(index, 'down')} disabled={index === modules.length - 1} style={{ border: 'none', background: 'none', cursor: index === modules.length - 1 ? 'not-allowed' : 'pointer', opacity: index === modules.length - 1 ? 0.2 : 1 }}>▼</button>
+                  </div>
+                  
+                  {mod.type === 'AUDIO_BRIEFING' && <PlayCircle size={18} style={{ color: '#3b82f6' }} />}
+                  {mod.type === 'ACTIVITY' && <Settings2 size={18} style={{ color: '#8b5cf6' }} />}
+                  {mod.type === 'UPLOAD' && <UploadCloud size={18} style={{ color: '#10b981' }} />}
+                  
+                  <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748b' }}>{mod.type.replace('_', ' ')}</span>
                 </div>
-                <div style={{ flex: 1 }}>
-                  <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>AI Audio URL</label>
-                  <input type="text" value={config.audioUrl} disabled style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%', backgroundColor: '#f1f5f9' }} />
-                </div>
-                <button onClick={generateAudio} disabled={isGeneratingAudio} className="admin-btn" style={{ backgroundColor: '#10b981', color: 'white', border: 'none', height: '42px', padding: '0 1rem' }}>
-                  {isGeneratingAudio ? <Loader2 size={16} className="animate-spin" /> : <Mic size={16} />} Generate AI Voice
+                <button onClick={() => deleteModule(mod.id)} className="admin-btn" style={{ padding: '0.25rem', color: '#ef4444', border: 'none' }}>
+                  <Trash2 size={16} />
                 </button>
               </div>
-              {config.audioUrl && (
-                <div style={{ marginTop: '0.5rem' }}>
-                  <audio controls src={config.audioUrl} style={{ width: '100%' }} />
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div>
+                  <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>Module Title</label>
+                  <input type="text" value={mod.title} onChange={e => updateModule(mod.id, { title: e.target.value })} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
                 </div>
-              )}
-            </div>
-          </div>
+                
+                <div>
+                  <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>{mod.type === 'AUDIO_BRIEFING' ? 'Briefing Script (Read by AI)' : 'Instructions / Description'}</label>
+                  <textarea rows={4} value={mod.description} onChange={e => updateModule(mod.id, { description: e.target.value })} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
+                </div>
 
-          {/* Deep Work A */}
-          <div style={{ border: '1px solid #e2e8f0', borderRadius: '0.5rem', padding: '1.5rem' }}>
-            <div style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-              <Settings2 size={18} style={{ color: '#8b5cf6' }} /> Deep Work A
+                {mod.type === 'AUDIO_BRIEFING' && (
+                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', backgroundColor: '#f8fafc', padding: '1rem', borderRadius: '0.5rem' }}>
+                    <div style={{ flex: 1 }}>
+                      <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>AI Audio URL</label>
+                      <input type="text" value={mod.audioUrl || ''} disabled style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%', backgroundColor: '#e2e8f0' }} />
+                    </div>
+                    <button onClick={() => generateAudio(mod)} disabled={isGeneratingAudio === mod.id} className="admin-btn" style={{ backgroundColor: '#10b981', color: 'white', border: 'none', height: '42px', padding: '0 1rem' }}>
+                      {isGeneratingAudio === mod.id ? <Loader2 size={16} className="animate-spin" /> : <Mic size={16} />} Generate AI Voice
+                    </button>
+                  </div>
+                )}
+                {mod.type === 'AUDIO_BRIEFING' && mod.audioUrl && (
+                  <audio controls src={mod.audioUrl} style={{ width: '100%', marginTop: '0.5rem' }} />
+                )}
+              </div>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <input type="text" placeholder="Title" value={config.blockATitle} onChange={e => setConfig({...config, blockATitle: e.target.value})} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
-              <textarea rows={3} placeholder="Description" value={config.blockADescription} onChange={e => setConfig({...config, blockADescription: e.target.value})} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
-            </div>
-          </div>
+          ))}
 
-          {/* Deep Work B */}
-          <div style={{ border: '1px solid #e2e8f0', borderRadius: '0.5rem', padding: '1.5rem' }}>
-            <div style={{ fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-              <Settings2 size={18} style={{ color: '#8b5cf6' }} /> Deep Work B
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <input type="text" placeholder="Title" value={config.blockBTitle} onChange={e => setConfig({...config, blockBTitle: e.target.value})} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
-              <textarea rows={3} placeholder="Description" value={config.blockBDescription} onChange={e => setConfig({...config, blockBDescription: e.target.value})} style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%' }} />
-            </div>
+          {/* Add Module Buttons */}
+          <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem', justifyContent: 'center', padding: '2rem', border: '2px dashed #cbd5e1', borderRadius: '0.5rem' }}>
+            <button onClick={() => addModule('AUDIO_BRIEFING')} className="admin-btn" style={{ border: '1px solid #3b82f6', color: '#3b82f6' }}>
+              <Plus size={16} /> Add AI Audio Briefing
+            </button>
+            <button onClick={() => addModule('ACTIVITY')} className="admin-btn" style={{ border: '1px solid #8b5cf6', color: '#8b5cf6' }}>
+              <Plus size={16} /> Add Activity Block
+            </button>
+            <button onClick={() => addModule('UPLOAD')} className="admin-btn" style={{ border: '1px solid #10b981', color: '#10b981' }}>
+              <Plus size={16} /> Add Submission Block
+            </button>
           </div>
 
         </div>
