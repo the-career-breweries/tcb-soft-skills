@@ -37,7 +37,19 @@ export default function WorkshopDayView() {
       if (user) {
         const progress = await getStudentProgress(user.uid);
         const batchDoc = await getDoc(doc(db, 'batches', params.batchId as string));
-        if (batchDoc.exists()) setBatchData(batchDoc.data());
+        if (batchDoc.exists()) {
+          const bData = batchDoc.data();
+          let wType = '3-Days';
+          if (bData.name?.includes('5') || bData.totalDays === 5) wType = '5-Days';
+          if (bData.name?.includes('10') || bData.totalDays === 10) wType = '10-Days';
+          
+          // Fetch Master Curriculum
+          const masterDoc = await getDoc(doc(db, 'master_curriculums', wType));
+          if (masterDoc.exists()) {
+             bData.curriculum = masterDoc.data();
+          }
+          setBatchData(bData);
+        }
         
         if (progress?.completedDays?.includes(dayId)) {
           // If already completed, just show the last state or a success screen

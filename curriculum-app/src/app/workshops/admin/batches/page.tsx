@@ -6,7 +6,6 @@ import { createBatchAction, uploadStudentsCSVAction, CSVStudentData, getBatchesA
 import Papa from 'papaparse';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import WorkshopBuilder from './WorkshopBuilder';
 import { generateInstitutionalProgressReport, generateIndividualProgressReport, generateInstitutionalCertificate, generateIndividualCertificate, generateBatchStudentCertificates } from '@/utils/pdfGenerator';
 
 type TabType = 'batches' | 'builder' | 'roster' | 'registrations';
@@ -259,7 +258,7 @@ export default function AdminDashboard() {
 
   const viewBatch = (batchId: string) => {
     setSelectedBatch(batchId);
-    setActiveTab('builder');
+    setActiveTab('reports');
   };
 
   return (
@@ -303,7 +302,7 @@ export default function AdminDashboard() {
             <button 
               className="admin-btn" 
               style={{ backgroundColor: activeTab === 'builder' ? '#e2e8f0' : 'transparent', border: '1px solid #cbd5e1' }}
-              onClick={() => setActiveTab('builder')}
+              onClick={() => setActiveTab('reports')}
             >
               <Settings2 size={18} /> Builder
             </button>
@@ -645,11 +644,6 @@ export default function AdminDashboard() {
             </tbody>
           </table>
         </div>
-      )}
-
-      {/* View: Workshop Builder */}
-      {activeTab === 'builder' && (
-        <WorkshopBuilder batch={batches.find(b => b.id === selectedBatch)} />
       )}
 
       {/* View: Student Roster & Submissions */}

@@ -64,6 +64,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <Users size={20} />
             Batches & Students
           </Link>
+          <Link href="/workshops/admin/curriculum" className={`admin-nav-item ${pathname.includes('/workshops/admin/curriculum') ? 'active' : ''}`}>
+            <Settings size={20} />
+            Master Curriculum
+          </Link>
           <Link href="/workshops/admin/settings" className={`admin-nav-item ${pathname.includes('/workshops/admin/settings') ? 'active' : ''}`}>
             <Settings size={20} />
             Settings

@@ -460,3 +460,28 @@ export async function updateBatchCurriculumAction(batchId: string, day: number, 
     return { success: false, error: err.message };
   }
 }
+
+export async function updateMasterCurriculumAction(workshopType: string, day: number, dayConfig: any) {
+  try {
+    const docRef = adminDb.collection('master_curriculums').doc(workshopType);
+    await docRef.set({
+      [day.toString()]: dayConfig
+    }, { merge: true });
+    return { success: true };
+  } catch (err: any) {
+    return { success: false, error: err.message };
+  }
+}
+
+export async function getMasterCurriculumAction(workshopType: string) {
+  try {
+    const docRef = adminDb.collection('master_curriculums').doc(workshopType);
+    const doc = await docRef.get();
+    if (doc.exists) {
+      return { success: true, curriculum: doc.data() };
+    }
+    return { success: true, curriculum: {} };
+  } catch (err: any) {
+    return { success: false, error: err.message };
+  }
+}
