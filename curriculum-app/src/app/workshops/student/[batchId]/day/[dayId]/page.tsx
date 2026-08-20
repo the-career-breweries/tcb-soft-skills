@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useAuth } from '@/context/AuthContext';
 import { useParams, useRouter } from 'next/navigation';
-import { Loader2, PlayCircle, UploadCloud, CheckCircle2, FileText, Settings2 } from 'lucide-react';
+import { Loader2, PlayCircle, PauseCircle, Square, UploadCloud, CheckCircle2, FileText, Settings2 } from 'lucide-react';
 import { getStudentProgress, updateStudentProgress } from '@/lib/firebase/studentOps';
 import { storage, db } from '@/lib/firebase/config';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -19,8 +19,17 @@ export default function WorkshopDayView() {
   
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0);
   const [audioProgress, setAudioProgress] = useState(1);
-  const [audioDuration, setAudioDuration] = useState(0);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [speechUtterance, setSpeechUtterance] = useState<SpeechSynthesisUtterance | null>(null);
   const [isInitializing, setIsInitializing] = useState(true);
+
+  useEffect(() => {
+    return () => {
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
   const [batchData, setBatchData] = useState<any>(null);
 
   // Upload State
@@ -181,9 +190,65 @@ export default function WorkshopDayView() {
             const mod = dayConfig.modules[currentModuleIndex];
             
             if (mod.type === 'AUDIO_BRIEFING') {
-              // Calculate character-based animation threshold
-              const totalChars = mod.description?.length || 1;
+              // Calculate character-based animation threshold for Web Speech API boundary events
+              // Clean markdown symbols for character count approximation
+              const cleanText = (mod.description || '').replace(/#|-|\*|`/g, '').trim();
+              const totalChars = cleanText.length || 1;
               let charCount = 0;
+
+              const handlePlayPause = () => {
+                if (!window.speechSynthesis) {
+                  alert("Your browser does not support AI Voice. Please use Chrome, Edge, or Safari.");
+                  return;
+                }
+
+                if (isSpeaking) {
+                  window.speechSynthesis.pause();
+                  setIsSpeaking(false);
+                } else {
+                  if (window.speechSynthesis.paused) {
+                    window.speechSynthesis.resume();
+                    setIsSpeaking(true);
+                  } else {
+                    // Start fresh
+                    window.speechSynthesis.cancel();
+                    const textToRead = cleanText;
+                    const utterance = new SpeechSynthesisUtterance(textToRead);
+                    
+                    // Try to use a natural English voice if available (Edge/Google)
+                    const voices = window.speechSynthesis.getVoices();
+                    const preferredVoice = voices.find(v => v.name.includes('Natural') && v.lang.startsWith('en')) || 
+                                           voices.find(v => v.name.includes('Google') && v.lang.startsWith('en')) ||
+                                           voices.find(v => v.lang.startsWith('en'));
+                    if (preferredVoice) utterance.voice = preferredVoice;
+                    
+                    utterance.rate = 0.95; // Slightly slower for presentation
+                    
+                    utterance.onstart = () => { setIsSpeaking(true); setAudioProgress(0); };
+                    utterance.onend = () => { setIsSpeaking(false); setAudioProgress(1); };
+                    utterance.onpause = () => setIsSpeaking(false);
+                    utterance.onresume = () => setIsSpeaking(true);
+                    
+                    // The magic sync: boundary event fires for every word spoken!
+                    utterance.onboundary = (event) => {
+                      if (event.name === 'word') {
+                        setAudioProgress(event.charIndex / totalChars);
+                      }
+                    };
+
+                    setSpeechUtterance(utterance);
+                    window.speechSynthesis.speak(utterance);
+                  }
+                }
+              };
+
+              const handleStop = () => {
+                if (window.speechSynthesis) {
+                  window.speechSynthesis.cancel();
+                  setIsSpeaking(false);
+                  setAudioProgress(1);
+                }
+              };
 
               return (
                 <div className="wk-block-card" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -197,40 +262,33 @@ export default function WorkshopDayView() {
                     opacity: 0.05, pointerEvents: 'none', zIndex: 0
                   }} />
 
-                  {/* Small Audio Player pinned to the top of the card */}
-                  {mod.audioUrl ? (
-                    <div style={{ padding: '1.5rem', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f8fafc', borderRadius: '0.75rem 0.75rem 0 0', display: 'flex', flexDirection: 'column', gap: '0.75rem', position: 'relative', zIndex: 10 }}>
-                      <p style={{ fontWeight: 600, color: '#0369a1', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <PlayCircle size={18} /> Listen to Briefing
-                      </p>
-                      <audio 
-                        controls 
-                        src={mod.audioUrl} 
-                        style={{ width: '100%' }}
-                        onLoadedMetadata={(e: any) => { setAudioDuration(e.target.duration); setAudioProgress(0); }}
-                        onTimeUpdate={(e: any) => { 
-                          if (e.target.duration) {
-                            setAudioProgress(e.target.currentTime / e.target.duration);
-                          }
-                        }}
-                        onEnded={() => setAudioProgress(1)}
-                        onPlay={() => { if(audioProgress === 1) setAudioProgress(0); }}
-                      />
+                  {/* Custom Web Speech Player pinned to the top of the card */}
+                  <div style={{ padding: '1.5rem', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f8fafc', borderRadius: '0.75rem 0.75rem 0 0', display: 'flex', flexDirection: 'column', gap: '0.75rem', position: 'relative', zIndex: 10 }}>
+                    <p style={{ fontWeight: 600, color: '#0369a1', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                       AI Interactive Briefing
+                    </p>
+                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', backgroundColor: 'white', padding: '0.75rem 1rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
+                      <button 
+                        onClick={handlePlayPause}
+                        style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#0369a1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                      >
+                        {isSpeaking ? <PauseCircle size={32} /> : <PlayCircle size={32} />}
+                      </button>
+                      <button 
+                        onClick={handleStop}
+                        disabled={!isSpeaking && audioProgress === 1}
+                        style={{ border: 'none', background: 'none', cursor: 'pointer', color: (!isSpeaking && audioProgress === 1) ? '#cbd5e1' : '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                      >
+                        <Square size={24} />
+                      </button>
+                      <div style={{ flex: 1, height: '6px', backgroundColor: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
+                         <div style={{ height: '100%', backgroundColor: '#0ea5e9', width: `${audioProgress * 100}%`, transition: 'width 0.2s linear' }} />
+                      </div>
+                      <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 500, minWidth: '40px' }}>
+                        {Math.round(audioProgress * 100)}%
+                      </span>
                     </div>
-                  ) : mod.videoUrl && (
-                     <div className="wk-video-placeholder" style={{ position: 'relative', zIndex: 10 }}>
-                        <iframe 
-                          width="100%" 
-                          height="100%" 
-                          src={mod.videoUrl} 
-                          title="YouTube video player" 
-                          frameBorder="0" 
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                          allowFullScreen
-                          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '0.75rem 0.75rem 0 0' }}
-                        ></iframe>
-                     </div>
-                  )}
+                  </div>
                   
                   <div className="wk-block-content" style={{ position: 'relative', zIndex: 10 }}>
                     <h2 className="wk-title" style={{ textAlign: 'left', marginBottom: '1rem' }}>{mod.title}</h2>
@@ -242,12 +300,13 @@ export default function WorkshopDayView() {
                           p: ({node, children}) => {
                             const nodeTextLength = (node as any)?.position?.end?.offset - (node as any)?.position?.start?.offset || 50;
                             charCount += nodeTextLength;
-                            const threshold = (charCount - (nodeTextLength * 0.8)) / totalChars;
-                            const isVisible = audioProgress >= threshold || !mod.audioUrl;
+                            // Add a small buffer so text highlights slightly before the voice reads it
+                            const threshold = Math.max(0, (charCount - (nodeTextLength * 0.9))) / totalChars;
+                            const isVisible = audioProgress >= threshold;
                             
                             return (
                               <p style={{ 
-                                transition: 'all 0.8s ease', 
+                                transition: 'all 0.4s ease-out', 
                                 opacity: isVisible ? 1 : 0.1,
                                 transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
                               }}>
@@ -258,17 +317,32 @@ export default function WorkshopDayView() {
                           li: ({node, children}) => {
                             const nodeTextLength = (node as any)?.position?.end?.offset - (node as any)?.position?.start?.offset || 30;
                             charCount += nodeTextLength;
-                            const threshold = (charCount - (nodeTextLength * 0.8)) / totalChars;
-                            const isVisible = audioProgress >= threshold || !mod.audioUrl;
+                            const threshold = Math.max(0, (charCount - (nodeTextLength * 0.9))) / totalChars;
+                            const isVisible = audioProgress >= threshold;
                             
                             return (
                               <li style={{ 
-                                transition: 'all 0.5s ease', 
+                                transition: 'all 0.4s ease-out', 
                                 opacity: isVisible ? 1 : 0.1,
                                 transform: isVisible ? 'translateX(0)' : 'translateX(-10px)'
                               }}>
                                 {children}
                               </li>
+                            );
+                          },
+                          h3: ({node, children}) => {
+                            const nodeTextLength = (node as any)?.position?.end?.offset - (node as any)?.position?.start?.offset || 20;
+                            charCount += nodeTextLength;
+                            const threshold = Math.max(0, (charCount - (nodeTextLength * 0.9))) / totalChars;
+                            const isVisible = audioProgress >= threshold;
+                            
+                            return (
+                              <h3 style={{ 
+                                transition: 'all 0.4s ease-out', 
+                                opacity: isVisible ? 1 : 0.1,
+                              }}>
+                                {children}
+                              </h3>
                             );
                           }
                         }}
@@ -278,7 +352,10 @@ export default function WorkshopDayView() {
                     </div>
 
                     <button 
-                      onClick={() => advanceModule(dayConfig.modules.length)}
+                      onClick={() => {
+                        handleStop(); // Stop audio if they proceed
+                        advanceModule(dayConfig.modules.length);
+                      }}
                       className="wk-btn-primary"
                     >
                       Complete Briefing & Continue
@@ -287,7 +364,6 @@ export default function WorkshopDayView() {
                 </div>
               );
             }
-
             if (mod.type === 'ACTIVITY') {
               return (
                 <div className="wk-block-card">

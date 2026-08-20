@@ -125,31 +125,7 @@ export default function MasterCurriculumBuilder({ workshopType }: { workshopType
     }
   };
 
-  const generateAudio = async (mod: CurriculumModule) => {
-    if (!mod.description) return alert('Enter a script in the description field first!');
-    setIsGeneratingAudio(mod.id);
-    try {
-      const res = await fetch('/api/generate-audio', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          text: mod.description,
-          modId: mod.id,
-          workshopType,
-          day
-        })
-      });
-      const data = await res.json();
-      if (!data.success) throw new Error(data.error);
-      
-      updateModule(mod.id, { audioUrl: data.audioUrl, videoUrl: '' });
-      alert('AI Audio generated and saved to Google Drive!');
-    } catch (e: any) {
-      alert('Error generating audio: ' + e.message);
-    } finally {
-      setIsGeneratingAudio(null);
-    }
-  };
+
 
   if (isLoading) return <div style={{ padding: '2rem' }}><Loader2 className="animate-spin text-blue-600" /></div>;
 
@@ -237,18 +213,11 @@ export default function MasterCurriculumBuilder({ workshopType }: { workshopType
                 </div>
 
                 {mod.type === 'AUDIO_BRIEFING' && (
-                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-end', backgroundColor: '#f8fafc', padding: '1rem', borderRadius: '0.5rem' }}>
-                    <div style={{ flex: 1 }}>
-                      <label style={{ fontSize: '0.875rem', fontWeight: 500 }}>AI Audio URL</label>
-                      <input type="text" value={mod.audioUrl || ''} disabled style={{ padding: '0.5rem', borderRadius: '0.25rem', border: '1px solid #cbd5e1', width: '100%', backgroundColor: '#e2e8f0' }} />
-                    </div>
-                    <button onClick={() => generateAudio(mod)} disabled={isGeneratingAudio === mod.id} className="admin-btn" style={{ backgroundColor: '#10b981', color: 'white', border: 'none', height: '42px', padding: '0 1rem' }}>
-                      {isGeneratingAudio === mod.id ? <Loader2 size={16} className="animate-spin" /> : <Mic size={16} />} Generate AI Voice
-                    </button>
+                  <div style={{ backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', padding: '1rem', borderRadius: '0.5rem' }}>
+                    <p style={{ margin: 0, fontSize: '0.875rem', color: '#166534', fontWeight: 500 }}>
+                      ✓ This script will be automatically read aloud by the student's browser (Web Speech API). No audio generation needed!
+                    </p>
                   </div>
-                )}
-                {mod.type === 'AUDIO_BRIEFING' && mod.audioUrl && (
-                  <audio controls src={mod.audioUrl} style={{ width: '100%', marginTop: '0.5rem' }} />
                 )}
               </div>
             </div>
