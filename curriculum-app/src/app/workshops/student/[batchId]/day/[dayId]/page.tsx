@@ -18,6 +18,8 @@ export default function WorkshopDayView() {
   const dayId = params.dayId as string;
   
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0);
+  const [audioProgress, setAudioProgress] = useState(1);
+  const [audioDuration, setAudioDuration] = useState(0);
   const [isInitializing, setIsInitializing] = useState(true);
   const [batchData, setBatchData] = useState<any>(null);
 
@@ -179,18 +181,44 @@ export default function WorkshopDayView() {
             const mod = dayConfig.modules[currentModuleIndex];
             
             if (mod.type === 'AUDIO_BRIEFING') {
+              // Calculate character-based animation threshold
+              const totalChars = mod.description?.length || 1;
+              let charCount = 0;
+
               return (
-                <div className="wk-block-card">
+                <div className="wk-block-card" style={{ position: 'relative', overflow: 'hidden' }}>
+                  
+                  {/* Watermark Logo */}
+                  <div style={{
+                    position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
+                    width: '300px', height: '300px',
+                    backgroundImage: 'url(/tcb-logo.png)',
+                    backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',
+                    opacity: 0.05, pointerEvents: 'none', zIndex: 0
+                  }} />
+
                   {/* Small Audio Player pinned to the top of the card */}
                   {mod.audioUrl ? (
-                    <div style={{ padding: '1.5rem', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f8fafc', borderRadius: '0.75rem 0.75rem 0 0', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <div style={{ padding: '1.5rem', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f8fafc', borderRadius: '0.75rem 0.75rem 0 0', display: 'flex', flexDirection: 'column', gap: '0.75rem', position: 'relative', zIndex: 10 }}>
                       <p style={{ fontWeight: 600, color: '#0369a1', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <PlayCircle size={18} /> Listen to Briefing
                       </p>
-                      <audio controls src={mod.audioUrl} style={{ width: '100%' }} />
+                      <audio 
+                        controls 
+                        src={mod.audioUrl} 
+                        style={{ width: '100%' }}
+                        onLoadedMetadata={(e: any) => { setAudioDuration(e.target.duration); setAudioProgress(0); }}
+                        onTimeUpdate={(e: any) => { 
+                          if (e.target.duration) {
+                            setAudioProgress(e.target.currentTime / e.target.duration);
+                          }
+                        }}
+                        onEnded={() => setAudioProgress(1)}
+                        onPlay={() => { if(audioProgress === 1) setAudioProgress(0); }}
+                      />
                     </div>
                   ) : mod.videoUrl && (
-                     <div className="wk-video-placeholder">
+                     <div className="wk-video-placeholder" style={{ position: 'relative', zIndex: 10 }}>
                         <iframe 
                           width="100%" 
                           height="100%" 
@@ -204,12 +232,49 @@ export default function WorkshopDayView() {
                      </div>
                   )}
                   
-                  <div className="wk-block-content">
+                  <div className="wk-block-content" style={{ position: 'relative', zIndex: 10 }}>
                     <h2 className="wk-title" style={{ textAlign: 'left', marginBottom: '1rem' }}>{mod.title}</h2>
                     
-                    {/* Render Gemini's markdown instructions beautifully */}
+                    {/* Render Gemini's markdown instructions beautifully with Sync Animation */}
                     <div className="markdown-prose" style={{ textAlign: 'left', color: '#475569', lineHeight: '1.7', marginBottom: '2rem' }}>
-                      <ReactMarkdown>{mod.description}</ReactMarkdown>
+                      <ReactMarkdown
+                        components={{
+                          p: ({node, children}) => {
+                            const nodeTextLength = (node as any)?.position?.end?.offset - (node as any)?.position?.start?.offset || 50;
+                            charCount += nodeTextLength;
+                            const threshold = (charCount - (nodeTextLength * 0.8)) / totalChars;
+                            const isVisible = audioProgress >= threshold || !mod.audioUrl;
+                            
+                            return (
+                              <p style={{ 
+                                transition: 'all 0.8s ease', 
+                                opacity: isVisible ? 1 : 0.1,
+                                transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
+                              }}>
+                                {children}
+                              </p>
+                            );
+                          },
+                          li: ({node, children}) => {
+                            const nodeTextLength = (node as any)?.position?.end?.offset - (node as any)?.position?.start?.offset || 30;
+                            charCount += nodeTextLength;
+                            const threshold = (charCount - (nodeTextLength * 0.8)) / totalChars;
+                            const isVisible = audioProgress >= threshold || !mod.audioUrl;
+                            
+                            return (
+                              <li style={{ 
+                                transition: 'all 0.5s ease', 
+                                opacity: isVisible ? 1 : 0.1,
+                                transform: isVisible ? 'translateX(0)' : 'translateX(-10px)'
+                              }}>
+                                {children}
+                              </li>
+                            );
+                          }
+                        }}
+                      >
+                        {mod.description}
+                      </ReactMarkdown>
                     </div>
 
                     <button 

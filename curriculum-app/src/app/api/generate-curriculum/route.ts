@@ -23,9 +23,9 @@ Return a raw JSON object (NO markdown formatting, just raw JSON) containing exac
   - "type": MUST be either "AUDIO_BRIEFING", "ACTIVITY", or "UPLOAD"
   - "title": A short title for the module
   - "description": 
-     For AUDIO_BRIEFING: A well-written, conversational script to be read by an AI voice (200-300 words).
-     For ACTIVITY: Clear, step-by-step instructions for the student to follow.
-     For UPLOAD: A short instruction on what they need to submit.
+     For AUDIO_BRIEFING: A well-written, conversational script to be read by an AI voice (200-300 words). MUST BE FORMATTED IN MARKDOWN. Use '###' for main headers and '-' for bullet points. Do not write a massive wall of text. Break it up beautifully like a presentation slide.
+     For ACTIVITY: Clear, step-by-step instructions for the student to follow, formatted elegantly in Markdown with bolded action verbs.
+     For UPLOAD: A short instruction on what they need to submit, formatted in Markdown.
 
 Ensure the flow makes sense. Generally start with an AUDIO_BRIEFING, followed by 1 or 2 ACTIVITY blocks, ending with an UPLOAD block if appropriate.`;
 
