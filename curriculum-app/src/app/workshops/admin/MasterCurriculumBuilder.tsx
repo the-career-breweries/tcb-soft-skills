@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Loader2, Save, PlayCircle, Settings2, Mic, Plus, Trash2, UploadCloud } from 'lucide-react';
+import { Loader2, Save, PlayCircle, Settings2, Mic, Plus, Trash2, UploadCloud, Sparkles } from 'lucide-react';
 import { updateMasterCurriculumAction, getMasterCurriculumAction } from '@/app/actions/adminOps';
 import { storage } from '@/lib/firebase/config';
 import { ref, uploadString, getDownloadURL } from 'firebase/storage';
@@ -27,6 +27,10 @@ export default function MasterCurriculumBuilder({ workshopType }: { workshopType
 
   const [isSaving, setIsSaving] = useState(false);
   const [isGeneratingAudio, setIsGeneratingAudio] = useState<string | null>(null);
+
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [isGeneratingCurriculum, setIsGeneratingCurriculum] = useState(false);
+
 
   useEffect(() => {
     const fetchMaster = async () => {
@@ -90,6 +94,37 @@ export default function MasterCurriculumBuilder({ workshopType }: { workshopType
     setModules(newModules);
   };
 
+  
+  const handleAIGenerate = async () => {
+    if (!aiPrompt) return alert('Enter a prompt for the AI first!');
+    if (!confirm('This will replace the current day config. Continue?')) return;
+    
+    setIsGeneratingCurriculum(true);
+    try {
+      const res = await fetch('/api/generate-curriculum', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: aiPrompt, day, workshopType })
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error);
+      
+      const newModules = data.curriculum.modules.map((m: any, i: number) => ({
+        ...m,
+        id: `mod_${Date.now()}_${i}`
+      }));
+      
+      setDayTitle(data.curriculum.dayTitle || '');
+      setModules(newModules);
+      setAiPrompt('');
+      alert('Day generated successfully! Review the modules and click Save Master Curriculum.');
+    } catch (e: any) {
+      alert('Error generating curriculum: ' + e.message);
+    } finally {
+      setIsGeneratingCurriculum(false);
+    }
+  };
+
   const generateAudio = async (mod: CurriculumModule) => {
     if (!mod.description) return alert('Enter a script in the description field first!');
     setIsGeneratingAudio(mod.id);
@@ -143,7 +178,32 @@ export default function MasterCurriculumBuilder({ workshopType }: { workshopType
           </button>
         </div>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        
+        {/* AI Co-Pilot Block */}
+        <div style={{ backgroundColor: '#f0f9ff', border: '1px solid #bae6fd', borderRadius: '0.5rem', padding: '1.5rem', marginBottom: '1.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', color: '#0369a1', fontWeight: 600 }}>
+            <Sparkles size={20} /> AI Curriculum Co-Pilot
+          </div>
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+            <textarea 
+              rows={2} 
+              value={aiPrompt} 
+              onChange={(e) => setAiPrompt(e.target.value)} 
+              placeholder="e.g. 'Generate a day on Resume Building using the STAR method...'" 
+              style={{ flex: 1, padding: '0.75rem', borderRadius: '0.25rem', border: '1px solid #bae6fd', width: '100%' }} 
+            />
+            <button 
+              onClick={handleAIGenerate} 
+              disabled={isGeneratingCurriculum} 
+              className="admin-btn" 
+              style={{ backgroundColor: '#0284c7', color: 'white', border: 'none', height: '100%', minHeight: '62px', padding: '0 1.5rem' }}
+            >
+              {isGeneratingCurriculum ? <Loader2 size={20} className="animate-spin" /> : 'Generate Day with AI'}
+            </button>
+          </div>
+        </div>
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {modules.map((mod, index) => (
             <div key={mod.id} style={{ border: '1px solid #e2e8f0', borderRadius: '0.5rem', padding: '1.5rem', position: 'relative' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
