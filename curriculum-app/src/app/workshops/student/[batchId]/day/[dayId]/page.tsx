@@ -18,18 +18,10 @@ export default function WorkshopDayView() {
   const dayId = params.dayId as string;
   
   const [currentModuleIndex, setCurrentModuleIndex] = useState(0);
-  const [audioProgress, setAudioProgress] = useState(1);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [speechUtterance, setSpeechUtterance] = useState<SpeechSynthesisUtterance | null>(null);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isInitializing, setIsInitializing] = useState(true);
 
-  useEffect(() => {
-    return () => {
-      if (window.speechSynthesis) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, []);
+
   const [batchData, setBatchData] = useState<any>(null);
 
   // Upload State
@@ -189,203 +181,128 @@ export default function WorkshopDayView() {
           (() => {
             const mod = dayConfig.modules[currentModuleIndex];
             
-            if (mod.type === 'AUDIO_BRIEFING') {
-              // Calculate character-based animation threshold for Web Speech API boundary events
-              // Clean markdown symbols for character count approximation
-              const cleanText = (mod.description || '').replace(/#|-|\*|`/g, '').trim();
-              const totalChars = cleanText.length || 1;
-              let charCount = 0;
+            if (mod.type === 'AUDIO_BRIEFING' || mod.type === 'ACTIVITY') {
+              // Parse description into slides by paragraphs/headers
+              const rawBlocks = (mod.description || '').split('\n\n').filter(b => b.trim().length > 0);
+              
+              // If the AI generated bullet points clumped together, they might not split by \n\n.
+              // Let's ensure it's at least one block.
+              const blocks = rawBlocks.length > 0 ? rawBlocks : [mod.description || ''];
+              
+              const isLastSlide = currentSlideIndex >= blocks.length - 1;
+              const currentBlockText = blocks[currentSlideIndex] || '';
 
-              const handlePlayPause = () => {
-                if (!window.speechSynthesis) {
-                  alert("Your browser does not support AI Voice. Please use Chrome, Edge, or Safari.");
-                  return;
-                }
-
-                if (isSpeaking) {
-                  window.speechSynthesis.pause();
-                  setIsSpeaking(false);
+              const handleNextSlide = () => {
+                if (isLastSlide) {
+                  setCurrentSlideIndex(0);
+                  advanceModule(dayConfig.modules.length);
                 } else {
-                  if (window.speechSynthesis.paused) {
-                    window.speechSynthesis.resume();
-                    setIsSpeaking(true);
-                  } else {
-                    // Start fresh
-                    window.speechSynthesis.cancel();
-                    const textToRead = cleanText;
-                    const utterance = new SpeechSynthesisUtterance(textToRead);
-                    
-                    // Try to use a natural English voice if available (Edge/Google)
-                    const voices = window.speechSynthesis.getVoices();
-                    const preferredVoice = voices.find(v => v.name.includes('Natural') && v.lang.startsWith('en')) || 
-                                           voices.find(v => v.name.includes('Google') && v.lang.startsWith('en')) ||
-                                           voices.find(v => v.lang.startsWith('en'));
-                    if (preferredVoice) utterance.voice = preferredVoice;
-                    
-                    utterance.rate = 0.95; // Slightly slower for presentation
-                    
-                    utterance.onstart = () => { setIsSpeaking(true); setAudioProgress(0); };
-                    utterance.onend = () => { setIsSpeaking(false); setAudioProgress(1); };
-                    utterance.onpause = () => setIsSpeaking(false);
-                    utterance.onresume = () => setIsSpeaking(true);
-                    
-                    // The magic sync: boundary event fires for every word spoken!
-                    utterance.onboundary = (event) => {
-                      if (event.name === 'word') {
-                        setAudioProgress(event.charIndex / totalChars);
-                      }
-                    };
-
-                    setSpeechUtterance(utterance);
-                    window.speechSynthesis.speak(utterance);
-                  }
+                  setCurrentSlideIndex(prev => prev + 1);
                 }
               };
 
-              const handleStop = () => {
-                if (window.speechSynthesis) {
-                  window.speechSynthesis.cancel();
-                  setIsSpeaking(false);
-                  setAudioProgress(1);
-                }
+              const handlePrevSlide = () => {
+                if (currentSlideIndex > 0) setCurrentSlideIndex(prev => prev - 1);
               };
+
+              const isBriefing = mod.type === 'AUDIO_BRIEFING';
 
               return (
-                <div className="wk-block-card" style={{ position: 'relative', overflow: 'hidden' }}>
+                <div className="wk-block-card" style={{ 
+                  position: 'relative', overflow: 'hidden', minHeight: '400px', display: 'flex', flexDirection: 'column'
+                }}>
                   
                   {/* Watermark Logo */}
                   <div style={{
                     position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
-                    width: '300px', height: '300px',
+                    width: '350px', height: '350px',
                     backgroundImage: 'url(/tcb-logo.png)',
                     backgroundSize: 'contain', backgroundRepeat: 'no-repeat', backgroundPosition: 'center',
-                    opacity: 0.05, pointerEvents: 'none', zIndex: 0
+                    opacity: 0.04, pointerEvents: 'none', zIndex: 0
                   }} />
 
-                  {/* Custom Web Speech Player pinned to the top of the card */}
-                  <div style={{ padding: '1.5rem', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f8fafc', borderRadius: '0.75rem 0.75rem 0 0', display: 'flex', flexDirection: 'column', gap: '0.75rem', position: 'relative', zIndex: 10 }}>
-                    <p style={{ fontWeight: 600, color: '#0369a1', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                       AI Interactive Briefing
-                    </p>
-                    <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', backgroundColor: 'white', padding: '0.75rem 1rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', boxShadow: '0 1px 2px rgba(0,0,0,0.05)' }}>
-                      <button 
-                        onClick={handlePlayPause}
-                        style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#0369a1', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                      >
-                        {isSpeaking ? <PauseCircle size={32} /> : <PlayCircle size={32} />}
-                      </button>
-                      <button 
-                        onClick={handleStop}
-                        disabled={!isSpeaking && audioProgress === 1}
-                        style={{ border: 'none', background: 'none', cursor: 'pointer', color: (!isSpeaking && audioProgress === 1) ? '#cbd5e1' : '#64748b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                      >
-                        <Square size={24} />
-                      </button>
-                      <div style={{ flex: 1, height: '6px', backgroundColor: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
-                         <div style={{ height: '100%', backgroundColor: '#0ea5e9', width: `${audioProgress * 100}%`, transition: 'width 0.2s linear' }} />
-                      </div>
-                      <span style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 500, minWidth: '40px' }}>
-                        {Math.round(audioProgress * 100)}%
-                      </span>
-                    </div>
+                  {/* Header */}
+                  <div style={{ 
+                    padding: '1.5rem 2rem', 
+                    backgroundColor: isBriefing ? '#f0f9ff' : '#faf5ff', 
+                    borderBottom: `1px solid ${isBriefing ? '#bae6fd' : '#e9d5ff'}`, 
+                    display: 'flex', alignItems: 'center', gap: '0.75rem', position: 'relative', zIndex: 10 
+                  }}>
+                    {isBriefing ? <PlayCircle size={24} style={{ color: '#0284c7' }} /> : <Settings2 size={24} style={{ color: '#8b5cf6' }} />}
+                    <h2 style={{ fontSize: '1.25rem', fontWeight: 600, color: isBriefing ? '#0369a1' : '#5b21b6', margin: 0 }}>
+                      {mod.title}
+                    </h2>
                   </div>
                   
-                  <div className="wk-block-content" style={{ position: 'relative', zIndex: 10 }}>
-                    <h2 className="wk-title" style={{ textAlign: 'left', marginBottom: '1rem' }}>{mod.title}</h2>
+                  {/* Presentation Content Area */}
+                  <div className="wk-block-content" style={{ position: 'relative', zIndex: 10, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '3rem 2rem' }}>
                     
-                    {/* Render Gemini's markdown instructions beautifully with Sync Animation */}
-                    <div className="markdown-prose" style={{ textAlign: 'left', color: '#475569', lineHeight: '1.7', marginBottom: '2rem' }}>
-                      <ReactMarkdown
-                        components={{
-                          p: ({node, children}) => {
-                            const nodeTextLength = (node as any)?.position?.end?.offset - (node as any)?.position?.start?.offset || 50;
-                            charCount += nodeTextLength;
-                            // Add a small buffer so text highlights slightly before the voice reads it
-                            const threshold = Math.max(0, (charCount - (nodeTextLength * 0.9))) / totalChars;
-                            const isVisible = audioProgress >= threshold;
-                            
-                            return (
-                              <p style={{ 
-                                transition: 'all 0.4s ease-out', 
-                                opacity: isVisible ? 1 : 0.1,
-                                transform: isVisible ? 'translateY(0)' : 'translateY(10px)'
-                              }}>
-                                {children}
-                              </p>
-                            );
-                          },
-                          li: ({node, children}) => {
-                            const nodeTextLength = (node as any)?.position?.end?.offset - (node as any)?.position?.start?.offset || 30;
-                            charCount += nodeTextLength;
-                            const threshold = Math.max(0, (charCount - (nodeTextLength * 0.9))) / totalChars;
-                            const isVisible = audioProgress >= threshold;
-                            
-                            return (
-                              <li style={{ 
-                                transition: 'all 0.4s ease-out', 
-                                opacity: isVisible ? 1 : 0.1,
-                                transform: isVisible ? 'translateX(0)' : 'translateX(-10px)'
-                              }}>
-                                {children}
-                              </li>
-                            );
-                          },
-                          h3: ({node, children}) => {
-                            const nodeTextLength = (node as any)?.position?.end?.offset - (node as any)?.position?.start?.offset || 20;
-                            charCount += nodeTextLength;
-                            const threshold = Math.max(0, (charCount - (nodeTextLength * 0.9))) / totalChars;
-                            const isVisible = audioProgress >= threshold;
-                            
-                            return (
-                              <h3 style={{ 
-                                transition: 'all 0.4s ease-out', 
-                                opacity: isVisible ? 1 : 0.1,
-                              }}>
-                                {children}
-                              </h3>
-                            );
-                          }
-                        }}
-                      >
-                        {mod.description}
-                      </ReactMarkdown>
+                    <div className="markdown-prose" style={{ 
+                      textAlign: 'center', 
+                      color: '#334155', 
+                      fontSize: '1.25rem', 
+                      lineHeight: '1.8', 
+                      maxWidth: '800px',
+                      margin: '0 auto',
+                      animation: 'fadeInUp 0.4s ease-out forwards'
+                    }}>
+                      <ReactMarkdown>{currentBlockText}</ReactMarkdown>
                     </div>
 
-                    <button 
-                      onClick={() => {
-                        handleStop(); // Stop audio if they proceed
-                        advanceModule(dayConfig.modules.length);
-                      }}
-                      className="wk-btn-primary"
-                    >
-                      Complete Briefing & Continue
-                    </button>
                   </div>
+
+                  {/* Presentation Controls Footer */}
+                  <div style={{ padding: '1.5rem 2rem', borderTop: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#fff', position: 'relative', zIndex: 10 }}>
+                    
+                    {/* Progress Indicator */}
+                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                      {blocks.map((_, idx) => (
+                        <div key={idx} style={{ 
+                          width: '12px', height: '12px', borderRadius: '50%', 
+                          backgroundColor: idx === currentSlideIndex ? (isBriefing ? '#0ea5e9' : '#a855f7') : '#e2e8f0',
+                          transition: 'background-color 0.3s ease'
+                        }} />
+                      ))}
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '1rem' }}>
+                      {currentSlideIndex > 0 && (
+                        <button onClick={handlePrevSlide} className="wk-btn-outline">
+                          Previous
+                        </button>
+                      )}
+                      
+                      <button onClick={handleNextSlide} className="wk-btn-primary" style={{ backgroundColor: isBriefing ? '#0284c7' : '#7c3aed' }}>
+                        {isLastSlide ? (isBriefing ? 'Complete Briefing' : 'Mark Activity Complete') : 'Next'}
+                      </button>
+                    </div>
+                  </div>
+
+                  <style dangerouslySetInnerHTML={{__html: `
+                    @keyframes fadeInUp {
+                      from { opacity: 0; transform: translateY(15px); }
+                      to { opacity: 1; transform: translateY(0); }
+                    }
+                    /* Override markdown styles for presentation mode */
+                    .markdown-prose h1, .markdown-prose h2, .markdown-prose h3 {
+                      text-align: center;
+                      margin-bottom: 1.5rem;
+                      color: #0f172a;
+                    }
+                    .markdown-prose p {
+                      margin-bottom: 1rem;
+                    }
+                    .markdown-prose ul, .markdown-prose ol {
+                      text-align: left;
+                      display: inline-block;
+                    }
+                    .markdown-prose li {
+                      margin-bottom: 0.75rem;
+                    }
+                  `}} />
                 </div>
               );
             }
-            if (mod.type === 'ACTIVITY') {
-              return (
-                <div className="wk-block-card">
-                  <div style={{ padding: '1.5rem 2rem', backgroundColor: '#faf5ff', borderBottom: '1px solid #e9d5ff', borderRadius: '0.75rem 0.75rem 0 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <Settings2 size={24} style={{ color: '#8b5cf6' }} />
-                    <h2 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#5b21b6', margin: 0 }}>{mod.title}</h2>
-                  </div>
-                  <div className="wk-block-content" style={{ textAlign: 'left' }}>
-                    <div className="markdown-prose" style={{ color: '#475569', lineHeight: '1.7', marginBottom: '2rem' }}>
-                      <ReactMarkdown>{mod.description}</ReactMarkdown>
-                    </div>
-                    <button 
-                      onClick={() => advanceModule(dayConfig.modules.length)}
-                      className="wk-btn-primary"
-                    >
-                      Mark Activity Complete
-                    </button>
-                  </div>
-                </div>
-              );
-            }
-
             if (mod.type === 'UPLOAD') {
               return (
                 <div className="wk-block-card wk-center-layout">
