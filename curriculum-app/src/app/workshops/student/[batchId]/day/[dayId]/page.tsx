@@ -183,10 +183,18 @@ export default function WorkshopDayView() {
             
             if (mod.type === 'AUDIO_BRIEFING' || mod.type === 'ACTIVITY') {
               // Parse description into slides by paragraphs/headers
-              const rawBlocks = (mod.description || '').split('\n\n').filter(b => b.trim().length > 0);
+              let rawBlocks = (mod.description || '').split('\n\n').filter(b => b.trim().length > 0);
               
-              // If the AI generated bullet points clumped together, they might not split by \n\n.
-              // Let's ensure it's at least one block.
+              // Fallback for old data: If it's a massive wall of text (1 block, > 300 chars), split it by sentences.
+              if (rawBlocks.length === 1 && rawBlocks[0].length > 300) {
+                 const sentences = rawBlocks[0].split(/(?<=\.)\s+/);
+                 const chunked = [];
+                 for(let i=0; i<sentences.length; i+=2) {
+                     chunked.push(sentences.slice(i, i+2).join(' '));
+                 }
+                 rawBlocks = chunked;
+              }
+              
               const blocks = rawBlocks.length > 0 ? rawBlocks : [mod.description || ''];
               
               const isLastSlide = currentSlideIndex >= blocks.length - 1;
@@ -235,16 +243,17 @@ export default function WorkshopDayView() {
                   </div>
                   
                   {/* Presentation Content Area */}
-                  <div className="wk-block-content" style={{ position: 'relative', zIndex: 10, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '3rem 2rem' }}>
+                  <div className="wk-block-content" style={{ position: 'relative', zIndex: 10, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '3rem 4rem' }}>
                     
-                    <div className="markdown-prose" style={{ 
-                      textAlign: 'center', 
+                    <div className="markdown-prose slide-content" style={{ 
+                      textAlign: 'left', 
                       color: '#334155', 
-                      fontSize: '1.25rem', 
+                      fontSize: '1.5rem', 
                       lineHeight: '1.8', 
-                      maxWidth: '800px',
+                      maxWidth: '900px',
                       margin: '0 auto',
-                      animation: 'fadeInUp 0.4s ease-out forwards'
+                      animation: 'fadeInLeft 0.4s ease-out forwards',
+                      width: '100%'
                     }}>
                       <ReactMarkdown>{currentBlockText}</ReactMarkdown>
                     </div>
@@ -279,25 +288,35 @@ export default function WorkshopDayView() {
                   </div>
 
                   <style dangerouslySetInnerHTML={{__html: `
-                    @keyframes fadeInUp {
-                      from { opacity: 0; transform: translateY(15px); }
-                      to { opacity: 1; transform: translateY(0); }
+                    @keyframes fadeInLeft {
+                      from { opacity: 0; transform: translateX(20px); }
+                      to { opacity: 1; transform: translateX(0); }
                     }
                     /* Override markdown styles for presentation mode */
-                    .markdown-prose h1, .markdown-prose h2, .markdown-prose h3 {
-                      text-align: center;
+                    .slide-content h1, .slide-content h2, .slide-content h3 {
+                      text-align: left;
                       margin-bottom: 1.5rem;
                       color: #0f172a;
+                      font-size: 2.25rem;
+                      font-weight: 700;
+                      border-bottom: 2px solid #e2e8f0;
+                      padding-bottom: 0.5rem;
                     }
-                    .markdown-prose p {
-                      margin-bottom: 1rem;
+                    .slide-content p {
+                      margin-bottom: 1.5rem;
+                      font-size: 1.35rem;
                     }
-                    .markdown-prose ul, .markdown-prose ol {
+                    .slide-content ul, .slide-content ol {
                       text-align: left;
-                      display: inline-block;
+                      padding-left: 2rem;
+                      margin-bottom: 1.5rem;
                     }
-                    .markdown-prose li {
-                      margin-bottom: 0.75rem;
+                    .slide-content li {
+                      margin-bottom: 1rem;
+                      font-size: 1.35rem;
+                    }
+                    .slide-content strong {
+                      color: #0ea5e9;
                     }
                   `}} />
                 </div>
