@@ -8,14 +8,15 @@ A Master's degree gets you the interview; your **toolkit** gets you the job and 
 
 ---
 
-# 🧊 The 3-Word Professional
+# 🧊 The "Reputation" Test
 ### Icebreaker Activity
 
-If I asked your future boss to describe you in **3 words** based on how you act today... 
+Imagine you are applying for a job tomorrow. The HR Manager calls your **college friends** and asks:
+*"Tell me the honest truth about them in 3 words."* 
 
-**What would those 3 words be?**
+**What would your friends say?**
 
-*(Take 60 seconds to think about your personal brand!)*
+*(Take 60 seconds to think about your current reputation!)*
 
 ---
 
