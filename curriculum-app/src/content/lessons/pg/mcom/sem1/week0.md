@@ -161,9 +161,9 @@ There are platforms out there specifically designed to help you:
 # 🗣️&#xFE0F; Activity: The Elevator Pitch
 ## Sell Your Skills, Not Your Grades
 
-**Scenario:** You are stuck in an elevator with the hiring manager of a top firm. You have 30 seconds.
+**Scenario:** A successful startup founder just gave a guest lecture at your college. You are walking with them to the parking lot. You have 30 seconds.
 
-**Your Task:** Pitch *why* your background makes you valuable, **without mentioning your grades**. Focus on skills (analytical thinking, teamwork, data handling).
+**Your Task:** Pitch *why* you stand out, **without mentioning your grades**. Focus on real skills (problem solving, event management, teamwork).
 
 *(Find a partner. You have 3 minutes to prepare, and 2 minutes to pitch!)*
 
@@ -172,9 +172,9 @@ There are platforms out there specifically designed to help you:
 # 🎙️&#xFE0F; The Elevator Pitch
 ## A Sample Pitch
 
-*"Hi, I'm [Name], an M.Com student specializing in Finance. Recently, I analyzed the financial health of 5 local businesses for a project, identifying a 15% cost-saving opportunity for one of them.* 
+*"Hi, I'm [Name], an M.Com student here. I loved your point about local marketing. Recently, our team organized a college fest where I managed the budget and negotiated a 20% discount with vendors.* 
 
-*I know how to turn raw numbers into actionable business strategies. I see your firm is expanding its SME advisory wing, and my hands-on data analysis skills would make me a great fit for your team."*
+*I enjoy using numbers to solve real-world problems. I would love to connect with you on LinkedIn to follow your startup's journey!"*
 
 ---
 
