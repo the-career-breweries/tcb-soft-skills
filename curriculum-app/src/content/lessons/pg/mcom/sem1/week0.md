@@ -144,7 +144,6 @@ There are platforms out there specifically designed to help you:
 ---
 
 # 🌐&#xFE0F; Pillar 3: Professional Avenues
-## 🌐&#xFE0F; Pillar 3: Professional Avenues
 ## The Digital Footprint
 
 | Professional Networking | Job Search Sites | Profile & Portfolios |
@@ -157,18 +156,9 @@ There are platforms out there specifically designed to help you:
 | ![Reddit](https://www.google.com/s2/favicons?domain=reddit.com&sz=64) **Reddit (Niche)** | ![Indeed](https://www.google.com/s2/favicons?domain=indeed.com&sz=64) **Indeed** | ![Resume.io](https://www.google.com/s2/favicons?domain=resume.io&sz=64) **Resume.io** |
 | ![Discord](https://www.google.com/s2/favicons?domain=discord.com&sz=64) **Discord** | ![Glassdoor](https://www.google.com/s2/favicons?domain=glassdoor.com&sz=64) **Glassdoor** | ![Teal](https://www.google.com/s2/favicons?domain=tealhq.com&sz=64) **Teal** |
 
---- | :--- | :--- |
-| ![LinkedIn](https://www.google.com/s2/favicons?domain=linkedin.com&sz=64) **LinkedIn** | ![Naukri.com](https://www.google.com/s2/favicons?domain=naukri.com&sz=64) **Naukri.com** | ![GitHub](https://www.google.com/s2/favicons?domain=github.com&sz=64) **GitHub** |
-| | ![Internshala](https://www.google.com/s2/favicons?domain=internshala.com&sz=64) **Internshala** | ![Behance](https://www.google.com/s2/favicons?domain=behance.net&sz=64) **Behance** |
-| | ![Unstop](https://www.google.com/s2/favicons?domain=unstop.com&sz=64) **Unstop** | ![Medium](https://www.google.com/s2/favicons?domain=medium.com&sz=64) **Medium** |
-| | ![Wellfound](https://www.google.com/s2/favicons?domain=wellfound.com&sz=64) **Wellfound** | ![FlowCV](https://www.google.com/s2/favicons?domain=flowcv.com&sz=64) **FlowCV** |
-| | ![FoundIt](https://www.google.com/s2/favicons?domain=foundit.in&sz=64) **FoundIt** | ![Canva](https://www.google.com/s2/favicons?domain=canva.com&sz=64) **Canva** |
-| | | ![Resume.io](https://www.google.com/s2/favicons?domain=resume.io&sz=64) **Resume.io** |
-| | | ![Teal](https://www.google.com/s2/favicons?domain=tealhq.com&sz=64) **Teal** |
-
 ---
 
-#xFE0F; Activity: The Elevator Pitch
+# 🗣️&#xFE0F; Activity: The Elevator Pitch
 ## Sell Your Skills, Not Your Grades
 
 **Scenario:** You are stuck in an elevator with the hiring manager of a top firm. You have 30 seconds.
