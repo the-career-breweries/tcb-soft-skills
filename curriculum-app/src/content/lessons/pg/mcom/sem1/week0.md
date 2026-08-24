@@ -11,8 +11,10 @@ A Master's degree gets you the interview; your **toolkit** gets you the job and 
 # 🧊&#xFE0F; The "Reputation" Test
 ### Icebreaker Activity
 
+Jeff Bezos famously said: *"Your brand is what people say about you when you leave the room."*
+
 Imagine you are applying for a job tomorrow. The HR Manager calls your **college friends** and asks:
-*"Tell me the honest truth about them in 3 words."* 
+*"Tell me the honest truth about them in 3 words."*
 
 **What would your friends say?**
 
@@ -20,7 +22,7 @@ Imagine you are applying for a job tomorrow. The HR Manager calls your **college
 
 ---
 
-# 🏢 The 3 Pillars of Career Success
+# 🏢&#xFE0F; The 3 Pillars of Career Success
 ## What the Corporate World Actually Wants
 
 1. **Communication Beyond the Syllabus:** Articulation and active listening.
@@ -30,12 +32,34 @@ Imagine you are applying for a job tomorrow. The HR Manager calls your **college
 ---
 
 # 📝&#xFE0F; Pillar 1: Communication
+## Frameworks: PREP & STAR
+
+Don't just talk; structure your thoughts.
+
+**PREP (For expressing opinions):**
+- **P**oint: State your main point.
+- **R**eason: Why do you believe this?
+- **E**xample: Give a concrete example.
+- **P**oint: Reiterate your main point.
+
+**STAR (For answering interview questions):**
+- **S**ituation: Set the scene.
+- **T**ask: What was the challenge?
+- **A**ction: What did *you* specifically do?
+- **R**esult: What was the outcome?
+
+---
+
+# ✉️&#xFE0F; Pillar 1: Communication
 ## The Email Rule
 
 It is not just about speaking fluent English. 
 It is about clarity, structuring your thoughts, and knowing your audience.
 
 *Can you write a concise, professional email that gets a CEO to reply in 5 seconds?*
+- Clear subject line.
+- Get straight to the point.
+- Clear Call-to-Action (CTA).
 
 ---
 
@@ -48,13 +72,104 @@ Employers don't want people who just follow instructions; they want people who *
 
 ---
 
+# 🧩&#xFE0F; Pillar 2: Adaptability
+## What is Problem Solving?
+
+Problem solving isn't about knowing the exact answer immediately.
+
+It is the ability to:
+1. Break down a massive, complex issue into smaller parts.
+2. Make logical assumptions when data is missing.
+3. Arrive at a reasonable, actionable conclusion.
+
+---
+
+# 🔢&#xFE0F; Pillar 2: Adaptability
+## Guesstimation Basics
+
+**Guesstimation** = Guessing + Estimation
+
+It is a common interview technique used by top companies to test your analytical thinking, logic, and how you handle ambiguity under pressure.
+
+They don't care about the final number. **They care about your approach.**
+
+---
+
+# 🤔&#xFE0F; Pillar 2: Adaptability
+## Guesstimation Examples
+
+How would you solve these?
+
+1. **How many tennis balls can be filled in this room?**
+2. **How many cars are stuck in traffic at Kyatsandra toll/junction at 10:00 AM on a Monday?**
+
+*There is no Google search for this. You have to figure it out!*
+
+---
+
+# 🛠️&#xFE0F; Pillar 2: Adaptability
+## How to Approach Guesstimates
+
+**Step 1: Clarify the Question** 
+*(Is it a standard tennis ball? Is the room empty?)*
+
+**Step 2: Break it Down (The Equation)**
+*(Volume of room ÷ Volume of one tennis ball)*
+
+**Step 3: Make Reasonable Assumptions**
+*(Assume room is 20ft x 20ft x 10ft. Assume Kyatsandra sees 500 cars per hour on NH48...)*
+
+**Step 4: Do the Math & Sanity Check**
+*(Does the final number make logical sense?)*
+
+---
+
 # 🌐&#xFE0F; Pillar 3: The Digital Footprint
-## You Are What Google Says You Are
+## Catching Up With the Trend
 
-**LinkedIn is your modern resume.** 
-If you are an M.Com student without a LinkedIn profile, you are professionally invisible.
+Think about how we all started...
+Years ago, we all rushed to create **Facebook** accounts.
+Then we moved to **Instagram**, caught up with **Snapchat**, and learned the trends.
 
-*Are you just a "Student at Vidyavahini"? Or are you an "Aspiring Financial Analyst"?*
+We are naturally good at adapting to social trends and becoming a part of the community!
+
+---
+
+# 💼&#xFE0F; Pillar 3: The Digital Footprint
+## The Professional Front
+
+Just like we adapt to social media, we must adapt to **professional media**.
+
+There are platforms out there specifically designed to help you:
+- Land a full-time job.
+- Secure freelance projects.
+- Get interviews.
+- Book appointments with industry professionals.
+
+---
+
+# 🌳&#xFE0F; Pillar 3: The Digital Footprint
+## The Tree of Professional Opportunity
+
+```mermaid
+mindmap
+  root((You))
+    Jobs & Networking
+      LinkedIn
+      Wellfound
+      Naukri
+    Freelancing
+      Upwork
+      Fiverr
+      Freelancer
+    Portfolios & Proof
+      GitHub
+      Behance
+      Medium
+    Appointments
+      Calendly
+      Topmate
+```
 
 ---
 
@@ -66,6 +181,15 @@ If you are an M.Com student without a LinkedIn profile, you are professionally i
 **Your Task:** Pitch *why* your background makes you valuable, **without mentioning your grades**. Focus on skills (analytical thinking, teamwork, data handling).
 
 *(Find a partner. You have 3 minutes to prepare, and 2 minutes to pitch!)*
+
+---
+
+# 🎙️&#xFE0F; The Elevator Pitch
+## A Sample Pitch
+
+*"Hi, I'm [Name], an M.Com student specializing in Finance. Recently, I analyzed the financial health of 5 local businesses for a project, identifying a 15% cost-saving opportunity for one of them.* 
+
+*I know how to turn raw numbers into actionable business strategies. I see your firm is expanding its SME advisory wing, and my hands-on data analysis skills would make me a great fit for your team."*
 
 ---
 
