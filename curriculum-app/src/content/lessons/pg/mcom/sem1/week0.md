@@ -1,4 +1,4 @@
-# 🎓 The Success Toolkit
+# 🎓&#xFE0F; The Success Toolkit
 ## Skills for Life & Career
 
 Welcome to the **M.Com Orientation Programme**! 
@@ -8,7 +8,7 @@ A Master's degree gets you the interview; your **toolkit** gets you the job and 
 
 ---
 
-# 🧊 The "Reputation" Test
+# 🧊&#xFE0F; The "Reputation" Test
 ### Icebreaker Activity
 
 Imagine you are applying for a job tomorrow. The HR Manager calls your **college friends** and asks:
@@ -29,7 +29,7 @@ Imagine you are applying for a job tomorrow. The HR Manager calls your **college
 
 ---
 
-# 📝 Pillar 1: Communication
+# 📝&#xFE0F; Pillar 1: Communication
 ## The Email Rule
 
 It is not just about speaking fluent English. 
@@ -39,7 +39,7 @@ It is about clarity, structuring your thoughts, and knowing your audience.
 
 ---
 
-# 🧠 Pillar 2: Adaptability
+# 🧠&#xFE0F; Pillar 2: Adaptability
 ## The "Figure-It-Out" Factor
 
 The corporate world does not have "out of syllabus" questions.
@@ -48,7 +48,7 @@ Employers don't want people who just follow instructions; they want people who *
 
 ---
 
-# 🌐 Pillar 3: The Digital Footprint
+# 🌐&#xFE0F; Pillar 3: The Digital Footprint
 ## You Are What Google Says You Are
 
 **LinkedIn is your modern resume.** 
@@ -58,7 +58,7 @@ If you are an M.Com student without a LinkedIn profile, you are professionally i
 
 ---
 
-# 🗣️ Activity: The Elevator Pitch
+# 🗣️&#xFE0F; Activity: The Elevator Pitch
 ## Sell Your Skills, Not Your Grades
 
 **Scenario:** You are stuck in an elevator with the hiring manager of a top firm. You have 30 seconds.
@@ -69,7 +69,7 @@ If you are an M.Com student without a LinkedIn profile, you are professionally i
 
 ---
 
-# ❓ Open Floor
+# ❓&#xFE0F; Open Floor
 ## Q&A Session
 
 What is the one skill you feel you need to start working on today?
@@ -78,7 +78,7 @@ Don't hesitate to ask questions—curiosity is the first step to growth!
 
 ---
 
-# 🚀 The 30-Day Challenge
+# 🚀&#xFE0F; The 30-Day Challenge
 ## Don't Let The Motivation Die
 
 Your homework for the next month:
@@ -88,7 +88,7 @@ Your homework for the next month:
 
 ---
 
-# 🏁 Final Thought
+# 🏁&#xFE0F; Final Thought
 
 *"Your M.Com degree is your ticket to the game, but your skills dictate how you play it."*
 
