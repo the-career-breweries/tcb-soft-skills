@@ -163,9 +163,11 @@ There are platforms out there specifically designed to help you:
 
 **Your Task:** Choose ONE scenario. You have 30 seconds to pitch *why* you stand out, **without mentioning your grades**. 
 
-**1. The Founder:** A successful startup founder gave a guest lecture. You are walking them to their car. Pitch yourself for a connection.
-**2. The Musician:** You bump into your favorite singer at a café. Convince them to let you volunteer for their upcoming local concert.
-**3. The Celebrity:** You share an elevator with your favorite celebrity who is launching a new business. Pitch yourself as an intern.
+1. **The Founder:** A successful startup founder gave a guest lecture. You are walking them to their car. Pitch yourself for a connection.
+
+2. **The Musician:** You bump into your favorite singer at a café. Convince them to let you volunteer for their upcoming local concert.
+
+3. **The Celebrity:** You share an elevator with your favorite celebrity who is launching a new business. Pitch yourself as an intern.
 
 *(Find a partner. You have 3 minutes to prepare, and 2 minutes to pitch!)*
 
