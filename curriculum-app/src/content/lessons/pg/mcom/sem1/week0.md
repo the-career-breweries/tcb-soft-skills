@@ -6,6 +6,8 @@ Welcome to the **M.Com Orientation Programme**!
 *You've upgraded your degree, but have you upgraded your toolkit?*
 A Master's degree gets you the interview; your **toolkit** gets you the job and the promotions.
 
+[🖨️ Print Student Worksheets](/worksheet-mcom-orientation.html)
+
 ---
 
 # 🧊&#xFE0F; The "Reputation" Test

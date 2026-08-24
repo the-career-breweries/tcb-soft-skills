@@ -1798,3 +1798,22 @@ kbd {
   margin-right: 8px !important;
   margin-bottom: 0 !important;
 }
+
+/* Style HTML file links as primary buttons */
+.slide-body a[href$=".html"] {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #3182ce 0%, #2b6cb0 100%);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.slide-body a[href$=".html"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
