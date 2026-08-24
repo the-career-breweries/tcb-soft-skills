@@ -1759,3 +1759,24 @@ kbd {
 .slide-body h1, .slide-body h2, .slide-body h3, .slide-body h4, .slide-body p, .slide-body li {
   font-family: 'Inter', "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Symbol", sans-serif !important;
 }
+
+/* Better slide table styling */
+.slide-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 1.1rem;
+}
+
+.slide-body th, .slide-body td {
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.slide-body th {
+  background: var(--bg-sidebar);
+  color: var(--text-sidebar);
+  font-weight: 700;
+}

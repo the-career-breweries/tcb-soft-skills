@@ -16,7 +16,8 @@ const Mermaid = ({ chart, theme }: { chart: string, theme: 'light' | 'dark' }) =
     if (ref.current) {
       document.fonts.ready.then(() => {
         mermaid.initialize({ 
-          startOnLoad: false, 
+          startOnLoad: false,
+          securityLevel: 'loose', 
           theme: 'base',
           themeVariables: {
             fontFamily: '"Outfit", sans-serif',

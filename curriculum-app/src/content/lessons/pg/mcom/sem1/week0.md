@@ -36,17 +36,12 @@ Imagine you are applying for a job tomorrow. The HR Manager calls your **college
 
 Don't just talk; structure your thoughts.
 
-**PREP (For expressing opinions):**
-- **P**oint: State your main point.
-- **R**eason: Why do you believe this?
-- **E**xample: Give a concrete example.
-- **P**oint: Reiterate your main point.
-
-**STAR (For answering interview questions):**
-- **S**ituation: Set the scene.
-- **T**ask: What was the challenge?
-- **A**ction: What did *you* specifically do?
-- **R**esult: What was the outcome?
+| PREP (Expressing Opinions) | STAR (Interview Questions) |
+| :--- | :--- |
+| **Point:** State your main point. | **Situation:** Set the scene. |
+| **Reason:** Why do you believe this? | **Task:** What was the challenge? |
+| **Example:** Give a concrete example. | **Action:** What did *you* specifically do? |
+| **Point:** Reiterate your main point. | **Result:** What was the outcome? |
 
 ---
 
@@ -152,23 +147,30 @@ There are platforms out there specifically designed to help you:
 ## The Tree of Professional Opportunity
 
 ```mermaid
-mindmap
-  root((You))
-    Jobs & Networking
-      LinkedIn
-      Wellfound
-      Naukri
-    Freelancing
-      Upwork
-      Fiverr
-      Freelancer
-    Portfolios & Proof
-      GitHub
-      Behance
-      Medium
-    Appointments
-      Calendly
-      Topmate
+graph LR
+  Root(("<b>You</b><br/>(The Core)")) --> Jobs("<b>Jobs & Internships</b>")
+  Root --> Port("<b>Portfolio</b>")
+  Root --> Res("<b>Resume</b>")
+  
+  Jobs --> L("<img src='https://logo.clearbit.com/linkedin.com?size=24' width='24' height='24' /> LinkedIn")
+  Jobs --> I("<img src='https://logo.clearbit.com/internshala.com?size=24' width='24' height='24' /> Internshala")
+  Jobs --> U("<img src='https://logo.clearbit.com/unstop.com?size=24' width='24' height='24' /> Unstop")
+  Jobs --> N("<img src='https://logo.clearbit.com/naukri.com?size=24' width='24' height='24' /> Naukri.com")
+  Jobs --> W("<img src='https://logo.clearbit.com/wellfound.com?size=24' width='24' height='24' /> Wellfound")
+  Jobs --> F("<img src='https://logo.clearbit.com/foundit.in?size=24' width='24' height='24' /> FoundIt")
+
+  Port --> GH("<img src='https://logo.clearbit.com/github.com?size=24' width='24' height='24' /> GitHub")
+  Port --> B("<img src='https://logo.clearbit.com/behance.net?size=24' width='24' height='24' /> Behance")
+  Port --> M("<img src='https://logo.clearbit.com/medium.com?size=24' width='24' height='24' /> Medium")
+
+  Res --> FC("<img src='https://logo.clearbit.com/flowcv.com?size=24' width='24' height='24' /> FlowCV")
+  Res --> C("<img src='https://logo.clearbit.com/canva.com?size=24' width='24' height='24' /> Canva")
+  Res --> RI("<img src='https://logo.clearbit.com/resume.io?size=24' width='24' height='24' /> Resume.io")
+  Res --> T("<img src='https://logo.clearbit.com/tealhq.com?size=24' width='24' height='24' /> Teal")
+
+  classDef default fill:#1e293b,stroke:#4f46e5,stroke-width:2px,color:#fff,font-family:sans-serif;
+  classDef root fill:#4f46e5,stroke:#fff,stroke-width:3px,color:#fff;
+  class Root root;
 ```
 
 ---
