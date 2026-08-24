@@ -81,14 +81,26 @@
             text-align: center;
             background: #ebf8ff;
         }
-        @page {
-            margin: 2cm;
-        }
-        @media print {
-            body { padding: 0; max-width: 100%; }
+        
             .section { page-break-inside: avoid; }
             .contract { border: 2px solid #2b6cb0 !important; }
             /* ensure emojis render nicely */
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    
+        @media print {
+            @page {
+                margin: 0; /* Let us handle the margins so the user's settings don't break it */
+            }
+            body { 
+                padding: 2cm !important; 
+                margin: 0 !important; 
+                max-width: 100% !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            .section { page-break-inside: avoid; }
+            .contract { border: 2px solid #2b6cb0 !important; }
             * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
