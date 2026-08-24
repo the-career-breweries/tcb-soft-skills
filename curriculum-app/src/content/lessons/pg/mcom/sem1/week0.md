@@ -161,9 +161,11 @@ There are platforms out there specifically designed to help you:
 # 🗣️&#xFE0F; Activity: The Elevator Pitch
 ## Sell Your Skills, Not Your Grades
 
-**Scenario:** A successful startup founder just gave a guest lecture at your college. You are walking with them to the parking lot. You have 30 seconds.
+**Your Task:** Choose ONE scenario. You have 30 seconds to pitch *why* you stand out, **without mentioning your grades**. 
 
-**Your Task:** Pitch *why* you stand out, **without mentioning your grades**. Focus on real skills (problem solving, event management, teamwork).
+**1. The Founder:** A successful startup founder gave a guest lecture. You are walking them to their car. Pitch yourself for a connection.
+**2. The Musician:** You bump into your favorite singer at a café. Convince them to let you volunteer for their upcoming local concert.
+**3. The Celebrity:** You share an elevator with your favorite celebrity who is launching a new business. Pitch yourself as an intern.
 
 *(Find a partner. You have 3 minutes to prepare, and 2 minutes to pitch!)*
 
@@ -172,9 +174,18 @@ There are platforms out there specifically designed to help you:
 # 🎙️&#xFE0F; The Elevator Pitch
 ## A Sample Pitch
 
-*"Hi, I'm [Name], an M.Com student here. I loved your point about local marketing. Recently, our team organized a college fest where I managed the budget and negotiated a 20% discount with vendors.* 
+*"Hi, I'm [Name], an M.Com student here. I loved your point about local marketing! Recently, our team organized a college fest where I managed the budget and negotiated a 20% discount with vendors.* 
 
-*I enjoy using numbers to solve real-world problems. I would love to connect with you on LinkedIn to follow your startup's journey!"*
+*I enjoy using numbers to solve problems. I would love to connect on LinkedIn to follow your journey!"*
+
+---
+
+# 📋&#xFE0F; The Elevator Pitch
+## The Master Framework (Use this anywhere!)
+1. **The Hook:** *"Hi, I'm [Your Name]. I really admire [Something specific about them]."*
+2. **The Proof:** *"Recently, I [Action you took] which resulted in [Positive outcome]."*
+3. **The Value:** *"I am really passionate about [Your core skill]."*
+4. **The Ask:** *"I would love to [Low-pressure request: connect on LinkedIn / stay in touch]!"*
 
 ---
 
