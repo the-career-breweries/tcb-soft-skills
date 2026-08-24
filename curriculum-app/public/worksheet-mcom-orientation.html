@@ -81,9 +81,15 @@
             text-align: center;
             background: #ebf8ff;
         }
+        @page {
+            margin: 2cm;
+        }
         @media print {
             body { padding: 0; max-width: 100%; }
             .section { page-break-inside: avoid; }
+            .contract { border: 2px solid #2b6cb0 !important; }
+            /* ensure emojis render nicely */
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
     </style>
 </head>
