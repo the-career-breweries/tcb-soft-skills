@@ -1788,3 +1788,13 @@ kbd {
   margin-right: 8px;
   border-radius: 4px;
 }
+
+/* Force table logos to be small and inline with text */
+.slide-body table img {
+  width: 24px !important;
+  height: 24px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  margin-right: 8px !important;
+  margin-bottom: 0 !important;
+}
