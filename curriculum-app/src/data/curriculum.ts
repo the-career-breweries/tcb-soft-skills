@@ -151,7 +151,7 @@ export const curriculumData: { ug: ProgramCurriculum, pg: ProgramCurriculum } = 
   pg: {
     programName: 'PG',
     streams: [
-      { streamName: 'M.Com', weeks: [...pgSem12Weeks, ...mcomSem3Weeks, ...mcomSem4Weeks] },
+      { streamName: 'M.Com', weeks: [{ week: 0, semester: 1, level: 1, theme: 'The Success Toolkit', focus: 'Skills for Life & Career', task: 'Interactive Session', rubric: 'Participation', label: 'Orientation' }, ...pgSem12Weeks, ...mcomSem3Weeks, ...mcomSem4Weeks] },
       { streamName: 'MBA', weeks: [...pgSem12Weeks, ...mbaSem3Weeks, ...mbaSem4Weeks] },
       { streamName: 'MCA', weeks: [...pgSem12Weeks, ...pgSem3Weeks, ...generatePgLevel4('MCA')] },
     ]
