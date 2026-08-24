@@ -144,43 +144,22 @@ There are platforms out there specifically designed to help you:
 ---
 
 # 🌐&#xFE0F; Pillar 3: Professional Avenues
-## Table 1: Professional Networking Sites: Professional Networking Sites
+## 🌐&#xFE0F; Pillar 3: Professional Avenues
+## The Digital Footprint
 
-| Logo | Platform | Purpose |
-| :---: | :--- | :--- |
-| ![LinkedIn](https://www.google.com/s2/favicons?domain=linkedin.com&sz=64) | **LinkedIn** | Industry networking & full-time roles |
-
----
-
-# 🌐&#xFE0F; Pillar 3: Professional Avenues
-## Table 2: Job Search Sites
-
-| Logo | Platform | Focus |
-| :---: | :--- | :--- |
-| ![Naukri.com](https://www.google.com/s2/favicons?domain=naukri.com&sz=64) | **Naukri.com** | Traditional corporate jobs |
-| ![Internshala](https://www.google.com/s2/favicons?domain=internshala.com&sz=64) | **Internshala** | Internships & entry-level |
-| ![Unstop](https://www.google.com/s2/favicons?domain=unstop.com&sz=64) | **Unstop** | Hackathons & campus hiring |
-| ![Wellfound](https://www.google.com/s2/favicons?domain=wellfound.com&sz=64) | **Wellfound** | Startup jobs & tech roles |
-| ![FoundIt](https://www.google.com/s2/favicons?domain=foundit.in&sz=64) | **FoundIt** | Corporate & MNC jobs |
+| Professional Networking | Job Search Sites | Profile & Portfolios |
+| :--- | :--- | :--- |
+| ![LinkedIn](https://www.google.com/s2/favicons?domain=linkedin.com&sz=64) **LinkedIn** | ![Naukri.com](https://www.google.com/s2/favicons?domain=naukri.com&sz=64) **Naukri.com** | ![GitHub](https://www.google.com/s2/favicons?domain=github.com&sz=64) **GitHub** |
+| | ![Internshala](https://www.google.com/s2/favicons?domain=internshala.com&sz=64) **Internshala** | ![Behance](https://www.google.com/s2/favicons?domain=behance.net&sz=64) **Behance** |
+| | ![Unstop](https://www.google.com/s2/favicons?domain=unstop.com&sz=64) **Unstop** | ![Medium](https://www.google.com/s2/favicons?domain=medium.com&sz=64) **Medium** |
+| | ![Wellfound](https://www.google.com/s2/favicons?domain=wellfound.com&sz=64) **Wellfound** | ![FlowCV](https://www.google.com/s2/favicons?domain=flowcv.com&sz=64) **FlowCV** |
+| | ![FoundIt](https://www.google.com/s2/favicons?domain=foundit.in&sz=64) **FoundIt** | ![Canva](https://www.google.com/s2/favicons?domain=canva.com&sz=64) **Canva** |
+| | | ![Resume.io](https://www.google.com/s2/favicons?domain=resume.io&sz=64) **Resume.io** |
+| | | ![Teal](https://www.google.com/s2/favicons?domain=tealhq.com&sz=64) **Teal** |
 
 ---
 
-# 🌐&#xFE0F; Pillar 3: Professional Avenues
-## Table 3: Profile/Portfolio Building Tools
-
-| Logo | Tool | Category |
-| :---: | :--- | :--- |
-| ![GitHub](https://www.google.com/s2/favicons?domain=github.com&sz=64) | **GitHub** | Code Portfolio |
-| ![Behance](https://www.google.com/s2/favicons?domain=behance.net&sz=64) | **Behance** | Design Portfolio |
-| ![Medium](https://www.google.com/s2/favicons?domain=medium.com&sz=64) | **Medium** | Writing Portfolio |
-| ![FlowCV](https://www.google.com/s2/favicons?domain=flowcv.com&sz=64) | **FlowCV** | Resume Builder |
-| ![Canva](https://www.google.com/s2/favicons?domain=canva.com&sz=64) | **Canva** | Resume & Presentation Builder |
-| ![Resume.io](https://www.google.com/s2/favicons?domain=resume.io&sz=64) | **Resume.io** | ATS-friendly Resume Builder |
-| ![Teal](https://www.google.com/s2/favicons?domain=tealhq.com&sz=64) | **Teal** | Job Tracker & Resume Builder |
-
----
-
-# 🗣️&#xFE0F; Activity: The Elevator Pitch
+#xFE0F; Activity: The Elevator Pitch
 ## Sell Your Skills, Not Your Grades
 
 **Scenario:** You are stuck in an elevator with the hiring manager of a top firm. You have 30 seconds.
