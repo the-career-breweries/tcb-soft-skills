@@ -143,28 +143,40 @@ There are platforms out there specifically designed to help you:
 
 ---
 
-# 🌳&#xFE0F; Pillar 3: The Digital Footprint
-## The Tree of Professional Opportunity
+# 🌐&#xFE0F; Pillar 3: Professional Avenues
+## Table 1: Professional Networking Sites: Professional Networking Sites
 
-**You (The Core)**
- ┣━ 💼 **Jobs & Internships**
- ┃   ┣━ ![LinkedIn](https://logo.clearbit.com/linkedin.com?size=24) LinkedIn
- ┃   ┣━ ![Internshala](https://logo.clearbit.com/internshala.com?size=24) Internshala
- ┃   ┣━ ![Unstop](https://logo.clearbit.com/unstop.com?size=24) Unstop
- ┃   ┣━ ![Naukri.com](https://logo.clearbit.com/naukri.com?size=24) Naukri.com
- ┃   ┣━ ![Wellfound](https://logo.clearbit.com/wellfound.com?size=24) Wellfound
- ┃   ┗━ ![FoundIt](https://logo.clearbit.com/foundit.in?size=24) FoundIt
- ┃
- ┣━ 🎨 **Portfolio & Proof**
- ┃   ┣━ ![GitHub](https://logo.clearbit.com/github.com?size=24) GitHub
- ┃   ┣━ ![Behance](https://logo.clearbit.com/behance.net?size=24) Behance
- ┃   ┗━ ![Medium](https://logo.clearbit.com/medium.com?size=24) Medium
- ┃
- ┗━ 📄 **Resume Builders**
-     ┣━ ![FlowCV](https://logo.clearbit.com/flowcv.com?size=24) FlowCV
-     ┣━ ![Canva](https://logo.clearbit.com/canva.com?size=24) Canva
-     ┣━ ![Resume.io](https://logo.clearbit.com/resume.io?size=24) Resume.io
-     ┗━ ![Teal](https://logo.clearbit.com/tealhq.com?size=24) Teal
+| Logo | Platform | Purpose |
+| :---: | :--- | :--- |
+| ![LinkedIn](https://www.google.com/s2/favicons?domain=linkedin.com&sz=64) | **LinkedIn** | Industry networking & full-time roles |
+
+---
+
+# 🌐&#xFE0F; Pillar 3: Professional Avenues
+## Table 2: Job Search Sites
+
+| Logo | Platform | Focus |
+| :---: | :--- | :--- |
+| ![Naukri.com](https://www.google.com/s2/favicons?domain=naukri.com&sz=64) | **Naukri.com** | Traditional corporate jobs |
+| ![Internshala](https://www.google.com/s2/favicons?domain=internshala.com&sz=64) | **Internshala** | Internships & entry-level |
+| ![Unstop](https://www.google.com/s2/favicons?domain=unstop.com&sz=64) | **Unstop** | Hackathons & campus hiring |
+| ![Wellfound](https://www.google.com/s2/favicons?domain=wellfound.com&sz=64) | **Wellfound** | Startup jobs & tech roles |
+| ![FoundIt](https://www.google.com/s2/favicons?domain=foundit.in&sz=64) | **FoundIt** | Corporate & MNC jobs |
+
+---
+
+# 🌐&#xFE0F; Pillar 3: Professional Avenues
+## Table 3: Profile/Portfolio Building Tools
+
+| Logo | Tool | Category |
+| :---: | :--- | :--- |
+| ![GitHub](https://www.google.com/s2/favicons?domain=github.com&sz=64) | **GitHub** | Code Portfolio |
+| ![Behance](https://www.google.com/s2/favicons?domain=behance.net&sz=64) | **Behance** | Design Portfolio |
+| ![Medium](https://www.google.com/s2/favicons?domain=medium.com&sz=64) | **Medium** | Writing Portfolio |
+| ![FlowCV](https://www.google.com/s2/favicons?domain=flowcv.com&sz=64) | **FlowCV** | Resume Builder |
+| ![Canva](https://www.google.com/s2/favicons?domain=canva.com&sz=64) | **Canva** | Resume & Presentation Builder |
+| ![Resume.io](https://www.google.com/s2/favicons?domain=resume.io&sz=64) | **Resume.io** | ATS-friendly Resume Builder |
+| ![Teal](https://www.google.com/s2/favicons?domain=tealhq.com&sz=64) | **Teal** | Job Tracker & Resume Builder |
 
 ---
 
