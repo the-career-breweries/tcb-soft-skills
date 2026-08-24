@@ -146,32 +146,25 @@ There are platforms out there specifically designed to help you:
 # 🌳&#xFE0F; Pillar 3: The Digital Footprint
 ## The Tree of Professional Opportunity
 
-```mermaid
-graph LR
-  Root(("<b>You</b><br/>(The Core)")) --> Jobs("<b>Jobs & Internships</b>")
-  Root --> Port("<b>Portfolio</b>")
-  Root --> Res("<b>Resume</b>")
-  
-  Jobs --> L("<img src='https://logo.clearbit.com/linkedin.com?size=24' width='24' height='24' /> LinkedIn")
-  Jobs --> I("<img src='https://logo.clearbit.com/internshala.com?size=24' width='24' height='24' /> Internshala")
-  Jobs --> U("<img src='https://logo.clearbit.com/unstop.com?size=24' width='24' height='24' /> Unstop")
-  Jobs --> N("<img src='https://logo.clearbit.com/naukri.com?size=24' width='24' height='24' /> Naukri.com")
-  Jobs --> W("<img src='https://logo.clearbit.com/wellfound.com?size=24' width='24' height='24' /> Wellfound")
-  Jobs --> F("<img src='https://logo.clearbit.com/foundit.in?size=24' width='24' height='24' /> FoundIt")
-
-  Port --> GH("<img src='https://logo.clearbit.com/github.com?size=24' width='24' height='24' /> GitHub")
-  Port --> B("<img src='https://logo.clearbit.com/behance.net?size=24' width='24' height='24' /> Behance")
-  Port --> M("<img src='https://logo.clearbit.com/medium.com?size=24' width='24' height='24' /> Medium")
-
-  Res --> FC("<img src='https://logo.clearbit.com/flowcv.com?size=24' width='24' height='24' /> FlowCV")
-  Res --> C("<img src='https://logo.clearbit.com/canva.com?size=24' width='24' height='24' /> Canva")
-  Res --> RI("<img src='https://logo.clearbit.com/resume.io?size=24' width='24' height='24' /> Resume.io")
-  Res --> T("<img src='https://logo.clearbit.com/tealhq.com?size=24' width='24' height='24' /> Teal")
-
-  classDef default fill:#1e293b,stroke:#4f46e5,stroke-width:2px,color:#fff,font-family:sans-serif;
-  classDef root fill:#4f46e5,stroke:#fff,stroke-width:3px,color:#fff;
-  class Root root;
-```
+**You (The Core)**
+ ┣━ 💼 **Jobs & Internships**
+ ┃   ┣━ ![LinkedIn](https://logo.clearbit.com/linkedin.com?size=24) LinkedIn
+ ┃   ┣━ ![Internshala](https://logo.clearbit.com/internshala.com?size=24) Internshala
+ ┃   ┣━ ![Unstop](https://logo.clearbit.com/unstop.com?size=24) Unstop
+ ┃   ┣━ ![Naukri.com](https://logo.clearbit.com/naukri.com?size=24) Naukri.com
+ ┃   ┣━ ![Wellfound](https://logo.clearbit.com/wellfound.com?size=24) Wellfound
+ ┃   ┗━ ![FoundIt](https://logo.clearbit.com/foundit.in?size=24) FoundIt
+ ┃
+ ┣━ 🎨 **Portfolio & Proof**
+ ┃   ┣━ ![GitHub](https://logo.clearbit.com/github.com?size=24) GitHub
+ ┃   ┣━ ![Behance](https://logo.clearbit.com/behance.net?size=24) Behance
+ ┃   ┗━ ![Medium](https://logo.clearbit.com/medium.com?size=24) Medium
+ ┃
+ ┗━ 📄 **Resume Builders**
+     ┣━ ![FlowCV](https://logo.clearbit.com/flowcv.com?size=24) FlowCV
+     ┣━ ![Canva](https://logo.clearbit.com/canva.com?size=24) Canva
+     ┣━ ![Resume.io](https://logo.clearbit.com/resume.io?size=24) Resume.io
+     ┗━ ![Teal](https://logo.clearbit.com/tealhq.com?size=24) Teal
 
 ---
 

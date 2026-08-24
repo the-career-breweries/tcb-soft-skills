@@ -1780,3 +1780,11 @@ kbd {
   color: var(--text-sidebar);
   font-weight: 700;
 }
+
+/* Ensure inline logos look perfect in the ascii tree */
+.slide-body img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  border-radius: 4px;
+}
