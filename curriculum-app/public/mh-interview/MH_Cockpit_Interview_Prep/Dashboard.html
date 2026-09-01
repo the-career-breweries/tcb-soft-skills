@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Softskills by S D Sandarsh</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-sidebar: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --border: #334155;
+        }
+
+
+        :root[data-theme="light"] {
+            --bg-dark: #f8fafc;
+            --bg-sidebar: #ffffff;
+            --text-light: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        
+        .theme-toggle {
+            margin-left: auto;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 18px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .theme-toggle:hover {
+            color: var(--text-light);
+            background: rgba(100, 100, 100, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow: hidden;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 300px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            flex-shrink: 0;
+            z-index: 1000;
+        }
+
+        .sidebar.minimized {
+            width: 64px;
+        }
+
+        .sidebar.minimized:hover {
+            width: 300px;
+        }
+        
+        
+        .sidebar.minimized:not(:hover) .sidebar-header h2,
+        .sidebar.minimized:not(:hover) .theme-toggle {
+            opacity: 0;
+        }
+        
+        /* Hide link text when minimized */
+        .sidebar.minimized:not(:hover) .nav-link .link-text {
+            opacity: 0;
+            width: 0;
+            display: none;
+        }
+
+        /* Smart Group Titles */
+        .sidebar.minimized:not(:hover) .nav-group-title {
+            font-size: 0; /* Hides original text */
+            text-align: center;
+            padding: 0;
+            margin-bottom: 12px;
+        }
+        .sidebar.minimized:not(:hover) .nav-group-title::after {
+            content: attr(data-short);
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        
+        .sidebar-header h2, .theme-toggle, .nav-group-title {
+            transition: opacity 0.2s;
+        }
+
+        
+        .sidebar-header {
+            min-width: 300px;
+        }
+
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-header i {
+            font-size: 24px;
+            color: var(--accent);
+        }
+
+        .sidebar-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-group {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-group-title {
+            padding: 0 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 20px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .nav-link.active {
+            background-color: rgba(59, 130, 246, 0.15);
+            border-left-color: var(--accent);
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .nav-link i {
+            width: 16px;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .nav-link.active i {
+            color: var(--accent);
+        }
+
+        /* Main Content iframe */
+        .main-content {
+            flex: 1;
+            background-color: #ffffff; /* White background for documents/slides */
+            height: 100%;
+            position: relative;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Welcome screen overlay (shown before a link is clicked) */
+        .welcome-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-dark);
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        .welcome-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .welcome-screen h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: var(--text-light);
+        }
+        
+        .welcome-screen p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+        
+        /* Print button styling */
+        .print-btn {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: none; /* hidden by default */
+            z-index: 20;
+        }
+        .print-btn:hover { background-color: var(--accent-hover); }
+        .print-btn i { margin-right: 8px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+                <div class="sidebar-header" onclick="goHome()" style="cursor: pointer;" title="Return to Home Screen">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h2>Softskills, by S D Sandarsh</h2>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark/Light Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+
+
+
+        <div class="nav-group">
+            <div class="nav-group-title" data-short="LNA">Diagnostic</div>
+            <a class="nav-link" onclick="loadContent('needs_assessment.html', this, 'doc')">
+                <i class="fa-regular fa-file-lines"></i>
+                <span class="link-text">Needs Assessment (Doc)</span>
+            </a>
+            <a class="nav-link" onclick="loadContent('Presentation_Needs_Assessment.html', this, 'slide')">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                <span class="link-text">Needs Assessment (Slides)</span>
+            </a>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-group-title" data-short="A1/A2">A1/A2 Demo (Beginner)</div>
+            <a class="nav-link" onclick="loadContent('lesson_plan_A1_A2.html', this, 'doc')">
+                <i class="fa-regular fa-file-lines"></i>
+                <span class="link-text">Lesson Plan</span>
+            </a>
+            <a class="nav-link" onclick="loadContent('Presentation_A1_A2.html', this, 'slide')">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                <span class="link-text">Presentation Slides</span>
+            </a>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-group-title" data-short="B1/B2">B1/B2 Demo (Intermediate)</div>
+            <a class="nav-link" onclick="loadContent('lesson_plan_B1_B2.html', this, 'doc')">
+                <i class="fa-regular fa-file-lines"></i>
+                <span class="link-text">Lesson Plan</span>
+            </a>
+            <a class="nav-link" onclick="loadContent('Presentation_B1_B2.html', this, 'slide')">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                <span class="link-text">Presentation Slides</span>
+            </a>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-group-title" data-short="C1/C2">C1/C2 Demo (Advanced)</div>
+            <a class="nav-link" onclick="loadContent('lesson_plan_C1_C2.html', this, 'doc')">
+                <i class="fa-regular fa-file-lines"></i>
+                <span class="link-text">Lesson Plan</span>
+            </a>
+            <a class="nav-link" onclick="loadContent('Presentation_C1_C2.html', this, 'slide')">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                <span class="link-text">Presentation Slides</span>
+            </a>
+        </div>
+        
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="welcome-screen" id="welcomeScreen">
+            <h1><i class="fa-solid fa-rocket" style="color: var(--accent); margin-right: 15px;"></i>Softskills Studio</h1>
+            <p>Select a document or presentation from the sidebar to begin.</p>
+        </div>
+        
+        <iframe id="contentFrame" src="about:blank"></iframe>
+        
+        <button class="print-btn" id="printBtn" onclick="printIframe()">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open to Print (PDF)
+        </button>
+    </div>
+
+    <script>
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const icon = themeToggleBtn.querySelector('i');
+        
+        function toggleTheme() {
+            const root = document.documentElement;
+            const currentTheme = root.getAttribute('data-theme');
+            
+            if (currentTheme === 'light') {
+                root.removeAttribute('data-theme');
+                icon.className = 'fa-solid fa-moon';
+                localStorage.setItem('hub-theme', 'dark');
+            } else {
+                root.setAttribute('data-theme', 'light');
+                icon.className = 'fa-solid fa-sun';
+                localStorage.setItem('hub-theme', 'light');
+            }
+        }
+        
+        // Load saved theme
+        if (localStorage.getItem('hub-theme') === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            icon.className = 'fa-solid fa-sun';
+        }
+        
+
+        function goHome() {
+            // Show welcome screen
+            document.getElementById('welcomeScreen').classList.remove('hidden');
+            
+            // Clear iframe
+            document.getElementById('contentFrame').src = 'about:blank';
+            
+            // Remove active states
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Expand sidebar
+            document.querySelector('.sidebar').classList.remove('minimized');
+            
+            // Hide print button
+            document.getElementById('printBtn').style.display = 'none';
+        }
+        
+        function loadContent(filename, element, type) {
+
+            // Hide welcome screen
+            document.getElementById('welcomeScreen').classList.add('hidden');
+            
+            // Load iframe
+            document.getElementById('contentFrame').src = filename;
+            
+            // Update active state in sidebar
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            element.classList.add('active');
+            
+            // Show print button ONLY for documents, not slides
+            if (type === 'doc') {
+                document.getElementById('printBtn').style.display = 'block';
+                document.querySelector('.sidebar').classList.remove('minimized');
+            } else {
+                document.getElementById('printBtn').style.display = 'none';
+                document.querySelector('.sidebar').classList.add('minimized');
+            }
+        }
+        
+        function printIframe() {
+            var iframe = document.getElementById('contentFrame');
+            // Chrome blocks iframe printing for local file:// URLs for security reasons.
+            // Opening it in a new tab perfectly bypasses this and allows clean PDF saving!
+            window.open(iframe.src, '_blank');
+        }
+    </script>
+</body>
+</html>
