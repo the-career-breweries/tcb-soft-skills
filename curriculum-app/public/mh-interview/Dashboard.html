@@ -25,6 +25,27 @@
             --border: #e2e8f0;
         }
         
+        
+        .sidebar-header h2 {
+            font-size: 1.2rem;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex-grow: 1;
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            width: 300px;
+            box-sizing: border-box;
+        }
+
         .theme-toggle {
             margin-left: auto;
             background: none;
@@ -83,7 +104,28 @@
         
         
         .sidebar.minimized:not(:hover) .sidebar-header h2,
-        .sidebar.minimized:not(:hover) .theme-toggle {
+        .sidebar.minimized:not(:hover) 
+        .sidebar-header h2 {
+            font-size: 1.2rem;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex-grow: 1;
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            width: 300px;
+            box-sizing: border-box;
+        }
+
+        .theme-toggle {
             opacity: 0;
         }
         
@@ -113,29 +155,17 @@
         }
 
         
-        .sidebar-header {
-            min-width: 300px;
-        }
+        
 
 
-        .sidebar-header {
-            padding: 24px 20px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        
 
         .sidebar-header i {
             font-size: 24px;
             color: var(--accent);
         }
 
-        .sidebar-header h2 {
-            font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
+        
 
         .nav-group {
             padding: 16px 0;
@@ -261,7 +291,7 @@
                 <div class="sidebar-header" onclick="goHome()" style="cursor: pointer;" title="Return to Home Screen">
             <i class="fa-solid fa-graduation-cap"></i>
             <h2>Softskills, by S D Sandarsh</h2>
-            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark/Light Theme">
+            <button class="theme-toggle" id="themeToggle" onclick="event.stopPropagation(); toggleTheme()" title="Toggle Dark/Light Theme">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
