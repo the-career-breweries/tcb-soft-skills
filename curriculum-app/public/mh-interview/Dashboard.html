@@ -101,19 +101,7 @@
         .sidebar.minimized:hover {
             width: 300px;
         }
-        
-        
-        .sidebar.minimized:not(:hover) .sidebar-header h2,
-        .sidebar.minimized:not(:hover) 
-        .sidebar-header h2 {
-            font-size: 1.2rem;
-            margin: 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            flex-grow: 1;
-        }
-        
+
         .sidebar-header {
             padding: 20px;
             display: flex;
@@ -121,14 +109,53 @@
             gap: 12px;
             color: var(--accent);
             border-bottom: 1px solid var(--border);
-            width: 300px;
+            width: 300px; /* Explicit width so it doesn't shrink when sidebar minimizes */
             box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header i.fa-graduation-cap {
+            font-size: 24px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.2rem;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex-grow: 1; /* Pushes theme toggle to the right */
         }
 
         .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-light);
+            background: rgba(100, 100, 100, 0.1);
+        }
+
+        .sidebar.minimized:not(:hover) .sidebar-header h2,
+        .sidebar.minimized:not(:hover) .theme-toggle {
             opacity: 0;
+            pointer-events: none;
         }
         
+        .sidebar-header h2, .theme-toggle, .nav-group-title {
+            transition: opacity 0.2s;
+        }
+
         /* Hide link text when minimized */
         .sidebar.minimized:not(:hover) .nav-link .link-text {
             opacity: 0;
@@ -149,23 +176,6 @@
             font-weight: 800;
             color: var(--accent);
         }
-        
-        .sidebar-header h2, .theme-toggle, .nav-group-title {
-            transition: opacity 0.2s;
-        }
-
-        
-        
-
-
-        
-
-        .sidebar-header i {
-            font-size: 24px;
-            color: var(--accent);
-        }
-
-        
 
         .nav-group {
             padding: 16px 0;
