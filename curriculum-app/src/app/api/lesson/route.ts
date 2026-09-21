@@ -24,12 +24,15 @@ export async function GET(request: Request) {
     // Determine the path to the markdown file
     // Example: src/content/lessons/ug/bcom/sem1/week1.md
     
-    // Using string replacement to clean up stream names like "B.Com" to "bcom"
-    let safeStream = stream.replace(/[^a-z0-9]/g, '');
+    // Using string replacement to clean up stream names
+    let safeStream = stream.replace(/\./g, '').replace(/\s+/g, '-');
     
     // Route all UG students in Semesters 1 to 4 to the shared content directory
+    // EXCEPT Aviation students, who have specific custom modules for Semester 1
     if (program === 'ug' && parseInt(semester) >= 1 && parseInt(semester) <= 4) {
-      safeStream = 'shared';
+      if (!safeStream.includes('aviation')) {
+        safeStream = 'shared';
+      }
     }
     
     const filePath = path.join(

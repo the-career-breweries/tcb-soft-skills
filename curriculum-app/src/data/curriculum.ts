@@ -146,6 +146,8 @@ export const curriculumData: { ug: ProgramCurriculum, pg: ProgramCurriculum } = 
       { streamName: 'B.Com', weeks: [...ugCoreWeeks, ...generateUgLevel4('B.Com')] },
       { streamName: 'BBA', weeks: [...ugCoreWeeks, ...generateUgLevel4('BBA')] },
       { streamName: 'BCA', weeks: [...ugCoreWeeks, ...generateUgLevel4('BCA')] },
+      { streamName: 'BBA Aviation', weeks: [...ugCoreWeeks, ...generateUgLevel4('BBA Aviation')] },
+      { streamName: 'B.Sc Aviation', weeks: [...ugCoreWeeks, ...generateUgLevel4('B.Sc Aviation')] },
     ]
   },
   pg: {
