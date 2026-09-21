@@ -1,8 +1,3 @@
----
-title: "BBA Aviation - Sem 1: Management Presence & Professional Communication"
-description: "Foundations of aviation management communication, overcoming hesitation, and structured thinking using the PREP method."
----
-
 # Welcome to Aviation Management Soft Skills
 ### The Ground Starts Here
 

@@ -1,8 +1,3 @@
----
-title: "B.Sc Aviation - Sem 1: Aviation Confidence & Clear Communication"
-description: "Breaking the ice, overcoming stage fright, and mastering crisp aviation communication using the PREP method."
----
-
 # Welcome to Aviation Soft Skills
 ### Building Your Commander's Presence
 
