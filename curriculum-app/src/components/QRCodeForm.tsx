@@ -1,8 +1,8 @@
 import React from 'react';
 
 export default function QRCodeForm() {
-  // Replace this link with your actual Google Form link once created!
-  const formUrl = "https://forms.google.com/"; 
+  // This links directly to the feedback page we just built
+  const formUrl = "https://tcb-soft-skills.onrender.com/feedback"; 
   const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(formUrl)}`;
 
   return (
