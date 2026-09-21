@@ -27,9 +27,8 @@ export default function QRCodeForm() {
         Please open this form now and keep it ready.<br/>You will need it for:
       </p>
       <ul style={{ textAlign: 'left', color: '#94a3b8', fontSize: '1.1rem', marginBottom: '2rem', listStyleType: 'none', padding: 0 }}>
-        <li style={{ marginBottom: '0.5rem' }}>✅ Placement Interest (Yes/No)</li>
-        <li style={{ marginBottom: '0.5rem' }}>✅ Your Future Plans</li>
-        <li style={{ marginBottom: '0.5rem' }}>✅ Optional: Upload Your Draft Resume</li>
+        <li style={{ marginBottom: '0.5rem' }}>✅ Class Attendance & Participation</li>
+        <li style={{ marginBottom: '0.5rem' }}>✅ Weekly Activity Responses</li>
         <li style={{ marginBottom: '0.5rem' }}>✅ Session Feedback (Submit at the end)</li>
       </ul>
       <div style={{
