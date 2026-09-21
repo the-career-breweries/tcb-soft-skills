@@ -47,7 +47,7 @@ Aviation relies on standard phraseology and brevity. You do not have time to ram
 
 * **P - Point:** "Ladies and gentlemen, please return to your seats and fasten your seatbelts immediately."
 * **R - Reason:** "We are entering an area of severe, unexpected turbulence."
-* **E - Extended Explanation:** "For your safety, all lavatories are now closed, and cabin service is suspended."
+* **E - Extended Explanation:** "The weather radar indicates this pocket of rough air will last for approximately the next 15 to 20 minutes."
 * **P - Point:** "Keep your seatbelts securely fastened until the sign is turned off."
 
 ---

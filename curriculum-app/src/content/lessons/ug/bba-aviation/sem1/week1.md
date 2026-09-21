@@ -47,7 +47,7 @@ Whether briefing your ground team or de-escalating a passenger issue, you must b
 
 * **P - Point:** "Ladies and gentlemen, Flight 405 to Mumbai is currently delayed by three hours."
 * **R - Reason:** "This is due to severe thunderstorms over the destination airport making it unsafe to land."
-* **E - Extended Explanation:** "We are providing complimentary meal vouchers at the desk right now, and we will update you every 30 minutes."
+* **E - Extended Explanation:** "Air Traffic Control has issued a temporary ground stop for all inbound flights, and we are waiting for clearance to depart."
 * **P - Point:** "We regret the delay caused. While the update is awaited, we request you to avail the complimentary meal vouchers provided during the wait."
 
 ---
