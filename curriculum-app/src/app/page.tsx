@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { curriculumData, WeekData } from '@/data/curriculum';
-import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw } from 'lucide-react';
+import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw, Menu } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import './globals.css';
@@ -14,6 +14,7 @@ export default function CurriculumApp() {
   const [selectedStream, setSelectedStream] = useState<string>(streams[0].streamName);
   const [showWelcome, setShowWelcome] = useState<boolean>(true);
   const [showOrientation, setShowOrientation] = useState<boolean>(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
   const [passkey, setPasskey] = useState<string>('');
   
@@ -246,7 +247,14 @@ export default function CurriculumApp() {
         <div className="lms-container">
           {/* Top Navbar */}
           <header className="lms-topbar">
-            <div className="lms-brand">
+            <div className="lms-brand flex items-center">
+              <button 
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)} 
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg mr-2 transition-colors cursor-pointer"
+                title="Toggle Sidebar"
+              >
+                <Menu size={24} className="text-gray-700 dark:text-gray-300" />
+              </button>
               <div className="lms-logo"><GraduationCap size={28} /></div>
               <h1>Soft Skills Studio</h1>
             </div>
@@ -278,7 +286,7 @@ export default function CurriculumApp() {
 
           <div className="lms-layout">
             {/* Sidebar Navigation */}
-            <aside className="lms-sidebar">
+            <aside className={`lms-sidebar ${!isSidebarOpen ? 'collapsed' : ''}`}>
               
               {/* Workshops Link */}
               <div className="lms-sidebar-section pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">

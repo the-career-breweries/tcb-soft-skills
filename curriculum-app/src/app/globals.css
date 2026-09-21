@@ -166,6 +166,14 @@ html, body {
   flex-direction: column;
   overflow-y: auto;
   flex-shrink: 0;
+  transition: width 0.3s ease, padding 0.3s ease, margin 0.3s ease;
+}
+
+.lms-sidebar.collapsed {
+  width: 0;
+  padding: 0;
+  border-right: none;
+  overflow: hidden;
 }
 
 .lms-sidebar-section {
