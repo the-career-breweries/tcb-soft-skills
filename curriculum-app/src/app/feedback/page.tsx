@@ -5,6 +5,12 @@ import { Star, Send, CheckCircle2, GraduationCap } from 'lucide-react';
 import '../globals.css';
 
 export default function FeedbackForm() {
+  // Get today's date formatted as YYYY-MM-DD for the default date input value
+  const today = new Date().toISOString().split('T')[0];
+
+  const [studentName, setStudentName] = useState('');
+  const [batch, setBatch] = useState('');
+  const [sessionDate, setSessionDate] = useState(today);
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
   const [suggestions, setSuggestions] = useState('');
@@ -14,7 +20,7 @@ export default function FeedbackForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (rating === 0) return;
+    if (rating === 0 || !studentName.trim() || !batch) return;
     
     setIsSubmitting(true);
     
@@ -22,7 +28,7 @@ export default function FeedbackForm() {
     await new Promise(resolve => setTimeout(resolve, 800));
     
     // TODO: Connect to backend/Firebase here if needed
-    console.log({ rating, suggestions, questions });
+    console.log({ studentName, batch, sessionDate, rating, suggestions, questions });
     
     setIsSubmitting(false);
     setSubmitted(true);
@@ -35,9 +41,9 @@ export default function FeedbackForm() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mb-6">
             <CheckCircle2 size={32} />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Thank You!</h2>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Thank You, {studentName.split(' ')[0]}!</h2>
           <p className="text-gray-600 dark:text-gray-400">
-            Your feedback has been successfully submitted and will help us improve future sessions.
+            Your attendance and feedback have been successfully recorded.
           </p>
         </div>
       </div>
@@ -53,10 +59,10 @@ export default function FeedbackForm() {
           <GraduationCap size={28} />
         </div>
         <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-          Session Feedback
+          Session Check-in & Feedback
         </h1>
         <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
-          Help us improve your learning experience.
+          Record your attendance and let us know how the session went.
         </p>
       </div>
 
@@ -64,6 +70,60 @@ export default function FeedbackForm() {
       <div className="max-w-xl w-full mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-800 p-6 sm:p-8">
         <form onSubmit={handleSubmit} className="space-y-8">
           
+          {/* Identity & Session Details */}
+          <div className="space-y-5 bg-gray-50 dark:bg-gray-900/50 p-5 rounded-xl border border-gray-100 dark:border-gray-800">
+            <div>
+              <label htmlFor="studentName" className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                Full Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                id="studentName"
+                type="text"
+                required
+                value={studentName}
+                onChange={(e) => setStudentName(e.target.value)}
+                placeholder="e.g. Rahul Sharma"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+              />
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label htmlFor="batch" className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                  Batch / Stream <span className="text-red-500">*</span>
+                </label>
+                <select
+                  id="batch"
+                  required
+                  value={batch}
+                  onChange={(e) => setBatch(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                >
+                  <option value="" disabled>Select your batch...</option>
+                  <option value="BBA Aviation">BBA Aviation</option>
+                  <option value="B.Sc Aviation">B.Sc Aviation</option>
+                  <option value="BBA">BBA General</option>
+                  <option value="B.Com">B.Com</option>
+                  <option value="BCA">BCA</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="sessionDate" className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                  Session Date <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="sessionDate"
+                  type="date"
+                  required
+                  value={sessionDate}
+                  onChange={(e) => setSessionDate(e.target.value)}
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                />
+              </div>
+            </div>
+          </div>
+
           {/* 1. Rating */}
           <div>
             <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
