@@ -34,10 +34,10 @@ As future aviation managers, airport staff, or customer service leaders, your pr
 
 Whether briefing your ground team or de-escalating a passenger issue, you must be clear and structured. Use **PREP**:
 
-* **P**oint: State your main instruction or idea immediately.
-* **R**eason: Why is this happening? (The "Because").
-* **E**xample: Give the specific detail, consequence, or action required.
-* **P**oint: Restate the main point to confirm understanding.
+* **P**oint: State your main point clearly and upfront.
+* **R**eason: Give the reason for your point.
+* **E**xtended Explanation (or Example): Provide necessary details, instructions, or evidence.
+* **P**oint: Restate the main point or provide a closing call-to-action.
 
 ---
 
@@ -47,8 +47,8 @@ Whether briefing your ground team or de-escalating a passenger issue, you must b
 
 * **P - Point:** "Ladies and gentlemen, Flight 405 to Mumbai is currently delayed by three hours."
 * **R - Reason:** "This is due to severe thunderstorms over the destination airport making it unsafe to land."
-* **E - Example:** "We are providing complimentary meal vouchers at the desk right now, and we will update you every 30 minutes."
-* **P - Point:** "Once again, the flight is delayed for your safety, and we appreciate your patience."
+* **E - Extended Explanation:** "We are providing complimentary meal vouchers at the desk right now, and we will update you every 30 minutes."
+* **P - Point:** "We regret the delay caused. While the update is awaited, we request you to avail the complimentary meal vouchers provided during the wait."
 
 ---
 

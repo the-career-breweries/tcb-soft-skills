@@ -35,9 +35,9 @@ Before you say a word, you communicate. In aviation, passengers look to the unif
 Aviation relies on standard phraseology and brevity. You do not have time to ramble over a radio or during an emergency briefing. Use **PREP**:
 
 * **P**oint: State your main instruction or idea immediately.
-* **R**eason: Why is this necessary? (The "Because").
-* **E**xample: Give the specific detail or action required.
-* **P**oint: Restate the main point to confirm understanding.
+* **R**eason: Why is this happening? (The "Because").
+* **E**xtended Explanation (or Example): Provide necessary details, instructions, or evidence.
+* **P**oint: Restate the main point or provide a closing call-to-action.
 
 ---
 
@@ -47,7 +47,7 @@ Aviation relies on standard phraseology and brevity. You do not have time to ram
 
 * **P - Point:** "Ladies and gentlemen, please return to your seats and fasten your seatbelts immediately."
 * **R - Reason:** "We are entering an area of severe, unexpected turbulence."
-* **E - Example:** "For your safety, all lavatories are now closed, and cabin service is suspended."
+* **E - Extended Explanation:** "For your safety, all lavatories are now closed, and cabin service is suspended."
 * **P - Point:** "Keep your seatbelts securely fastened until the sign is turned off."
 
 ---
