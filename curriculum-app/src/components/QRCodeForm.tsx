@@ -3,7 +3,7 @@ import React from 'react';
 export default function QRCodeForm() {
   // This links directly to the feedback page we just built
   const formUrl = "https://tcb-soft-skills.onrender.com/feedback"; 
-  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(formUrl)}`;
+  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=2&data=${encodeURIComponent(formUrl)}`;
 
   return (
     <div style={{
@@ -34,9 +34,13 @@ export default function QRCodeForm() {
         background: '#fff',
         padding: '1rem',
         borderRadius: '12px',
-        display: 'inline-block'
+        display: 'inline-flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '232px',
+        height: '232px'
       }}>
-        <img src={qrImageUrl} alt="QR Code" width="200" height="200" style={{ display: 'block' }} />
+        <img src={qrImageUrl} alt="QR Code" style={{ width: '200px', height: '200px', display: 'block', objectFit: 'contain' }} />
       </div>
       <p style={{ marginTop: '1.5rem', marginBottom: 0, fontSize: '0.9rem', color: '#64748b' }}>
         Point your phone camera here to begin.
