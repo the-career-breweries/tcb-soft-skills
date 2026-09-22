@@ -61,11 +61,12 @@ interface SlideViewerProps {
   stream: string;
   semester: number;
   theme: 'light' | 'dark';
+  course?: string;
   activeSection?: string;
   onClose: () => void;
 }
 
-export default function SlideViewer({ weekData, program, stream, semester, theme, activeSection, onClose }: SlideViewerProps) {
+export default function SlideViewer({ weekData, program, stream, semester, theme, course = 'soft-skills', activeSection, onClose }: SlideViewerProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slides, setSlides] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -175,7 +176,7 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
       setCurrentSlide(0);
 
       try {
-        const url = `/api/lesson?program=${program}&stream=${encodeURIComponent(stream)}&semester=${semester}&week=${weekData.week}`;
+        const url = `/api/lesson?program=${program}&stream=${encodeURIComponent(stream)}&semester=${semester}&week=${weekData.week}&course=${course}`;
         const res = await fetch(url);
         const data = await res.json();
         

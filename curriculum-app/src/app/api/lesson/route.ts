@@ -9,22 +9,22 @@ export async function GET(request: Request) {
   const semester = searchParams.get('semester');
   const week = searchParams.get('week');
 
+  const course = searchParams.get('course') || 'soft-skills';
+
   if (!program || !stream || !semester || !week) {
     return NextResponse.json({ error: 'Missing required query parameters' }, { status: 400 });
   }
 
   try {
     // If week is 0, serve the special orientation presentation
-    if (week === 'orientation') {
-      const filePath = path.join(process.cwd(), 'src', 'content', 'orientation.md');
+    if (week === '0') {
+      const orientationFile = course === 'english' ? 'orientation-english.md' : 'orientation.md';
+      const filePath = path.join(process.cwd(), 'src', 'content', orientationFile);
       const fileContents = await fs.readFile(filePath, 'utf8');
       return NextResponse.json({ content: fileContents });
     }
 
     // Determine the path to the markdown file
-    // Example: src/content/lessons/ug/bcom/sem1/week1.md
-    
-    // Using string replacement to clean up stream names
     let safeStream = stream.replace(/\./g, '').replace(/\s+/g, '-');
     
     // Route all UG students in Semesters 1 to 4 to the shared content directory
@@ -35,11 +35,13 @@ export async function GET(request: Request) {
       }
     }
     
+    const baseFolder = course === 'english' ? 'english-lessons' : 'lessons';
+
     const filePath = path.join(
       process.cwd(),
       'src',
       'content',
-      'lessons',
+      baseFolder,
       program,
       safeStream,
       `sem${semester}`,
