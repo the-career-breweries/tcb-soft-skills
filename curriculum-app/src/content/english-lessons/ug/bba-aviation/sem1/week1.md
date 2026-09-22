@@ -41,6 +41,17 @@ Interjections are words or phrases that stand entirely on their own to express s
 
 ---
 
+# The Core of a Sentence: S-V-O
+The English language generally follows a strict **Subject-Verb-Object** pattern. 
+
+*   **Subject (The "Who" or "What"):** The person, place, or thing performing the action.
+*   **Verb (The "Action"):** What the subject is doing.
+*   **Object (The "Receiver"):** The person, place, or thing receiving the action of the verb.
+
+> **"The pilot (Subject) landed (Verb) the aircraft (Object)."**
+
+---
+
 # Sentence Structure: The Golden Rule
 The most important rule in English sentence structure is **Subject-Verb Agreement**. 
 
