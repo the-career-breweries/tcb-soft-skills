@@ -325,7 +325,8 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
                           return <QRCodeForm />;
                         }
                         if (!inline && match && match[1] === 'topic-generator') {
-                          return <RandomTopicGenerator />;
+                          const customTopics = String(children).trim().split('\n').map(t => t.trim()).filter(t => t.length > 0);
+                          return <RandomTopicGenerator customTopics={customTopics} />;
                         }
                         if (!inline && match && match[1] === 'mermaid') {
                           return (

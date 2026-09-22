@@ -56,7 +56,16 @@ Volunteers! You have 60 seconds to speak on the topic below.
 *Pro-tip: Use the PREP method. Take 3 seconds to breathe before you start.*
 
 ```topic-generator
-spin
+Should budget airlines charge extra for carry-on luggage?
+Is sustainable aviation fuel (SAF) the only viable future for airlines?
+Will single-pilot commercial flights become a reality by 2035?
+Are full-service carriers becoming obsolete in domestic travel?
+Should air traffic control be completely automated using AI?
+Is passenger comfort being sacrificed too much for airline profitability?
+Should governments ban short-haul flights to cut emissions?
+Is the rapid expansion of regional airports financially sustainable?
+Are stringent security protocols harming the passenger experience?
+Will supersonic commercial travel ever be economically viable again?
 ```
 
 ---

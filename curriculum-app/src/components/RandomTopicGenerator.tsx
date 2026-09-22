@@ -13,9 +13,15 @@ const TOPICS = [
   "Should practical internships replace the final year of college?"
 ];
 
-export default function RandomTopicGenerator() {
+interface RandomTopicGeneratorProps {
+  customTopics?: string[];
+}
+
+export default function RandomTopicGenerator({ customTopics }: RandomTopicGeneratorProps = {}) {
   const [currentTopic, setCurrentTopic] = useState("Click 'Spin' to Generate a Topic");
   const [isSpinning, setIsSpinning] = useState(false);
+
+  const activeTopics = customTopics && customTopics.length > 0 && customTopics[0] !== 'spin' ? customTopics : TOPICS;
 
   const spinTopic = () => {
     if (isSpinning) return;
@@ -24,8 +30,8 @@ export default function RandomTopicGenerator() {
     let spins = 0;
     const maxSpins = 15;
     const interval = setInterval(() => {
-      const randomIndex = Math.floor(Math.random() * TOPICS.length);
-      setCurrentTopic(TOPICS[randomIndex]);
+      const randomIndex = Math.floor(Math.random() * activeTopics.length);
+      setCurrentTopic(activeTopics[randomIndex]);
       spins++;
       
       if (spins >= maxSpins) {
@@ -59,11 +65,16 @@ export default function RandomTopicGenerator() {
         marginBottom: '2rem'
       }}>
         <h3 style={{ 
-          fontSize: '2.5rem', 
-          margin: 0, 
-          color: isSpinning ? '#94a3b8' : '#38bdf8',
+          fontSize: currentTopic.length > 50 ? '2rem' : (currentTopic.length > 35 ? '2.5rem' : '3rem'), 
+          fontWeight: 800, 
+          color: isSpinning ? '#cbd5e1' : '#38bdf8',
+          marginBottom: '3rem',
+          lineHeight: 1.3,
           transition: 'color 0.3s ease',
-          textShadow: isSpinning ? 'none' : '0 0 20px rgba(56, 189, 248, 0.5)'
+          textShadow: isSpinning ? 'none' : '0 0 20px rgba(56, 189, 248, 0.4)',
+          whiteSpace: 'normal',
+          wordWrap: 'break-word',
+          padding: '0 1rem'
         }}>
           {currentTopic}
         </h3>
