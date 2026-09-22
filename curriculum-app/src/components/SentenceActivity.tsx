@@ -27,6 +27,8 @@ export default function SentenceActivity({ data }: { data: string }) {
       textAlign: 'left',
       wordWrap: 'break-word',
       overflowWrap: 'break-word',
+      whiteSpace: 'normal',
+      fontFamily: "'Inter', sans-serif",
       width: '100%',
       boxSizing: 'border-box'
     }}>
