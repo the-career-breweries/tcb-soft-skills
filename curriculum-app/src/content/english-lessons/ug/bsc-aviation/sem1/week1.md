@@ -124,6 +124,33 @@ For more advanced, professional writing.
 
 ---
 
+# Activity 1: Is it Simple or Compound?
+```sentence-activity
+Sentence: The aircraft taxied to the runway but stopped suddenly.
+Type: Simple Sentence (Tricky!)
+Explanation: It has one subject ("The aircraft") and a compound verb ("taxied... but stopped"). Because there is no second subject after "but", it is NOT a compound sentence.
+```
+
+---
+
+# Activity 2: Decoding the Complex Sentence
+```sentence-activity
+Sentence: Because the fog was thick, we diverted to another airport.
+Type: Complex Sentence
+Explanation: It has one Dependent Clause ("Because the fog was thick") and one Independent Clause ("we diverted to another airport").
+```
+
+---
+
+# Activity 3: The Ultimate Test (Compound-Complex)
+```sentence-activity
+Sentence: Even though the engine failed, the captain landed the plane safely, and the passengers cheered.
+Type: Compound-Complex Sentence
+Explanation: It has one Dependent Clause ("Even though the engine failed") and TWO Independent Clauses ("the captain landed the plane safely", "and the passengers cheered").
+```
+
+---
+
 # Tenses Overview
 *   **Past:** Actions completed before now (e.g., *The flight landed.*)
 *   **Present:** Actions happening now or habitually (e.g., *The flight lands at 5 PM.*)

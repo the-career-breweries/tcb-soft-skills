@@ -7,6 +7,7 @@ import mermaid from 'mermaid';
 import PrintTemplates from './PrintTemplates';
 import RandomTopicGenerator from './RandomTopicGenerator';
 import QRCodeForm from './QRCodeForm';
+import SentenceActivity from './SentenceActivity';
 import confetti from 'canvas-confetti';
 
 const Mermaid = ({ chart, theme }: { chart: string, theme: 'light' | 'dark' }) => {
@@ -328,6 +329,9 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
                         if (!inline && match && match[1] === 'topic-generator') {
                           const customTopics = String(children).trim().split('\n').map(t => t.trim()).filter(t => t.length > 0);
                           return <RandomTopicGenerator customTopics={customTopics} />;
+                        }
+                        if (!inline && match && match[1] === 'sentence-activity') {
+                          return <SentenceActivity data={String(children)} />;
                         }
                         if (!inline && match && match[1] === 'mermaid') {
                           return (
