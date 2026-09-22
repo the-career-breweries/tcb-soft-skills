@@ -17,44 +17,57 @@ export default function SentenceActivity({ data }: { data: string }) {
 
   return (
     <div className="activity-container" style={{
-      border: '2px solid #ccc',
+      border: '2px solid var(--border-color, #ccc)',
       borderRadius: '8px',
       padding: '2rem',
       marginTop: '2rem',
-      backgroundColor: 'var(--card-bg, #f9fafb)',
-      color: 'var(--text-color, #1f2937)',
-      textAlign: 'left'
+      backgroundColor: 'var(--bg-surface, #f9fafb)',
+      color: 'var(--text-main, #1f2937)',
+      textAlign: 'left',
+      wordWrap: 'break-word',
+      overflowWrap: 'break-word',
+      width: '100%',
+      boxSizing: 'border-box'
     }}>
-      <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', fontWeight: 600 }}>Analyze this sentence:</h3>
-      <p style={{ fontSize: '1.25rem', marginBottom: '2rem', fontStyle: 'italic', padding: '1rem', backgroundColor: 'var(--bg-color, #ffffff)', borderLeft: '4px solid #3b82f6' }}>
+      <h3 style={{ fontSize: '1.4em', marginBottom: '1rem', fontWeight: 600 }}>Analyze this sentence:</h3>
+      <p style={{ 
+        fontSize: '1.2em', 
+        marginBottom: '2rem', 
+        fontStyle: 'italic', 
+        padding: '1rem', 
+        backgroundColor: 'var(--bg-app, #ffffff)', 
+        borderLeft: '4px solid var(--accent-primary, #3b82f6)',
+        wordWrap: 'break-word',
+        whiteSpace: 'normal'
+      }}>
         "{sentence}"
       </p>
 
       {step >= 1 && (
         <div style={{ marginBottom: '1.5rem', animation: 'fadeIn 0.5s' }}>
-          <strong style={{ fontSize: '1.2rem', color: '#3b82f6' }}>Type: </strong> 
-          <span style={{ fontSize: '1.2rem', fontWeight: 600 }}>{type}</span>
+          <strong style={{ fontSize: '1.2em', color: 'var(--accent-primary, #3b82f6)' }}>Type: </strong> 
+          <span style={{ fontSize: '1.2em', fontWeight: 600 }}>{type}</span>
         </div>
       )}
 
       {step >= 2 && (
         <div style={{ animation: 'fadeIn 0.5s' }}>
-          <strong style={{ fontSize: '1.1rem', color: '#10b981' }}>Why? </strong> 
-          <span style={{ fontSize: '1.1rem' }}>{explanation}</span>
+          <strong style={{ fontSize: '1.1em', color: '#10b981' }}>Why? </strong> 
+          <span style={{ fontSize: '1.1em', lineHeight: '1.6' }}>{explanation}</span>
         </div>
       )}
 
-      <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'flex-end' }}>
+      <div style={{ marginTop: '2.5rem', display: 'flex', gap: '1rem', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
         {step < 2 && (
           <button 
             onClick={() => setStep(step + 1)}
             style={{
               padding: '0.75rem 1.5rem',
-              backgroundColor: '#3b82f6',
+              backgroundColor: 'var(--accent-primary, #3b82f6)',
               color: 'white',
               border: 'none',
               borderRadius: '4px',
-              fontSize: '1.1rem',
+              fontSize: '1.1em',
               cursor: 'pointer',
               fontWeight: 600
             }}
@@ -68,10 +81,10 @@ export default function SentenceActivity({ data }: { data: string }) {
             style={{
               padding: '0.75rem 1.5rem',
               backgroundColor: 'transparent',
-              color: '#6b7280',
-              border: '1px solid #d1d5db',
+              color: 'var(--text-muted, #6b7280)',
+              border: '1px solid var(--border-color, #d1d5db)',
               borderRadius: '4px',
-              fontSize: '1rem',
+              fontSize: '1em',
               cursor: 'pointer'
             }}
           >
