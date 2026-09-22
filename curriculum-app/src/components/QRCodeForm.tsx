@@ -20,8 +20,8 @@ export default function QRCodeForm() {
       width: '100%',
       maxWidth: '600px'
     }}>
-      <h2 style={{ fontSize: '2.5rem', margin: '0 0 1rem 0', background: 'linear-gradient(90deg, #60a5fa, #a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-        Scan to Submit Feedback
+      <h2 style={{ fontSize: '2.2rem', margin: '0 0 1rem 0', background: 'linear-gradient(90deg, #60a5fa, #a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        Feedback
       </h2>
       <p style={{ fontSize: '1.2rem', color: '#cbd5e1', marginBottom: '2rem', marginTop: 0 }}>
         Your thoughts help us improve future sessions!
