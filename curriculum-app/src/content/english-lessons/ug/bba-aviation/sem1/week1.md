@@ -71,6 +71,36 @@ Identify the Subject and Verb, and check if they agree:
 
 ---
 
+# Anatomy of a Sentence: Clauses
+Before we look at sentence types, we need to understand **clauses** (a group of words with a subject and a verb).
+
+*   **Independent Clause:** Can stand alone as a complete sentence.
+    *(e.g., The captain landed the plane.)*
+*   **Dependent (Subordinate) Clause:** Cannot stand alone. It relies on the rest of the sentence. Often starts with *because, although, if*.
+    *(e.g., ...because the weather was clear.)*
+
+---
+
+# Types of Sentences (Part 1)
+How we combine clauses determines our sentence structure.
+
+*   **Simple Sentence:** Exactly **ONE** Independent Clause. 
+    *(e.g., The aircraft taxied to the gate.)*
+*   **Compound Sentence:** **TWO** Independent Clauses joined by a comma and a coordinating conjunction (FANBOYS: *for, and, nor, but, or, yet, so*).
+    *(e.g., The aircraft taxied to the gate**, and** the passengers disembarked.)*
+
+---
+
+# Types of Sentences (Part 2)
+For more advanced, professional writing.
+
+*   **Complex Sentence:** **ONE** Independent Clause + **ONE or MORE** Dependent Clauses.
+    *(e.g., **Because the storm approached**, the control tower delayed all flights.)*
+*   **Compound-Complex Sentence:** **TWO** Independent Clauses + **ONE or MORE** Dependent Clauses.
+    *(e.g., **Although the passengers were tired**, the crew remained professional, **and** they completed the boarding process safely.)*
+
+---
+
 # Tenses Overview
 *   **Past:** Actions completed before now (e.g., *The flight landed.*)
 *   **Present:** Actions happening now or habitually (e.g., *The flight lands at 5 PM.*)
