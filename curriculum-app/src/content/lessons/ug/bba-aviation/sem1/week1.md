@@ -1,83 +1,53 @@
-# Welcome to Aviation Management Soft Skills
-### The Ground Starts Here
-
-Welcome to Semester 1. In Aviation Management, you are the face of the airline, the brain behind ground operations, and the problem-solvers when things go wrong.
-
-Today, we focus on management presence, overcoming hesitation, and structuring your thoughts.
-
-```qrcode
-scan
-```
+# Welcome to Soft Skills & Personality Development
+*Unit 1: Self-Awareness & Confidence Building*
 
 ---
 
-# The Manager's Presence
-### Authority, Empathy, and Demeanor
+# Who are you, really?
+Before we can communicate with others, we must understand ourselves. 
 
-As future aviation managers, airport staff, or customer service leaders, your presence dictates the mood of the terminal or the boardroom.
+> "Knowing yourself is the beginning of all wisdom." - Aristotle
 
-* **Posture:** Confident and open. Never defensive (e.g., arms crossed).
-* **Active Listening:** Nodding and maintaining eye contact when a passenger or colleague is speaking.
-* **Tone:** Firm but empathetic. You must project control, especially during delays or disruptions.
-
-> **Activity:** Stand up, pair with the person next to you. Introduce yourself as the Duty Manager of a major airline resolving a ticketing issue. Practice maintaining a calm, authoritative tone for 30 seconds.
+Today, we explore the **Johari Window**, a psychological tool created to help you understand your relationship with yourself and others.
 
 ---
 
-# The PREP Method 
-### For Crisp, Unambiguous Business Communication
+# The Johari Window
 
-Whether briefing your ground team or de-escalating a passenger issue, you must be clear and structured. Use **PREP**:
+Imagine a window with four panes. Each pane represents personal information (feelings, motivation, skills) from two perspectives: **Yours** and **Others**.
 
-* **P**oint: State your main point clearly and upfront.
-* **R**eason: Give the reason for your point.
-* **E**xtended Explanation (or Example): Provide necessary details, instructions, or evidence.
-* **P**oint: Restate the main point or provide a closing call-to-action.
-
----
-
-# PREP Method: Ground Operations Scenario
-
-> **Scenario:** A flight is delayed by 3 hours due to weather. You must brief the angry passengers at the boarding gate.
-
-* **P - Point:** "Ladies and gentlemen, Flight 405 to Mumbai is currently delayed by three hours."
-* **R - Reason:** "This is due to severe thunderstorms over the destination airport making it unsafe to land."
-* **E - Extended Explanation:** "Air Traffic Control has issued a temporary ground stop for all inbound flights, and we are waiting for clearance to depart."
-* **P - Point:** "We regret the delay caused. While the update is awaited, we request you to avail the complimentary meal vouchers provided during the wait."
+1. **The OPEN Area:** Known to you, known to others. *(e.g., You are an aviation student).*
+2. **The BLIND Area:** Unknown to you, known to others. *(e.g., You interrupt people when excited, but you don't realize it).*
+3. **The HIDDEN Area:** Known to you, unknown to others. *(e.g., You have a severe fear of public speaking).*
+4. **The UNKNOWN Area:** Unknown to you, unknown to others. *(e.g., A hidden talent for crisis management you haven't discovered yet).*
 
 ---
 
-# The Boardroom: Impromptu Speaking
-### 1 Minute Solo
+# The Goal of Self-Awareness
 
-Let's test your ability to think on your feet and communicate a stance clearly.
-Volunteers! You have 60 seconds to speak on the topic below.
+*   **Expand the Open Area:** By communicating and sharing more (reducing the Hidden area).
+*   **Shrink the Blind Area:** By asking for honest feedback from peers and mentors.
+*   **Discover the Unknown:** By stepping out of your comfort zone and trying new things in this course!
 
-*Pro-tip: Use the PREP method to structure your argument.*
+---
 
-```topic-generator
-Should passengers be allowed to recline their seats on short flights?
-Should airlines ban crying babies from First Class?
-Is being a flight attendant more stressful than being a pilot?
-Should the middle seat passenger get both armrests?
-Is it fair for airlines to charge extra for basic food and water?
-Should mobile phone calls be allowed during flights?
-Is traveling by plane better than traveling by train?
-Should passengers be required to dress smartly when flying?
-Is it okay to clap when the plane lands?
-Should airports have completely silent terminals with no announcements?
-```
+# Activity: The Copilot Feedback Loop
+
+**Time:** 15 Minutes
+
+**Step 1 (Expand the Open):** Pair up with the person next to you. Take 2 minutes each to share one **Hidden** thing about yourself (e.g., a hobby, a fear, a unique skill) that nobody in this room knows yet.
+
+**Step 2 (Shrink the Blind):** Based *only* on your first impressions of your partner today, gently share one positive trait you observe in them that they might not realize they project (e.g., "You have a very calming speaking voice," or "You seem highly organized").
 
 ---
 
 # Debrief & Wrap Up
 
-Great start to the semester! Remember:
-1. **Demeanor:** As a manager, your calm behavior is contagious.
-2. **Structure:** Use PREP whenever you need to explain something complex quickly.
+*   Was it harder to share your hidden trait, or to give feedback on their blind spot?
+*   In the aviation industry, a large "Blind Area" can lead to poor Crew Resource Management (CRM). Self-awareness saves lives.
 
-Before you leave, ensure you have submitted the attendance and feedback form from the start of class!
+**Next Week:** We will learn how to structure arguments and debate like professionals!
 
+<!-- QR CODE PLACEHOLDER -->
 ```qrcode
-scan
 ```

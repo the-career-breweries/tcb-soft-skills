@@ -1,83 +1,53 @@
-# Welcome to Aviation Soft Skills
-### Building Your Commander's Presence
-
-Welcome to Semester 1. In the aviation industry, your technical knowledge keeps the plane in the air, but your **communication skills** keep the passengers and crew safe.
-
-Today, we focus on breaking the ice, removing stage fright, and speaking with clarity.
-
-```qrcode
-scan
-```
+# Welcome to Soft Skills & Personality Development
+*Unit 1: Self-Awareness & Confidence Building*
 
 ---
 
-# The Uniform Mindset
-### Posture, Presence, and Eye Contact
+# Who are you, really?
+Before we can communicate with others, we must understand ourselves. 
 
-Before you say a word, you communicate. In aviation, passengers look to the uniform for authority, calm, and competence.
+> "Knowing yourself is the beginning of all wisdom." - Aristotle
 
-* **Posture:** Stand straight, shoulders back. Open body language.
-* **Eye Contact:** Look at the person, not the floor. It signals trust.
-* **Tone:** Calm, clear, and steady. Never rush your words, even in a crisis.
-
-> **Activity:** Stand up, pair with the person next to you. Introduce yourself as if you are the Captain or Lead Cabin Crew welcoming them aboard. Maintain unbroken eye contact for 15 seconds.
+Today, we explore the **Johari Window**, a psychological tool created to help you understand your relationship with yourself and others.
 
 ---
 
-# The PREP Method 
-### For Crisp, Unambiguous Aviation Communication
+# The Johari Window
 
-Aviation relies on standard phraseology and brevity. You do not have time to ramble over a radio or during an emergency briefing. Use **PREP**:
+Imagine a window with four panes. Each pane represents personal information (feelings, motivation, skills) from two perspectives: **Yours** and **Others**.
 
-* **P**oint: State your main instruction or idea immediately.
-* **R**eason: Why is this happening? (The "Because").
-* **E**xtended Explanation (or Example): Provide necessary details, instructions, or evidence.
-* **P**oint: Restate the main point or provide a closing call-to-action.
-
----
-
-# PREP Method: Aviation Scenario
-
-> **Scenario:** The aircraft has hit sudden, severe turbulence. You need to brief the passengers.
-
-* **P - Point:** "Ladies and gentlemen, please return to your seats and fasten your seatbelts immediately."
-* **R - Reason:** "We are entering an area of severe, unexpected turbulence."
-* **E - Extended Explanation:** "The weather radar indicates this pocket of rough air will last for approximately the next 15 to 20 minutes."
-* **P - Point:** "Keep your seatbelts securely fastened until the sign is turned off."
+1. **The OPEN Area:** Known to you, known to others. *(e.g., You are an aviation student).*
+2. **The BLIND Area:** Unknown to you, known to others. *(e.g., You interrupt people when excited, but you don't realize it).*
+3. **The HIDDEN Area:** Known to you, unknown to others. *(e.g., You have a severe fear of public speaking).*
+4. **The UNKNOWN Area:** Unknown to you, unknown to others. *(e.g., A hidden talent for crisis management you haven't discovered yet).*
 
 ---
 
-# The Briefing Room: Impromptu Speaking
-### 1 Minute Solo
+# The Goal of Self-Awareness
 
-Let's test your ability to think on your feet and speak clearly. 
-Volunteers! You have 60 seconds to speak on the topic below.
+*   **Expand the Open Area:** By communicating and sharing more (reducing the Hidden area).
+*   **Shrink the Blind Area:** By asking for honest feedback from peers and mentors.
+*   **Discover the Unknown:** By stepping out of your comfort zone and trying new things in this course!
 
-*Pro-tip: Use the PREP method. Take 3 seconds to breathe before you start.*
+---
 
-```topic-generator
-Should passengers be allowed to recline their seats on short flights?
-Should airlines ban crying babies from First Class?
-Is being a flight attendant more stressful than being a pilot?
-Should the middle seat passenger get both armrests?
-Is it fair for airlines to charge extra for basic food and water?
-Should mobile phone calls be allowed during flights?
-Is traveling by plane better than traveling by train?
-Should passengers be required to dress smartly when flying?
-Is it okay to clap when the plane lands?
-Should airports have completely silent terminals with no announcements?
-```
+# Activity: The Copilot Feedback Loop
+
+**Time:** 15 Minutes
+
+**Step 1 (Expand the Open):** Pair up with the person next to you. Take 2 minutes each to share one **Hidden** thing about yourself (e.g., a hobby, a fear, a unique skill) that nobody in this room knows yet.
+
+**Step 2 (Shrink the Blind):** Based *only* on your first impressions of your partner today, gently share one positive trait you observe in them that they might not realize they project (e.g., "You have a very calming speaking voice," or "You seem highly organized").
 
 ---
 
 # Debrief & Wrap Up
 
-Great energy today. Remember:
-1. **Presence:** Own the space you stand in.
-2. **Clarity:** Use PREP to avoid rambling.
+*   Was it harder to share your hidden trait, or to give feedback on their blind spot?
+*   In the aviation industry, a large "Blind Area" can lead to poor Crew Resource Management (CRM). Self-awareness saves lives.
 
-Before you leave, ensure you have submitted the attendance and feedback form from the start of class!
+**Next Week:** We will learn how to structure arguments and debate like professionals!
 
+<!-- QR CODE PLACEHOLDER -->
 ```qrcode
-scan
 ```
