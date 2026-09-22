@@ -16,10 +16,10 @@ Today, we explore the **Johari Window**, a psychological tool created to help yo
 
 Imagine a window with four panes. Each pane represents personal information (feelings, motivation, skills) from two perspectives: **Yours** and **Others**.
 
-1. **The OPEN Area:** Known to you, known to others. *(e.g., You are an aviation student).*
-2. **The BLIND Area:** Unknown to you, known to others. *(e.g., You interrupt people when excited, but you don't realize it).*
-3. **The HIDDEN Area:** Known to you, unknown to others. *(e.g., You have a severe fear of public speaking).*
-4. **The UNKNOWN Area:** Unknown to you, unknown to others. *(e.g., A hidden talent for crisis management you haven't discovered yet).*
+| | **Known to You** | **Unknown to You** |
+|:---|:---:|:---:|
+| **Known to Others** | **1. OPEN AREA** <br/>*(e.g., You are an aviation student)* | **2. BLIND AREA** <br/>*(e.g., You interrupt people often)* |
+| **Unknown to Others** | **3. HIDDEN AREA** <br/>*(e.g., Fear of public speaking)* | **4. UNKNOWN AREA** <br/>*(e.g., Hidden leadership talent)* |
 
 ---
 
