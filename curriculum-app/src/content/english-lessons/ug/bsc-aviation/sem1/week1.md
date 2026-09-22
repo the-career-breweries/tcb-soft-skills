@@ -41,14 +41,33 @@ Interjections are words or phrases that stand entirely on their own to express s
 
 ---
 
+# Sentence Structure: The Golden Rule
+The most important rule in English sentence structure is **Subject-Verb Agreement**. 
+
+The subject (the "who" or "what") must always match the verb in number.
+*   **Singular Subject -> Singular Verb** (usually ends in 's')
+    *(e.g., The pilot **checks** the instruments.)*
+*   **Plural Subject -> Plural Verb** (no 's')
+    *(e.g., The pilots **check** the instruments.)*
+
+---
+
+# Subject-Verb Agreement: Tricky Cases
+Sometimes, it's hard to tell if the subject is singular or plural.
+
+*   **Group Nouns (usually singular):** The *crew* **is** ready. The *team* **has** boarded.
+*   **"And" (plural):** The captain *and* the first officer **are** in the cockpit.
+*   **"Or" (matches closest noun):** The flight attendants or the *captain* **makes** the announcement.
+
+---
+
 # Activity: Sentence Structure
-Identify the Subject, Verb, and Object in this sentence:
+Identify the Subject and Verb, and check if they agree:
 
-> "The captain announced the descent."
-
-*   **Subject:** The captain
-*   **Verb:** announced
-*   **Object:** the descent
+> "The fleet of new aircraft **are** arriving tomorrow."
+*   *Wait!* What is the true subject? 
+*   "Fleet" (singular group). 
+*   *Correction:* "The fleet of new aircraft **is** arriving tomorrow."
 
 ---
 
