@@ -354,7 +354,7 @@ export default function CurriculumApp() {
                   <p>Select a module from the sidebar to begin learning.</p>
                 </div>
 
-                  {program === 'ug' && (
+                  {program === 'ug' && !selectedStream.includes('Aviation') && (
                     <div className="batch-tracker-card">
                       <div className="card-header">
                         <h3><Users size={24} color="#4f46e5" /> Section Progress Tracker</h3>
