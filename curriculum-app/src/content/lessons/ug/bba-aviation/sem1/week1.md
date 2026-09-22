@@ -56,16 +56,16 @@ Volunteers! You have 60 seconds to speak on the topic below.
 *Pro-tip: Use the PREP method to structure your argument.*
 
 ```topic-generator
-Should budget airlines charge extra for carry-on luggage?
-Is sustainable aviation fuel (SAF) the only viable future for airlines?
-Will single-pilot commercial flights become a reality by 2035?
-Are full-service carriers becoming obsolete in domestic travel?
-Should air traffic control be completely automated using AI?
-Is passenger comfort being sacrificed too much for airline profitability?
-Should governments ban short-haul flights to cut emissions?
-Is the rapid expansion of regional airports financially sustainable?
-Are stringent security protocols harming the passenger experience?
-Will supersonic commercial travel ever be economically viable again?
+Should passengers be allowed to recline their seats on short flights?
+Should airlines ban crying babies from First Class?
+Is being a flight attendant more stressful than being a pilot?
+Should the middle seat passenger get both armrests?
+Is it fair for airlines to charge extra for basic food and water?
+Should mobile phone calls be allowed during flights?
+Is traveling by plane better than traveling by train?
+Should passengers be required to dress smartly when flying?
+Is it okay to clap when the plane lands?
+Should airports have completely silent terminals with no announcements?
 ```
 
 ---
