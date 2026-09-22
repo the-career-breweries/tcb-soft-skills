@@ -5,7 +5,6 @@ import { Star, Send, CheckCircle2, GraduationCap } from 'lucide-react';
 import '../globals.css';
 
 export default function FeedbackForm() {
-  // Get today's date formatted as YYYY-MM-DD for the default date input value
   const today = new Date().toISOString().split('T')[0];
 
   const [sessionDate, setSessionDate] = useState(today);
@@ -25,7 +24,6 @@ export default function FeedbackForm() {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 800));
     
-    // TODO: Connect to backend/Firebase here if needed
     console.log({ sessionDate, rating, suggestions, questions });
     
     setIsSubmitting(false);
@@ -34,13 +32,11 @@ export default function FeedbackForm() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-950 p-4">
-        <div className="max-w-md w-full bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8 text-center border border-gray-100 dark:border-gray-800">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 mb-6">
-            <CheckCircle2 size={32} />
-          </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Thank You!</h2>
-          <p className="text-gray-600 dark:text-gray-400">
+      <div className="feedback-page" style={{ justifyContent: 'center' }}>
+        <div className="feedback-card feedback-success">
+          <CheckCircle2 size={48} color="var(--accent-primary)" style={{ margin: '0 auto' }} />
+          <h2>Thank You!</h2>
+          <p style={{ color: 'var(--text-muted)' }}>
             Your feedback has been successfully submitted and will help us improve future sessions.
           </p>
         </div>
@@ -49,48 +45,42 @@ export default function FeedbackForm() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex flex-col py-12 px-4 sm:px-6 lg:px-8 font-sans">
+    <div className="feedback-page">
       
       {/* Header */}
-      <div className="max-w-xl w-full mx-auto mb-8 text-center">
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-600 text-white mb-4">
-          <GraduationCap size={28} />
+      <div className="feedback-header">
+        <div className="feedback-icon-container">
+          <GraduationCap size={24} />
         </div>
-        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-          Session Feedback
-        </h1>
-        <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
-          Let us know how the session went.
-        </p>
+        <h1>Session Feedback</h1>
+        <p>Let us know how the session went.</p>
       </div>
 
       {/* Form Card */}
-      <div className="max-w-xl w-full mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-800 p-6 sm:p-8">
-        <form onSubmit={handleSubmit} className="space-y-8">
+      <div className="feedback-card">
+        <form onSubmit={handleSubmit}>
           
-          {/* Session Details */}
-          <div className="bg-gray-50 dark:bg-gray-900/50 p-5 rounded-xl border border-gray-100 dark:border-gray-800">
-            <div>
-              <label htmlFor="sessionDate" className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                Session Date <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="sessionDate"
-                type="date"
-                required
-                value={sessionDate}
-                onChange={(e) => setSessionDate(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-              />
-            </div>
+          {/* Session Date */}
+          <div className="feedback-group">
+            <label htmlFor="sessionDate" className="feedback-label">
+              Session Date <span style={{ color: '#ef4444' }}>*</span>
+            </label>
+            <input
+              id="sessionDate"
+              type="date"
+              required
+              value={sessionDate}
+              onChange={(e) => setSessionDate(e.target.value)}
+              className="feedback-input"
+            />
           </div>
 
           {/* 1. Rating */}
-          <div>
-            <label className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3">
-              1. How would you rate today's session? <span className="text-red-500">*</span>
+          <div className="feedback-group">
+            <label className="feedback-label">
+              1. How would you rate today's session? <span style={{ color: '#ef4444' }}>*</span>
             </label>
-            <div className="flex items-center gap-2">
+            <div className="star-rating">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
                   key={star}
@@ -98,27 +88,21 @@ export default function FeedbackForm() {
                   onClick={() => setRating(star)}
                   onMouseEnter={() => setHoverRating(star)}
                   onMouseLeave={() => setHoverRating(0)}
-                  className="p-1 transition-transform hover:scale-110 focus:outline-none"
+                  className="star-btn"
                 >
                   <Star
-                    size={36}
-                    className={`transition-colors ${
-                      (hoverRating || rating) >= star
-                        ? 'fill-yellow-400 text-yellow-400'
-                        : 'text-gray-300 dark:text-gray-600'
-                    }`}
+                    size={32}
+                    fill={(hoverRating || rating) >= star ? '#fbbf24' : 'transparent'}
+                    color={(hoverRating || rating) >= star ? '#fbbf24' : 'var(--text-muted)'}
                   />
                 </button>
               ))}
             </div>
-            {rating === 0 && (
-              <p className="text-xs text-red-500 mt-2">Please provide a rating</p>
-            )}
           </div>
 
           {/* 2. Suggestions */}
-          <div>
-            <label htmlFor="suggestions" className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          <div className="feedback-group">
+            <label htmlFor="suggestions" className="feedback-label">
               2. Suggestions or recommendations to improve next sessions?
             </label>
             <textarea
@@ -127,13 +111,14 @@ export default function FeedbackForm() {
               value={suggestions}
               onChange={(e) => setSuggestions(e.target.value)}
               placeholder="What did you like? What could be better?"
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
+              className="feedback-input"
+              style={{ resize: 'vertical' }}
             />
           </div>
 
           {/* 3. Questions */}
-          <div>
-            <label htmlFor="questions" className="block text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
+          <div className="feedback-group">
+            <label htmlFor="questions" className="feedback-label">
               3. Do you have any questions from today's session?
             </label>
             <textarea
@@ -142,21 +127,20 @@ export default function FeedbackForm() {
               value={questions}
               onChange={(e) => setQuestions(e.target.value)}
               placeholder="Any doubts or topics you want revisited..."
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-950 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
+              className="feedback-input"
+              style={{ resize: 'vertical' }}
             />
           </div>
 
           {/* Submit */}
-          <div className="pt-2">
-            <button
-              type="submit"
-              disabled={rating === 0 || isSubmitting}
-              className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 dark:disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-bold py-3.5 px-6 rounded-xl transition-colors"
-            >
-              {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
-              {!isSubmitting && <Send size={18} />}
-            </button>
-          </div>
+          <button
+            type="submit"
+            disabled={rating === 0 || isSubmitting}
+            className="submit-btn"
+          >
+            {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
+            {!isSubmitting && <Send size={18} />}
+          </button>
           
         </form>
       </div>
