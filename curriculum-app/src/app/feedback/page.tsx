@@ -21,13 +21,22 @@ export default function FeedbackForm() {
     
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 800));
-    
-    console.log({ sessionDate, rating, suggestions, questions });
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionDate, rating, suggestions, questions }),
+      });
+
+      if (!response.ok) throw new Error('Failed to submit feedback');
+      
+      setSubmitted(true);
+    } catch (error) {
+      console.error(error);
+      alert('Failed to submit feedback. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
