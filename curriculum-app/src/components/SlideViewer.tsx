@@ -315,7 +315,7 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
              )}
              <div className="slide-body">
                 {slides.length > 0 && (
-                  <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                  <div className="markdown-content-container" style={{ position: 'relative', width: '100%', minHeight: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '2rem', paddingBottom: '4rem' }}>
                     <ReactMarkdown 
                     remarkPlugins={[remarkGfm]}
                     components={{
