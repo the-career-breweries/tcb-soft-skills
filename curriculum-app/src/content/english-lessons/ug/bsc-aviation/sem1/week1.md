@@ -82,6 +82,18 @@ Identify the Subject and Verb, and check if they agree:
 
 ---
 
+# Common Group Nouns (Singular)
+Even though these words represent multiple people or things, they act as a **single unit** grammatically. Therefore, they take a singular verb (e.g., *is, has, does*).
+
+*   **The Crew** (e.g., *The crew is prepared.*)
+*   **The Fleet** (e.g., *The fleet has arrived.*)
+*   **The Staff** (e.g., *The ground staff works hard.*)
+*   **The Team** (e.g., *The maintenance team is on site.*)
+*   **The Board** (e.g., *The board of directors meets today.*)
+*   **The Audience / Class / Crowd**
+
+---
+
 # Anatomy of a Sentence: Clauses
 Before we look at sentence types, we need to understand **clauses** (a group of words with a subject and a verb).
 
