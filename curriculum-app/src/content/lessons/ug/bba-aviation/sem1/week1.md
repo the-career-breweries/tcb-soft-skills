@@ -17,9 +17,9 @@ Today, we explore the **Johari Window**, a psychological tool created to help yo
 Imagine a window with four panes. Each pane represents personal information (feelings, motivation, skills) from two perspectives: **Yours** and **Others**.
 
 | | **Known to You** | **Unknown to You** |
-|:---|:---:|:---:|
-| **Known to Others** | **1. OPEN AREA** <br/>*(e.g., You are an aviation student)* | **2. BLIND AREA** <br/>*(e.g., You interrupt people often)* |
-| **Unknown to Others** | **3. HIDDEN AREA** <br/>*(e.g., Fear of public speaking)* | **4. UNKNOWN AREA** <br/>*(e.g., Hidden leadership talent)* |
+|:---|:---|:---|
+| **Known to Others** | **1. OPEN AREA** *(e.g., You are an aviation student, you speak English, you enjoy traveling)* | **2. BLIND AREA** *(e.g., You tap your foot when nervous, you interrupt often, you have a calming voice)* |
+| **Unknown to Others** | **3. HIDDEN AREA** *(e.g., Fear of public speaking, secret singing talent, anxiety about flying)* | **4. UNKNOWN AREA** *(e.g., Unrecognized crisis leadership skills, hidden aptitude for ATC)* |
 
 ---
 
@@ -47,6 +47,8 @@ Imagine a window with four panes. Each pane represents personal information (fee
 *   In the aviation industry, a large "Blind Area" can lead to poor Crew Resource Management (CRM). Self-awareness saves lives.
 
 **Next Week:** We will learn how to structure arguments and debate like professionals!
+
+[📥 Download the Johari Window Activity Sheet](/Johari_Window_Activity_Sheet.pdf)
 
 <!-- QR CODE PLACEHOLDER -->
 ```qrcode
