@@ -5,7 +5,6 @@ import { curriculumDataEnglish as curriculumData, WeekData } from '@/data/curric
 import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw, Menu } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
 import WelcomeScreen from '@/components/WelcomeScreen';
-import './globals.css';
 
 export default function CommunicativeEnglishApp() {
   const [program, setProgram] = useState<'ug' | 'pg'>('ug');
@@ -20,11 +19,6 @@ export default function CommunicativeEnglishApp() {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
   const [passkey, setPasskey] = useState<string>('');
-  
-  // Semesters depend on the program
-  const maxSemesters = program === 'ug' ? 6 : 4;
-  const semesters = Array.from({ length: maxSemesters }, (_, i) => i + 1);
-  const [selectedSemester, setSelectedSemester] = useState<number>(1);
   
   // Theme State
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
