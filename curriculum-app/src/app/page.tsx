@@ -12,7 +12,7 @@ export default function CurriculumApp() {
   const streams = curriculumData[program].streams;
   
   const [selectedStream, setSelectedStream] = useState<string>(streams[0].streamName);
-  const [showWelcome, setShowWelcome] = useState<boolean>(true);
+  const [showWelcome, setShowWelcome] = useState<boolean>(false);
   const [showOrientation, setShowOrientation] = useState<boolean>(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
@@ -303,7 +303,7 @@ export default function CurriculumApp() {
                 <h3 className="sidebar-heading">Course Selection</h3>
                 <div className="sidebar-select-group">
                   <label>Specialization</label>
-                  <select value={selectedStream} onChange={handleStreamChange}>
+                  <select value={selectedStream} onChange={handleStreamChange} autoFocus>
                     {streams.map(s => (
                       <option key={s.streamName} value={s.streamName}>{s.streamName}</option>
                     ))}

@@ -139,15 +139,15 @@ const generatePgLevel4 = (stream: string): WeekData[] => {
   ];
 };
 
-export const curriculumData: { ug: ProgramCurriculum, pg: ProgramCurriculum } = {
+export const curriculumData: Record<'ug' | 'pg', ProgramCurriculum> = {
   ug: {
-    programName: 'UG',
+    programName: 'Undergraduate',
     streams: [
+      { streamName: 'BBA Aviation', weeks: [...ugCoreWeeks, ...generateUgLevel4('BBA Aviation')] },
+      { streamName: 'B.Sc Aviation', weeks: [...ugCoreWeeks, ...generateUgLevel4('B.Sc Aviation')] },
       { streamName: 'B.Com', weeks: [...ugCoreWeeks, ...generateUgLevel4('B.Com')] },
       { streamName: 'BBA', weeks: [...ugCoreWeeks, ...generateUgLevel4('BBA')] },
       { streamName: 'BCA', weeks: [...ugCoreWeeks, ...generateUgLevel4('BCA')] },
-      { streamName: 'BBA Aviation', weeks: [...ugCoreWeeks, ...generateUgLevel4('BBA Aviation')] },
-      { streamName: 'B.Sc Aviation', weeks: [...ugCoreWeeks, ...generateUgLevel4('B.Sc Aviation')] },
     ]
   },
   pg: {
