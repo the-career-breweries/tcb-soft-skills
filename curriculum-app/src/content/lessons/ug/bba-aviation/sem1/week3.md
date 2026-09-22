@@ -50,6 +50,6 @@ Once written, pair up and practice delivering your story to your partner without
 
 **Next Week:** We combine everything—PREP and STAR—for a massive classroom debate!
 
-<!-- QR CODE PLACEHOLDER -->
+
 ```qrcode
 ```

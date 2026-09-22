@@ -50,6 +50,6 @@ Imagine a window with four panes. Each pane represents personal information (fee
 
 [📥 Download the Johari Window Activity Sheet](/Johari_Window_Activity_Sheet.pdf)
 
-<!-- QR CODE PLACEHOLDER -->
+
 ```qrcode
 ```

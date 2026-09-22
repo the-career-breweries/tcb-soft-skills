@@ -48,6 +48,6 @@ Should airports have completely silent terminals with no announcements?
 
 **Fantastic work this month!** You are already speaking like aviation professionals.
 
-<!-- QR CODE PLACEHOLDER -->
+
 ```qrcode
 ```
