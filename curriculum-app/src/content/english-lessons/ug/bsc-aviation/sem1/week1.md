@@ -124,29 +124,62 @@ For more advanced, professional writing.
 
 ---
 
-# Activity 1: Is it Simple or Compound?
+# Activity: Simple Sentences
 ```sentence-activity
-Sentence: The aircraft taxied to the runway but stopped suddenly.
+Sentence: The aircraft taxied to the gate.
+Type: Simple Sentence (Basic)
+Explanation: It has exactly one independent clause (one subject "The aircraft", one verb "taxied").
+```
+
+```sentence-activity
+Sentence: The pilot and the co-pilot boarded the plane and started the engines.
 Type: Simple Sentence (Tricky!)
-Explanation: It has one subject ("The aircraft") and a compound verb ("taxied... but stopped"). Because there is no second subject after "but", it is NOT a compound sentence.
+Explanation: Even though it has a compound subject ("pilot and co-pilot") and a compound verb ("boarded and started"), it is still a single independent clause representing one cohesive idea.
 ```
 
 ---
 
-# Activity 2: Decoding the Complex Sentence
+# Activity: Compound Sentences
 ```sentence-activity
-Sentence: Because the fog was thick, we diverted to another airport.
-Type: Complex Sentence
-Explanation: It has one Dependent Clause ("Because the fog was thick") and one Independent Clause ("we diverted to another airport").
+Sentence: The weather was clear, so we departed on time.
+Type: Compound Sentence (Basic)
+Explanation: TWO independent clauses joined by a comma and the FANBOYS conjunction "so".
+```
+
+```sentence-activity
+Sentence: The passengers boarded the aircraft; the cabin crew began the safety briefing.
+Type: Compound Sentence (Tricky!)
+Explanation: There is no conjunction! But the semicolon (;) connects TWO complete independent clauses, making it a compound sentence.
 ```
 
 ---
 
-# Activity 3: The Ultimate Test (Compound-Complex)
+# Activity: Complex Sentences
 ```sentence-activity
-Sentence: Even though the engine failed, the captain landed the plane safely, and the passengers cheered.
-Type: Compound-Complex Sentence
-Explanation: It has one Dependent Clause ("Even though the engine failed") and TWO Independent Clauses ("the captain landed the plane safely", "and the passengers cheered").
+Sentence: Because the fog was thick, the flight was delayed.
+Type: Complex Sentence (Basic)
+Explanation: ONE dependent clause ("Because the fog was thick") attached to ONE independent clause ("the flight was delayed").
+```
+
+```sentence-activity
+Sentence: The runway that was recently repaired is now open for heavy aircraft.
+Type: Complex Sentence (Tricky!)
+Explanation: The dependent clause ("that was recently repaired") is embedded right in the middle of the independent clause ("The runway... is now open").
+```
+
+---
+
+# Activity: Compound-Complex Sentences
+```sentence-activity
+Sentence: Although the storm passed, the runway was wet, and the takeoff was delayed.
+Type: Compound-Complex (Basic)
+Explanation: ONE dependent clause ("Although the storm passed") followed by TWO independent clauses joined by "and".
+```
+
+```sentence-activity
+Sentence: The captain, who has 20 years of experience, handled the emergency perfectly, but the passengers were still shaken.
+Type: Compound-Complex (Tricky!)
+Explanation: ONE dependent clause embedded in the middle ("who has 20 years of experience") + TWO independent clauses joined by "but".
 ```
 
 ---
