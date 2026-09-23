@@ -237,7 +237,7 @@ Instead of memorizing a random list, we can group irregular verbs into 5 distinc
     *   **Take** / Took / Tak**en**
     *   **Fly** / Flew / Flown *(ends in an 'n' sound)*
 
-> **📥 Tip:** Download the complete [**5 Families of Irregular Verbs Cheat Sheet**](/materials/verb_families_cheat_sheet.md) for a full reference guide!
+> **📥 Tip:** Download the complete [**5 Families of Irregular Verbs Cheat Sheet**](/materials/verb-families) for a full reference guide!
 
 ---
 
