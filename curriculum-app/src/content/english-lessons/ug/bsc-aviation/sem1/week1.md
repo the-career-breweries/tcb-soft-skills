@@ -126,7 +126,7 @@ For more advanced, professional writing.
 
 ---
 
-# Activity: Simple Sentences
+# Activity: Sentence Types
 ```sentence-activity
 Sentence: The aircraft taxied to the gate.
 Type: Simple Sentence (Basic)
@@ -141,7 +141,7 @@ Explanation: Even though it has a compound subject ("pilot and co-pilot") and a 
 
 ---
 
-# Activity: Compound Sentences
+# Activity: Sentence Types
 ```sentence-activity
 Sentence: The weather was clear, so we departed on time.
 Type: Compound Sentence (Basic)
@@ -156,7 +156,7 @@ Explanation: There is no conjunction! But the semicolon (;) connects TWO complet
 
 ---
 
-# Activity: Complex Sentences
+# Activity: Sentence Types
 ```sentence-activity
 Sentence: Because the fog was thick, the flight was delayed.
 Type: Complex Sentence (Basic)
@@ -171,7 +171,7 @@ Explanation: The dependent clause ("that was recently repaired") is embedded rig
 
 ---
 
-# Activity: Compound-Complex Sentences
+# Activity: Sentence Types
 ```sentence-activity
 Sentence: Although the storm passed, the runway was wet, and the takeoff was delayed.
 Type: Compound-Complex (Basic)
