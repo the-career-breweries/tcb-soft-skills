@@ -115,7 +115,7 @@ export default function FeedbackForm() {
               id="theme"
               type="text"
               required
-              placeholder="e.g., Fundamentals of Grammar"
+              placeholder="e.g., Non-Verbal Communication"
               value={theme}
               onChange={(e) => setTheme(e.target.value)}
               className="feedback-input"
