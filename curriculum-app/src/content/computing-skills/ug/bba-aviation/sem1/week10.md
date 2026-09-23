@@ -1,15 +1,16 @@
 # 💻 Lecture 10
+
+![Week 10 Illustration](/images/computing_w10_excel_analysis_1790189567667.jpg)
+
 - MS Excel
 - Basic Data Analysis
 
 - Syllabus: Basic Data Analysis
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 10 LAB
+# 🛠️ Lecture 10 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Sort data by one or more columns (A-Z, Z-A, largest to smallest)
@@ -56,7 +57,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open faculty demo or create sheet: Flight, Route, Delay (min) — 15 rows
 2. Select all data including headers
@@ -70,7 +71,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Clear filter — show all rows again
 9. Select Delay column (data only, not header)
@@ -92,7 +93,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Build Flight Delay Analysis: 15 flights with Route and Delay columns. Sort by delay. Filter delays  30 min. Highlight delays  60 in red. Add Column chart of top 5 worst delays. Write 3-sentence summary of findings below chart. Save as Lab10_DelayAnalysis_YourName.xlsx.
 
@@ -109,7 +110,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Excel: Sorting Data
 - https://www.youtube.com/watch?v=Ep5q1cUhQas
 2. Excel: Filtering Data
@@ -125,7 +126,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Excel: Getting Started
 - https://www.youtube.com/watch?v=lgIWIPDJuPo
 
@@ -138,14 +139,14 @@
 - Today we covered: Basic Data Analysis
 - Homework / Practice:
 - Create dataset of 12 items with scores. Sort, filter (score ≥ 50), apply conditional format (top 3 green). Write 2 sentences about what you discovered. Watch Sorting and Filtering videos.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.
 
 ---
 
-# 🛠️ Lab Activity File
+# 🛠️ class Activity File
 
-Please download the starting file below to follow along with today's hands-on lab exercise.
+Please download the starting file below to follow along with today's hands-on exercise.
 
 ```download
 Lecture_10_MS_Excel_Basic_Data_Analysis_Demo.xlsx

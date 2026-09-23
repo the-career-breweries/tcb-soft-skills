@@ -1,15 +1,16 @@
 # 💻 Lecture 11
+
+![Week 11 Illustration](/images/computing_w11_ppt_design_1790189581480.jpg)
+
 - MS PowerPoint
 - Presentation Design
 
 - Syllabus: Presentation Design
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 11 LAB
+# 🛠️ Lecture 11 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Create new presentation and understand slide pane
@@ -51,7 +52,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open PowerPoint — File  New  Blank Presentation
 2. Slide 1: Title layout — 'Introduction to Aviation Safety' + your name
@@ -65,7 +66,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Slide 3: Insert  Pictures — add one aviation ground ops image
 9. Resize image — drag corner handles — keep proportions
@@ -87,7 +88,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Create 5-slide presentation on any aviation topic (safety, careers, airports, airlines). Requirements: title slide, 3 content slides with bullets, 1 closing slide. One image on any slide. Transitions on all slides. Present for 1 minute to faculty. Save as Lab11_AviationTopic_YourName.pptx.
 
@@ -104,7 +105,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. PowerPoint: Getting Started
 - https://www.youtube.com/watch?v=k6pg4nZS6fA
 2. PowerPoint: Slide Basics
@@ -120,7 +121,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. PowerPoint: Presenting Your Slide Show
 - https://www.youtube.com/watch?v=k6pg4nZS6fA
 
@@ -133,5 +134,5 @@
 - Today we covered: Presentation Design
 - Homework / Practice:
 - Add 2 more slides to your presentation. Practise presenting aloud once (time yourself — aim for 2 minutes). Watch Getting Started and Slide Basics videos.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.

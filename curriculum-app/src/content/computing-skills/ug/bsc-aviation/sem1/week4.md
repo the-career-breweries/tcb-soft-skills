@@ -1,15 +1,16 @@
 # 💻 Lecture 04
+
+![Week 4 Illustration](/images/computing_w4_word_doc_1790189481266.jpg)
+
 - MS Word
 - Document Creation
 
 - Syllabus: Document Creation
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 04 LAB
+# 🛠️ Lecture 04 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Open Microsoft Word and explore the ribbon (Home, Insert, Layout tabs)
@@ -55,7 +56,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open Word — File  New  Blank document
 2. Type a heading: About Me — press Enter twice
@@ -69,7 +70,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Layout tab  Margins  Normal — check page layout changes
 9. Layout tab  Orientation — try Portrait vs Landscape — revert to Portrait
@@ -91,7 +92,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Create a one-page document titled 'About Me — Aviation Student' with: (1) Your name and course as a heading, (2) 6-line paragraph about yourself, (3) 4-line paragraph on why you chose aviation, (4) Footer with your name and date. Save as Lab04_AboutMe_YourName.docx. Show faculty.
 
@@ -108,7 +109,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Word: Getting Started
 - https://www.youtube.com/watch?v=j-ZAVHk5SaU
 2. Word: Creating and Opening Documents
@@ -124,7 +125,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Word: Checking Spelling and Grammar
 - https://www.youtube.com/watch?v=H3nzCAv6d1A
 
@@ -137,14 +138,14 @@
 - Today we covered: Document Creation
 - Homework / Practice:
 - Create a Word file with 10 sentences about aviation (airlines, airports, or careers). Save in your Word folder. Watch 2 videos from today's list.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.
 
 ---
 
-# 🛠️ Lab Activity File
+# 🛠️ class Activity File
 
-Please download the starting file below to follow along with today's hands-on lab exercise.
+Please download the starting file below to follow along with today's hands-on exercise.
 
 ```download
 Lecture_04_MS_Word_Document_Creation_Demo.docx

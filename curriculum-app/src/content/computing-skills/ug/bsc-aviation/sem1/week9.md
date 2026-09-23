@@ -1,15 +1,16 @@
 # 💻 Lecture 09
+
+![Week 9 Illustration](/images/computing_w9_excel_charts_1790189552902.jpg)
+
 - MS Excel
 - Charts
 
 - Syllabus: Charts
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 09 LAB
+# 🛠️ Lecture 09 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Understand when to use Column, Pie, and Line charts
@@ -50,7 +51,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Create table: Month (Jan–Aug) in A1:A9, Passengers (000s) in B1:B9
 2. Enter 8 monthly passenger numbers (e.g. 120, 135, 128, 150, 142, 160, 155, 170)
@@ -64,7 +65,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Select same data — Insert  Pie Chart — place on new sheet (Chart1)
 9. Edit Pie chart title: Passenger Share by Month
@@ -86,7 +87,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Build Airline Market Share sheet: 5 airlines with passenger numbers. Create Column chart (comparison) and Pie chart (market share) on separate sheets. Label all charts clearly. Add one sentence below each chart explaining what it shows. Save as Lab09_AirlineCharts_YourName.xlsx.
 
@@ -103,7 +104,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Excel: Charts
 - https://www.youtube.com/watch?v=_Wu7jYTr1Pk
 2. Excel 2010: Charts
@@ -119,7 +120,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Excel: Getting Started
 - https://www.youtube.com/watch?v=lgIWIPDJuPo
 
@@ -132,14 +133,14 @@
 - Today we covered: Charts
 - Homework / Practice:
 - Make Column and Line charts from 7 days of temperature data. Write 2 sentences explaining which chart is better for your data. Watch Charts video.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.
 
 ---
 
-# 🛠️ Lab Activity File
+# 🛠️ class Activity File
 
-Please download the starting file below to follow along with today's hands-on lab exercise.
+Please download the starting file below to follow along with today's hands-on exercise.
 
 ```download
 Lecture_09_MS_Excel_Charts_Demo.xlsx

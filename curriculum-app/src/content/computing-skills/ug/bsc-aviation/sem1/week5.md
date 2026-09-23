@@ -1,15 +1,16 @@
 # 💻 Lecture 05
+
+![Week 5 Illustration](/images/computing_w5_word_format_1790189494412.jpg)
+
 - MS Word
 - Formatting
 
 - Syllabus: Formatting
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 05 LAB
+# 🛠️ Lecture 05 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Apply Bold, Italic, Underline to selected text
@@ -63,7 +64,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open Lab04_YourName.docx (or create new document)
 2. Select your name — apply Bold and increase font to 18 pt
@@ -77,7 +78,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Add bulleted list: 4 items describing your hobbies or interests
 9. Add numbered list: 5 steps to board an aircraft (pre-flight checklist style)
@@ -99,7 +100,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Format a one-page aviation safety checklist with: (1) Centred bold title (Heading 1), (2) Justified intro paragraph, (3) Numbered list of 6 pre-flight checks, (4) Bulleted list of 4 emergency items, (5) Your name in footer. Save as Lab05_SafetyChecklist_YourName.docx.
 
@@ -116,7 +117,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Word: Formatting Text
 - https://www.youtube.com/watch?v=ViGf0RKbCyA
 2. Word: Line and Paragraph Spacing
@@ -132,7 +133,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Word: Indents and Tabs
 - https://www.youtube.com/watch?v=0p0L5iI0BOM
 
@@ -145,14 +146,14 @@
 - Today we covered: Formatting
 - Homework / Practice:
 - Format your Lab04 About Me document with title style, bullets, and colours. Create a numbered list of 5 aviation careers. Bring both files to next class.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.
 
 ---
 
-# 🛠️ Lab Activity File
+# 🛠️ class Activity File
 
-Please download the starting file below to follow along with today's hands-on lab exercise.
+Please download the starting file below to follow along with today's hands-on exercise.
 
 ```download
 Lecture_05_MS_Word_Formatting_Demo.docx

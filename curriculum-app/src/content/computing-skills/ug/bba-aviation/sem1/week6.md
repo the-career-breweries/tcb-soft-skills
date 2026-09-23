@@ -1,15 +1,16 @@
 # 💻 Lecture 06
+
+![Week 6 Illustration](/images/computing_w6_word_tables_1790189509108.jpg)
+
 - MS Word
 - Tables & Reports
 
 - Syllabus: Tables, Reports
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 06 LAB
+# 🛠️ Lecture 06 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Understand report structure: title, introduction, body, conclusion
@@ -53,7 +54,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. New document — type centred bold title: Daily Flight Schedule
 2. Press Enter twice — write 2-line introduction paragraph
@@ -67,7 +68,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Right-click table — Insert  Row Below — add a 5th flight
 9. Right-click — Delete  Column — remove Status column — Undo to restore
@@ -89,7 +90,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Create a one-page Airport Report with: (1) Title and date, (2) 3-sentence introduction, (3) Table with columns: Airport Code, City, Country, Runways — minimum 5 airports, (4) 2-sentence conclusion, (5) Footer with page number. Save as Lab06_AirportReport_YourName.docx.
 
@@ -106,7 +107,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Word: Tables
 - https://www.youtube.com/watch?v=XNBrCEgzddw
 2. Word: Headers and Footers
@@ -122,7 +123,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Word: Using Styles
 - https://www.youtube.com/watch?v=ZqE-ih8vo2o
 
@@ -135,14 +136,14 @@
 - Today we covered: Tables, Reports
 - Homework / Practice:
 - Create a report table listing 8 Indian airports with city, state, and IATA code (DEL, BOM, BLR, etc.). Add title and footer. Watch the Tables video.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.
 
 ---
 
-# 🛠️ Lab Activity File
+# 🛠️ class Activity File
 
-Please download the starting file below to follow along with today's hands-on lab exercise.
+Please download the starting file below to follow along with today's hands-on exercise.
 
 ```download
 Lecture_06_MS_Word_Tables_Reports_Demo.docx

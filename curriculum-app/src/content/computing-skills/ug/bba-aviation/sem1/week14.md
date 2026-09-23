@@ -1,15 +1,16 @@
 # 💻 Lecture 14
+
+![Week 14 Illustration](/images/computing_w13_cyber_security_1790189607866.jpg)
+
 - Cyber Safety
 - Digital Communication Tools
 
 - Syllabus: Cyber Safety Basics, Digital Communication Tools
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 14 LAB
+# 🛠️ Lecture 14 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Identify common cyber threats: viruses, phishing, identity theft, scams
@@ -17,11 +18,11 @@
 - **Protect your computer** — antivirus, updates, firewall (overview)
 - **Safe browsing habits** — downloads, pop-ups, public Wi-Fi risks
 - **Spot phishing emails and fake websites** — red flags checklist
-- Practice safe behaviour on shared lab computers — log out, lock screen
+- Practice safe behaviour on shared class computers — log out, lock screen
 - Overview of digital communication tools: email, Teams, Zoom, WhatsApp for study
 - **Teams/Zoom basics** — join meeting, mute, camera, chat, raise hand
 - **Online etiquette** — professional vs casual communication
-- **Compile course portfolio** — verify all 13 lab folders/files exist
+- **Compile course portfolio** — verify all 13 class folders/files exist
 - Create Cyber Safety Pledge document and submit
 - **Course recap** — Word, Excel, PPT, files, internet, safety
 
@@ -51,7 +52,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open Word — new document: Cyber_Threats_Notes.docx — list 5 threats with 1-line description each
 2. Write 3 examples of weak passwords and improve each to a strong version (on paper — do NOT use real passwords)
@@ -65,13 +66,13 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Demo: Join a Teams or Zoom test meeting (faculty link) — practice mute/unmute
 9. In meeting chat — send: 'YourName — joined successfully' — practice raise hand feature
 10. Write Chat_Etiquette rules in Word: 5 rules for online classes (mute when not speaking, etc.)
 11. Open your ICS_Sem1_YourName folder — run portfolio checklist (see exercise)
-12. Missing any lab files? — create placeholder files now for L04–L12 if needed
+12. Missing any files? — create placeholder files now for L04–L12 if needed
 13. Create Word doc: Lab14_Cyber_Safety_Pledge.docx — title, your name, date, 8 personal rules
 14. Format pledge with Heading 1 title, numbered list, bold your name
 15. Save pledge to ICS_Sem1_YourName/Assignments/Completed — show faculty
@@ -89,7 +90,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - **Final Portfolio Checklist** — verify and show faculty:
 - ☐ ICS_Sem1 folder with Lectures, Assignments, Word, Excel, Notes
@@ -102,7 +103,7 @@
 - Quick Tips
 - Strong password = 12+ characters, mix upper/lower/numbers/symbols — unique per site
 - Never click 'You won a prize' or 'Verify account now' links in email/SMS
-- Log out of Gmail/cloud on shared lab PCs — use Win+L when stepping away
+- Log out of Gmail/cloud on shared class PCs — use Win+L when stepping away
 - In online classes: mute mic, camera on if required, chat for questions
 - **Keep software updated** — updates fix security holes
 - **When in doubt about an email** — ask faculty before clicking links
@@ -113,7 +114,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Computer Basics: Protecting Your Computer
 - https://www.youtube.com/watch?v=6mMZFoXbKqI
 2. Internet Safety: Browser Security Features
@@ -129,7 +130,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. How to Join a Microsoft Teams Meeting
 - https://www.youtube.com/watch?v=tfqcIjc3g94
 6. Gmail: Managing Email
@@ -143,15 +144,15 @@
 
 - Today we covered: Cyber Safety Basics, Digital Communication Tools
 - Homework / Practice:
-- Review all lab files and videos. Complete portfolio checklist at home. Prepare for assessment. Write 10 cyber safety rules for aviation students using computers daily.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Review all files and videos. Complete portfolio checklist at home. Prepare for assessment. Write 10 cyber safety rules for aviation students using computers daily.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.
 
 ---
 
-# 🛠️ Lab Activity File
+# 🛠️ class Activity File
 
-Please download the starting file below to follow along with today's hands-on lab exercise.
+Please download the starting file below to follow along with today's hands-on exercise.
 
 ```download
 Lecture_14_Cyber_Safety_Pledge_Template.docx

@@ -1,15 +1,16 @@
 # 💻 Lecture 02
+
+![Week 2 Illustration](/images/computing_w2_internet_1790189455671.jpg)
+
 - Operating Systems
 - Windows Basics
 
 - Syllabus: Operating Systems
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 02 LAB
+# 🛠️ Lecture 02 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Explain what an operating system does (manages hardware + software)
@@ -19,7 +20,7 @@
 - Multitask with Alt+Tab and multiple open windows
 - Learn essential shortcuts: Win, Win+E, Win+D, Ctrl+Shift+Esc
 - **Explore Settings** — display, date/time, language, and About
-- Personalize wallpaper and theme (if lab policy allows)
+- Personalize wallpaper and theme (if class policy allows)
 - Understand Shut down, Restart, Sleep, and Lock (demo only)
 
 ---
@@ -52,7 +53,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open Start menu — find and open: Word, Excel, File Explorer, Settings
 2. Use Search (Win key) — search for 'Calculator' and open it
@@ -66,7 +67,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Settings  System  Display — check resolution and scale (do not change without permission)
 9. Settings  Time & Language — verify date, time, and region are correct
@@ -89,7 +90,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Complete the Windows Skills Checklist: (1) Open 4 apps, (2) Snap 2 windows side by side, (3) Change wallpaper and restore, (4) Find Windows version in Settings, (5) Create Lab02_YourName folder with shortcuts.txt listing 10 shortcuts. Show faculty before leaving.
 
@@ -97,7 +98,7 @@
 - Windows key = Start menu; Win+E = File Explorer; Win+D = show desktop
 - Alt+Tab switches apps; Alt+F4 closes the active window
 - Never force power off unless the PC is completely frozen
-- Ask before changing display settings on lab computers
+- Ask before changing display settings on class computers
 - Lock PC (Win+L) when stepping away from your seat
 
 ---
@@ -106,7 +107,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Computer Basics: Understanding Operating Systems
 - https://www.youtube.com/watch?v=fkGCLIQx1MI
 2. Computer Basics: Getting Started with Windows
@@ -122,7 +123,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Computer Basics: Getting to Know Laptop Computers
 - https://www.youtube.com/watch?v=6LIv2ocJXRk
 
@@ -135,5 +136,5 @@
 - Today we covered: Operating Systems
 - Homework / Practice:
 - Practice 10 keyboard shortcuts at home. Write 5 sentences explaining what an operating system does. Note your Windows version and PC name.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.

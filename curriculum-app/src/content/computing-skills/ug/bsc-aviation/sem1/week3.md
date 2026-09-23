@@ -1,15 +1,16 @@
 # 💻 Lecture 03
+
+![Week 3 Illustration](/images/computing_w3_word_1790189468101.jpg)
+
 - File Management
 - Organising Your Files
 
 - Syllabus: File Management
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 03 LAB
+# 🛠️ Lecture 03 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Open File Explorer and understand the folder tree (This PC, Desktop, Documents)
@@ -55,7 +56,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open File Explorer (Win+E) — expand This PC  Local Disk (C:)  Users
 2. On Desktop, create main folder: ICS_Sem1_YourName
@@ -69,7 +70,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Create sample files: report.docx (empty Word), data.xlsx (empty Excel) in correct folders
 9. Rename draft03.txt to Lab03_YourName_notes.txt using F2
@@ -92,7 +93,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Build this exact structure with at least 1 file in each folder:
 - ICS_Sem1_YourName / Lectures / L01, L02, L03
@@ -113,7 +114,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Windows Basics: Working with Files and Folders
 - https://www.youtube.com/watch?v=BY1y_RQxIdg
 2. Windows Basics: Finding Files on Your Computer
@@ -129,7 +130,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Computer Basics: What Is the Cloud?
 - https://www.youtube.com/watch?v=4OO77HFcCUs
 
@@ -142,5 +143,5 @@
 - Today we covered: File Management
 - Homework / Practice:
 - Organise your home PC Desktop into 4 folders. Write 10 file extensions and what program opens each. Watch the USB drive video.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.

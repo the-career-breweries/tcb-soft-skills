@@ -1,15 +1,16 @@
 # 💻 Lecture 12
+
+![Week 12 Illustration](/images/computing_w12_ppt_master_1790189593262.jpg)
+
 - MS PowerPoint
 - Professional Templates
 
 - Syllabus: Professional Templates
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 12 LAB
+# 🛠️ Lecture 12 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Apply built-in Design themes to existing presentation
@@ -48,7 +49,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open Lab11_Presentation_YourName.pptx
 2. Design tab — hover over 5 different Themes — preview on slides
@@ -62,7 +63,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. View  Slide Master — add footer: your name + slide number
 9. Insert  Picture in Master — add placeholder logo (optional)
@@ -84,7 +85,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Rebuild your 5-slide aviation presentation using one professional theme. Requirements: consistent theme on all slides, footer with name + slide number, logo placeholder in Slide Master, same content as Lab11 but improved design. Present 1-minute comparison to faculty. Save as Lab12_Professional_YourName.pptx.
 
@@ -101,7 +102,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. PowerPoint: Applying Themes
 - https://www.youtube.com/watch?v=_gYShFl6i94
 2. PowerPoint: Slide Master View
@@ -117,7 +118,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. PowerPoint: Presenting Your Slide Show
 - https://www.youtube.com/watch?v=k6pg4nZS6fA
 
@@ -130,5 +131,5 @@
 - Today we covered: Professional Templates
 - Homework / Practice:
 - Apply a theme to your presentation. Change title font in Slide Master. Add footer. Watch Themes and Slide Master videos. Prepare for Lecture 13 (Internet & Email).
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.

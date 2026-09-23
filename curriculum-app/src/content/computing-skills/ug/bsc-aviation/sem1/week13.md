@@ -1,15 +1,16 @@
 # 💻 Lecture 13
+
+![Week 13 Illustration](/images/computing_w13_cyber_security_1790189607866.jpg)
+
 - Internet & Email
 - Cloud Storage
 
 - Syllabus: Internet & Email, Cloud Storage
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 13 LAB
+# 🛠️ Lecture 13 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - **Understand browser basics** — address bar, tabs, back/forward, refresh
@@ -21,7 +22,7 @@
 - **Reply and Forward** — practice email thread etiquette
 - **Learn professional email rules** — subject line, tone, proofreading
 - **Understand cloud storage** — upload, folder structure, sync basics
-- Upload lab files to Google Drive or OneDrive — organise in folders
+- Upload files to Google Drive or OneDrive — organise in folders
 - Share a file/link with view-only permission (faculty demo + practice)
 - **Browser security** — HTTPS, pop-ups, and safe download habits
 
@@ -55,24 +56,24 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open Chrome/Edge — identify: address bar, tabs, bookmarks bar, settings
 2. Go to google.com — search 'DGCA India official' — open the official site
 3. Search 'IATA aviation safety' — open 2 results — compare which looks more reliable
 4. Bookmark 3 useful sites: DGCA, your university site, and one aviation news site
 5. Organise bookmarks into a folder: ICS_Aviation_Resources
-6. Log in to Gmail (or create account if lab policy allows) — explore inbox layout
-7. Click Compose — write email to yourself with subject: ICS Lab 13 Test
+6. Log in to Gmail (or create account if class policy allows) — explore inbox layout
+7. Click Compose — write email to yourself with subject: ICS class 13 Test
 
 ---
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
-8. In the email body: greeting, 3 sentences about today's lab, professional sign-off
-9. Attach Lab06_Report.docx (or any lab file) — check attachment appears below subject
+8. In the email body: greeting, 3 sentences about today's class, professional sign-off
+9. Attach Lab06_Report.docx (or any class file) — check attachment appears below subject
 10. Send email — open Sent folder — verify it was delivered — open and read it
 11. Reply to your own email — add one line — observe the Re: subject and thread
 12. Forward the email to your partner (or second email) — add a short note on top
@@ -94,7 +95,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Complete the Internet & Email Portfolio:
 - (1) Screenshot or list your 3 bookmarks,
@@ -117,7 +118,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Computer Basics: Connecting to the Internet
 - https://www.youtube.com/watch?v=93-3zmVvCGU
 2. Internet Safety: Browser Security Features
@@ -133,7 +134,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Gmail: Responding to Email
 - https://www.youtube.com/watch?v=a9e7XNo4agE
 6. Writing an Effective Business Email
@@ -149,7 +150,7 @@
 
 - Watch These Videos (Part 3)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 9. OneDrive: Getting Started
 - https://www.youtube.com/watch?v=OR_RjjqF1qc
 10. OneDrive: Uploading and Syncing Files
@@ -163,6 +164,6 @@
 
 - Today we covered: Internet & Email, Cloud Storage
 - Homework / Practice:
-- Send a professional email to faculty (draft if no send access). Upload all lab files to cloud. Watch Google Drive and email etiquette videos. List 5 email do's and 5 don'ts.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Send a professional email to faculty (draft if no send access). Upload all files to cloud. Watch Google Drive and email etiquette videos. List 5 email do's and 5 don'ts.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.

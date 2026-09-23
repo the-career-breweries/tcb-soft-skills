@@ -1,25 +1,26 @@
 # 💻 Lecture 01
 ## Introduction to Computers
+
+![Week 1 Illustration](/images/computing_w1_intro_1790189443877.jpg)
+
 - Hardware & Software
 
 - Syllabus: Introduction to Computers, Hardware, Software
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 01 LAB
+# 🛠️ Lecture 01 
 
-- Today's Lab Plan
 
-- **We will learn by doing** — follow each step on your computer.  Lab safety rules — no food/drinks, no unplugging cables
-- Identify desktop, laptop, and peripheral devices in the lab
+- **We will learn by doing** — follow each step on your computer.
+- Identify desktop, laptop, and peripheral devices in class
 - Classify devices as input, output, processing, or storage
 - Explore buttons, ports, and connectors on a PC
 - Understand CPU, RAM, and storage (HDD/SSD) at a basic level
 - Open application software: Notepad, Calculator, Paint, WordPad
 - Distinguish system software (Windows) from application software
 - Complete a hardware vs software sorting activity with partner
-- Create and save your first lab files on the Desktop
+- Create and save your first files on the Desktop
 
 ---
 
@@ -93,11 +94,11 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
-1. Log in to your lab PC — note your username and seat number
+1. Log in to your laptop — note your username and seat number
 2. Walk around your PC — point to monitor, keyboard, mouse, CPU, speakers, printer
-3. On paper, list 5 INPUT devices and 3 OUTPUT devices you see in the lab
+3. On paper, list 5 INPUT devices and 3 OUTPUT devices you see in class
 4. Find USB port, headphone jack, power button, and DVD/USB slot (if available)
 5. Open Notepad — type your Name, Course, Date — Save As: Lab01_Info.txt on Desktop
 6. Open Calculator — solve: Ticket ₹4,500 + Tax 18% = ? (use calculator steps)
@@ -107,7 +108,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Open WordPad — write 4 lines: What is hardware? What is software?
 9. Open File Explorer — browse This PC — find Local Disk (C:) — note free space
@@ -129,7 +130,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Create a one-page reference sheet in WordPad titled 'My Computer Basics' with: (1) A labelled hardware diagram, (2) A table of 5 hardware + 5 software examples, (3) Three sentences on why computers matter in aviation. Save in your Lab01 folder and show faculty.
 
@@ -145,7 +146,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Computer Basics: What Is a Computer?
 - https://www.youtube.com/watch?v=Cu3R5it4cQs
 2. Computer Basics: Basic Parts of a Computer
@@ -161,7 +162,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Computer Basics: Understanding Applications
 - https://www.youtube.com/watch?v=3gMOYZoMtEs
 6. Computer Basics: Getting to Know Laptop Computers
@@ -177,6 +178,6 @@
 
 - Today we covered: Introduction to Computers, Hardware, Software
 - Homework / Practice:
-- Watch 2 videos from today's list. Create a table with 8 hardware examples and 8 software examples. Bring one question about CPU or storage to the next lab.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Watch 2 videos from today's list. Create a table with 8 hardware examples and 8 software examples. Bring one question about CPU or storage to the next class.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.

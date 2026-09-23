@@ -1,15 +1,16 @@
 # 💻 Lecture 08
+
+![Week 8 Illustration](/images/computing_w8_excel_functions_1790189540316.jpg)
+
 - MS Excel
 - Functions
 
 - Syllabus: Functions
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 08 LAB
+# 🛠️ Lecture 08 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Understand functions as ready-made formulas: =SUM(), =AVERAGE()
@@ -49,7 +50,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open Lab07 or new sheet — enter 10 test scores in A1:A10 (45–95 range)
 2. In B1 type =SUM(A1:A10) — label in C1: 'Total'
@@ -63,7 +64,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. Add column B header: Marks — move functions to column D
 9. In C1 type =IF(A1=40,"Pass","Fail") — press Enter
@@ -85,7 +86,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Complete Class Test Analysis sheet: 12 students with Name and Marks columns. Calculate: Total, Average, Highest, Lowest, Pass Count (≥40), Fail Count (<40) using functions. Add IF column showing Pass/Fail. Highlight highest score in bold. Save as Lab08_ClassTest_YourName.xlsx.
 
@@ -102,7 +103,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Excel: Functions
 - https://www.youtube.com/watch?v=-9d4m79twdA
 2. IF Function in Excel Tutorial
@@ -118,7 +119,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Excel: Getting Started
 - https://www.youtube.com/watch?v=lgIWIPDJuPo
 
@@ -131,14 +132,14 @@
 - Today we covered: Functions
 - Homework / Practice:
 - Practice SUM and AVERAGE on 12 numbers. Build IF formula for grading: A (≥80), B (≥60), C (≥40), Fail (<40). Try one COUNTIF. Watch IF function video.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.
 
 ---
 
-# 🛠️ Lab Activity File
+# 🛠️ class Activity File
 
-Please download the starting file below to follow along with today's hands-on lab exercise.
+Please download the starting file below to follow along with today's hands-on exercise.
 
 ```download
 Lecture_08_MS_Excel_Functions_Demo.xlsx

@@ -1,15 +1,16 @@
 # 💻 Lecture 07
+
+![Week 7 Illustration](/images/computing_w7_excel_formulas_1790189523842.jpg)
+
 - MS Excel
 - Formulas
 
 - Syllabus: Formulas
-- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-# 🛠️ Lecture 07 LAB
+# 🛠️ Lecture 07 
 
-- Today's Lab Plan
 
 - **We will learn by doing** — follow each step on your computer.
 - Open Excel and understand the grid: cells, rows (numbers), columns (letters)
@@ -54,7 +55,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 1** — Do This in Lab
+- **Part 1** — Do This in class
 
 1. Open Excel — new blank workbook — note cell A1 is active
 2. In A1:A5 enter numbers: 10, 20, 30, 40, 50
@@ -68,7 +69,7 @@
 
 # 💻 Hands-on Practice
 
-- **Part 2** — Continue in Lab
+- **Part 2** — Continue in class
 
 8. New sheet (click + at bottom) — create Ticket Sales table
 9. Columns: Passenger, Fare (₹), Tax (10%), Total
@@ -90,7 +91,7 @@
 
 # 📝 Your Task
 
-- Lab Exercise
+- exercise
 
 - Build a complete Ticket Sales sheet: columns Passenger, Route, Fare, Tax (18% GST), Total. Minimum 5 rows of realistic aviation data. Use formulas for Tax and Total (no manual calculations). Add a Grand Total row using SUM. Save as Lab07_TicketSales_YourName.xlsx.
 
@@ -107,7 +108,7 @@
 
 - Watch These Videos (Part 1)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 1. Excel: Getting Started
 - https://www.youtube.com/watch?v=lgIWIPDJuPo
 2. Excel: Intro to Formulas
@@ -123,7 +124,7 @@
 
 - Watch These Videos (Part 2)
 
-- Click links to review before/after lab or during breaks:
+- Click links to review before/after class or during breaks:
 5. Excel: Basic Math
 - https://www.youtube.com/watch?v=O3QAPo6mi0s
 
@@ -136,14 +137,14 @@
 - Today we covered: Formulas
 - Homework / Practice:
 - Create Excel sheet with 8 numbers in column A. In column B, double each value using formula. Find Sum and Average in separate cells. Watch Intro to Formulas video.
-- Questions? Ask in the next lab session.
-- Save all your lab files before leaving the computer lab.
+- Questions? Ask in the next session.
+- Save all your files before leaving the computer class.
 
 ---
 
-# 🛠️ Lab Activity File
+# 🛠️ class Activity File
 
-Please download the starting file below to follow along with today's hands-on lab exercise.
+Please download the starting file below to follow along with today's hands-on exercise.
 
 ```download
 Lecture_07_MS_Excel_Formulas_Demo.xlsx
