@@ -194,11 +194,11 @@ Explanation: ONE dependent clause embedded in the middle ("who has 20 years of e
 ---
 
 # The Story Behind Irregular Verbs
-Have you ever wondered why we say *landed* but we don't say *flyed*? 
+Why do we say *landed* but not *flyed*? 
 
-*   **The Modern Rule:** Today, we just add **"-ed"** to make a verb past tense (e.g., *boarded, taxied*).
-*   **The Ancient Survivors:** Thousands of years ago, people changed the inside vowels to show time instead of adding "-ed". Words like *Fly, Take, Come,* and *Speak* were used so often that people never stopped saying them the ancient way. 
-*   **The Evolution:** Over centuries, some of these ancient forms morphed to sound identical (like *Come/Came/Come*), while others stayed entirely different (*Fly/Flew/Flown*). You aren't failing to understand a ruleâ€”you are just learning the ancient survivors of English!
+*   **The Modern Rule:** For most verbs, we simply add **"-ed"** for the past tense *(e.g., boarded, taxied)*.
+*   **The Ancient Rule:** Thousands of years ago, English speakers changed the *inside vowels* to show time instead of adding "-ed". 
+*   **The Survivors:** Everyday words like *Fly, Take, Come,* and *Speak* were used so often that people stubbornly kept the ancient rules alive!
 
 ---
 
