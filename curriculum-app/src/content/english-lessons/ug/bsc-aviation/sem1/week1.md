@@ -214,31 +214,28 @@ Because of this history, irregular verbs have three distinct forms you must know
 # The 5 Families of Irregular Verbs (Part 1)
 Instead of memorizing a random list, we can group irregular verbs into 5 distinct "families."
 
-### Family 1: The "All Identical" Family (V1 = V2 = V3)
-*   **Put** / Put / Put 
-*   **Set** / Set / Set *(e.g., The ground crew set the chocks.)*
-
-### Family 2: The "Twins" Family (V2 = V3)
-*   **Leave** / Left / Left *(e.g., The flight has left.)*
-*   **Catch** / Caught / Caught
-
-### Family 3: The "Boomerang" Family (V1 = V3)
-*   **Come** / Came / **Come** *(e.g., The captain had come aboard.)*
-*   **Run** / Ran / **Run**
+*   **Family 1: The "All Identical" Family (V1 = V2 = V3)**
+    *   **Put** / Put / Put 
+    *   **Set** / Set / Set *(e.g., The ground crew set the chocks.)*
+*   **Family 2: The "Twins" Family (V2 = V3)**
+    *   **Leave** / Left / Left *(e.g., The flight has left.)*
+    *   **Catch** / Caught / Caught
+*   **Family 3: The "Boomerang" Family (V1 = V3)**
+    *   **Come** / Came / **Come** *(e.g., The captain had come aboard.)*
+    *   **Run** / Ran / **Run**
 
 ---
 
 # The 5 Families of Irregular Verbs (Part 2)
 
-### Family 4: The "Vowel Shift (i-a-u)" Family
-*   **Begin** / Began / Begun *(e.g., The boarding had begun.)*
-*   **Drink** / Drank / Drunk
-*   **Ring** / Rang / Rung
-
-### Family 5: The "-en Ending" Family
-*   **Speak** / Spoke / Spok**en**
-*   **Take** / Took / Tak**en**
-*   **Fly** / Flew / Flown *(ends in an 'n' sound)*
+*   **Family 4: The "Vowel Shift (i-a-u)" Family**
+    *   **Begin** / Began / Begun *(e.g., The boarding had begun.)*
+    *   **Drink** / Drank / Drunk
+    *   **Ring** / Rang / Rung
+*   **Family 5: The "-en Ending" Family**
+    *   **Speak** / Spoke / Spok**en**
+    *   **Take** / Took / Tak**en**
+    *   **Fly** / Flew / Flown *(ends in an 'n' sound)*
 
 > **📥 Tip:** Download the complete *"5 Families of Irregular Verbs Cheat Sheet"* from the course portal for a full reference guide!
 
