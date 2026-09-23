@@ -287,27 +287,17 @@ export default function CommunicativeEnglishApp() {
             <aside className={`lms-sidebar ${!isSidebarOpen ? 'collapsed' : ''}`}>
               
               {/* Workshops Link */}
-              <div className="lms-sidebar-section pb-4 mb-4 border-b border-gray-200 dark:border-gray-700 flex flex-col gap-2">
-                <a 
-                  href="/" 
-                  className="flex items-center gap-2 p-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded hover:bg-indigo-100 transition-colors font-medium border border-indigo-200 shadow-sm text-sm"
-                >
-                  🎭 Soft Skills
+              <div className="lms-sidebar-section" style={{ borderBottom: '1px solid var(--border-sidebar)', paddingBottom: '1rem', marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <a href="/" className="module-item" style={{ textDecoration: 'none', color: 'var(--text-sidebar)' }}>
+                  <span style={{ fontSize: '1.2rem' }}>🎭</span> Soft Skills
                 </a>
-                <a 
-                  href="/communicative-english" 
-                  className="flex items-center gap-2 p-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded hover:bg-emerald-100 transition-colors font-medium border border-emerald-200 shadow-sm text-sm"
-                >
-                  🗣️ Communicative English
+                <a href="/communicative-english" className="module-item" style={{ textDecoration: 'none', color: 'var(--text-sidebar)' }}>
+                  <span style={{ fontSize: '1.2rem' }}>🗣️</span> Communicative English
                 </a>
-                <a 
-                  href="/computing-skills" 
-                  className="flex items-center gap-2 p-2 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded hover:bg-amber-100 transition-colors font-medium border border-amber-200 shadow-sm text-sm"
-                >
-                  💻 Computing Skills
+                <a href="/computing-skills" className="module-item" style={{ textDecoration: 'none', color: 'var(--text-sidebar)' }}>
+                  <span style={{ fontSize: '1.2rem' }}>💻</span> Computing Skills
                 </a>
-                <a 
-                  href="/workshops/admin" 
+                <a href="/workshops/admin" 
                   className="flex items-center gap-2 p-3 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors font-medium border border-blue-200 dark:border-blue-800 shadow-sm"
                 >
                   <Users size={18} />
