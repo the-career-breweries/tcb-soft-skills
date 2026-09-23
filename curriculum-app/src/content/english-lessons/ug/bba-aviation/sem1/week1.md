@@ -41,14 +41,16 @@ Interjections are words or phrases that stand entirely on their own to express s
 
 ---
 
-# The Core of a Sentence: S-V-O
-The English language generally follows a strict **Subject-Verb-Object** pattern. 
+# The Core of a Sentence: Subject & Predicate
+Every complete sentence has two main parts: a Subject and a Predicate.
 
 *   **Subject (The "Who" or "What"):** The person, place, or thing performing the action.
-*   **Verb (The "Action"):** What the subject is doing.
-*   **Object (The "Receiver"):** The person, place, or thing receiving the action of the verb.
+*   **Predicate (The "Action & Details"):** Everything else in the sentence that tells us what the subject is doing or being. It always contains the **Verb** and often an **Object**.
 
-> **"The pilot (Subject) landed (Verb) the aircraft (Object)."**
+> **"The pilot** *(Subject)* **landed the aircraft smoothly** *(Predicate)*.**"**
+
+*   **Verb:** landed
+*   **Object (The "Receiver"):** the aircraft
 
 ---
 
