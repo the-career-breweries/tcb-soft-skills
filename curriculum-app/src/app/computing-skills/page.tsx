@@ -235,7 +235,7 @@ export default function CommunicativeEnglishApp() {
           semester={selectedSemester}
           activeSection={activeSection}
           theme={theme}
-          course="english"
+          course="computing-skills"
           onClose={() => {
             setShowOrientation(false);
             setShowWelcome(false);
@@ -460,7 +460,7 @@ export default function CommunicativeEnglishApp() {
               semester={selectedSemester}
               activeSection={activeSection}
               theme={theme}
-              course="english"
+              course="computing-skills"
               onClose={() => setActiveLesson(null)}
             />
           )}

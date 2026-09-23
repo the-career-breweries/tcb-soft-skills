@@ -18,7 +18,7 @@ export async function GET(request: Request) {
   try {
     // If week is 0, serve the special orientation presentation
     if (week === '0') {
-      const orientationFile = course === 'english' ? 'orientation-english.md' : 'orientation.md';
+      const orientationFile = course === 'english' ? 'orientation-english.md' : (course === 'computing-skills' ? 'orientation-computing.md' : 'orientation.md');
       const filePath = path.join(process.cwd(), 'src', 'content', orientationFile);
       const fileContents = await fs.readFile(filePath, 'utf8');
       return NextResponse.json({ content: fileContents });
@@ -35,7 +35,7 @@ export async function GET(request: Request) {
       }
     }
     
-    const baseFolder = course === 'english' ? 'english-lessons' : 'lessons';
+    const baseFolder = course === 'english' ? 'english-lessons' : (course === 'computing-skills' ? 'computing-skills' : 'lessons');
 
     const filePath = path.join(
       process.cwd(),
