@@ -162,3 +162,13 @@
 * Format your Lab04 About Me document with title style, bullets, and colours. Create a numbered list of 5 aviation careers. Bring both files to next class.
 * Questions? Ask in the next lab session.
 * Save all your lab files before leaving the computer lab.
+
+---
+
+# 🛠️ Lab Activity File
+
+Please download the starting file below to follow along with today's hands-on lab exercise.
+
+`download
+Lecture_05_MS_Word_Formatting_Demo.docx
+`

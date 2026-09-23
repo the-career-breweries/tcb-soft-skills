@@ -162,3 +162,13 @@
 * Review all lab files and videos. Complete portfolio checklist at home. Prepare for assessment. Write 10 cyber safety rules for aviation students using computers daily.
 * Questions? Ask in the next lab session.
 * Save all your lab files before leaving the computer lab.
+
+---
+
+# 🛠️ Lab Activity File
+
+Please download the starting file below to follow along with today's hands-on lab exercise.
+
+`download
+Lecture_14_Cyber_Safety_Pledge_Template.docx
+`

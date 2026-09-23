@@ -151,3 +151,13 @@
 * Practice SUM and AVERAGE on 12 numbers. Build IF formula for grading: A (≥80), B (≥60), C (≥40), Fail (<40). Try one COUNTIF. Watch IF function video.
 * Questions? Ask in the next lab session.
 * Save all your lab files before leaving the computer lab.
+
+---
+
+# 🛠️ Lab Activity File
+
+Please download the starting file below to follow along with today's hands-on lab exercise.
+
+`download
+Lecture_08_MS_Excel_Functions_Demo.xlsx
+`

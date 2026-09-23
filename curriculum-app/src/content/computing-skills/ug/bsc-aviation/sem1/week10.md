@@ -156,3 +156,13 @@
 * Create dataset of 12 items with scores. Sort, filter (score ≥ 50), apply conditional format (top 3 green). Write 2 sentences about what you discovered. Watch Sorting and Filtering videos.
 * Questions? Ask in the next lab session.
 * Save all your lab files before leaving the computer lab.
+
+---
+
+# 🛠️ Lab Activity File
+
+Please download the starting file below to follow along with today's hands-on lab exercise.
+
+`download
+Lecture_10_MS_Excel_Basic_Data_Analysis_Demo.xlsx
+`

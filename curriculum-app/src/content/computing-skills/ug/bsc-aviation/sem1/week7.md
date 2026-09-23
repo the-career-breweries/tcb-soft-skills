@@ -154,3 +154,13 @@
 * Create Excel sheet with 8 numbers in column A. In column B, double each value using formula. Find Sum and Average in separate cells. Watch Intro to Formulas video.
 * Questions? Ask in the next lab session.
 * Save all your lab files before leaving the computer lab.
+
+---
+
+# 🛠️ Lab Activity File
+
+Please download the starting file below to follow along with today's hands-on lab exercise.
+
+`download
+Lecture_07_MS_Excel_Formulas_Demo.xlsx
+`

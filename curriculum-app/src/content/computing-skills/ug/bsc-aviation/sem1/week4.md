@@ -157,3 +157,13 @@
 * Create a Word file with 10 sentences about aviation (airlines, airports, or careers). Save in your Word folder. Watch 2 videos from today's list.
 * Questions? Ask in the next lab session.
 * Save all your lab files before leaving the computer lab.
+
+---
+
+# 🛠️ Lab Activity File
+
+Please download the starting file below to follow along with today's hands-on lab exercise.
+
+`download
+Lecture_04_MS_Word_Document_Creation_Demo.docx
+`

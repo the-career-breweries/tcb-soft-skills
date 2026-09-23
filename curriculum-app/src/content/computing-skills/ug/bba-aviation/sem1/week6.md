@@ -155,3 +155,13 @@
 * Create a report table listing 8 Indian airports with city, state, and IATA code (DEL, BOM, BLR, etc.). Add title and footer. Watch the Tables video.
 * Questions? Ask in the next lab session.
 * Save all your lab files before leaving the computer lab.
+
+---
+
+# 🛠️ Lab Activity File
+
+Please download the starting file below to follow along with today's hands-on lab exercise.
+
+`download
+Lecture_06_MS_Word_Tables_Reports_Demo.docx
+`
