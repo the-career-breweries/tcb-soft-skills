@@ -2,27 +2,8 @@
 - MS Excel
 - Formulas
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Formulas
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 07
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap Word reports** — transition to Excel spreadsheets
-- 0:10 – 0:30  Excel interface: cells, rows, columns, ribbon
-- **0:30 – 0:55  Part 1** — Basic arithmetic formulas (+, -, *, /)
-- **0:55 – 1:20  Part 2** — Cell references and AutoFill
-- **1:20 – 1:40  Ticket sales sheet** — aviation application
-- 1:40 – 1:55  Cargo weight calculator challenge
-- 1:55 – 2:00  Save, recap, and homework
 
 ---
 

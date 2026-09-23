@@ -2,27 +2,8 @@
 - MS Word
 - Document Creation
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Document Creation
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 04
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap file management** — open Word, explore ribbon
-- 0:10 – 0:30  Create, type, save, and reopen documents
-- **0:30 – 0:55  Part 1** — About Me document with save practice
-- **0:55 – 1:20  Part 2** — Undo/Redo, margins, print preview
-- 1:20 – 1:40  Aviation paragraph writing exercise
-- **1:40 – 1:55  Partner review** — check file names and content
-- 1:55 – 2:00  Save, recap, and homework
 
 ---
 

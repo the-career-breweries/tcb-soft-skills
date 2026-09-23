@@ -2,27 +2,8 @@
 - MS Excel
 - Charts
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Charts
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 09
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap functions** — when to use charts vs tables
-- 0:10 – 0:30  Select data and insert Column chart
-- **0:30 – 0:55  Part 1** — Monthly passenger data + Column chart
-- **0:55 – 1:20  Part 2** — Pie chart and Line chart
-- 1:20 – 1:40  Chart formatting: title, labels, colours, legend
-- 1:40 – 1:55  Airline market share challenge
-- 1:55 – 2:00  Save, recap, and homework
 
 ---
 

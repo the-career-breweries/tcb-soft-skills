@@ -2,27 +2,8 @@
 - MS Word
 - Formatting
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Formatting
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 05
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap L04** — open Lab04 file, quick save quiz
-- 0:10 – 0:30  Bold, Italic, Underline, font size and colour
-- **0:30 – 0:55  Part 1** — Format your About Me document
-- **0:55 – 1:20  Part 2** — Alignment, spacing, bullets, numbering
-- **1:20 – 1:40  Styles** — Heading 1, Normal, and consistency
-- 1:40 – 1:55  Aviation checklist formatting challenge
-- 1:55 – 2:00  Save, recap, and homework
 
 ---
 

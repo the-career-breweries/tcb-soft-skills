@@ -2,27 +2,8 @@
 - MS PowerPoint
 - Professional Templates
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Professional Templates
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 12
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap L11** — open Lab11 presentation
-- **0:10 – 0:30  Design tab** — Themes and Variants
-- **0:30 – 0:55  Part 1** — Apply theme to Lab11 deck
-- **0:55 – 1:20  Part 2** — Slide Master editing
-- 1:20 – 1:40  Browse and use professional templates
-- **1:40 – 1:55  Compare basic vs themed** — show faculty both versions
-- 1:55 – 2:00  Save, recap, and homework
 
 ---
 

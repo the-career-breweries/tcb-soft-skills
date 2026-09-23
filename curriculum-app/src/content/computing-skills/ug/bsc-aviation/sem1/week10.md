@@ -2,27 +2,8 @@
 - MS Excel
 - Basic Data Analysis
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Basic Data Analysis
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 10
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap charts** — introduce data analysis tools
-- 0:10 – 0:30  Sort data ascending and descending
-- **0:30 – 0:55  Part 1** — Sort and filter flight delay data
-- **0:55 – 1:20  Part 2** — Conditional formatting highlights
-- 1:20 – 1:40  Combined analysis: sort + filter + format + chart
-- **1:40 – 1:55  Student scores analysis** — independent exercise
-- 1:55 – 2:00  Save, recap, and homework
 
 ---
 

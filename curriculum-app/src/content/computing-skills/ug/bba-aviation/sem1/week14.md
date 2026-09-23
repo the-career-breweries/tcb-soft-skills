@@ -2,26 +2,8 @@
 - Cyber Safety
 - Digital Communication Tools
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Cyber Safety Basics, Digital Communication Tools
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 14
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:15  Cyber threats overview** — malware, phishing, scams
-- 0:15 – 0:40  Passwords, accounts, and protecting your computer
-- 0:40 – 1:05  Phishing spotting challenge — real vs fake
-- 1:05 – 1:30  Digital communication tools — Teams, Zoom, chat etiquette
-- 1:30 – 1:50  Course portfolio review + cyber safety pledge
-- 1:50 – 2:00  Assessment prep Q&A and wrap-up
 
 ---
 

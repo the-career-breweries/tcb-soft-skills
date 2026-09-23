@@ -2,27 +2,8 @@
 - File Management
 - Organising Your Files
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: File Management
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 03
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap** — File Explorer and folder basics
-- 0:10 – 0:35  Create, rename, move, and copy files and folders
-- 0:35 – 1:00  File extensions and naming rules — hands-on
-- 1:00 – 1:25  Search, sort, and Recycle Bin practice
-- 1:25 – 1:45  USB drive demo and folder structure project
-- **1:45 – 1:55  Peer review** — check partner's folder structure
-- 1:55 – 2:00  Recap and homework
 
 ---
 

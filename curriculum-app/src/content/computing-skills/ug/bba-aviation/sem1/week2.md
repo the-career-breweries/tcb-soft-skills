@@ -2,27 +2,8 @@
 - Operating Systems
 - Windows Basics
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Operating Systems
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 02
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap Lecture 1** — quick hardware/software quiz
-- **0:10 – 0:30  What is an OS?** — Windows desktop tour
-- 0:30 – 0:55  Start menu, search, and opening programs
-- 0:55 – 1:20  Window controls, multitasking, and keyboard shortcuts
-- 1:20 – 1:40  Settings, personalization, and display options
-- **1:40 – 1:55  Lab challenge** — complete Windows skills checklist
-- 1:55 – 2:00  Recap and homework
 
 ---
 

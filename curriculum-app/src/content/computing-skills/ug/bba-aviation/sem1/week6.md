@@ -2,27 +2,8 @@
 - MS Word
 - Tables & Reports
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Tables, Reports
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 06
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap formatting** — what makes a good report?
-- 0:10 – 0:30  Insert and format tables in Word
-- **0:30 – 0:55  Part 1** — Daily Flight Schedule table
-- **0:55 – 1:20  Part 2** — Report structure: title, intro, table, footer
-- 1:20 – 1:40  Headers, footers, and page numbers
-- **1:40 – 1:55  Airport codes report** — independent exercise
-- 1:55 – 2:00  Save, recap, and homework
 
 ---
 

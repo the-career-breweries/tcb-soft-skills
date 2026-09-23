@@ -2,26 +2,8 @@
 - Internet & Email
 - Cloud Storage
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Internet & Email, Cloud Storage
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 13
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- **0:00 – 0:10  Recap** — what is the internet? Browser basics
-- 0:10 – 0:35  Web search, bookmarks, and reliable sources
-- **0:35 – 1:05  Email setup** — compose, send, reply, attach files
-- 1:05 – 1:35  Professional email writing practice
-- **1:35 – 2:00  Cloud storage** — upload, organise, share files
-- 1:55 – 2:00  Save drafts, recap, and homework
 
 ---
 

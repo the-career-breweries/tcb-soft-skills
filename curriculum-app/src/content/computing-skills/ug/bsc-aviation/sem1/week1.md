@@ -2,27 +2,8 @@
 ## Introduction to Computers
 - Hardware & Software
 
-- Introduction to Computing Skills  |  Practical Lab Session (110 min)
-- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-- Common for Section A & Section B
 - Syllabus: Introduction to Computers, Hardware, Software
 - **Extended lab session** — follow the timeline and complete all parts.
-
----
-
-
-### 🔹 Lecture 01
-
-- **Session Plan** — 110 Minutes
-
-- Follow this pace to use the full lab period productively:
-- 0:00 – 0:10  Lab rules, login, and partner pairing
-- **0:10 – 0:30  Hardware walk-around** — identify parts in the lab
-- 0:30 – 0:50  Input, output, storage devices — hands-on activity
-- **0:50 – 1:10  Inside a computer & ports** — diagram labelling
-- **1:10 – 1:35  Software types** — open and use 4+ programs
-- 1:35 – 1:55  Partner challenge & class worksheet
-- 1:55 – 2:00  Save work, recap, and homework
 
 ---
 
