@@ -211,21 +211,36 @@ Because of this history, irregular verbs have three distinct forms you must know
 
 ---
 
-# Essential Irregular Verbs for Aviation
-Here are some of the most common irregular verbs grouped by their ancient patterns:
+# The 5 Families of Irregular Verbs (Part 1)
+Instead of memorizing a random list, we can group irregular verbs into 5 distinct "families."
 
-**The Vowel-Shift Pattern (i-a-u):**
-*   **Begin** / Began / **Begun** *(e.g., The boarding had begun.)*
-*   **Ring** / Rang / **Rung** *(e.g., The alarm had rung.)*
+**Family 1: The "All Identical" Family (V1 = V2 = V3)**
+*   **Put** / Put / Put 
+*   **Set** / Set / Set *(e.g., The ground crew set the chocks.)*
 
-**The Boomerang Pattern (V1 & V3 are identical):**
-*   **Come** / Came / **Come** *(e.g., The captain had come to the flight deck.)*
-*   **Run** / Ran / **Run** *(e.g., The engines had run smoothly.)*
+**Family 2: The "Twins" Family (V2 = V3)**
+*   **Leave** / Left / Left *(e.g., The flight has left.)*
+*   **Catch** / Caught / Caught
 
-**The All-Different Pattern:**
-*   **Fly** / Flew / **Flown** *(e.g., The aircraft had flown.)*
-*   **Take** / Took / **Taken** *(e.g., The plane had taken off.)*
-*   **Speak** / Spoke / **Spoken** *(e.g., The ATC had spoken.)*
+**Family 3: The "Boomerang" Family (V1 = V3)**
+*   **Come** / Came / **Come** *(e.g., The captain had come aboard.)*
+*   **Run** / Ran / **Run**
+
+---
+
+# The 5 Families of Irregular Verbs (Part 2)
+
+**Family 4: The "Vowel Shift (i-a-u)" Family**
+*   **Begin** / Began / Begun *(e.g., The boarding had begun.)*
+*   **Drink** / Drank / Drunk
+*   **Ring** / Rang / Rung
+
+**Family 5: The "-en Ending" Family**
+*   **Speak** / Spoke / Spok**en**
+*   **Take** / Took / Tak**en**
+*   **Fly** / Flew / Flown *(ends in an 'n' sound)*
+
+> **📥 Tip:** Download the complete *"5 Families of Irregular Verbs Cheat Sheet"* from the course portal for a full reference guide!
 
 ---
 
