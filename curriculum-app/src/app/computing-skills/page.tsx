@@ -1,27 +1,24 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { curriculumData, WeekData } from '@/data/curriculum';
+import { curriculumDataComputing as curriculumData, WeekData } from '@/data/curriculum-computing';
 import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw, Menu } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
 import WelcomeScreen from '@/components/WelcomeScreen';
-import './globals.css';
 
-export default function CurriculumApp() {
+export default function CommunicativeEnglishApp() {
   const [program, setProgram] = useState<'ug' | 'pg'>('ug');
+  const [selectedSemester, setSelectedSemester] = useState<number>(1);
+  const semesters = [1]; // Only Semester 1 for now
+
+  // Dynamically load streams based on program
   const streams = curriculumData[program].streams;
-  
   const [selectedStream, setSelectedStream] = useState<string>(streams[0].streamName);
   const [showWelcome, setShowWelcome] = useState<boolean>(false);
   const [showOrientation, setShowOrientation] = useState<boolean>(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
   const [passkey, setPasskey] = useState<string>('');
-  
-  // Semesters depend on the program
-  const maxSemesters = program === 'ug' ? 6 : 4;
-  const semesters = Array.from({ length: maxSemesters }, (_, i) => i + 1);
-  const [selectedSemester, setSelectedSemester] = useState<number>(1);
   
   // Theme State
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
@@ -232,12 +229,13 @@ export default function CurriculumApp() {
         <WelcomeScreen program={program} onProgramChange={changeProgram} onNext={() => setShowOrientation(true)} />
       ) : showOrientation ? (
         <SlideViewer
-          weekData={{ week: 0, theme: 'Welcome to Softskills Studio', focus: 'Orientation & Roadmap', label: 'Orientation' }}
+          weekData={{ week: 0, theme: 'Welcome to Computing Skills', focus: 'Orientation & Roadmap', label: 'Orientation' }}
           program={program}
           stream={selectedStream}
           semester={selectedSemester}
           activeSection={activeSection}
           theme={theme}
+          course="english"
           onClose={() => {
             setShowOrientation(false);
             setShowWelcome(false);
@@ -255,8 +253,8 @@ export default function CurriculumApp() {
               >
                 <Menu size={24} className="text-gray-700 dark:text-gray-300" />
               </button>
-              <div className="lms-logo"><GraduationCap size={28} /></div>
-              <h1>Soft Skills Studio</h1>
+              <div className="lms-logo"><BookOpen size={28} /></div>
+              <h1>Communicative English</h1>
             </div>
             
             <div className="lms-topbar-actions">
@@ -472,6 +470,7 @@ export default function CurriculumApp() {
               semester={selectedSemester}
               activeSection={activeSection}
               theme={theme}
+              course="english"
               onClose={() => setActiveLesson(null)}
             />
           )}
