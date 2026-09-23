@@ -1,162 +1,163 @@
-* Lecture 04
-* MS Word
-* Document Creation
+# 💻 Lecture 04
+- MS Word
+- Document Creation
 
-* Introduction to Computing Skills  |  Practical Lab Session (110 min)
-* BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
-* Common for Section A & Section B
-* Syllabus: Document Creation
-* Extended lab session — follow the timeline and complete all parts.
-
----
-
-* LECTURE 04
-
-* Session Plan — 110 Minutes
-
-* Follow this pace to use the full lab period productively:
-* 0:00 – 0:10  Recap file management — open Word, explore ribbon
-* 0:10 – 0:30  Create, type, save, and reopen documents
-* 0:30 – 0:55  Part 1 — About Me document with save practice
-* 0:55 – 1:20  Part 2 — Undo/Redo, margins, print preview
-* 1:20 – 1:40  Aviation paragraph writing exercise
-* 1:40 – 1:55  Partner review — check file names and content
-* 1:55 – 2:00  Save, recap, and homework
+- Introduction to Computing Skills  |  Practical Lab Session (110 min)
+- BSc Aviation  |  Dr. Amna Ahmad  |  Alliance University
+- Common for Section A & Section B
+- Syllabus: Document Creation
+- **Extended lab session** — follow the timeline and complete all parts.
 
 ---
 
-* LECTURE 04 LAB
 
-* Today's Lab Plan
+### 🔹 Lecture 04
 
-* We will learn by doing — follow each step on your computer.
-* Open Microsoft Word and explore the ribbon (Home, Insert, Layout tabs)
-* Create a new blank document and understand the typing area
-* Type, edit, and delete text — use Backspace and Delete
-* Save documents with clear names using Save and Save As
-* Close and reopen files — verify content is preserved
-* Use Undo (Ctrl+Z) and Redo (Ctrl+Y) to fix mistakes
-* Set page margins and orientation (Layout tab)
-* Use Print Preview to see how the document will print
-* Understand .docx format and file location on Desktop
+- **Session Plan** — 110 Minutes
 
----
-
-* KEY CONCEPT
-
-* The Word Ribbon & Interface
-
-* The Ribbon is the toolbar area across the top of the Word window. It is organised into Tabs (Home, Insert, Layout, and more), and each tab contains Groups of related buttons — for example, the Font group and Paragraph group both sit inside the Home tab.
-
-* The tabs used most often:
-
-* The blank typing area below the Ribbon is the document itself — everything typed there becomes part of the saved file.
+- Follow this pace to use the full lab period productively:
+- **0:00 – 0:10  Recap file management** — open Word, explore ribbon
+- 0:10 – 0:30  Create, type, save, and reopen documents
+- **0:30 – 0:55  Part 1** — About Me document with save practice
+- **0:55 – 1:20  Part 2** — Undo/Redo, margins, print preview
+- 1:20 – 1:40  Aviation paragraph writing exercise
+- **1:40 – 1:55  Partner review** — check file names and content
+- 1:55 – 2:00  Save, recap, and homework
 
 ---
 
-* KEY CONCEPT
+# 🛠️ Lecture 04 LAB
 
-* Save vs Save As, and Undo/Redo
+- Today's Lab Plan
 
-* SAVE  (Ctrl+S)
-* Stores the latest changes into the SAME file — same name, same location. Used every few minutes to avoid losing work.
-* Like updating a page you already started in a notebook.
-
-* SAVE AS  (Ctrl+Shift+S)
-* Creates a NEW copy of the file, letting you choose a different name, location or format — the original file is left untouched.
-* Like photocopying a page into a brand-new notebook before making changes.
-
-* UNDO (Ctrl+Z) & REDO (Ctrl+Y)
-* Undo reverses the last action taken; Redo re-applies an action that was just undone. ’.docx’ is Word's standard file format for saved documents.
-
----
-
-* HANDS-ON PRACTICE
-
-* Part 1 — Do This in Lab
-
-* 1. Open Word — File  New  Blank document
-* 2. Type a heading: About Me — press Enter twice
-* 3. Write 5–6 lines: your name, course, section, hometown, hobby
-* 4. Save As: Lab04_YourName.docx on Desktop — note the .docx extension
-* 5. Close Word completely — reopen Lab04_YourName.docx from Desktop
-* 6. Add one more line at the end — Save (Ctrl+S)
-* 7. Select a word — press Delete — then Undo (Ctrl+Z) to restore it
+- **We will learn by doing** — follow each step on your computer.
+- Open Microsoft Word and explore the ribbon (Home, Insert, Layout tabs)
+- Create a new blank document and understand the typing area
+- **Type, edit, and delete text** — use Backspace and Delete
+- Save documents with clear names using Save and Save As
+- **Close and reopen files** — verify content is preserved
+- Use Undo (Ctrl+Z) and Redo (Ctrl+Y) to fix mistakes
+- Set page margins and orientation (Layout tab)
+- Use Print Preview to see how the document will print
+- Understand .docx format and file location on Desktop
 
 ---
 
-* HANDS-ON PRACTICE
+# 🧠 Key Concept
 
-* Part 2 — Continue in Lab
+- The Word Ribbon & Interface
 
-* 8. Layout tab  Margins  Normal — check page layout changes
-* 9. Layout tab  Orientation — try Portrait vs Landscape — revert to Portrait
-* 10. File  Print — open Print Preview — zoom in/out — note page count
-* 11. Type a new paragraph: 'Why computers matter in aviation' (4 sentences)
-* 12. Save As copy: Lab04_Aviation_YourName.docx in your Word folder
-* 13. Create folder ICS_Sem1_YourName/Word if not exists — move both files there
-* 14. Partner check: open partner's file — verify name in filename and content
+- The Ribbon is the toolbar area across the top of the Word window. It is organised into Tabs (Home, Insert, Layout, and more), and each tab contains Groups of related buttons — for example, the Font group and Paragraph group both sit inside the Home tab.
+
+- The tabs used most often:
+
+- The blank typing area below the Ribbon is the document itself — everything typed there becomes part of the saved file.
 
 ---
 
-* CLASS ACTIVITY
+# 🧠 Key Concept
 
-* Partner / Group Task
+- Save vs Save As, and Undo/Redo
 
-* Pairs: Student A dictates 3 sentences about their favourite airport. Student B types them in Word in real time. Swap roles. Save both files. Discuss: what was hard about typing from dictation?
+- SAVE  (Ctrl+S)
+- Stores the latest changes into the SAME file — same name, same location. Used every few minutes to avoid losing work.
+- Like updating a page you already started in a notebook.
 
----
+- SAVE AS  (Ctrl+Shift+S)
+- Creates a NEW copy of the file, letting you choose a different name, location or format — the original file is left untouched.
+- Like photocopying a page into a brand-new notebook before making changes.
 
-* YOUR TASK
-
-* Lab Exercise
-
-* Create a one-page document titled 'About Me — Aviation Student' with: (1) Your name and course as a heading, (2) 6-line paragraph about yourself, (3) 4-line paragraph on why you chose aviation, (4) Footer with your name and date. Save as Lab04_AboutMe_YourName.docx. Show faculty.
-
-* Quick Tips
-* Save often — Ctrl+S is your friend; unsaved work is lost on crash
-* File  Save As lets you choose location, name, and format
-* Use .docx format for Word documents (not .doc or .txt)
-* Clear filenames: Lab04_YourName_topic.docx — no spaces, use underscores
-* Print Preview saves paper — always check before printing
+- UNDO (Ctrl+Z) & REDO (Ctrl+Y)
+- Undo reverses the last action taken; Redo re-applies an action that was just undone. ’.docx’ is Word's standard file format for saved documents.
 
 ---
 
-* LEARN MORE
+# 💻 Hands-on Practice
 
-* Watch These Videos (Part 1)
+- **Part 1** — Do This in Lab
 
-* Click links to review before/after lab or during breaks:
-* 1. Word: Getting Started
-* https://www.youtube.com/watch?v=j-ZAVHk5SaU
-* 2. Word: Creating and Opening Documents
-* https://www.youtube.com/watch?v=PafCMUVH_OA
-* 3. Word: Saving and Sharing
-* https://www.youtube.com/watch?v=1TSnnEU0KJg
-* 4. Word: Line and Paragraph Spacing
-* https://www.youtube.com/watch?v=mXWvKHWe2Co
+1. Open Word — File  New  Blank document
+2. Type a heading: About Me — press Enter twice
+3. Write 5–6 lines: your name, course, section, hometown, hobby
+4. Save As: Lab04_YourName.docx on Desktop — note the .docx extension
+5. Close Word completely — reopen Lab04_YourName.docx from Desktop
+6. Add one more line at the end — Save (Ctrl+S)
+7. Select a word — press Delete — then Undo (Ctrl+Z) to restore it
 
 ---
 
-* LEARN MORE
+# 💻 Hands-on Practice
 
-* Watch These Videos (Part 2)
+- **Part 2** — Continue in Lab
 
-* Click links to review before/after lab or during breaks:
-* 5. Word: Checking Spelling and Grammar
-* https://www.youtube.com/watch?v=H3nzCAv6d1A
+8. Layout tab  Margins  Normal — check page layout changes
+9. Layout tab  Orientation — try Portrait vs Landscape — revert to Portrait
+10. File  Print — open Print Preview — zoom in/out — note page count
+11. Type a new paragraph: 'Why computers matter in aviation' (4 sentences)
+12. Save As copy: Lab04_Aviation_YourName.docx in your Word folder
+13. Create folder ICS_Sem1_YourName/Word if not exists — move both files there
+14. Partner check: open partner's file — verify name in filename and content
 
 ---
 
-* WRAP UP
+# 🤝 Class Activity
 
-* Recap & Homework
+- Partner / Group Task
 
-* Today we covered: Document Creation
-* Homework / Practice:
-* Create a Word file with 10 sentences about aviation (airlines, airports, or careers). Save in your Word folder. Watch 2 videos from today's list.
-* Questions? Ask in the next lab session.
-* Save all your lab files before leaving the computer lab.
+- Pairs: Student A dictates 3 sentences about their favourite airport. Student B types them in Word in real time. Swap roles. Save both files. Discuss: what was hard about typing from dictation?
+
+---
+
+# 📝 Your Task
+
+- Lab Exercise
+
+- Create a one-page document titled 'About Me — Aviation Student' with: (1) Your name and course as a heading, (2) 6-line paragraph about yourself, (3) 4-line paragraph on why you chose aviation, (4) Footer with your name and date. Save as Lab04_AboutMe_YourName.docx. Show faculty.
+
+- Quick Tips
+- **Save often** — Ctrl+S is your friend; unsaved work is lost on crash
+- File  Save As lets you choose location, name, and format
+- Use .docx format for Word documents (not .doc or .txt)
+- Clear filenames: Lab04_YourName_topic.docx — no spaces, use underscores
+- **Print Preview saves paper** — always check before printing
+
+---
+
+# 📚 Learn More
+
+- Watch These Videos (Part 1)
+
+- Click links to review before/after lab or during breaks:
+1. Word: Getting Started
+- https://www.youtube.com/watch?v=j-ZAVHk5SaU
+2. Word: Creating and Opening Documents
+- https://www.youtube.com/watch?v=PafCMUVH_OA
+3. Word: Saving and Sharing
+- https://www.youtube.com/watch?v=1TSnnEU0KJg
+4. Word: Line and Paragraph Spacing
+- https://www.youtube.com/watch?v=mXWvKHWe2Co
+
+---
+
+# 📚 Learn More
+
+- Watch These Videos (Part 2)
+
+- Click links to review before/after lab or during breaks:
+5. Word: Checking Spelling and Grammar
+- https://www.youtube.com/watch?v=H3nzCAv6d1A
+
+---
+
+# 🏁 Wrap Up
+
+- Recap & Homework
+
+- Today we covered: Document Creation
+- Homework / Practice:
+- Create a Word file with 10 sentences about aviation (airlines, airports, or careers). Save in your Word folder. Watch 2 videos from today's list.
+- Questions? Ask in the next lab session.
+- Save all your lab files before leaving the computer lab.
 
 ---
 
@@ -164,6 +165,6 @@
 
 Please download the starting file below to follow along with today's hands-on lab exercise.
 
-`download
+```download
 Lecture_04_MS_Word_Document_Creation_Demo.docx
-`
+```
