@@ -63,8 +63,8 @@ export default function FeedbackForm() {
         <div className="feedback-icon-container">
           <GraduationCap size={24} />
         </div>
-        <h1>Session Feedback</h1>
-        <p>Let us know how the session went.</p>
+        <h1>Soft Skills Session Feedback</h1>
+        <p>Let us know how your Soft Skills session went today.</p>
       </div>
 
       {/* Form Card */}
