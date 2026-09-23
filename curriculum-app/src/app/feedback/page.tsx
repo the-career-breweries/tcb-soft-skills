@@ -91,15 +91,19 @@ export default function FeedbackForm() {
             <label htmlFor="courseClass" className="feedback-label">
               Class <span style={{ color: '#ef4444' }}>*</span>
             </label>
-            <input
+            <select
               id="courseClass"
-              type="text"
               required
-              placeholder="e.g., BBA Aviation Sem 1"
               value={courseClass}
               onChange={(e) => setCourseClass(e.target.value)}
               className="feedback-input"
-            />
+              style={{ backgroundColor: 'var(--bg-surface, #ffffff)', cursor: 'pointer' }}
+            >
+              <option value="" disabled>Select your class...</option>
+              <option value="BBA">BBA</option>
+              <option value="B.Sc - Section A">B.Sc - Section A</option>
+              <option value="B.Sc - Section B">B.Sc - Section B</option>
+            </select>
           </div>
 
           {/* Theme */}
