@@ -8,6 +8,8 @@ export default function FeedbackForm() {
   const today = new Date().toISOString().split('T')[0];
 
   const [sessionDate, setSessionDate] = useState(today);
+  const [courseClass, setCourseClass] = useState('');
+  const [theme, setTheme] = useState('');
   const [rating, setRating] = useState<number>(0);
   const [hoverRating, setHoverRating] = useState<number>(0);
   const [suggestions, setSuggestions] = useState('');
@@ -25,7 +27,7 @@ export default function FeedbackForm() {
       const response = await fetch('/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sessionDate, rating, suggestions, questions }),
+        body: JSON.stringify({ sessionDate, courseClass, theme, rating, suggestions, questions }),
       });
 
       if (!response.ok) throw new Error('Failed to submit feedback');
@@ -72,7 +74,7 @@ export default function FeedbackForm() {
           {/* Session Date */}
           <div className="feedback-group">
             <label htmlFor="sessionDate" className="feedback-label">
-              Session Date <span style={{ color: '#ef4444' }}>*</span>
+              Date <span style={{ color: '#ef4444' }}>*</span>
             </label>
             <input
               id="sessionDate"
@@ -80,6 +82,38 @@ export default function FeedbackForm() {
               required
               value={sessionDate}
               onChange={(e) => setSessionDate(e.target.value)}
+              className="feedback-input"
+            />
+          </div>
+
+          {/* Class */}
+          <div className="feedback-group">
+            <label htmlFor="courseClass" className="feedback-label">
+              Class <span style={{ color: '#ef4444' }}>*</span>
+            </label>
+            <input
+              id="courseClass"
+              type="text"
+              required
+              placeholder="e.g., BBA Aviation Sem 1"
+              value={courseClass}
+              onChange={(e) => setCourseClass(e.target.value)}
+              className="feedback-input"
+            />
+          </div>
+
+          {/* Theme */}
+          <div className="feedback-group">
+            <label htmlFor="theme" className="feedback-label">
+              Theme of the class <span style={{ color: '#ef4444' }}>*</span>
+            </label>
+            <input
+              id="theme"
+              type="text"
+              required
+              placeholder="e.g., Fundamentals of Grammar"
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
               className="feedback-input"
             />
           </div>
