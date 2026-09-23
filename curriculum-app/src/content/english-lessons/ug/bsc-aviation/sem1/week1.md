@@ -190,3 +190,60 @@ Explanation: ONE dependent clause embedded in the middle ("who has 20 years of e
 *   **Past:** Actions completed before now (e.g., *The flight landed.*)
 *   **Present:** Actions happening now or habitually (e.g., *The flight lands at 5 PM.*)
 *   **Future:** Actions that will happen (e.g., *The flight will land.*)
+
+---
+
+# The Story Behind Irregular Verbs
+Have you ever wondered why we say *landed* but we don't say *flyed*? 
+
+*   **The Modern Rule:** Today, we just add **"-ed"** to make a verb past tense (e.g., *boarded, taxied*).
+*   **The Ancient Survivors:** Thousands of years ago, people changed the inside vowels to show time instead of adding "-ed". Words like *Fly, Take, Come,* and *Speak* were used so often that people never stopped saying them the ancient way. 
+*   **The Evolution:** Over centuries, some of these ancient forms morphed to sound identical (like *Come/Came/Come*), while others stayed entirely different (*Fly/Flew/Flown*). You aren't failing to understand a ruleâ€”you are just learning the ancient survivors of English!
+
+---
+
+# The Verb Gears: V1, V2, V3
+Because of this history, irregular verbs have three distinct forms you must know to use perfect tenses correctly:
+
+*   **V1 (Base Form):** Used for present tense and future. *(e.g., They **fly** today.)*
+*   **V2 (Simple Past):** Used for finished past actions. *(e.g., They **flew** yesterday.)*
+*   **V3 (Past Participle):** The "helper" form. It **never** stands alone. It must always be partnered with a helper verb like *has, have,* or *had*. *(e.g., They **had flown** through the storm.)*
+
+---
+
+# Essential Irregular Verbs for Aviation
+Here are some of the most common irregular verbs grouped by their ancient patterns:
+
+**The Vowel-Shift Pattern (i-a-u):**
+*   **Begin** / Began / **Begun** *(e.g., The boarding had begun.)*
+*   **Ring** / Rang / **Rung** *(e.g., The alarm had rung.)*
+
+**The Boomerang Pattern (V1 & V3 are identical):**
+*   **Come** / Came / **Come** *(e.g., The captain had come to the flight deck.)*
+*   **Run** / Ran / **Run** *(e.g., The engines had run smoothly.)*
+
+**The All-Different Pattern:**
+*   **Fly** / Flew / **Flown** *(e.g., The aircraft had flown.)*
+*   **Take** / Took / **Taken** *(e.g., The plane had taken off.)*
+*   **Speak** / Spoke / **Spoken** *(e.g., The ATC had spoken.)*
+
+---
+
+# Activity: Spot the V3
+```sentence-activity
+Sentence: The dispatcher realized that the ground crew had ____ (loaded / load) the luggage wrongly.
+Type: loaded
+Explanation: "Loaded" is a regular verb, so V2 and V3 are the same ("loaded").
+```
+
+```sentence-activity
+Sentence: By the time we reached the gate, the boarding process had already ____ (began / begun).
+Type: begun
+Explanation: We need the V3 form after "had". The pattern is Begin (V1) -> Began (V2) -> Begun (V3).
+```
+
+```sentence-activity
+Sentence: The passengers were relieved when the delayed flight had finally ____ (came / come).
+Type: come
+Explanation: "Come" is a boomerang verb. Come (V1) -> Came (V2) -> Come (V3). We need the V3 form after "had".
+```
