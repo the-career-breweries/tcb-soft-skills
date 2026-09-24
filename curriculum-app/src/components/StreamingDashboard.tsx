@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { WeekData } from '@/data/curriculum';
 import { Play, Info, ChevronRight, ChevronLeft } from 'lucide-react';
 
@@ -20,13 +20,30 @@ export default function StreamingDashboard({ program, streamName, semester, week
     '1436491865332-7a61a109cc05', '1517976487492-5750f3195933', '1573164713988-8665fc963095'
   ];
 
+  const [featuredIndex, setFeaturedIndex] = useState(0);
+  const [hoveredLesson, setHoveredLesson] = useState<{ lesson: WeekData, index: number } | null>(null);
+
+  // Auto-slide billboard every 6 seconds if nothing is hovered
+  useEffect(() => {
+    if (hoveredLesson || weeks.length === 0) return;
+
+    const timer = setInterval(() => {
+      setFeaturedIndex((prev) => (prev + 1) % weeks.length);
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, [hoveredLesson, weeks.length]);
+
   const getImageUrl = (index: number) => {
     return `https://images.unsplash.com/photo-${cinematicIds[index % cinematicIds.length]}?q=80&w=600&h=337&fit=crop`;
   };
 
-  const heroImage = `https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2000&auto=format&fit=crop`; // Movie theater / film
+  const getHeroImageUrl = (index: number) => {
+    return `https://images.unsplash.com/photo-${cinematicIds[index % cinematicIds.length]}?q=80&w=2000&auto=format&fit=crop`;
+  };
 
-  const featuredLesson = weeks[0]; // Just feature the first one for now
+  const activeHeroLesson = hoveredLesson ? hoveredLesson.lesson : weeks[featuredIndex];
+  const activeHeroIndex = hoveredLesson ? hoveredLesson.index : featuredIndex;
   
   // Group weeks into categories
   const continueWatching = weeks.slice(0, 3);
@@ -44,12 +61,14 @@ export default function StreamingDashboard({ program, streamName, semester, week
           overflowX: 'auto',
           padding: '10px 4%',
           scrollSnapType: 'x mandatory',
-          scrollbarWidth: 'none', // hide scrollbar firefox
+          scrollbarWidth: 'none',
         }}>
           {lessons.map((lesson, idx) => (
             <div
               key={lesson.week}
               onClick={() => onSelectLesson(lesson)}
+              onMouseEnter={() => setHoveredLesson({ lesson, index: startIndex + idx })}
+              onMouseLeave={() => setHoveredLesson(null)}
               style={{
                 flex: '0 0 auto',
                 width: '300px',
@@ -59,8 +78,9 @@ export default function StreamingDashboard({ program, streamName, semester, week
                 position: 'relative',
                 cursor: 'pointer',
                 scrollSnapAlign: 'start',
-                transition: 'transform 0.3s ease',
-                boxShadow: '0 4px 6px rgba(0,0,0,0.3)'
+                transition: 'transform 0.3s ease, border-color 0.3s',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.3)',
+                borderColor: hoveredLesson?.lesson.week === lesson.week ? 'var(--accent-primary)' : 'transparent'
               }}
               className="carousel-card"
             >
@@ -92,7 +112,6 @@ export default function StreamingDashboard({ program, streamName, semester, week
   return (
     <div style={{ width: '100%', minHeight: '100vh', background: 'var(--bg-app)', color: 'white', overflowX: 'hidden' }}>
       
-      {/* CSS for hover scaling */}
       <style dangerouslySetInnerHTML={{__html: `
         .carousel-card:hover {
           transform: scale(1.05);
@@ -102,17 +121,21 @@ export default function StreamingDashboard({ program, streamName, semester, week
           border: 2px solid transparent;
         }
         .carousel-card:hover {
-          border-color: var(--accent-primary);
+          border-color: var(--accent-primary) !important;
+        }
+        
+        .hero-banner {
+          transition: background-image 0.5s ease-in-out;
         }
       `}} />
 
       {/* Hero Billboard */}
-      {featuredLesson && (
-        <div style={{
+      {activeHeroLesson && (
+        <div className="hero-banner" style={{
           position: 'relative',
           width: '100%',
           height: '75vh',
-          backgroundImage: `url("${heroImage}")`,
+          backgroundImage: `url("${getHeroImageUrl(activeHeroIndex)}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center 20%',
           display: 'flex',
@@ -137,7 +160,7 @@ export default function StreamingDashboard({ program, streamName, semester, week
                 background: 'var(--accent-primary)', color: 'white', padding: '4px 8px', 
                 borderRadius: '4px', fontSize: '0.8rem', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px'
               }}>
-                Featured
+                {hoveredLesson ? `Session ${activeHeroLesson.week}` : 'Featured'}
               </span>
               <span style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#e5e7eb', letterSpacing: '4px' }}>
                 SERIES
@@ -145,15 +168,15 @@ export default function StreamingDashboard({ program, streamName, semester, week
             </div>
             
             <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', lineHeight: '1.1', marginBottom: '1rem', textShadow: '0 4px 12px rgba(0,0,0,0.5)' }}>
-              {featuredLesson.theme}
+              {activeHeroLesson.theme}
             </h1>
             <p style={{ fontSize: '1.3rem', color: '#d1d5db', marginBottom: '2rem', textShadow: '0 2px 4px rgba(0,0,0,0.5)', lineHeight: '1.4' }}>
-              Dive into Semester {semester} of {streamName}. Explore {featuredLesson.focus} and master the foundations of professional communication.
+              Dive into Semester {semester} of {streamName}. Explore {activeHeroLesson.focus} and master the foundations of professional communication.
             </p>
             
             <div style={{ display: 'flex', gap: '1rem' }}>
               <button 
-                onClick={() => onSelectLesson(featuredLesson)}
+                onClick={() => onSelectLesson(activeHeroLesson)}
                 style={{ 
                   display: 'flex', alignItems: 'center', gap: '8px', 
                   padding: '0.8rem 2rem', fontSize: '1.2rem', fontWeight: 'bold', 
