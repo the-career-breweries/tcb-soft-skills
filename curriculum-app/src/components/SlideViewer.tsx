@@ -223,6 +223,7 @@ const AssetUploadModal = ({ isOpen, onClose, currentSlideContent }: { isOpen: bo
 export default function SlideViewer
 ({ weekData, program, stream, semester, theme, course = 'soft-skills', activeSection, onClose, isAdmin = false }: SlideViewerProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slides, setSlides] = useState<string[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
@@ -240,8 +241,6 @@ export default function SlideViewer
       setIsPlaying(false);
     }
   }, [currentSlide, slides.length]);
-
-  const [slides, setSlides] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
     const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
 
