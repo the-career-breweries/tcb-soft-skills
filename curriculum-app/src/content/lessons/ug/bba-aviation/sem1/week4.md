@@ -1,6 +1,7 @@
 # The Ultimate Debate
 *Putting PREP and STAR to the Test*
 
+
 ![Week 4 Illustration](/images/slides/aviation_soft_skills_w4_1790220275731.jpg)
 
 ---

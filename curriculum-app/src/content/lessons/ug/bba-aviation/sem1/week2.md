@@ -1,9 +1,6 @@
 # Welcome to Aviation Management Soft Skills
 ### The Ground Starts Here
 
-![Week 2 Illustration](/images/slides/aviation_soft_skills_w2_1790220178302.jpg)
-
-
 Welcome to Semester 1. In Aviation Management, you are the face of the airline, the brain behind ground operations, and the problem-solvers when things go wrong.
 
 Today, we focus on management presence, overcoming hesitation, and structuring your thoughts.
@@ -11,6 +8,9 @@ Today, we focus on management presence, overcoming hesitation, and structuring y
 ```qrcode
 scan
 ```
+
+
+![Week 2 Illustration](/images/slides/aviation_soft_skills_w2_1790220178302.jpg)
 
 ---
 

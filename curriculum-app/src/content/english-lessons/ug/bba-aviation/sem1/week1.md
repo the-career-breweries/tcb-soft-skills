@@ -1,8 +1,8 @@
 # Fundamentals of Grammar
+Welcome to Week 1. Today we cover Parts of Speech, Tenses, and Sentence Structure.
+
 
 ![Week 1 Illustration](/images/english/aviation_english_w1_1790220379517.jpg)
-
-Welcome to Week 1. Today we cover Parts of Speech, Tenses, and Sentence Structure.
 
 ---
 
