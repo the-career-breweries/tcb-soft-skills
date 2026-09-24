@@ -43,7 +43,7 @@ const NeftlexLogo = ({ isHovered }: { isHovered: boolean }) => {
         <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
       </svg>
       <span style={{ fontSize: '2.2rem', fontWeight: '900', color: '#e50914', letterSpacing: '2px', fontFamily: '"Arial Black", sans-serif' }}>
-        NEFTLEX
+        &CHILL
       </span>
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes clap {
@@ -81,8 +81,8 @@ const BrunchroLogo = ({ isHovered }: { isHovered: boolean }) => {
       }}>
         <PlaneTakeoff size={72} color="#f47521" strokeWidth={1.5} />
       </div>
-      <span style={{ fontSize: '1.8rem', fontWeight: '900', color: '#f47521', letterSpacing: '1px' }}>
-        BRUNCH'RO!!
+      <span style={{ fontSize: '1.8rem', fontWeight: '900', color: '#f47521', letterSpacing: '1px', textAlign: 'center', lineHeight: '1.1' }}>
+        BRUNCH"<br/>RO!!
       </span>
     </div>
   );
@@ -139,7 +139,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
   const themes = [
     {
       id: 'netflix' as AppTheme,
-      name: 'Binge Mode',
+      name: 'Bing\'',
       logoComponent: <NeftlexLogo isHovered={hoveredTheme === 'netflix'} />,
       color: '#e50914',
       // Red cinema seats
