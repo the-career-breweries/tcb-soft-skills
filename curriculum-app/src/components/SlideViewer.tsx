@@ -228,6 +228,7 @@ export default function SlideViewer
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slides, setSlides] = useState<string[]>([]);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -271,6 +272,7 @@ export default function SlideViewer
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo(0, 0);
+      setIsScrolledDown(false);
     }
   }, [currentSlide]);
 
@@ -496,7 +498,7 @@ export default function SlideViewer
              <p style={{marginTop: '1rem', color: '#94a3b8'}}>Loading lesson content...</p>
           </div>
         ) : (
-          <div ref={scrollRef} className="slide-content markdown-slide">
+          <div ref={scrollRef} className="slide-content markdown-slide" onScroll={(e) => setIsScrolledDown(e.currentTarget.scrollTop > 50)}>
              {error && currentSlide === 0 && (
                <div style={{
                  background: 'rgba(239, 68, 68, 0.1)', 
@@ -704,7 +706,11 @@ export default function SlideViewer
             background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 70%, transparent 100%)',
             padding: '2rem 2rem 1.5rem 2rem',
             display: 'flex', flexDirection: 'column', gap: '0.8rem',
-            pointerEvents: 'none' /* Let clicks pass through background */
+            pointerEvents: 'none',
+            opacity: isScrolledDown ? 0 : 1,
+            transform: isScrolledDown ? 'translateY(100%)' : 'translateY(0)',
+            transition: 'opacity 0.4s ease, transform 0.4s ease'
+            /* Let clicks pass through background */
           }}>
             {/* Scrubber Track Wrapper */}
             <div 
