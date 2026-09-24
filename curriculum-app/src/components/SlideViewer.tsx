@@ -214,7 +214,10 @@ const AssetUploadModal = ({ isOpen, onClose, currentSlideContent }: { isOpen: bo
             </button>
           </div>
         )}
+
+        
       </div>
+
     </div>
   );
 };
@@ -442,91 +445,15 @@ export default function SlideViewer
             </button>
           )}
 
-        {/* Video Scrubber Playbar */}
-        {!isLoading && slides.length > 0 && (
-          <div style={{
-            position: 'absolute', bottom: '0', left: '0', right: '0', zIndex: 20,
-            background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)',
-            padding: '4rem 2rem 1.5rem 2rem',
-            display: 'flex', flexDirection: 'column', gap: '0.8rem'
-          }}>
-            {/* Scrubber Track */}
-            <div 
-              style={{
-                width: '100%', height: '6px', background: 'rgba(255,255,255,0.2)', borderRadius: '3px',
-                cursor: 'pointer', position: 'relative'
-              }}
-              onClick={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const percentage = x / rect.width;
-                const newSlide = Math.round(percentage * (slides.length - 1));
-                setCurrentSlide(Math.max(0, Math.min(newSlide, slides.length - 1)));
-              }}
-            >
-              {/* Progress Fill */}
-              <div style={{
-                position: 'absolute', top: 0, left: 0, height: '100%',
-                width: `${(currentSlide / Math.max(1, slides.length - 1)) * 100}%`,
-                background: 'var(--accent-primary)',
-                borderRadius: '3px',
-                transition: 'width 0.3s ease'
-              }} />
-              {/* Thumb */}
-              <div style={{
-                position: 'absolute', top: '50%', left: `${(currentSlide / Math.max(1, slides.length - 1)) * 100}%`,
-                width: '16px', height: '16px', background: 'white', borderRadius: '50%',
-                transform: 'translate(-50%, -50%)', boxShadow: '0 2px 4px rgba(0,0,0,0.5)',
-                transition: 'left 0.3s ease'
-              }} />
-            </div>
-
-            {/* Controls */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <button 
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
-                  onMouseOut={(e) => e.currentTarget.style.color = 'white'}
-                >
-                  {isPlaying ? <Pause size={32} /> : <Play size={32} />}
-                </button>
-                <div style={{ color: 'white', fontSize: '1.1rem', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <span>{currentSlide === 0 ? '0' : currentSlide}</span>
-                  <span style={{ color: 'rgba(255,255,255,0.5)' }}>/</span>
-                  <span style={{ color: 'rgba(255,255,255,0.5)' }}>{slides.length - 1}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        
           <button className="nav-btn" onClick={onClose} aria-label="Close Presentation" style={{ background: 'rgba(0,0,0,0.4)', padding: '0.5rem', borderRadius: '50%' }}>
             <X size={32} />
           </button>
         </div>
 
-        {/* Floating Left Arrow */}
-        {!isLoading && slides.length > 0 && currentSlide > 0 && (
-          <button 
-            onClick={() => setCurrentSlide(prev => Math.max(prev - 1, 0))}
-            className="nav-btn"
-            style={{ position: 'absolute', top: '50%', left: '2rem', transform: 'translateY(-50%)', zIndex: 10, background: 'rgba(0,0,0,0.4)', borderRadius: '50%', padding: '0.5rem' }}
-          >
-            <ChevronLeft size={48} />
-          </button>
-        )}
+        
 
-        {/* Floating Right Arrow */}
-        {!isLoading && slides.length > 0 && currentSlide < slides.length - 1 && (
-          <button 
-            onClick={() => setCurrentSlide(prev => Math.min(prev + 1, slides.length - 1))}
-            className="nav-btn"
-            style={{ position: 'absolute', top: '50%', right: '2rem', transform: 'translateY(-50%)', zIndex: 10, background: 'rgba(0,0,0,0.4)', borderRadius: '50%', padding: '0.5rem' }}
-          >
-            <ChevronRight size={48} />
-          </button>
-        )}
+        
 
         {/* End of Episode Binge UI */}
         {!isLoading && slides.length > 0 && currentSlide === slides.length - 1 && (
@@ -675,11 +602,7 @@ export default function SlideViewer
                   <RandomTopicGenerator />
                 )}
                 
-                {activeSection && currentSlide === slides.length - 1 && (
-                  <button onClick={handleSessionComplete} className="session-complete-btn" style={{ position: 'absolute', bottom: '2rem', right: '2rem' }}>
-                    Mark Session Complete
-                  </button>
-                )}
+                
                 {isAdmin && (
                   <button onClick={() => setIsUploadModalOpen(true)} style={{ position: 'absolute', bottom: '2rem', left: '2rem', display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#2563eb', color: 'white', padding: '12px 24px', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: '600', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)', zIndex: 50 }}>
                     <Upload size={20} />
@@ -770,6 +693,72 @@ export default function SlideViewer
         </div>
       )}
     
+      
+        
+
+      
+        {/* Video Scrubber Playbar */}
+        {!isLoading && slides.length > 0 && (
+          <div style={{
+            position: 'absolute', bottom: '0', left: '0', right: '0', zIndex: 100,
+            background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 70%, transparent 100%)',
+            padding: '2rem 2rem 1.5rem 2rem',
+            display: 'flex', flexDirection: 'column', gap: '0.8rem',
+            pointerEvents: 'none' /* Let clicks pass through background */
+          }}>
+            {/* Scrubber Track Wrapper */}
+            <div 
+              style={{
+                width: '100%', height: '16px', display: 'flex', alignItems: 'center', cursor: 'pointer', pointerEvents: 'auto'
+              }}
+              onClick={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const percentage = x / rect.width;
+                const newSlide = Math.round(percentage * (slides.length - 1));
+                setCurrentSlide(Math.max(0, Math.min(newSlide, slides.length - 1)));
+              }}
+            >
+              <div style={{ width: '100%', height: '4px', background: 'rgba(255,255,255,0.3)', position: 'relative', borderRadius: '2px' }}>
+                {/* Progress Fill */}
+                <div style={{
+                  position: 'absolute', top: 0, left: 0, height: '100%',
+                  width: `${(currentSlide / Math.max(1, slides.length - 1)) * 100}%`,
+                  background: '#E50914',
+                  borderRadius: '2px',
+                  transition: 'width 0.3s ease'
+                }} />
+                {/* Thumb */}
+                <div style={{
+                  position: 'absolute', top: '50%', left: `${(currentSlide / Math.max(1, slides.length - 1)) * 100}%`,
+                  width: '14px', height: '14px', background: '#E50914', borderRadius: '50%',
+                  transform: 'translate(-50%, -50%)', boxShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                  transition: 'left 0.3s ease'
+                }} />
+              </div>
+            </div>
+
+            {/* Controls */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pointerEvents: 'auto' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                <button 
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  onMouseOver={(e) => e.currentTarget.style.color = '#E50914'}
+                  onMouseOut={(e) => e.currentTarget.style.color = 'white'}
+                >
+                  {isPlaying ? <Pause size={28} /> : <Play size={28} />}
+                </button>
+                <div style={{ color: 'white', fontSize: '1rem', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'monospace' }}>
+                  <span>{currentSlide === 0 ? '0' : currentSlide}</span>
+                  <span style={{ color: 'rgba(255,255,255,0.5)' }}>/</span>
+                  <span style={{ color: 'rgba(255,255,255,0.5)' }}>{slides.length - 1}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
       {/* Admin Asset Upload Modal */}
       {isAdmin && (
         <AssetUploadModal 
