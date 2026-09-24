@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { WeekData } from '@/data/curriculum';
-import { X, ChevronLeft, ChevronRight, Loader2, Printer, ZoomIn, ZoomOut, QrCode, Sparkles, Upload, Image as ImageIcon, Video, FileQuestion, UploadCloud, LayoutDashboard } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Loader2, Printer, ZoomIn, ZoomOut, QrCode, Sparkles, Upload, Image as ImageIcon, Video, FileQuestion, UploadCloud, LayoutDashboard, Play, Pause } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
@@ -223,6 +223,24 @@ const AssetUploadModal = ({ isOpen, onClose, currentSlideContent }: { isOpen: bo
 export default function SlideViewer
 ({ weekData, program, stream, semester, theme, course = 'soft-skills', activeSection, onClose, isAdmin = false }: SlideViewerProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (isPlaying && currentSlide < slides.length - 1) {
+      timer = setInterval(() => {
+        setCurrentSlide(prev => Math.min(prev + 1, slides.length - 1));
+      }, 8000);
+    }
+    return () => clearInterval(timer);
+  }, [isPlaying, currentSlide, slides.length]);
+
+  useEffect(() => {
+    if (currentSlide === slides.length - 1) {
+      setIsPlaying(false);
+    }
+  }, [currentSlide, slides.length]);
+
   const [slides, setSlides] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
     const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
@@ -424,6 +442,66 @@ export default function SlideViewer
               <Printer size={32} />
             </button>
           )}
+
+        {/* Video Scrubber Playbar */}
+        {!isLoading && slides.length > 0 && (
+          <div style={{
+            position: 'absolute', bottom: '0', left: '0', right: '0', zIndex: 20,
+            background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%)',
+            padding: '4rem 2rem 1.5rem 2rem',
+            display: 'flex', flexDirection: 'column', gap: '0.8rem'
+          }}>
+            {/* Scrubber Track */}
+            <div 
+              style={{
+                width: '100%', height: '6px', background: 'rgba(255,255,255,0.2)', borderRadius: '3px',
+                cursor: 'pointer', position: 'relative'
+              }}
+              onClick={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const percentage = x / rect.width;
+                const newSlide = Math.round(percentage * (slides.length - 1));
+                setCurrentSlide(Math.max(0, Math.min(newSlide, slides.length - 1)));
+              }}
+            >
+              {/* Progress Fill */}
+              <div style={{
+                position: 'absolute', top: 0, left: 0, height: '100%',
+                width: `${(currentSlide / Math.max(1, slides.length - 1)) * 100}%`,
+                background: 'var(--accent-primary)',
+                borderRadius: '3px',
+                transition: 'width 0.3s ease'
+              }} />
+              {/* Thumb */}
+              <div style={{
+                position: 'absolute', top: '50%', left: `${(currentSlide / Math.max(1, slides.length - 1)) * 100}%`,
+                width: '16px', height: '16px', background: 'white', borderRadius: '50%',
+                transform: 'translate(-50%, -50%)', boxShadow: '0 2px 4px rgba(0,0,0,0.5)',
+                transition: 'left 0.3s ease'
+              }} />
+            </div>
+
+            {/* Controls */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                <button 
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
+                  onMouseOut={(e) => e.currentTarget.style.color = 'white'}
+                >
+                  {isPlaying ? <Pause size={32} /> : <Play size={32} />}
+                </button>
+                <div style={{ color: 'white', fontSize: '1.1rem', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <span>{currentSlide === 0 ? '0' : currentSlide}</span>
+                  <span style={{ color: 'rgba(255,255,255,0.5)' }}>/</span>
+                  <span style={{ color: 'rgba(255,255,255,0.5)' }}>{slides.length - 1}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
           <button className="nav-btn" onClick={onClose} aria-label="Close Presentation" style={{ background: 'rgba(0,0,0,0.4)', padding: '0.5rem', borderRadius: '50%' }}>
             <X size={32} />
           </button>

@@ -2075,3 +2075,12 @@ kbd {
   font-size: 1.5rem;
   margin: 1rem 0;
 }
+
+/* Video Player Styles */
+.slide-content::-webkit-scrollbar {
+  display: none;
+}
+.slide-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
