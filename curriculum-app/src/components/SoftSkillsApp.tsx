@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { curriculumData, WeekData } from '@/data/curriculum';
 import { Search, Loader2, Sparkles, Tv, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw, Menu } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
@@ -11,10 +11,10 @@ import '@/app/globals.css';
 
 
 const CustomDropdown = ({ value, options, onChange }: { value: string | number, options: { label: string, value: string | number }[], onChange: (val: any) => void }) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-  const ref = React.useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setIsOpen(false);
