@@ -337,7 +337,7 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
                 program={program}
                 streamName={selectedStream}
                 semester={selectedSemester}
-                weeks={curriculumData[program].streams.find(s => s.streamName === selectedStream)?.semesters.find(s => s.semester === selectedSemester)?.weeks || []}
+                weeks={curriculumData[program].streams.find(s => s.streamName === selectedStream)?.weeks.filter(w => w.semester === selectedSemester) || []}
                 onSelectLesson={setActiveLesson}
                 theme={theme}
               />
