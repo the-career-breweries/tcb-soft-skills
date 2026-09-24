@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { curriculumData, WeekData } from '@/data/curriculum';
 import { Search, Loader2, Sparkles, Tv, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw, Menu } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
+import StreamingDashboard from '@/components/StreamingDashboard';
 import WelcomeScreen from '@/components/WelcomeScreen';
 import ThemeSelector, { AppTheme } from '@/components/ThemeSelector';
 import '@/app/globals.css';
@@ -248,229 +249,102 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
           }}
         />
       ) : (
-        <div className="lms-container">
-          {/* Top Navbar */}
-          <header className="lms-topbar">
-            <div className="lms-brand flex items-center">
-              <button 
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)} 
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg mr-2 transition-colors cursor-pointer"
-                title="Toggle Sidebar"
-              >
-                <Menu size={24} className="text-gray-700 dark:text-gray-300" />
-              </button>
-              <div className="lms-logo"><GraduationCap size={28} /></div>
-              <h1>Soft Skills Studio</h1>
+        <div className="lms-container" style={{ background: 'var(--bg-app)', color: 'white' }}>
+          {/* Top Navbar (Edge-to-Edge) */}
+          <header style={{
+            position: 'fixed', top: 0, left: 0, right: 0, height: '70px',
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0))',
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 4%',
+            zIndex: 100, transition: 'background 0.3s'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'var(--accent-primary)', cursor: 'pointer' }} onClick={() => setActiveLesson(null)}>
+                <Tv size={32} />
+                <h1 style={{ fontSize: '1.5rem', fontWeight: '900', letterSpacing: '1px', margin: 0, fontFamily: '"Arial Black", sans-serif' }}>
+                  STUDIO
+                </h1>
+              </div>
+              
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', fontSize: '0.9rem', fontWeight: '600', color: '#e5e7eb' }}>
+                <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'white'} onMouseOut={(e) => e.currentTarget.style.color = '#e5e7eb'}>Home</span>
+                
+                {/* Program Selector */}
+                <select 
+                  value={program} 
+                  onChange={handleProgramChange}
+                  style={{ background: 'transparent', color: 'inherit', border: 'none', outline: 'none', fontWeight: '600', cursor: 'pointer', appearance: 'none' }}
+                >
+                  <option value="ug" style={{color: 'black'}}>Undergraduate</option>
+                  <option value="pg" style={{color: 'black'}}>Postgraduate</option>
+                </select>
+
+                {/* Stream Selector */}
+                <select 
+                  value={selectedStream} 
+                  onChange={handleStreamChange}
+                  style={{ background: 'transparent', color: 'inherit', border: 'none', outline: 'none', fontWeight: '600', cursor: 'pointer', appearance: 'none' }}
+                >
+                  {streams.map(s => <option key={s.streamName} value={s.streamName} style={{color: 'black'}}>{s.streamName}</option>)}
+                </select>
+                
+                {/* Semester Selector */}
+                <select 
+                  value={selectedSemester} 
+                  onChange={(e) => {
+                    setSelectedSemester(Number(e.target.value));
+                    setSearchResults(null);
+                    setActiveLesson(null);
+                  }}
+                  style={{ background: 'transparent', color: 'inherit', border: 'none', outline: 'none', fontWeight: '600', cursor: 'pointer', appearance: 'none' }}
+                >
+                  {semesters.map(s => <option key={s} value={s} style={{color: 'black'}}>Semester {s}</option>)}
+                </select>
+              </div>
             </div>
             
-            <div className="lms-topbar-actions">
-              <div className="lms-program-toggle">
-                <button 
-                  className={`toggle-btn ${program === 'ug' ? 'active' : ''}`}
-                  onClick={() => changeProgram('ug')}
-                >
-                  UG
-                </button>
-                <button 
-                  className={`toggle-btn ${program === 'pg' ? 'active' : ''}`}
-                  onClick={() => changeProgram('pg')}
-                >
-                  PG
-                </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <div style={{ position: 'relative' }}>
+                <Search size={20} color="white" />
               </div>
               <button 
-                className="theme-toggle-btn" 
                 onClick={() => setHasSelectedTheme(false)}
-                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                style={{ 
+                  background: 'none', border: 'none', color: 'white', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', gap: '8px'
+                }}
+                title="Switch Profile"
               >
-                <Tv size={20} />
+                <div style={{ width: '32px', height: '32px', borderRadius: '4px', backgroundColor: 'var(--accent-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Users size={20} color="white" />
+                </div>
               </button>
             </div>
           </header>
 
-          <div className="lms-layout">
-            {/* Sidebar Navigation */}
-            <aside className={`lms-sidebar ${!isSidebarOpen ? 'collapsed' : ''}`}>
-              
-              {/* Workshops Link */}
-              <div className="lms-sidebar-section" style={{ borderBottom: '1px solid var(--border-sidebar)', paddingBottom: '1rem', marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <a href="/" className="module-item" style={{ textDecoration: 'none', color: 'var(--text-sidebar)' }}>
-                  <span style={{ fontSize: '1.2rem' }}>🎭</span> Soft Skills
-                </a>
-                <a href="/communicative-english" className="module-item" style={{ textDecoration: 'none', color: 'var(--text-sidebar)' }}>
-                  <span style={{ fontSize: '1.2rem' }}>🗣️</span> Communicative English
-                </a>
-                <a href="/computing-skills" className="module-item" style={{ textDecoration: 'none', color: 'var(--text-sidebar)' }}>
-                  <span style={{ fontSize: '1.2rem' }}>💻</span> Computing Skills
-                </a>
-                <a href="/workshops/admin" 
-                  className="flex items-center gap-2 p-3 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors font-medium border border-blue-200 dark:border-blue-800 shadow-sm"
-                >
-                  <Users size={18} />
-                  Paid Workshops Gateway
-                </a>
-              </div>
-
-              <div className="lms-sidebar-section">
-                <h3 className="sidebar-heading">Course Selection</h3>
-                <div className="sidebar-select-group">
-                  <label>Specialization</label>
-                  <select value={selectedStream} onChange={handleStreamChange} autoFocus>
-                    {streams.map(s => (
-                      <option key={s.streamName} value={s.streamName}>{s.streamName}</option>
-                    ))}
-                  </select>
-                </div>
-                <div className="sidebar-select-group">
-                  <label>Semester</label>
-                  <select value={selectedSemester} onChange={handleSemesterChange}>
-                    {semesters.map(s => (
-                      <option key={s} value={s}>Semester {s}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="lms-sidebar-section modules-section">
-                <h3 className="sidebar-heading">Modules</h3>
-                <ul className="module-list">
-                  <li 
-                    className={`module-item ${activeLesson === null ? 'active' : ''}`}
-                    onClick={() => setActiveLesson(null)}
-                  >
-                    <LayoutDashboard size={18} />
-                    <span>Semester Overview</span>
-                  </li>
-                  {activeWeeks.map((week) => (
-                    <li 
-                      key={week.week} 
-                      className={`module-item ${activeLesson?.week === week.week ? 'active' : ''}`}
-                      onClick={() => setActiveLesson(week)}
-                    >
-                      <BookOpen size={18} />
-                      <div className="module-item-text">
-                        <span className="module-week-label">{week.label || `Session ${week.week}`}</span>
-                        <span className="module-theme-label" title={week.theme}>{week.theme}</span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </aside>
-
-            {/* Main Content Area */}
-            <main className="lms-main">
-              <div className="lms-dashboard">
-                <div className="dashboard-header">
-                  <h2>{program.toUpperCase()} / {selectedStream} / Semester {selectedSemester}</h2>
-                  <p>Select a module from the sidebar to begin learning.</p>
-                </div>
-
-                  {program === 'ug' && !selectedStream.includes('Aviation') && (
-                    <div className="batch-tracker-card">
-                      <div className="card-header">
-                        <h3><Users size={24} color="#4f46e5" /> Section Progress Tracker</h3>
-                      </div>
-                      <div className="batch-progress-grid">
-                        {SECTIONS.map(section => {
-                          const progress = sectionProgress[section] || 0;
-                          const isActive = activeSection === section;
-                          return (
-                            <div 
-                              key={section} 
-                              className={`batch-progress-item ${isActive ? 'active' : ''}`}
-                              onClick={() => setActiveSection(section)}
-                            >
-                              <div className="batch-info" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                                  <span className="batch-name" style={{ fontWeight: '700', whiteSpace: 'nowrap', color: isActive ? 'var(--accent-primary)' : 'var(--text-main)' }}>{section}</span>
-                                  <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', height: '20px' }}>
-                                    {isActive && <span style={{ fontSize: '0.65rem', padding: '0.1rem 0.4rem', background: 'var(--accent-primary)', color: 'white', borderRadius: '12px', width: 'fit-content', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Active</span>}
-                                    {isActive && progress > 0 && (
-                                      <button 
-                                        onClick={(e) => handleResetSection(e, section)}
-                                        className="reset-progress-btn"
-                                        title="Reset Demo Progress"
-                                      >
-                                        <RotateCcw size={14} />
-                                      </button>
-                                    )}
-                                  </div>
-                                </div>
-                                <span className="batch-percent" style={{ fontWeight: '700', fontSize: '1.25rem', color: isActive ? 'var(--text-main)' : 'var(--text-muted)' }}>{progress}%</span>
-                              </div>
-                              <div className="progress-bar-bg" style={{ background: isActive ? 'var(--border-color)' : 'var(--bg-app)' }}>
-                                <div className="progress-bar-fill" style={{ width: `${progress}%`, backgroundColor: progress > 75 ? '#10b981' : progress > 50 ? '#f59e0b' : isActive ? '#4f46e5' : '#94a3b8' }}></div>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-
-                  {isLevel4 && (
-                    <div className="realtime-card">
-                      <div className="card-header">
-                        <h3><Sparkles size={24} color="#6366f1"/> Live Career Intelligence</h3>
-                        <button className="search-btn" onClick={fetchLatestPaths} disabled={isSearching}>
-                          {isSearching ? <Loader2 className="spinner" size={18} /> : <Search size={18} />}
-                          Check for latest updates
-                        </button>
-                      </div>
-                      {searchResults && (
-                        <div className="search-results">
-                          {searchResults.length === 0 ? (
-                            <p>No results found.</p>
-                          ) : (
-                            searchResults.map((res, i) => (
-                              <div key={i} className="result-item">
-                                <a href={res.link} target="_blank" rel="noreferrer"><h4>{res.title}</h4></a>
-                                <p>{res.snippet}</p>
-                              </div>
-                            ))
-                          )}
-                        </div>
-                      )}
-                      {!searchResults && !isSearching && (
-                        <p className="hint-text">Click the button to fetch real-time certifications and career paths from the web for {selectedStream}.</p>
-                      )}
-                    </div>
-                  )}
-
-                  <div className="modules-grid">
-                    {activeWeeks.map((week) => (
-                      <div key={week.week} className="module-card" onClick={() => setActiveLesson(week)}>
-                        <div className="module-card-header">
-                          <span className="week-badge">{week.label || `Session ${week.week}`}</span>
-                        </div>
-                        <h3>{week.theme}</h3>
-                        <p className="module-focus">{week.focus}</p>
-                        <div className="module-card-footer">
-                          <span>Begin Module</span>
-                          <ChevronRight size={16} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-            </main>
-          </div>
-
-          {/* Presentation Slide Viewer Modal */}
-          {activeLesson && (
-            <SlideViewer isAdmin={isAdmin}
-              weekData={activeLesson}
-              program={program}
-              stream={selectedStream}
-              semester={selectedSemester}
-              activeSection={activeSection}
-              theme={theme}
-              onClose={() => setActiveLesson(null)}
-            />
-          )}
+          <main style={{ width: '100vw', minHeight: '100vh', paddingTop: activeLesson ? '70px' : '0' }}>
+            {activeLesson ? (
+              <SlideViewer isAdmin={isAdmin}
+                weekData={activeLesson}
+                program={program}
+                stream={selectedStream}
+                semester={selectedSemester}
+                activeSection={activeSection}
+                theme={theme}
+                onClose={() => setActiveLesson(null)}
+              />
+            ) : (
+              <StreamingDashboard 
+                program={program}
+                streamName={selectedStream}
+                semester={selectedSemester}
+                weeks={curriculumData[program].streams.find(s => s.streamName === selectedStream)?.semesters.find(s => s.semester === selectedSemester)?.weeks || []}
+                onSelectLesson={setActiveLesson}
+                theme={theme}
+              />
+            )}
+          </main>
         </div>
-      )}
-    </>
+)}
+</>
   );
 }
