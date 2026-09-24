@@ -36,16 +36,16 @@ export default function AbsurdAbstract({ image, question, revealText }: AbsurdAb
     }}>
       {/* Top Banner */}
       <div style={{
-        background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)',
+        background: 'var(--accent-gradient, var(--accent-primary))',
         padding: '1.5rem',
         textAlign: 'center',
         color: 'white',
-        borderBottom: '4px solid #6366f1'
+        
       }}>
         <h2 style={{ margin: 0, fontSize: '1.8rem', fontWeight: '800', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
-          <Sparkles color="#a5b4fc" />
+          <Sparkles color="#ffffff" />
           THE ABSURD & ABSTRACT
-          <Sparkles color="#a5b4fc" />
+          <Sparkles color="#ffffff" />
         </h2>
       </div>
 
