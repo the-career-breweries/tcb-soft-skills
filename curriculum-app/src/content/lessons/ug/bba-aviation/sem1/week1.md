@@ -1,6 +1,8 @@
 # Welcome to Soft Skills & Personality Development
 *Unit 1: Self-Awareness & Confidence Building*
 
+![Week 1 Illustration](/images/slides/aviation_soft_skills_w1_1790220165584.jpg)
+
 ---
 
 # Who are you, really?
@@ -17,7 +19,19 @@ Today, we explore the **Johari Window**, a psychological tool created to help yo
 Imagine a window with four panes. Each pane represents personal information (feelings, motivation, skills) from two perspectives: **Yours** and **Others**.
 
 | | **Known to You** | **Unknown to You** |
-|:---|:---|:---|
+|:
+
+---
+
+|:
+
+---
+
+|:
+
+---
+
+|
 | **Known to Others** | **1. OPEN AREA** *(e.g., You are an aviation student, you speak English, you enjoy traveling)* | **2. BLIND AREA** *(e.g., You tap your foot when nervous, you interrupt often, you have a calming voice)* |
 | **Unknown to Others** | **3. HIDDEN AREA** *(e.g., Fear of public speaking, secret singing talent, anxiety about flying)* | **4. UNKNOWN AREA** *(e.g., Unrecognized crisis leadership skills, hidden aptitude for ATC)* |
 

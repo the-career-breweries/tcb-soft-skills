@@ -1,6 +1,8 @@
 # The STAR Method
 *Unit 2: Communication Skills & Interview Prep*
 
+![Week 3 Illustration](/images/slides/aviation_soft_skills_w3_1790220216054.jpg)
+
 ---
 
 # What is the STAR Method?

@@ -1,6 +1,9 @@
 # Welcome to Aviation Soft Skills
 ### Building Your Commander's Presence
 
+![Week 2 Illustration](/images/slides/aviation_soft_skills_w2_1790220178302.jpg)
+
+
 Welcome to Semester 1. In the aviation industry, your technical knowledge keeps the plane in the air, but your **communication skills** keep the passengers and crew safe.
 
 Today, we focus on breaking the ice, removing stage fright, and speaking with clarity.
