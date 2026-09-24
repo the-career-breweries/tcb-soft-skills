@@ -33,7 +33,7 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.setAttribute('data-theme', savedTheme);
-      setHasSelectedTheme(true);
+      // Deliberately NOT setting hasSelectedTheme so they see the screen on reload
     } else {
       setTheme('classic');
       document.documentElement.setAttribute('data-theme', 'classic');
