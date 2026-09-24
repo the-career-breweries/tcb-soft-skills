@@ -5,7 +5,7 @@ import { curriculumData, WeekData } from '@/data/curriculum';
 import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw, Menu } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
 import WelcomeScreen from '@/components/WelcomeScreen';
-import '../globals.css';
+import '@/app/globals.css';
 
 export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }) {
   const [program, setProgram] = useState<'ug' | 'pg'>('ug');
