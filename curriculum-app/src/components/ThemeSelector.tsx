@@ -109,15 +109,15 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
               flexDirection: 'column',
               justifyContent: 'flex-end',
               padding: '1.5rem',
-              border: hoveredTheme === t.id ? \`4px solid \${t.color}\` : '4px solid transparent',
-              boxShadow: hoveredTheme === t.id ? \`0 0 30px \${t.color}66\` : '0 10px 15px -3px rgba(0, 0, 0, 0.5)',
+              border: hoveredTheme === t.id ? `4px solid ${t.color}` : '4px solid transparent',
+              boxShadow: hoveredTheme === t.id ? `0 0 30px ${t.color}66` : '0 10px 15px -3px rgba(0, 0, 0, 0.5)',
               position: 'relative',
               overflow: 'hidden'
             }}>
               <div style={{ 
                 position: 'absolute', 
                 top: 0, left: 0, right: 0, bottom: 0, 
-                background: hoveredTheme === t.id ? \`linear-gradient(to top, \${t.color} 0%, transparent 100%)\` : 'none',
+                background: hoveredTheme === t.id ? `linear-gradient(to top, ${t.color} 0%, transparent 100%)` : 'none',
                 opacity: 0.6,
                 zIndex: 1
               }} />
