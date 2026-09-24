@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { WeekData } from '@/data/curriculum';
-import { X, ChevronLeft, ChevronRight, Loader2, Printer, ZoomIn, ZoomOut, QrCode, Sparkles } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Loader2, Printer, ZoomIn, ZoomOut, QrCode, Sparkles, Upload } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
@@ -65,9 +65,10 @@ interface SlideViewerProps {
   course?: string;
   activeSection?: string;
   onClose: () => void;
+  isAdmin?: boolean;
 }
 
-export default function SlideViewer({ weekData, program, stream, semester, theme, course = 'soft-skills', activeSection, onClose }: SlideViewerProps) {
+export default function SlideViewer({ weekData, program, stream, semester, theme, course = 'soft-skills', activeSection, onClose, isAdmin = false }: SlideViewerProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slides, setSlides] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -403,6 +404,12 @@ export default function SlideViewer({ weekData, program, stream, semester, theme
                 {activeSection && currentSlide === slides.length - 1 && (
                   <button onClick={handleSessionComplete} className="session-complete-btn" style={{ position: 'absolute', bottom: '2rem', right: '2rem' }}>
                     Mark Session Complete
+                  </button>
+                )}
+                {isAdmin && (
+                  <button onClick={() => alert("Asset Upload Modal will open here!")} style={{ position: 'absolute', bottom: '2rem', left: '2rem', display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#2563eb', color: 'white', padding: '12px 24px', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: '600', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)', zIndex: 50 }}>
+                    <Upload size={20} />
+                    Upload Asset to Slide
                   </button>
                 )}
              </div>
