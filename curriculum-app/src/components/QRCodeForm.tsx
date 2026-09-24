@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function QRCodeForm() {
   // This links directly to the feedback page we just built
-  const formUrl = "https://tcb-soft-skills.onrender.com/feedback"; 
+  const formUrl = "https://thecareerbreweries.onrender.com/feedback/soft-skills"; 
   const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=2&data=${encodeURIComponent(formUrl)}`;
 
   return (
