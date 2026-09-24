@@ -1,0 +1,128 @@
+.container {
+  min-height: 100vh;
+  background-color: var(--bg-app);
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.backBtn {
+  margin-right: 1rem;
+  padding: 0.5rem;
+  background-color: var(--bg-surface);
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-muted);
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.backBtn:hover {
+  background-color: #f3f4f6;
+  color: var(--text-main);
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.panel {
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 500;
+  transition: all 0.2s;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+  background-color: #f9fafb;
+}
+
+.tab.active {
+  color: #2563eb;
+  background-color: #eff6ff;
+  border-bottom-color: #2563eb;
+}
+
+.tabContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.panelBody {
+  padding: 2rem;
+}
+
+.dropzone {
+  border: 2px dashed #cbd5e1;
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  text-align: center;
+  background-color: #f8fafc;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropzone:hover {
+  background-color: #f1f5f9;
+}
+
+.iconCircle {
+  width: 4rem;
+  height: 4rem;
+  background-color: #dbeafe;
+  color: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+}
+
+.dropzoneTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.dropzoneDesc {
+  color: var(--text-muted);
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.5;
+}

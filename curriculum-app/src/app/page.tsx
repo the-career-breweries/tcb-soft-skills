@@ -1,51 +1,56 @@
 "use client";
 
 import Link from 'next/link';
-import { BookOpen, GraduationCap, Code, Shield, Upload, FileText } from 'lucide-react';
+import { BookOpen, Code, Upload, BarChart } from 'lucide-react';
 import './globals.css';
+import styles from './home.module.css';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-8">
-      <div className="max-w-4xl w-full">
-        <h1 className="text-4xl font-bold text-center text-slate-800 mb-2">The Career Breweries</h1>
-        <p className="text-xl text-center text-slate-600 mb-12">Curriculum Management Portal</p>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>The Career Breweries</h1>
+        <p className={styles.subtitle}>Curriculum Management Portal</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={styles.grid}>
           {/* Soft Skills */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
-            <div className="p-6">
-              <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+          <div className={styles.card}>
+            <div className={styles.cardBody}>
+              <div className={`${styles.iconWrapper} ${styles.blue}`}>
                 <UsersIcon />
               </div>
-              <h2 className="text-xl font-semibold text-slate-800 mb-2">Soft Skills</h2>
-              <p className="text-slate-600 mb-4 text-sm">Interactive personality development & communication sessions.</p>
+              <h2 className={styles.cardTitle}>Soft Skills</h2>
+              <p className={styles.cardDesc}>Interactive personality development & communication sessions.</p>
               
-              <div className="space-y-2">
-                <Link href="/soft-skills" className="block text-sm font-medium text-blue-600 hover:text-blue-800 p-2 hover:bg-blue-50 rounded-md transition-colors">
+              <div className={styles.links}>
+                <Link href="/soft-skills" className={`${styles.link} ${styles.primary}`}>
                   ▶ Launch Presentation
                 </Link>
-                <Link href="/admin/soft-skills" className="block text-sm font-medium text-slate-600 hover:text-slate-800 p-2 hover:bg-slate-50 rounded-md transition-colors">
-                  ⚙️ Admin: Upload Assets
+                <Link href="/admin/soft-skills" className={`${styles.link} ${styles.secondary}`}>
+                  <span style={{display: 'inline-flex', alignItems: 'center', gap: '8px'}}>
+                    <Upload size={16} /> Admin: Upload Assets
+                  </span>
                 </Link>
-                <Link href="/admin/feedback/soft-skills" className="block text-sm font-medium text-slate-600 hover:text-slate-800 p-2 hover:bg-slate-50 rounded-md transition-colors">
-                  📊 View Feedback
+                <Link href="/admin/feedback/soft-skills" className={`${styles.link} ${styles.secondary}`}>
+                  <span style={{display: 'inline-flex', alignItems: 'center', gap: '8px'}}>
+                    <BarChart size={16} /> View Feedback
+                  </span>
                 </Link>
               </div>
             </div>
           </div>
 
           {/* Communicative English */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
-            <div className="p-6">
-              <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-4">
+          <div className={styles.card}>
+            <div className={styles.cardBody}>
+              <div className={`${styles.iconWrapper} ${styles.indigo}`}>
                 <BookOpen size={24} />
               </div>
-              <h2 className="text-xl font-semibold text-slate-800 mb-2">Communicative English</h2>
-              <p className="text-slate-600 mb-4 text-sm">Grammar, vocabulary, and professional English modules.</p>
+              <h2 className={styles.cardTitle}>Communicative English</h2>
+              <p className={styles.cardDesc}>Grammar, vocabulary, and professional English modules.</p>
               
-              <div className="space-y-2">
-                <Link href="/communicative-english" className="block text-sm font-medium text-indigo-600 hover:text-indigo-800 p-2 hover:bg-indigo-50 rounded-md transition-colors">
+              <div className={styles.links}>
+                <Link href="/communicative-english" className={`${styles.link} ${styles.indigo}`}>
                   ▶ Launch Presentation
                 </Link>
               </div>
@@ -53,16 +58,16 @@ export default function Home() {
           </div>
 
           {/* Computing Skills */}
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
-            <div className="p-6">
-              <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-4">
+          <div className={styles.card}>
+            <div className={styles.cardBody}>
+              <div className={`${styles.iconWrapper} ${styles.emerald}`}>
                 <Code size={24} />
               </div>
-              <h2 className="text-xl font-semibold text-slate-800 mb-2">Computing Skills</h2>
-              <p className="text-slate-600 mb-4 text-sm">Hardware, software, MS Office, and cyber security.</p>
+              <h2 className={styles.cardTitle}>Computing Skills</h2>
+              <p className={styles.cardDesc}>Hardware, software, MS Office, and cyber security.</p>
               
-              <div className="space-y-2">
-                <Link href="/computing-skills" className="block text-sm font-medium text-emerald-600 hover:text-emerald-800 p-2 hover:bg-emerald-50 rounded-md transition-colors">
+              <div className={styles.links}>
+                <Link href="/computing-skills" className={`${styles.link} ${styles.emerald}`}>
                   ▶ Launch Presentation
                 </Link>
               </div>
