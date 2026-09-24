@@ -7,6 +7,7 @@ import mermaid from 'mermaid';
 import PrintTemplates from './PrintTemplates';
 import RandomTopicGenerator from './RandomTopicGenerator';
 import QRCodeForm from './QRCodeForm';
+import AbsurdAbstract from './AbsurdAbstract';
 import SentenceActivity from './SentenceActivity';
 import confetti from 'canvas-confetti';
 
@@ -144,7 +145,11 @@ const AssetUploadModal = ({ isOpen, onClose, currentSlideContent }: { isOpen: bo
             <div style={{ width: '100%', padding: '16px', backgroundColor: '#f3f4f6', borderRadius: '8px', border: '1px solid #d1d5db', marginTop: '8px' }}>
               <p style={{ fontSize: '0.875rem', fontWeight: '600', color: '#374151', marginBottom: '8px', textAlign: 'left' }}>Markdown Code for this Slide:</p>
               <code style={{ display: 'block', padding: '12px', backgroundColor: '#1e293b', color: '#e2e8f0', borderRadius: '6px', textAlign: 'left', wordBreak: 'break-all' }}>
-                {assetType === 'video' ? `<!-- CINEMA_CLIFFHANGER: ${uploadedUrl} -->` : `![Activity Asset](${uploadedUrl})`}
+                {assetType === 'video' ? `<!-- CINEMA_CLIFFHANGER: ${uploadedUrl} -->` : assetType === 'image' ? ````absurd-abstract
+image: ${uploadedUrl}
+question: Type your question here...
+reveal: Type the reveal truth here!
+```` : `![Activity Asset](${uploadedUrl})`}
               </code>
             </div>
             
@@ -478,7 +483,15 @@ export default function SlideViewer
                     components={{
                       code({ node, inline, className, children, ...props }: any) {
                         const match = /language-(.+)/.exec(className || '');
-                        if (!inline && match && match[1] === 'download') { const filename = String(children).trim(); const downloadUrl = `/downloads/computing/${filename}`; return <div style={{ marginTop: '2rem', marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}><a href={downloadUrl} download={filename} style={{ display: 'flex', alignItems: 'center', gap: '12px', backgroundColor: 'var(--accent-primary)', color: 'white', padding: '16px 32px', borderRadius: '12px', textDecoration: 'none', fontWeight: '600', fontSize: '1.2rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><polyline points='7 10 12 15 17 10'/><line x1='12' x2='12' y1='15' y2='3'/></svg>Download Lab File: {filename}</a></div>; } if (!inline && match && match[1] === 'qrcode') {
+                        if (!inline && match && match[1] === 'download') { const filename = String(children).trim(); const downloadUrl = `/downloads/computing/${filename}`; return <div style={{ marginTop: '2rem', marginBottom: '2rem', display: 'flex', justifyContent: 'center' }}><a href={downloadUrl} download={filename} style={{ display: 'flex', alignItems: 'center', gap: '12px', backgroundColor: 'var(--accent-primary)', color: 'white', padding: '16px 32px', borderRadius: '12px', textDecoration: 'none', fontWeight: '600', fontSize: '1.2rem', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}><svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><polyline points='7 10 12 15 17 10'/><line x1='12' x2='12' y1='15' y2='3'/></svg>Download Lab File: {filename}</a></div>; } if (!inline && match && match[1] === 'absurd-abstract') {
+                            const lines = String(children).trim().split('
+');
+                            const image = lines.find((l: string) => l.startsWith('image:'))?.replace('image:', '').trim() || '';
+                            const question = lines.find((l: string) => l.startsWith('question:'))?.replace('question:', '').trim() || '';
+                            const revealText = lines.find((l: string) => l.startsWith('reveal:'))?.replace('reveal:', '').trim() || '';
+                            return <AbsurdAbstract image={image} question={question} revealText={revealText} />;
+                          }
+                          if (!inline && match && match[1] === 'qrcode') {
                           return <QRCodeForm />;
                         }
                         if (!inline && match && match[1] === 'topic-generator') {
