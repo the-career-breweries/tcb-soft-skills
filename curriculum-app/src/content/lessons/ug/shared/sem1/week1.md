@@ -208,3 +208,11 @@ Receiver))
 
 <!-- PRINT_SLIDE -->
 
+
+
+---
+```absurd-abstract
+image: https://res.cloudinary.com/l4eozknq/image/upload/v1790259237/o55xnd3m9xs9bcwp2673.jpg
+question: What is going on in this image?
+reveal: It is just a test image!
+```
