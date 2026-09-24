@@ -7,30 +7,23 @@ interface ThemeSelectorProps {
   onSelectTheme: (theme: AppTheme) => void;
 }
 
-const posters = [
-  // Art & Classics
-  'https://upload.wikimedia.org/wikipedia/commons/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/3/30/The_Scream.jpg',
-  'https://upload.wikimedia.org/wikipedia/commons/a/a5/Tsunami_by_hokusai_19th_century_classic_ukiyo-e_japanese_art.jpg',
-  
-  // Cinema / Theatre / Books (Verified Unsplash & Pixabay)
-  'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=400&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=400&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=400&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1505686994433-677134ce5a1c?q=80&w=400&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=400&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1478147424095-201b1739c6d4?q=80&w=400&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1470229722913-7c092fb13b30?q=80&w=400&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=400&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1589998059171-9899ea853229?q=80&w=400&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=400&h=600&fit=crop'
+const validUnsplashIds = [
+  '1514525253161-7a46d19cd819', // Stage
+  '1489599849927-2ee91cede3ba', // Theatre
+  '1579783902614-a3fb3927b6a5', // Art
+  '1440404653325-ab127d49abc1', // Film
+  '1512820790803-83ca734da794', // Books
+  '1536440136628-849c177e76a1', // Clapper
+  '1511512578047-dfb367046420', // Neon
+  '1577083552431-6e5fd01aa342', // Painting
 ];
 
+const posters = validUnsplashIds.map(id => \`https://images.unsplash.com/photo-\${id}?q=80&w=400&h=600&fit=crop\`);
+
 // Fixed offsets to prevent hydration mismatches
-const row1 = [...posters.slice(0, 7), ...posters.slice(7), ...posters.slice(0, 7)];
-const row2 = [...posters.slice(5), ...posters.slice(0, 5), ...posters.slice(3, 10)];
-const row3 = [...posters.slice(10), ...posters.slice(0, 10), ...posters.slice(2, 9)];
+const row1 = [...posters, ...posters, ...posters];
+const row2 = [...posters.slice(4), ...posters, ...posters, ...posters.slice(0, 4)];
+const row3 = [...posters.slice(2), ...posters, ...posters, ...posters.slice(0, 2)];
 
 export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
   const [hoveredTheme, setHoveredTheme] = useState<AppTheme | null>(null);
@@ -40,7 +33,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       id: 'netflix' as AppTheme,
       name: 'Binge Mode',
       brandLogo: (
-        <svg viewBox="0 0 111 30" width="140" fill="#e50914" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 111 30" width="180" height="48" fill="#e50914" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
           <path d="M105.062 14.28L111 30c-1.75-.25-5.499-.563-8.875-.75l-4.688-12.875L92.25 30c-3.125-.125-6.875-.125-8.5-.125l9.5-24.875-8.25-17.75h9.375l5.125 12.313 5.438-12.313h8.312l-8.188 17.03zM75.25 30V0h-8.5v30h8.5zM61.875 30V0H46.125v7.25h7.25V30h8.5V7.25h7.25v-7.25H46.125M39.625 30V0h-8.5v30h8.5zM29.625 22.75V19h-8v-6.375h9V5.375h-9V0H13v30h16.625v-7.25zM10.125 30L0 0h8.5l4.312 12.812L17.5 0h8.25L10.125 30z"/>
         </svg>
       ),
@@ -51,7 +44,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       id: 'prime' as AppTheme,
       name: 'Prime Focus',
       brandLogo: (
-        <svg viewBox="0 0 100 30" width="140" fill="#00a8e1" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 100 30" width="180" height="54" fill="#00a8e1" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
           <path d="M13.5 12.2c0-3.3 2.1-5.4 5.3-5.4 2.1 0 3.8.9 4.6 2.3l3.5-3.1c-1.7-2.3-4.5-3.8-8-3.8-6 0-10.4 4.1-10.4 10.2 0 6 4 10.3 10.5 10.3 3.6 0 6.6-1.5 8.4-4l-3.3-3.1c-1.1 1.6-2.9 2.5-5 2.5-3.2 0-5.5-2.1-5.6-5.9zM76.9 2.7h-5.2v19.6h5.2V2.7zM95.6 12.2c0-3.3 2.1-5.4 5.3-5.4 2.1 0 3.8.9 4.6 2.3l3.5-3.1c-1.7-2.3-4.5-3.8-8-3.8-6 0-10.4 4.1-10.4 10.2 0 6 4 10.3 10.5 10.3 3.6 0 6.6-1.5 8.4-4l-3.3-3.1c-1.1 1.6-2.9 2.5-5 2.5-3.2 0-5.5-2.1-5.6-5.9z"/>
           <path d="M37.9 2.7h-5.2v19.6h5.2c5.8 0 8.7-3 8.7-9.8 0-6.8-2.9-9.8-8.7-9.8zm-1 15h-4.2v-10h4.2c3 0 4.1 1.4 4.1 5 0 3.5-1.1 5-4.1 5zM53.3 22.3h4.9v-7.1h1.1l4 7.1h5.8l-4.7-7.9c2.3-.9 3.5-2.8 3.5-5.8 0-4.1-2.4-6-6.6-6h-8v19.7zm4.9-10.8v-4.9h3.1c1.3 0 2 .5 2 2.4s-.6 2.5-2 2.5h-3.1zM89.7 2.7h-5.2v19.6h5.2V2.7zM69.8 17.5l-3.3-10.4h-6.2L66.7 22h6.2L79 7h-5.8l-3.4 10.5z"/>
           <path fill="#000" d="M11 25.5C21 28 32 30 50 30c18 0 29-2 39-4.5-2.5 1-13 3.5-39 3.5-26 0-36.5-2.5-39-3.5z"/>
@@ -64,7 +57,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       id: 'crunchyroll' as AppTheme,
       name: 'Anime Hub',
       brandLogo: (
-        <svg viewBox="0 0 150 40" width="140" fill="#f47521" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 150 40" width="200" height="54" fill="#f47521" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
           <path d="M20 0C8.954 0 0 8.954 0 20s8.954 20 20 20 20-8.954 20-20S31.046 0 20 0zm0 35c-8.284 0-15-6.716-15-15 0-8.284 6.716-15 15-15 8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15zm0-25a10 10 0 100 20 10 10 0 000-20z"/>
           <text x="45" y="27" fontFamily="Arial" fontWeight="900" fontSize="24" letterSpacing="1px">CRUNCHYROLL</text>
         </svg>
@@ -77,8 +70,8 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       name: 'Classic Studio',
       brandLogo: (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-          <Briefcase size={56} color="#2563eb" />
-          <span style={{ fontSize: '1.2rem', fontWeight: '900', color: '#2563eb', letterSpacing: '2px' }}>TCB LMS</span>
+          <Briefcase size={64} color="#2563eb" />
+          <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#2563eb', letterSpacing: '2px' }}>TCB LMS</span>
         </div>
       ),
       color: '#2563eb',
@@ -101,7 +94,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       overflow: 'hidden'
     }}>
       {/* --- CSS Animations for Scrolling Background --- */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{__html: \`
         @keyframes scrollLeft {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -121,11 +114,11 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
           height: 300px;
           object-fit: cover;
           border-radius: 8px;
-          opacity: 0.4;
-          filter: grayscale(40%) contrast(120%);
+          opacity: 0.6;
+          filter: contrast(120%);
           box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-      `}} />
+      \`}} />
 
       {/* --- Scrolling Background --- */}
       <div style={{
@@ -149,11 +142,11 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
         </div>
       </div>
 
-      {/* Extreme Dark Overlay with Radial Gradient so the center pops */}
+      {/* Lightened Dark Overlay so posters are visible */}
       <div style={{
         position: 'absolute',
         top: 0, left: 0, right: 0, bottom: 0,
-        background: 'radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 60%, #000 100%)',
+        background: 'radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.9) 100%)',
         zIndex: 1
       }} />
 
@@ -162,7 +155,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
         position: 'absolute',
         top: 0, left: 0, right: 0, bottom: 0,
         backgroundColor: hoveredTheme ? themes.find(t => t.id === hoveredTheme)?.color : '#000',
-        opacity: hoveredTheme ? 0.25 : 0,
+        opacity: hoveredTheme ? 0.35 : 0,
         transition: 'all 0.5s ease',
         mixBlendMode: 'color',
         zIndex: 2
