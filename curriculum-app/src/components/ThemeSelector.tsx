@@ -94,7 +94,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       overflow: 'hidden'
     }}>
       {/* --- CSS Animations for Scrolling Background --- */}
-      <style dangerouslySetInnerHTML={{__html: \`
+      <style dangerouslySetInnerHTML={{__html: `
         @keyframes scrollLeft {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
@@ -118,7 +118,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
           filter: contrast(120%);
           box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
-      \`}} />
+      `}} />
 
       {/* --- Scrolling Background --- */}
       <div style={{
