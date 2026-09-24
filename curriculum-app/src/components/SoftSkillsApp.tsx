@@ -269,36 +269,32 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
                 <span style={{ cursor: 'pointer', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'white'} onMouseOut={(e) => e.currentTarget.style.color = '#e5e7eb'}>Home</span>
                 
                 {/* Program Selector */}
-                <select 
-                  value={program} 
-                  onChange={handleProgramChange}
-                  style={{ background: 'transparent', color: 'inherit', border: 'none', outline: 'none', fontWeight: '600', cursor: 'pointer', appearance: 'none' }}
-                >
-                  <option value="ug" style={{color: 'black'}}>Undergraduate</option>
-                  <option value="pg" style={{color: 'black'}}>Postgraduate</option>
-                </select>
+                  <CustomDropdown 
+                    value={program} 
+                    onChange={handleProgramChange}
+                    options={[
+                      { label: 'Undergraduate', value: 'ug' },
+                      { label: 'Postgraduate', value: 'pg' }
+                    ]}
+                  />
 
                 {/* Stream Selector */}
-                <select 
-                  value={selectedStream} 
-                  onChange={handleStreamChange}
-                  style={{ background: 'transparent', color: 'inherit', border: 'none', outline: 'none', fontWeight: '600', cursor: 'pointer', appearance: 'none' }}
-                >
-                  {streams.map(s => <option key={s.streamName} value={s.streamName} style={{color: 'black'}}>{s.streamName}</option>)}
-                </select>
+                  <CustomDropdown 
+                    value={selectedStream} 
+                    onChange={handleStreamChange}
+                    options={streams.map(s => ({ label: s.streamName, value: s.streamName }))}
+                  />
                 
                 {/* Semester Selector */}
-                <select 
-                  value={selectedSemester} 
-                  onChange={(e) => {
-                    setSelectedSemester(Number(e.target.value));
-                    setSearchResults(null);
-                    setActiveLesson(null);
-                  }}
-                  style={{ background: 'transparent', color: 'inherit', border: 'none', outline: 'none', fontWeight: '600', cursor: 'pointer', appearance: 'none' }}
-                >
-                  {semesters.map(s => <option key={s} value={s} style={{color: 'black'}}>Semester {s}</option>)}
-                </select>
+                  <CustomDropdown 
+                    value={selectedSemester} 
+                    onChange={(val) => {
+                      setSelectedSemester(Number(val));
+                      setSearchResults(null);
+                      setActiveLesson(null);
+                    }}
+                    options={semesters.map(s => ({ label: `Semester ${s}`, value: s }))}
+                  />
               </div>
             </div>
             
