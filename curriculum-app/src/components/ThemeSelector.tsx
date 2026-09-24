@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Briefcase } from 'lucide-react';
+import { Briefcase, Clapperboard, MonitorPlay, Tv2 } from 'lucide-react';
 
 export type AppTheme = 'netflix' | 'prime' | 'crunchyroll' | 'classic';
 
@@ -33,9 +33,12 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       id: 'netflix' as AppTheme,
       name: 'Binge Mode',
       brandLogo: (
-        <svg viewBox="0 0 111 30" width="180" height="48" fill="#e50914" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
-          <path d="M105.062 14.28L111 30c-1.75-.25-5.499-.563-8.875-.75l-4.688-12.875L92.25 30c-3.125-.125-6.875-.125-8.5-.125l9.5-24.875-8.25-17.75h9.375l5.125 12.313 5.438-12.313h8.312l-8.188 17.03zM75.25 30V0h-8.5v30h8.5zM61.875 30V0H46.125v7.25h7.25V30h8.5V7.25h7.25v-7.25H46.125M39.625 30V0h-8.5v30h8.5zM29.625 22.75V19h-8v-6.375h9V5.375h-9V0H13v30h16.625v-7.25zM10.125 30L0 0h8.5l4.312 12.812L17.5 0h8.25L10.125 30z"/>
-        </svg>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+          <Clapperboard size={72} color="#e50914" strokeWidth={1.5} />
+          <span style={{ fontSize: '2rem', fontWeight: '900', color: '#e50914', letterSpacing: '-1px', fontFamily: '"Arial Black", sans-serif' }}>
+            CINEBINGE
+          </span>
+        </div>
       ),
       color: '#e50914',
       bg: 'linear-gradient(to bottom, rgba(20,20,20,0) 0%, rgba(20,20,20,1) 100%), url("https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=2069&auto=format&fit=crop")',
@@ -44,11 +47,12 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       id: 'prime' as AppTheme,
       name: 'Prime Focus',
       brandLogo: (
-        <svg viewBox="0 0 100 30" width="180" height="54" fill="#00a8e1" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
-          <path d="M13.5 12.2c0-3.3 2.1-5.4 5.3-5.4 2.1 0 3.8.9 4.6 2.3l3.5-3.1c-1.7-2.3-4.5-3.8-8-3.8-6 0-10.4 4.1-10.4 10.2 0 6 4 10.3 10.5 10.3 3.6 0 6.6-1.5 8.4-4l-3.3-3.1c-1.1 1.6-2.9 2.5-5 2.5-3.2 0-5.5-2.1-5.6-5.9zM76.9 2.7h-5.2v19.6h5.2V2.7zM95.6 12.2c0-3.3 2.1-5.4 5.3-5.4 2.1 0 3.8.9 4.6 2.3l3.5-3.1c-1.7-2.3-4.5-3.8-8-3.8-6 0-10.4 4.1-10.4 10.2 0 6 4 10.3 10.5 10.3 3.6 0 6.6-1.5 8.4-4l-3.3-3.1c-1.1 1.6-2.9 2.5-5 2.5-3.2 0-5.5-2.1-5.6-5.9z"/>
-          <path d="M37.9 2.7h-5.2v19.6h5.2c5.8 0 8.7-3 8.7-9.8 0-6.8-2.9-9.8-8.7-9.8zm-1 15h-4.2v-10h4.2c3 0 4.1 1.4 4.1 5 0 3.5-1.1 5-4.1 5zM53.3 22.3h4.9v-7.1h1.1l4 7.1h5.8l-4.7-7.9c2.3-.9 3.5-2.8 3.5-5.8 0-4.1-2.4-6-6.6-6h-8v19.7zm4.9-10.8v-4.9h3.1c1.3 0 2 .5 2 2.4s-.6 2.5-2 2.5h-3.1zM89.7 2.7h-5.2v19.6h5.2V2.7zM69.8 17.5l-3.3-10.4h-6.2L66.7 22h6.2L79 7h-5.8l-3.4 10.5z"/>
-          <path fill="#000" d="M11 25.5C21 28 32 30 50 30c18 0 29-2 39-4.5-2.5 1-13 3.5-39 3.5-26 0-36.5-2.5-39-3.5z"/>
-        </svg>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+          <MonitorPlay size={72} color="#00a8e1" strokeWidth={1.5} />
+          <span style={{ fontSize: '1.8rem', fontWeight: '800', color: '#00a8e1', letterSpacing: '1px', fontStyle: 'italic' }}>
+            aero prime
+          </span>
+        </div>
       ),
       color: '#00a8e1',
       bg: 'linear-gradient(to bottom, rgba(15,23,30,0) 0%, rgba(15,23,30,1) 100%), url("https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop")',
@@ -57,10 +61,12 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       id: 'crunchyroll' as AppTheme,
       name: 'Anime Hub',
       brandLogo: (
-        <svg viewBox="0 0 150 40" width="200" height="54" fill="#f47521" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
-          <path d="M20 0C8.954 0 0 8.954 0 20s8.954 20 20 20 20-8.954 20-20S31.046 0 20 0zm0 35c-8.284 0-15-6.716-15-15 0-8.284 6.716-15 15-15 8.284 0 15 6.716 15 15 0 8.284-6.716 15-15 15zm0-25a10 10 0 100 20 10 10 0 000-20z"/>
-          <text x="45" y="27" fontFamily="Arial" fontWeight="900" fontSize="24" letterSpacing="1px">CRUNCHYROLL</text>
-        </svg>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+          <Tv2 size={72} color="#f47521" strokeWidth={1.5} />
+          <span style={{ fontSize: '1.8rem', fontWeight: '900', color: '#f47521', letterSpacing: '2px' }}>
+            OTAKUSTREAM
+          </span>
+        </div>
       ),
       color: '#f47521',
       bg: 'linear-gradient(to bottom, rgba(24,24,24,0) 0%, rgba(24,24,24,1) 100%), url("https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1974&auto=format&fit=crop")',
@@ -69,9 +75,11 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       id: 'classic' as AppTheme,
       name: 'Classic Studio',
       brandLogo: (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-          <Briefcase size={64} color="#2563eb" />
-          <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#2563eb', letterSpacing: '2px' }}>TCB LMS</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+          <Briefcase size={72} color="#2563eb" strokeWidth={1.5} />
+          <span style={{ fontSize: '1.6rem', fontWeight: '900', color: '#2563eb', letterSpacing: '2px' }}>
+            TCB CLASSIC
+          </span>
         </div>
       ),
       color: '#2563eb',
@@ -164,7 +172,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
       {/* --- Foreground UI --- */}
       <div style={{ zIndex: 10, textAlign: 'center', marginBottom: '5rem', textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>
         <h1 style={{ fontSize: '4.5rem', fontWeight: '800', margin: '0 0 1rem 0', letterSpacing: '-0.02em' }}>
-          Who's watching?
+          What's playin'?
         </h1>
         <p style={{ fontSize: '1.5rem', color: '#d1d5db', margin: 0, fontWeight: '500' }}>
           Choose your streaming experience for today's session.
