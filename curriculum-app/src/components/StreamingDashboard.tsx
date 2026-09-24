@@ -131,7 +131,7 @@ export default function StreamingDashboard({ program, streamName, semester, week
             zIndex: 1
           }} />
           
-          <div style={{ position: 'relative', zIndex: 2, paddingLeft: '4%', maxWidth: '600px' }}>
+          <div style={{ position: 'relative', zIndex: 2, paddingLeft: '4%', maxWidth: '800px', width: '90%', paddingTop: '100px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem' }}>
               <span style={{ 
                 background: 'var(--accent-primary)', color: 'white', padding: '4px 8px', 
@@ -144,7 +144,7 @@ export default function StreamingDashboard({ program, streamName, semester, week
               </span>
             </div>
             
-            <h1 style={{ fontSize: '4rem', fontWeight: '900', lineHeight: '1.1', marginBottom: '1rem', textShadow: '0 4px 12px rgba(0,0,0,0.5)' }}>
+            <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: '900', lineHeight: '1.1', marginBottom: '1rem', textShadow: '0 4px 12px rgba(0,0,0,0.5)' }}>
               {featuredLesson.theme}
             </h1>
             <p style={{ fontSize: '1.3rem', color: '#d1d5db', marginBottom: '2rem', textShadow: '0 2px 4px rgba(0,0,0,0.5)', lineHeight: '1.4' }}>
