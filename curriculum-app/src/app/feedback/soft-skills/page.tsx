@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Star, Send, CheckCircle2, GraduationCap } from 'lucide-react';
-import '../globals.css';
+import '../../globals.css';
 
 export default function FeedbackForm() {
   const today = new Date().toISOString().split('T')[0];
