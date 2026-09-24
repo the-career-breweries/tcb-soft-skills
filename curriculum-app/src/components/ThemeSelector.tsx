@@ -18,7 +18,7 @@ const validUnsplashIds = [
   '1577083552431-6e5fd01aa342', // Painting
 ];
 
-const posters = validUnsplashIds.map(id => \`https://images.unsplash.com/photo-\${id}?q=80&w=400&h=600&fit=crop\`);
+const posters = validUnsplashIds.map(id => `https://images.unsplash.com/photo-${id}?q=80&w=400&h=600&fit=crop`);
 
 // Fixed offsets to prevent hydration mismatches
 const row1 = [...posters, ...posters, ...posters];
