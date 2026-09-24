@@ -271,7 +271,7 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
                 {/* Program Selector */}
                   <CustomDropdown 
                     value={program} 
-                    onChange={handleProgramChange}
+                    onChange={(val) => handleProgramChange({ target: { value: val } } as any)}
                     options={[
                       { label: 'Undergraduate', value: 'ug' },
                       { label: 'Postgraduate', value: 'pg' }
@@ -281,7 +281,7 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
                 {/* Stream Selector */}
                   <CustomDropdown 
                     value={selectedStream} 
-                    onChange={handleStreamChange}
+                    onChange={(val) => handleStreamChange({ target: { value: val } } as any)}
                     options={streams.map(s => ({ label: s.streamName, value: s.streamName }))}
                   />
                 
