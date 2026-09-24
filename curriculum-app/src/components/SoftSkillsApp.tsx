@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { curriculumData, WeekData } from '@/data/curriculum';
-import { Search, Loader2, Sparkles, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw, Menu } from 'lucide-react';
+import { Search, Loader2, Sparkles, Tv, Sun, Moon, BookOpen, GraduationCap, LayoutDashboard, ChevronRight, Users, RotateCcw, Menu } from 'lucide-react';
 import SlideViewer from '@/components/SlideViewer';
 import WelcomeScreen from '@/components/WelcomeScreen';
+import ThemeSelector, { AppTheme } from '@/components/ThemeSelector';
 import '@/app/globals.css';
 
 export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }) {
@@ -24,25 +25,26 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
   const [selectedSemester, setSelectedSemester] = useState<number>(1);
   
   // Theme State
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<AppTheme | 'light' | 'dark'>('classic');
+  const [hasSelectedTheme, setHasSelectedTheme] = useState<boolean>(false);
 
   useEffect(() => {
-    // Default to light theme for LMS style
-    const savedTheme = localStorage.getItem('app-theme') as 'light' | 'dark' | null;
+    const savedTheme = localStorage.getItem('app-theme') as AppTheme | null;
     if (savedTheme) {
       setTheme(savedTheme);
       document.documentElement.setAttribute('data-theme', savedTheme);
+      setHasSelectedTheme(true);
     } else {
-      setTheme('light');
-      document.documentElement.setAttribute('data-theme', 'light');
+      setTheme('classic');
+      document.documentElement.setAttribute('data-theme', 'classic');
     }
   }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    localStorage.setItem('app-theme', newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
+  const handleThemeSelection = (selectedTheme: AppTheme) => {
+    setTheme(selectedTheme);
+    localStorage.setItem('app-theme', selectedTheme);
+    document.documentElement.setAttribute('data-theme', selectedTheme);
+    setHasSelectedTheme(true);
   };
 
   // Real-time search state
@@ -228,7 +230,9 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
 
   return (
     <>
-      {showWelcome && !showOrientation ? (
+      {!hasSelectedTheme ? (
+          <ThemeSelector onSelectTheme={handleThemeSelection} />
+        ) : showWelcome && !showOrientation ? (
         <WelcomeScreen program={program} onProgramChange={changeProgram} onNext={() => setShowOrientation(true)} />
       ) : showOrientation ? (
         <SlideViewer isAdmin={isAdmin}
@@ -276,10 +280,10 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
               </div>
               <button 
                 className="theme-toggle-btn" 
-                onClick={toggleTheme}
+                onClick={() => setHasSelectedTheme(false)}
                 title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               >
-                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                <Tv size={20} />
               </button>
             </div>
           </header>
