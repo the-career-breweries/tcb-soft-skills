@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { WeekData } from '@/data/curriculum';
-import { X, ChevronLeft, ChevronRight, Loader2, Printer, ZoomIn, ZoomOut, QrCode, Sparkles, Upload, Image as ImageIcon, Video, FileQuestion, UploadCloud } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Loader2, Printer, ZoomIn, ZoomOut, QrCode, Sparkles, Upload, Image as ImageIcon, Video, FileQuestion, UploadCloud, LayoutDashboard } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
