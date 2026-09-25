@@ -7,6 +7,7 @@ import mermaid from 'mermaid';
 import PrintTemplates from './PrintTemplates';
 import RandomTopicGenerator from './RandomTopicGenerator';
 import ComputingQuiz from './ComputingQuiz';
+import BlockDiagramInteractive from './BlockDiagramInteractive';
 import QRCodeForm from './QRCodeForm';
 import AbsurdAbstract from './AbsurdAbstract';
 import SentenceActivity from './SentenceActivity';
@@ -618,6 +619,7 @@ export default function SlideViewer
                       .replace(/<!-- PRINT_SLIDE -->/g, '')
                       .replace(/<!-- TOPIC_GENERATOR -->/g, '')
                       .replace(/<!-- COMPUTING_QUIZ -->/g, '')
+                      .replace(/<!-- BLOCK_DIAGRAM_INTERACTIVE -->/g, '')
                       .replace(/<!-- WELCOME_ANIMATIONS -->/g, '')}
                     </ReactMarkdown>
                   </div>
@@ -631,6 +633,10 @@ export default function SlideViewer
                 {slides.length > 0 && slides[currentSlide].includes('<!-- COMPUTING_QUIZ -->') && (
                   <ComputingQuiz />
                 )}
+                {slides.length > 0 && slides[currentSlide].includes('<!-- BLOCK_DIAGRAM_INTERACTIVE -->') && (
+                  <BlockDiagramInteractive />
+                )}
+
 
                 
                 
