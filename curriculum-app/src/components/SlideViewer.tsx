@@ -762,14 +762,14 @@ export default function SlideViewer
                 <div style={{
                   position: 'absolute', top: 0, left: 0, height: '100%',
                   width: `${(currentSlide / Math.max(1, slides.length - 1)) * 100}%`,
-                  background: '#E50914',
+                  background: 'var(--accent-primary)',
                   borderRadius: '2px',
                   transition: 'width 0.3s ease'
                 }} />
                 {/* Thumb */}
                 <div style={{
                   position: 'absolute', top: '50%', left: `${(currentSlide / Math.max(1, slides.length - 1)) * 100}%`,
-                  width: '14px', height: '14px', background: '#E50914', borderRadius: '50%',
+                  width: '14px', height: '14px', background: 'var(--accent-primary)', borderRadius: '50%',
                   transform: 'translate(-50%, -50%)', boxShadow: '0 2px 4px rgba(0,0,0,0.5)',
                   transition: 'left 0.3s ease'
                 }} />
@@ -782,7 +782,7 @@ export default function SlideViewer
                 <button 
                   onClick={() => setIsPlaying(!isPlaying)}
                   style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                  onMouseOver={(e) => e.currentTarget.style.color = '#E50914'}
+                  onMouseOver={(e) => e.currentTarget.style.color = 'var(--accent-primary)'}
                   onMouseOut={(e) => e.currentTarget.style.color = 'white'}
                 >
                   {isPlaying ? <Pause size={28} /> : <Play size={28} />}

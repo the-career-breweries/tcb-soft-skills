@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { Plane, PlaneTakeoff, Users, MessageSquare } from 'lucide-react';
+import { Plane, PlaneTakeoff, Users, MessageSquare, PlaySquare, Gamepad2 } from 'lucide-react';
 
-export type AppTheme = 'netflix' | 'prime' | 'crunchyroll' | 'classic';
+export type AppTheme = 'netflix' | 'prime' | 'crunchyroll' | 'classic' | 'youtube' | 'game';
 
 interface ThemeSelectorProps {
   onSelectTheme: (theme: AppTheme) => void;
@@ -129,6 +129,41 @@ const TcbClassicLogo = ({ isHovered }: { isHovered: boolean }) => {
           100% { transform: translateY(-5px); }
         }
       `}} />
+    </div>
+  );
+};
+
+
+
+const FlyTubeLogo = ({ isHovered }: { isHovered: boolean }) => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+      <div style={{
+        transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        transform: isHovered ? 'scale(1.2)' : 'scale(1)',
+      }}>
+        <PlaySquare size={72} color="#ff0000" strokeWidth={1.5} />
+      </div>
+      <span style={{ fontSize: '2rem', fontWeight: '900', color: '#ff0000', letterSpacing: '-1px', fontFamily: '"Oswald", sans-serif' }}>
+        FlyTube
+      </span>
+    </div>
+  );
+};
+
+const GameItLogo = ({ isHovered }: { isHovered: boolean }) => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+      <div style={{
+        transition: 'all 0.2s ease-in-out',
+        transform: isHovered ? 'translateY(-10px) rotate(-5deg)' : 'translateY(0px) rotate(0deg)',
+        filter: isHovered ? 'drop-shadow(0 0 15px rgba(34, 197, 94, 0.8))' : 'none'
+      }}>
+        <Gamepad2 size={72} color="#22c55e" strokeWidth={1.5} />
+      </div>
+      <span style={{ fontSize: '1.8rem', fontWeight: '900', color: '#22c55e', letterSpacing: '2px', fontFamily: '"Press Start 2P", monospace', textTransform: 'uppercase' }}>
+        Let's Game It!
+      </span>
     </div>
   );
 };
