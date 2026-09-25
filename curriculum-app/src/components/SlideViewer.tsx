@@ -469,6 +469,13 @@ export default function SlideViewer
       
         {cinematicBgUrl && (
           <div className="cinematic-bg-container">
+            {/* Ambient Glow */}
+            {isVideoBg ? (
+              <video src={cinematicBgUrl} autoPlay loop muted playsInline className="cinematic-bg-media ambient-glow" />
+            ) : (
+              <img src={cinematicBgUrl} alt="" className="cinematic-bg-media ambient-glow" />
+            )}
+            {/* Sharp Foreground Image */}
             {isVideoBg ? (
               <video src={cinematicBgUrl} autoPlay loop muted playsInline className="cinematic-bg-media" />
             ) : (
