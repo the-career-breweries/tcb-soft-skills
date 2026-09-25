@@ -1,58 +1,35 @@
-# The STAR Method
-*Unit 2: Communication Skills & Interview Prep*
-
-
-![Week 3 Illustration](/images/slides/aviation_soft_skills_w3_1790220216054.jpg)
+# Art Interpretation
+*Session 3: Observational Skills & Expression*
 
 ---
 
-# What is the STAR Method?
+<!-- CINEMA_BG: /images/slides/abstract_art_1.jpg -->
+# Interpretation 1
 
-Have you ever been asked an interview question like: *"Tell me about a time you had to deal with a difficult person?"*
+Look closely at this painting for 30 seconds.
 
-Instead of rambling, professionals use the **STAR Method** to tell a perfectly structured, compelling story.
-
----
-
-# Breaking Down STAR
-
-*   **S - Situation:** Set the scene. Give the context. *(Who, what, where, when?)*
-*   **T - Task:** What was your specific challenge or responsibility in that situation?
-*   **A - Action:** What specific steps did **YOU** take to solve the problem? *(Focus on "I", not "We")*.
-*   **R - Result:** What was the positive outcome? *(Use numbers or metrics if possible!)*
+Don't think about "what" it is. Think about how it makes you **feel**.
+What story is being told by the clash of gold and dark blue?
 
 ---
 
-# The STAR Method in Action
+<!-- CINEMA_BG: /images/slides/abstract_art_2.jpg -->
+# Interpretation 2
 
-**Question:** Tell me about a time you showed leadership.
+A glowing red door in an empty frozen wasteland. 
 
-*   **Situation:** During our final year college fest, the food vendor cancelled 24 hours before the event.
-*   **Task:** As the event coordinator, I needed to feed 500 attendees with no backup caterer.
-*   **Action:** I immediately called five local restaurants, negotiated a bulk discount with two of them, and organized a team of volunteers to transport the food.
-*   **Result:** We successfully fed all 500 attendees on time, and actually saved 15% of our original catering budget!
+*   Does this door represent an escape?
+*   Or does it represent a trap?
+*   If you open it, what is on the other side?
 
----
-
-# Activity: Your Turn to Shine!
-
-**Time:** 20 Minutes
-
-**The Challenge:** Write down a STAR response to this common aviation interview question: 
-> *"Tell me about a time you had to adapt to a sudden change or emergency."*
-
-*Hint: You can use an example from school, a college project, sports, or personal life.*
-Once written, pair up and practice delivering your story to your partner without looking at your notes!
+**Share your interpretation with the class.**
 
 ---
 
-# Debrief & Wrap Up
+<!-- CINEMA_BG: /images/slides/abstract_art_3.jpg -->
+# Interpretation 3: Fractured Reality
 
-*   Did the structure make your story sound more professional?
-*   Remember: Interviewers care most about the **Action** and the **Result**. Spend the most time there!
+An airplane shattering into neon glass.
 
-**Next Week:** We combine everything—PREP and STAR—for a massive classroom debate!
-
-
-```qrcode
-```
+In the aviation industry, things move fast and can sometimes feel chaotic. 
+How does this image relate to managing a sudden crisis or a change in plans?
