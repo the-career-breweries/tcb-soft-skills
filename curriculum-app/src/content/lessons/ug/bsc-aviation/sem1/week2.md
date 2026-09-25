@@ -1,62 +1,89 @@
-# Welcome to Aviation Soft Skills
-### Building Your Commander's Presence
+# Welcome to Aviation Management Soft Skills
+### The Ground Starts Here
 
-Welcome to Semester 1. In the aviation industry, your technical knowledge keeps the plane in the air, but your **communication skills** keep the passengers and crew safe.
+Welcome to Semester 1. In Aviation Management, you are the face of the airline, the brain behind ground operations, and the problem-solvers when things go wrong.
 
-Today, we focus on breaking the ice, removing stage fright, and speaking with clarity.
+Today, we focus on management presence, overcoming hesitation, and structuring your thoughts.
 
 ```qrcode
 scan
 ```
 
+---
 
-![Week 2 Illustration](/images/slides/aviation_soft_skills_w2_1790220178302.jpg)
+<!-- CINEMATIC_BG: /images/slides/manager_presence.jpg -->
+# The Manager's Presence
+### Authority, Empathy, and Demeanor
 
 ---
 
-# The Uniform Mindset
-### Posture, Presence, and Eye Contact
-
-Before you say a word, you communicate. In aviation, passengers look to the uniform for authority, calm, and competence.
-
-* **Posture:** Stand straight, shoulders back. Open body language.
-* **Eye Contact:** Look at the person, not the floor. It signals trust.
-* **Tone:** Calm, clear, and steady. Never rush your words, even in a crisis.
-
-> **Activity:** Stand up, pair with the person next to you. Introduce yourself as if you are the Captain or Lead Cabin Crew welcoming them aboard. Maintain unbroken eye contact for 15 seconds.
-
----
-
-# The PREP Method 
-### For Crisp, Unambiguous Aviation Communication
-
-Aviation relies on standard phraseology and brevity. You do not have time to ramble over a radio or during an emergency briefing. Use **PREP**:
-
-* **P**oint: State your main instruction or idea immediately.
-* **R**eason: Why is this happening? (The "Because").
-* **E**xtended Explanation (or Example): Provide necessary details, instructions, or evidence.
-* **P**oint: Restate the main point or provide a closing call-to-action.
+```anatomy-widget
+image: /images/slides/manager_presence.jpg
+hotspot1_x: 65
+hotspot1_y: 20
+hotspot1_title: Confident Posture
+hotspot1_desc: Keep your shoulders back and chest open. Never cross your arms defensively.
+hotspot2_x: 55
+hotspot2_y: 10
+hotspot2_title: Active Empathy
+hotspot2_desc: Nod and maintain steady eye contact to show you are listening to passenger concerns.
+hotspot3_x: 48
+hotspot3_y: 50
+hotspot3_title: The Demeanor
+hotspot3_desc: Firm but empathetic tone. You must project control, especially during delays.
+```
 
 ---
 
-# PREP Method: Aviation Scenario
+# The PREP Method
+### For Crisp, Unambiguous Business Communication
 
-> **Scenario:** The aircraft has hit sudden, severe turbulence. You need to brief the passengers.
-
-* **P - Point:** "Ladies and gentlemen, please return to your seats and fasten your seatbelts immediately."
-* **R - Reason:** "We are entering an area of severe, unexpected turbulence."
-* **E - Extended Explanation:** "The weather radar indicates this pocket of rough air will last for approximately the next 15 to 20 minutes."
-* **P - Point:** "Keep your seatbelts securely fastened until the sign is turned off."
+Whether briefing your ground team or de-escalating a passenger issue, you must be clear and structured.
 
 ---
 
-# The Briefing Room: Impromptu Speaking
-### 1 Minute Solo
+<!-- CINEMATIC_BG: /images/slides/angry_passengers.jpg -->
+# Ground Operations Scenario
 
-Let's test your ability to think on your feet and speak clearly. 
+---
+
+```crisis-simulator
+question: Flight 405 to Mumbai is delayed by 3 hours due to thunderstorms. You must brief the angry passengers at the gate. How do you start your announcement?
+choice1: "Ladies and gentlemen, Flight 405 to Mumbai is currently delayed by three hours."
+isCorrect1: true
+reason1: Correct! This follows the 'Point' rule. State the main point clearly and upfront.
+choice2: "Hi everyone, I know you are frustrated, but the weather is really bad and ATC won't let us fly..."
+isCorrect2: false
+reason2: Incorrect. This starts with an excuse and apologetic rambling. Always start with the Point.
+```
+
+---
+
+```crisis-simulator
+question: Now that you've given the Point, what is your next sentence (The Reason)?
+choice1: "This is because our plane is stuck in traffic and the pilots are waiting."
+isCorrect1: false
+reason1: Incorrect. Do not blame internal teams or use unprofessional phrasing.
+choice2: "This is due to severe thunderstorms over the destination airport making it unsafe to land."
+isCorrect2: true
+reason2: Correct! A clear, factual Reason that explains the Point without shifting blame unprofessionally.
+```
+
+---
+
+<!-- CINEMATIC_BG: /images/slides/empty_boardroom.jpg -->
+# 1 MINUTE SOLO
+### THINK ON YOUR FEET
+
+---
+
+# The Boardroom: Impromptu Speaking
+### Take the Floor
+
+Let's test your ability to think on your feet and communicate a stance clearly.
 Volunteers! You have 60 seconds to speak on the topic below.
 
-*Pro-tip: Use the PREP method. Take 3 seconds to breathe before you start.*
+*Pro-tip: Use the PREP method to structure your argument.*
 
 ```topic-generator
 Should passengers be allowed to recline their seats on short flights?
@@ -75,9 +102,9 @@ Should airports have completely silent terminals with no announcements?
 
 # Debrief & Wrap Up
 
-Great energy today. Remember:
-1. **Presence:** Own the space you stand in.
-2. **Clarity:** Use PREP to avoid rambling.
+Great start to the semester! Remember:
+1. **Demeanor:** As a manager, your calm behavior is contagious.
+2. **Structure:** Use PREP whenever you need to explain something complex quickly.
 
 Before you leave, ensure you have submitted the attendance and feedback form from the start of class!
 

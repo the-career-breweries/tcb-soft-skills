@@ -8,6 +8,8 @@ import PrintTemplates from './PrintTemplates';
 import RandomTopicGenerator from './RandomTopicGenerator';
 import ComputingQuiz from './ComputingQuiz';
 import BlockDiagramInteractive from './BlockDiagramInteractive';
+import CrisisSimulator from './CrisisSimulator';
+import AnatomyWidget from './AnatomyWidget';
 import QRCodeForm from './QRCodeForm';
 import AbsurdAbstract from './AbsurdAbstract';
 import SentenceActivity from './SentenceActivity';

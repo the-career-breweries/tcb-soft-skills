@@ -9,49 +9,76 @@ Today, we focus on management presence, overcoming hesitation, and structuring y
 scan
 ```
 
-
-![Week 2 Illustration](/images/slides/aviation_soft_skills_w2_1790220178302.jpg)
-
 ---
 
+<!-- CINEMATIC_BG: /images/slides/manager_presence.jpg -->
 # The Manager's Presence
 ### Authority, Empathy, and Demeanor
 
-As future aviation managers, airport staff, or customer service leaders, your presence dictates the mood of the terminal or the boardroom.
+---
 
-* **Posture:** Confident and open. Never defensive (e.g., arms crossed).
-* **Active Listening:** Nodding and maintaining eye contact when a passenger or colleague is speaking.
-* **Tone:** Firm but empathetic. You must project control, especially during delays or disruptions.
-
-> **Activity:** Stand up, pair with the person next to you. Introduce yourself as the Duty Manager of a major airline resolving a ticketing issue. Practice maintaining a calm, authoritative tone for 30 seconds.
+```anatomy-widget
+image: /images/slides/manager_presence.jpg
+hotspot1_x: 65
+hotspot1_y: 20
+hotspot1_title: Confident Posture
+hotspot1_desc: Keep your shoulders back and chest open. Never cross your arms defensively.
+hotspot2_x: 55
+hotspot2_y: 10
+hotspot2_title: Active Empathy
+hotspot2_desc: Nod and maintain steady eye contact to show you are listening to passenger concerns.
+hotspot3_x: 48
+hotspot3_y: 50
+hotspot3_title: The Demeanor
+hotspot3_desc: Firm but empathetic tone. You must project control, especially during delays.
+```
 
 ---
 
-# The PREP Method 
+# The PREP Method
 ### For Crisp, Unambiguous Business Communication
 
-Whether briefing your ground team or de-escalating a passenger issue, you must be clear and structured. Use **PREP**:
-
-* **P**oint: State your main point clearly and upfront.
-* **R**eason: Give the reason for your point.
-* **E**xtended Explanation (or Example): Provide necessary details, instructions, or evidence.
-* **P**oint: Restate the main point or provide a closing call-to-action.
+Whether briefing your ground team or de-escalating a passenger issue, you must be clear and structured.
 
 ---
 
-# PREP Method: Ground Operations Scenario
+<!-- CINEMATIC_BG: /images/slides/angry_passengers.jpg -->
+# Ground Operations Scenario
 
-> **Scenario:** A flight is delayed by 3 hours due to weather. You must brief the angry passengers at the boarding gate.
+---
 
-* **P - Point:** "Ladies and gentlemen, Flight 405 to Mumbai is currently delayed by three hours."
-* **R - Reason:** "This is due to severe thunderstorms over the destination airport making it unsafe to land."
-* **E - Extended Explanation:** "Air Traffic Control has issued a temporary ground stop for all inbound flights, and we are waiting for clearance to depart."
-* **P - Point:** "We regret the delay caused. While the update is awaited, we request you to avail the complimentary meal vouchers provided during the wait."
+```crisis-simulator
+question: Flight 405 to Mumbai is delayed by 3 hours due to thunderstorms. You must brief the angry passengers at the gate. How do you start your announcement?
+choice1: "Ladies and gentlemen, Flight 405 to Mumbai is currently delayed by three hours."
+isCorrect1: true
+reason1: Correct! This follows the 'Point' rule. State the main point clearly and upfront.
+choice2: "Hi everyone, I know you are frustrated, but the weather is really bad and ATC won't let us fly..."
+isCorrect2: false
+reason2: Incorrect. This starts with an excuse and apologetic rambling. Always start with the Point.
+```
+
+---
+
+```crisis-simulator
+question: Now that you've given the Point, what is your next sentence (The Reason)?
+choice1: "This is because our plane is stuck in traffic and the pilots are waiting."
+isCorrect1: false
+reason1: Incorrect. Do not blame internal teams or use unprofessional phrasing.
+choice2: "This is due to severe thunderstorms over the destination airport making it unsafe to land."
+isCorrect2: true
+reason2: Correct! A clear, factual Reason that explains the Point without shifting blame unprofessionally.
+```
+
+---
+
+<!-- CINEMATIC_BG: /images/slides/empty_boardroom.jpg -->
+# 1 MINUTE SOLO
+### THINK ON YOUR FEET
 
 ---
 
 # The Boardroom: Impromptu Speaking
-### 1 Minute Solo
+### Take the Floor
 
 Let's test your ability to think on your feet and communicate a stance clearly.
 Volunteers! You have 60 seconds to speak on the topic below.
