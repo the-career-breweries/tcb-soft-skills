@@ -2187,6 +2187,7 @@ kbd {
 
 /* Escape Subtitle Mode for Widgets */
 .escape-subtitle p, 
+.escape-subtitle div, 
 .escape-subtitle h1, 
 .escape-subtitle h2, 
 .escape-subtitle h3, 
