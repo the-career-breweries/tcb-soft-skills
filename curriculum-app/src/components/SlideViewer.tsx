@@ -149,7 +149,7 @@ const AssetUploadModal = ({ isOpen, onClose, currentSlideContent }: { isOpen: bo
             <div style={{ width: '100%', padding: '16px', backgroundColor: '#f3f4f6', borderRadius: '8px', border: '1px solid #d1d5db', marginTop: '8px' }}>
               
               <code style={{ display: 'block', padding: '12px', backgroundColor: '#1e293b', color: '#e2e8f0', borderRadius: '6px', textAlign: 'left', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}>
-                {assetType === 'video' ? `<!-- CINEMA_CLIFFHANGER: ${uploadedUrl} -->` : assetType === 'image' ? `\`\`\`absurd-abstract\nimage: ${uploadedUrl}\nquestion: Type your question here...\nreveal: Type the reveal truth here!\n\`\`\`` : `![Activity Asset](${uploadedUrl})`}
+                {assetType === 'video' ? `<!-- CINEMA_CLIFFHANGER: ${uploadedUrl} -->` : assetType === 'image' ? `<!-- CINEMATIC_BG: ${uploadedUrl} -->` : `![Activity Asset](${uploadedUrl})`}
               </code>
             </div>
             
