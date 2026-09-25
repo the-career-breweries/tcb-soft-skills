@@ -74,7 +74,8 @@ export default function CrisisSimulator({ question, choices }: CrisisSimulatorPr
                   background: choice.isCorrect ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
                   color: choice.isCorrect ? '#86efac' : '#fca5a5',
                   fontSize: '1rem', borderLeft: `4px solid ${choice.isCorrect ? '#22c55e' : '#ef4444'}`,
-                  animation: 'fadeIn 0.3s ease-out'
+                  animation: 'fadeIn 0.3s ease-out',
+                  whiteSpace: 'normal', wordWrap: 'break-word', overflowWrap: 'break-word'
                 }}>
                   {choice.reason}
                 </div>
