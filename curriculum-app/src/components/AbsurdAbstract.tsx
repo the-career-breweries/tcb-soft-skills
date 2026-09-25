@@ -22,7 +22,7 @@ export default function AbsurdAbstract({ image, question, revealText }: AbsurdAb
   };
 
   return (
-    <div style={{
+    <div className="escape-subtitle" style={{
       width: '100%',
       maxWidth: '800px',
       margin: '2rem auto',
@@ -32,7 +32,10 @@ export default function AbsurdAbstract({ image, question, revealText }: AbsurdAb
       overflow: 'hidden',
       border: '1px solid #f3f4f6',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      whiteSpace: 'normal',
+      wordWrap: 'break-word',
+      overflowWrap: 'break-word'
     }}>
       {/* Top Banner */}
       <div style={{
@@ -58,7 +61,7 @@ export default function AbsurdAbstract({ image, question, revealText }: AbsurdAb
           padding: '1.5rem',
           borderRadius: '0 16px 16px 0',
         }}>
-          <p style={{ margin: 0, fontSize: '1.4rem', color: '#1e3a8a', fontWeight: '600', lineHeight: '1.5' }}>
+          <p style={{ margin: 0, fontSize: '1.4rem', color: '#1e3a8a', fontWeight: '600', lineHeight: '1.5', whiteSpace: 'normal', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
             🤔 {question}
           </p>
         </div>
@@ -125,7 +128,7 @@ export default function AbsurdAbstract({ image, question, revealText }: AbsurdAb
               textAlign: 'center'
             }}>
               <h3 style={{ margin: '0 0 12px 0', color: '#166534', fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>The Truth</h3>
-              <p style={{ margin: 0, fontSize: '1.5rem', color: '#15803d', fontWeight: '700', lineHeight: '1.4' }}>
+              <p style={{ margin: 0, fontSize: '1.5rem', color: '#15803d', fontWeight: '700', lineHeight: '1.4', whiteSpace: 'normal', wordWrap: 'break-word', overflowWrap: 'break-word' }}>
                 {revealText}
               </p>
             </div>
