@@ -75,7 +75,7 @@ interface SlideViewerProps {
 
 
 
-const AssetUploadModal = ({ isOpen, onClose, currentSlideContent }: { isOpen: boolean, onClose: () => void, currentSlideContent: string }) => {
+const AssetUploadModal = ({ isOpen, onClose, onSnippetGenerated }: { isOpen: boolean, onClose: () => void, onSnippetGenerated: (snippet: string) => void }) => {
   const [assetType, setAssetType] = useState<'image' | 'video' | 'gif' | 'other' | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -145,6 +145,9 @@ const AssetUploadModal = ({ isOpen, onClose, currentSlideContent }: { isOpen: bo
             </div>
             <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#111827', margin: 0 }}>Upload Successful!</h3>
             <p style={{ color: '#4b5563', margin: 0 }}>Your file has been safely stored in Cloudinary.</p>
+              <div style={{ backgroundColor: '#ecfdf5', color: '#065f46', padding: '12px', borderRadius: '8px', border: '1px solid #10b981', width: '100%', fontSize: '0.9rem', fontWeight: '500' }}>
+                ✨ Magic Action: This asset has been automatically inserted into your current slide and permanently saved to the codebase!
+              </div>
             
             <div style={{ width: '100%', padding: '16px', backgroundColor: '#f3f4f6', borderRadius: '8px', border: '1px solid #d1d5db', marginTop: '8px' }}>
               
