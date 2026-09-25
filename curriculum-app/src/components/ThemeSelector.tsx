@@ -214,7 +214,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
     {
       id: 'game' as AppTheme,
       name: "Let's Game It!",
-      logoComponent: <LetsGameItLogo isHovered={hoveredTheme === 'game'} />,
+      logoComponent: <GameItLogo isHovered={hoveredTheme === 'game'} />,
       color: '#9146FF',
       bg: 'linear-gradient(to bottom, rgba(24,24,27,0) 0%, rgba(24,24,27,1) 100%), url("https://images.unsplash.com/photo-1538681105587-85640961bf8b?q=80&w=2070&auto=format&fit=crop")',
     }
