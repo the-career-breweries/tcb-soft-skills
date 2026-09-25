@@ -421,7 +421,7 @@ export default function SlideViewer
   if (!weekData) return null;
 
   return (
-    <div className={`slide-modal-overlay ${isPrintingSlide ? 'is-printing-slide' : ''}`}>
+    <div className={`slide-modal-overlay ${isPrintingSlide ? 'is-printing-slide' : ''} ${course === 'soft-skills' ? 'video-player-mode' : ''}`}>
       <div className="slide-container">
 
         {/* Floating Top Right Controls */}
@@ -457,8 +457,31 @@ export default function SlideViewer
 
         
 
-        {/* End of Episode Binge UI */}
-        {!isLoading && slides.length > 0 && currentSlide === slides.length - 1 && (
+        
+        {/* Floating Left Arrow */}
+        {course !== 'soft-skills' && !isLoading && slides.length > 0 && currentSlide > 0 && (
+          <button 
+            onClick={() => setCurrentSlide(prev => Math.max(prev - 1, 0))}
+            className="nav-btn"
+            style={{ position: 'absolute', top: '50%', left: '2rem', transform: 'translateY(-50%)', zIndex: 10, background: 'rgba(0,0,0,0.4)', borderRadius: '50%', padding: '0.5rem' }}
+          >
+            <ChevronLeft size={48} />
+          </button>
+        )}
+
+        {/* Floating Right Arrow */}
+        {course !== 'soft-skills' && !isLoading && slides.length > 0 && currentSlide < slides.length - 1 && (
+          <button 
+            onClick={() => setCurrentSlide(prev => Math.min(prev + 1, slides.length - 1))}
+            className="nav-btn"
+            style={{ position: 'absolute', top: '50%', right: '2rem', transform: 'translateY(-50%)', zIndex: 10, background: 'rgba(0,0,0,0.4)', borderRadius: '50%', padding: '0.5rem' }}
+          >
+            <ChevronRight size={48} />
+          </button>
+        )}
+
+          {/* End of Episode Binge UI */}
+        {!isLoading && slides.length > 0 && currentSlide === slides.length - 1 && course === 'soft-skills' && (
           <div style={{
             position: 'absolute', bottom: '2rem', right: '2rem', zIndex: 100,
             background: 'rgba(20,20,20,0.95)', border: '1px solid #333',
@@ -700,7 +723,7 @@ export default function SlideViewer
 
       
         {/* Video Scrubber Playbar */}
-        {!isLoading && slides.length > 0 && (
+        {course === 'soft-skills' && !isLoading && slides.length > 0 && (
           <div style={{
             position: 'absolute', bottom: '0', left: '0', right: '0', zIndex: 100,
             background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 70%, transparent 100%)',
