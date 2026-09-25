@@ -2163,6 +2163,7 @@ kbd {
 
 .cinematic-bg-container {
   position: fixed;
+  background-color: #000;
   top: 0;
   left: 0;
   width: 100vw;
@@ -2173,7 +2174,7 @@ kbd {
 .cinematic-bg-media {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .cinematic-bg-overlay {
   position: absolute;
@@ -2214,4 +2215,15 @@ kbd {
 .escape-subtitle h4 {
   font-size: 1.1rem !important;
   font-weight: bold !important;
+}
+
+.ambient-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  filter: blur(60px) brightness(0.5);
+  z-index: -1;
 }
