@@ -145,7 +145,7 @@ const AssetUploadModal = ({ isOpen, onClose, currentSlideContent }: { isOpen: bo
             <p style={{ color: '#4b5563', margin: 0 }}>Your file has been safely stored in Cloudinary.</p>
             
             <div style={{ width: '100%', padding: '16px', backgroundColor: '#f3f4f6', borderRadius: '8px', border: '1px solid #d1d5db', marginTop: '8px' }}>
-              <p style={{ fontSize: '0.875rem', fontWeight: '600', color: '#374151', marginBottom: '8px', textAlign: 'left' }}>Markdown Code for this Slide:</p>
+              
               <code style={{ display: 'block', padding: '12px', backgroundColor: '#1e293b', color: '#e2e8f0', borderRadius: '6px', textAlign: 'left', wordBreak: 'break-all', whiteSpace: 'pre-wrap' }}>
                 {assetType === 'video' ? `<!-- CINEMA_CLIFFHANGER: ${uploadedUrl} -->` : assetType === 'image' ? `\`\`\`absurd-abstract\nimage: ${uploadedUrl}\nquestion: Type your question here...\nreveal: Type the reveal truth here!\n\`\`\`` : `![Activity Asset](${uploadedUrl})`}
               </code>
@@ -422,6 +422,13 @@ export default function SlideViewer
 
   if (!weekData) return null;
 
+
+  // Extract Cinematic Background URL
+  const currentSlideContent = slides[currentSlide] || '';
+  const cinematicBgMatch = currentSlideContent.match(/<!-- CINEMATIC_BG: (.*?) -->/);
+  const cinematicBgUrl = cinematicBgMatch ? cinematicBgMatch[1].trim() : null;
+  const isVideoBg = cinematicBgUrl && (cinematicBgUrl.endsWith('.mp4') || cinematicBgUrl.endsWith('.webm'));
+
   return (
     <div className={`slide-modal-overlay ${isPrintingSlide ? 'is-printing-slide' : ''} ${course === 'soft-skills' ? 'video-player-mode' : ''}`}>
       <div className="slide-container">
@@ -537,9 +544,19 @@ export default function SlideViewer
                  ⚠️ {error}. Displaying fallback curriculum data.
                </div>
              )}
-             <div className="slide-body">
+             <div className="slide-body" style={{ position: 'relative' }}>
+                {cinematicBgUrl && (
+                  <div className="cinematic-bg-container">
+                    {isVideoBg ? (
+                      <video src={cinematicBgUrl} autoPlay loop muted playsInline className="cinematic-bg-media" />
+                    ) : (
+                      <img src={cinematicBgUrl} alt="Cinematic Background" className="cinematic-bg-media" />
+                    )}
+                    <div className="cinematic-bg-overlay" />
+                  </div>
+                )}
                 {slides.length > 0 && (
-                  <div className="markdown-content-container" style={{ position: 'relative', width: '100%', minHeight: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '2rem', paddingBottom: '4rem' }}>
+                  <div className={`markdown-content-container ${cinematicBgUrl ? 'subtitle-mode' : ''}`} style={{ position: 'relative', width: '100%', minHeight: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: cinematicBgUrl ? 'flex-end' : 'flex-start', paddingTop: '2rem', paddingBottom: '4rem', zIndex: 1 }}>
                     <ReactMarkdown 
                     remarkPlugins={[remarkGfm]}
                     components={{
@@ -625,6 +642,7 @@ export default function SlideViewer
                       .replace(/<!-- PRINT: (.*?) -->/g, '')
                       .replace(/<!-- PRINT_SLIDE -->/g, '')
                       .replace(/<!-- TOPIC_GENERATOR -->/g, '')
+                      .replace(/<!-- CINEMATIC_BG: (.*?) -->/g, '')
                       
                       
                       .replace(/<!-- WELCOME_ANIMATIONS -->/g, '')}
