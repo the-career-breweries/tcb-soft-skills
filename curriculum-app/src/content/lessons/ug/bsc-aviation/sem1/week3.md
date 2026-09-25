@@ -3,33 +3,24 @@
 
 ---
 
-<!-- CINEMA_BG: /images/slides/abstract_art_1.jpg -->
-# Interpretation 1
-
-Look closely at this painting for 30 seconds.
-
-Don't think about "what" it is. Think about how it makes you **feel**.
-What story is being told by the clash of gold and dark blue?
+```absurd-abstract
+image: https://res.cloudinary.com/l4eozknq/image/upload/v1790361041/ojoztxo2hnsxddwmwaje.jpg
+question: Look closely at this painting for 30 seconds. What story is being told by the clash of gold and dark blue?
+reveal: There is no wrong answer. It represents finding harmony in chaos—a critical skill in aviation management!
+```
 
 ---
 
-<!-- CINEMA_BG: /images/slides/abstract_art_2.jpg -->
-# Interpretation 2
-
-A glowing red door in an empty frozen wasteland. 
-
-*   Does this door represent an escape?
-*   Or does it represent a trap?
-*   If you open it, what is on the other side?
-
-**Share your interpretation with the class.**
+```absurd-abstract
+image: https://res.cloudinary.com/l4eozknq/image/upload/v1790361044/mgareg1phpc94vmb4pyo.jpg
+question: A glowing red door in an empty frozen wasteland. Does this represent an escape, or a trap?
+reveal: It is up to the observer. In conflicts, a sudden "exit" can be a solution or a dangerous diversion.
+```
 
 ---
 
-<!-- CINEMA_BG: /images/slides/abstract_art_3.jpg -->
-# Interpretation 3: Fractured Reality
-
-An airplane shattering into neon glass.
-
-In the aviation industry, things move fast and can sometimes feel chaotic. 
-How does this image relate to managing a sudden crisis or a change in plans?
+```absurd-abstract
+image: https://res.cloudinary.com/l4eozknq/image/upload/v1790361047/owv6jxia5skiwq4zwjmp.jpg
+question: An airplane shattering into neon glass. How does this relate to managing a sudden crisis or a change in plans?
+reveal: Every shattered piece is an opportunity to rebuild a new structure. Flexibility is key.
+```
