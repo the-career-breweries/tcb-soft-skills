@@ -13,7 +13,6 @@
 
 - **Block Diagram of a Computer:**
 
-
 ```mermaid
 flowchart LR
     A[Input Unit<br/>Keyboard, Mouse] --> B((CPU<br/>CU + ALU))
@@ -26,6 +25,12 @@ flowchart LR
     style D fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff
 ```
 
+  - **Input Unit:** Takes data from the user (e.g., Keyboard, Mouse, Scanner).
+  - **Central Processing Unit (CPU):** The "brain". Consists of:
+    - **Control Unit (CU):** Directs operation of the processor.
+    - **Arithmetic Logic Unit (ALU):** Performs math and logical operations.
+  - **Memory/Storage Unit:** Stores data (RAM for temporary, Hard Disk for permanent).
+  - **Output Unit:** Presents data to the user (e.g., Monitor, Printer, Speaker).
 
 - **Data Flow:** Input ➡️ CPU (Processes with Memory) ➡️ Output.
 

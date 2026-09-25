@@ -1245,6 +1245,7 @@ html, body {
     position: static !important;
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 80% !important;
     height: auto !important;
     min-height: auto !important;
     border: none !important;
@@ -1297,6 +1298,7 @@ html, body {
   .is-printing-slide .mermaid-diagram svg {
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 80% !important;
   }
   .is-printing-slide .mermaid-screen {
     display: none !important;
@@ -1493,7 +1495,8 @@ html, body {
   margin: 3rem 0;
 }
 .mermaid-diagram svg { 
-  max-width: 100% !important; 
+  max-width: 100% !important;
+    min-width: 80% !important; 
   height: auto !important; 
   overflow: visible !important; 
 }
