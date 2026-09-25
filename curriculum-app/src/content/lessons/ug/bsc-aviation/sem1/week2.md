@@ -19,16 +19,16 @@ scan
 
 ```anatomy-widget
 image: /images/slides/manager_presence.jpg
-hotspot1_x: 65
-hotspot1_y: 20
+hotspot1_x: 68
+hotspot1_y: 38
 hotspot1_title: Confident Posture
 hotspot1_desc: Keep your shoulders back and chest open. Never cross your arms defensively.
-hotspot2_x: 55
-hotspot2_y: 10
+hotspot2_x: 63
+hotspot2_y: 25
 hotspot2_title: Active Empathy
 hotspot2_desc: Nod and maintain steady eye contact to show you are listening to passenger concerns.
-hotspot3_x: 48
-hotspot3_y: 50
+hotspot3_x: 62
+hotspot3_y: 55
 hotspot3_title: The Demeanor
 hotspot3_desc: Firm but empathetic tone. You must project control, especially during delays.
 ```
