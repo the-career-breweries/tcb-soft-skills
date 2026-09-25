@@ -21,7 +21,7 @@ export default function AnatomyWidget({ image, hotspots }: AnatomyWidgetProps) {
       width: '100%', maxWidth: '900px', margin: '0 auto',
       position: 'relative', borderRadius: '16px', overflow: 'hidden',
       boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)'
-    }}>
+    }} className="escape-subtitle">
       <img src={image} alt="Anatomy" style={{ width: '100%', height: 'auto', display: 'block' }} />
       
       {hotspots.map((spot, index) => (

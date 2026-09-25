@@ -22,7 +22,7 @@ export default function CrisisSimulator({ question, choices }: CrisisSimulatorPr
       border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px',
       padding: '2rem', color: 'white', boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
       fontFamily: "'Inter', sans-serif"
-    }}>
+    }} className="escape-subtitle">
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1.5rem', color: '#fbbf24' }}>
         <AlertTriangle size={28} />
         <h3 style={{ fontSize: '1.5rem', margin: 0, fontWeight: 'bold' }}>CRISIS SIMULATOR</h3>
