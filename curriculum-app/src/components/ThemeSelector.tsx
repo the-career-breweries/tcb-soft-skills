@@ -30,7 +30,7 @@ const row3 = [...posters.slice(2), ...posters, ...posters, ...posters.slice(0, 2
 const NeftlexLogo = ({ isHovered }: { isHovered: boolean }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-      <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#e50914" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e50914" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z" 
               style={{
                 transformOrigin: '3px 11px',
@@ -42,7 +42,7 @@ const NeftlexLogo = ({ isHovered }: { isHovered: boolean }) => {
         <path d="m12.4 3.4 3.1 4" />
         <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
       </svg>
-      <span style={{ fontSize: '2.2rem', fontWeight: '900', color: '#e50914', letterSpacing: '2px', fontFamily: '"Arial Black", sans-serif' }}>
+      <span style={{ fontSize: '1.1rem', fontWeight: '900', color: '#e50914', letterSpacing: '2px', fontFamily: '"Arial Black", sans-serif' }}>
         &CHILL
       </span>
       <style dangerouslySetInnerHTML={{__html: `
@@ -63,9 +63,9 @@ const AeroPrimeLogo = ({ isHovered }: { isHovered: boolean }) => {
         transform: isHovered ? 'translate(20px, -20px) scale(1.1) rotate(15deg)' : 'translate(0px, 0px) scale(1) rotate(0deg)',
         opacity: isHovered ? 0.8 : 1
       }}>
-        <Plane size={72} color="#00a8e1" strokeWidth={1.5} />
+        <Plane size={48} color="#00a8e1" strokeWidth={1.5} />
       </div>
-      <span style={{ fontSize: '1.8rem', fontWeight: '800', color: '#00a8e1', letterSpacing: '1px', fontStyle: 'italic' }}>
+      <span style={{ fontSize: '1.2rem', fontWeight: '800', color: '#00a8e1', letterSpacing: '1px', fontStyle: 'italic' }}>
         aero prime
       </span>
     </div>
@@ -79,9 +79,9 @@ const BrunchroLogo = ({ isHovered }: { isHovered: boolean }) => {
         transition: 'all 0.8s ease-in-out',
         transform: isHovered ? 'translateX(30px) translateY(-15px) rotate(-15deg)' : 'translateX(0px) translateY(0px) rotate(0deg)'
       }}>
-        <PlaneTakeoff size={72} color="#f47521" strokeWidth={1.5} />
+        <PlaneTakeoff size={48} color="#f47521" strokeWidth={1.5} />
       </div>
-      <span style={{ fontSize: '1.8rem', fontWeight: '900', color: '#f47521', letterSpacing: '1px', textAlign: 'center', lineHeight: '1.1' }}>
+      <span style={{ fontSize: '1.2rem', fontWeight: '900', color: '#f47521', letterSpacing: '1px', textAlign: 'center', lineHeight: '1.1' }}>
         BRUNCH"<br/>RO!!
       </span>
     </div>
@@ -92,7 +92,7 @@ const TcbClassicLogo = ({ isHovered }: { isHovered: boolean }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', position: 'relative' }}>
       <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Users size={72} color="#2563eb" strokeWidth={1.5} />
+        <Users size={48} color="#2563eb" strokeWidth={1.5} />
         
         {/* Interviewer Speech Bubble */}
         <div style={{
@@ -120,7 +120,7 @@ const TcbClassicLogo = ({ isHovered }: { isHovered: boolean }) => {
           <MessageSquare size={24} color="#2563eb" style={{ transform: 'scaleX(-1)' }} />
         </div>
       </div>
-      <span style={{ fontSize: '1.6rem', fontWeight: '900', color: '#2563eb', letterSpacing: '2px' }}>
+      <span style={{ fontSize: '1.1rem', fontWeight: '900', color: '#2563eb', letterSpacing: '2px' }}>
         TCB CLASSIC
       </span>
       <style dangerouslySetInnerHTML={{__html: `
@@ -142,9 +142,9 @@ const FlyTubeLogo = ({ isHovered }: { isHovered: boolean }) => {
         transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
         transform: isHovered ? 'scale(1.2)' : 'scale(1)',
       }}>
-        <PlaySquare size={72} color="#ff0000" strokeWidth={1.5} />
+        <PlaySquare size={48} color="#ff0000" strokeWidth={1.5} />
       </div>
-      <span style={{ fontSize: '2rem', fontWeight: '900', color: '#ff0000', letterSpacing: '-1px', fontFamily: '"Oswald", sans-serif' }}>
+      <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#ff0000', letterSpacing: '-1px', fontFamily: '"Oswald", sans-serif' }}>
         FlyTube
       </span>
     </div>
@@ -159,9 +159,9 @@ const GameItLogo = ({ isHovered }: { isHovered: boolean }) => {
         transform: isHovered ? 'translateY(-10px) rotate(-5deg)' : 'translateY(0px) rotate(0deg)',
         filter: isHovered ? 'drop-shadow(0 0 15px rgba(34, 197, 94, 0.8))' : 'none'
       }}>
-        <Gamepad2 size={72} color="#22c55e" strokeWidth={1.5} />
+        <Gamepad2 size={48} color="#22c55e" strokeWidth={1.5} />
       </div>
-      <span style={{ fontSize: '1.8rem', fontWeight: '900', color: '#22c55e', letterSpacing: '2px', fontFamily: '"Press Start 2P", monospace', textTransform: 'uppercase' }}>
+      <span style={{ fontSize: '1.2rem', fontWeight: '900', color: '#22c55e', letterSpacing: '2px', fontFamily: '"Press Start 2P", monospace', textTransform: 'uppercase' }}>
         Let's Game It!
       </span>
     </div>
@@ -304,15 +304,15 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
 
       {/* --- Foreground UI --- */}
       <div style={{ zIndex: 10, textAlign: 'center', marginBottom: '5rem', textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}>
-        <h1 style={{ fontSize: '4.5rem', fontWeight: '800', margin: '0 0 1rem 0', letterSpacing: '-0.02em' }}>
+        <h1 style={{ fontSize: '3rem', fontWeight: '800', margin: '0 0 1rem 0', letterSpacing: '-0.02em' }}>
           What's playin'?
         </h1>
-        <p style={{ fontSize: '1.5rem', color: '#d1d5db', margin: 0, fontWeight: '500' }}>
+        <p style={{ fontSize: '1.2rem', color: '#d1d5db', margin: 0, fontWeight: '500' }}>
           Choose your streaming experience for today's session.
         </p>
       </div>
 
-      <div style={{ display: 'flex', gap: '3rem', zIndex: 10, flexWrap: 'wrap', justifyContent: 'center', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', gap: '1.5rem', zIndex: 10, flexWrap: 'wrap', justifyContent: 'center', padding: '0 2rem' }}>
         {themes.map((t) => (
           <button
             key={t.id}
@@ -326,15 +326,15 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              gap: '1.5rem',
+              gap: '1rem',
               transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
               transform: hoveredTheme === t.id ? 'scale(1.15)' : hoveredTheme ? 'scale(0.95)' : 'scale(1)',
               opacity: hoveredTheme && hoveredTheme !== t.id ? 0.4 : 1
             }}
           >
             <div style={{
-              width: '280px',
-              height: '400px',
+              width: '180px',
+              height: '260px',
               borderRadius: '16px',
               backgroundImage: t.bg,
               backgroundSize: 'cover',
@@ -342,8 +342,8 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-end',
-              padding: '2.5rem',
-              border: hoveredTheme === t.id ? `6px solid ${t.color}` : '6px solid transparent',
+              padding: '1.25rem',
+              border: hoveredTheme === t.id ? `4px solid ${t.color}` : '4px solid transparent',
               boxShadow: hoveredTheme === t.id ? `0 0 40px ${t.color}99, 0 20px 25px -5px rgba(0,0,0,0.8)` : '0 10px 15px -3px rgba(0, 0, 0, 0.6)',
               position: 'relative',
               overflow: 'hidden'
@@ -362,7 +362,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
               </div>
             </div>
             <span style={{ 
-              fontSize: '1.5rem', 
+              fontSize: '1.1rem', 
               fontWeight: '600', 
               color: hoveredTheme === t.id ? 'white' : '#9ca3af',
               transition: 'color 0.3s',
