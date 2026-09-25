@@ -11,7 +11,8 @@
 
 # 🧠 CO1: Computer Architecture
 
-<!-- BLOCK_DIAGRAM_INTERACTIVE -->
+```block-diagram
+```
 
 ---
 
@@ -82,4 +83,5 @@
 
 Test your understanding of the concepts covered in the mid-semester exam! 
 
-<!-- COMPUTING_QUIZ -->
+```computing-quiz
+```
