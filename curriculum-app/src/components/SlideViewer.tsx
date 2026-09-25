@@ -562,7 +562,6 @@ export default function SlideViewer
                           if (!inline && match && match[1] === 'block-diagram') {
                             return <BlockDiagramInteractive />;
                           }
-
                           if (!inline && match && match[1] === 'topic-generator') {
                           const customTopics = String(children).trim().split('\n').map(t => t.trim()).filter(t => t.length > 0);
                           return <RandomTopicGenerator customTopics={customTopics} />;
@@ -634,75 +633,6 @@ export default function SlideViewer
                 )}
                 
                 {/* Render Custom Components Based on Markdown Markers */}
-                
-                 />;
-                        }
-                        if (!inline && match && match[1] === 'mermaid') {
-                          return (
-                            <>
-                              <div className="mermaid-screen">
-                                <Mermaid chart={String(children).replace(/\n$/, '')} theme={theme} />
-                              </div>
-                              <div className="mermaid-print">
-                                <Mermaid chart={String(children).replace(/\n$/, '')} theme="light" />
-                              </div>
-                            </>
-                          );
-                        }
-                        return (
-                          <code className={className} {...props}>
-                            {children}
-                          </code>
-                        );
-                      },
-                      a({ node, children, href, ...props }: any) {
-                        return (
-                          <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
-                            {children}
-                          </a>
-                        );
-                      },
-                      p({ node, children, ...props }: any) {
-                        // If paragraph contains multiple images, display them as flex
-                        const hasMultipleImages = node?.children?.filter((c: any) => c.tagName === 'img').length > 1;
-                        if (hasMultipleImages) {
-                          return <p style={{ display: 'flex', gap: '2%', justifyContent: 'center', alignItems: 'flex-start' }} {...props}>{children}</p>;
-                        }
-                        return <p {...props}>{children}</p>;
-                      },
-                      img({ node, alt, src, ...props }: any) {
-                        if (src?.includes('notoemoji')) {
-                          return <img src={src} alt={alt} style={{ width: '1.2em', height: '1.2em', verticalAlign: 'middle', display: 'inline-block', margin: '0 0.1em', mixBlendMode: 'multiply' }} {...props} />;
-                        }
-                        return (
-                          <img 
-                            src={src} 
-                            alt={alt} 
-                            onClick={() => {
-                              setZoomedImage(src);
-                              setZoomLevel(1);
-                            }}
-                            style={{ cursor: 'zoom-in' }}
-                            {...props} 
-                          />
-                        );
-                      }
-                    }}
-                  >
-                    {slides[currentSlide]
-                      .replace(/<!-- PRINT: (.*?) -->/g, '')
-                      .replace(/<!-- PRINT_SLIDE -->/g, '')
-                      .replace(/<!-- TOPIC_GENERATOR -->/g, '')
-                      
-                      
-                      .replace(/<!-- WELCOME_ANIMATIONS -->/g, '')}
-                    </ReactMarkdown>
-                  </div>
-                )}
-                
-                {/* Render Custom Components Based on Markdown Markers */}
-                
-                
 
 
                 
