@@ -22,7 +22,7 @@ export default function AbsurdAbstract({ image, question, revealText }: AbsurdAb
   };
 
   return (
-    <div className="escape-subtitle" style={{
+    <div style={{
       width: '100%',
       maxWidth: '800px',
       margin: '2rem auto',
