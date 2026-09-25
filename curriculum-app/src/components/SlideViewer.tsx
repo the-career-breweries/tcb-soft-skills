@@ -441,7 +441,18 @@ export default function SlideViewer
 
   return (
     <div className={`slide-modal-overlay ${isPrintingSlide ? 'is-printing-slide' : ''} ${course === 'soft-skills' ? 'video-player-mode' : ''}`}>
-      <div className="slide-container">
+      
+        {cinematicBgUrl && (
+          <div className="cinematic-bg-container">
+            {isVideoBg ? (
+              <video src={cinematicBgUrl} autoPlay loop muted playsInline className="cinematic-bg-media" />
+            ) : (
+              <img src={cinematicBgUrl} alt="Cinematic Background" className="cinematic-bg-media" />
+            )}
+            <div className="cinematic-bg-overlay" />
+          </div>
+        )}
+        <div className="slide-container" style={cinematicBgUrl ? { background: "transparent", border: "none", boxShadow: "none" } : {}}>
 
         {/* Floating Top Right Controls */}
         <div style={{ position: 'absolute', top: '2rem', right: '2rem', display: 'flex', gap: '1rem', zIndex: 10, alignItems: 'center' }}>
