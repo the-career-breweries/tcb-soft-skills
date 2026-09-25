@@ -262,6 +262,14 @@ export default function SlideViewer
   const [hasDragged, setHasDragged] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [confettiActive, setConfettiActive] = useState(true);
+  const [showToast, setShowToast] = useState(false);
+  useEffect(() => {
+    if (currentSlide === slides.length - 1 && course === 'soft-skills') {
+      setShowToast(true);
+      const timer = setTimeout(() => setShowToast(false), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [currentSlide, slides.length, course]);
   
   useEffect(() => {
     if (zoomLevel <= 1) setPan({ x: 0, y: 0 });
@@ -492,7 +500,7 @@ export default function SlideViewer
         )}
 
           {/* End of Episode Binge UI */}
-        {!isLoading && slides.length > 0 && currentSlide === slides.length - 1 && course === 'soft-skills' && (
+        {!isLoading && slides.length > 0 && currentSlide === slides.length - 1 && course === 'soft-skills' && showToast && (
           <div style={{
             position: 'absolute', bottom: '2rem', right: '2rem', zIndex: 100,
             background: 'rgba(20,20,20,0.95)', border: '1px solid #333',
