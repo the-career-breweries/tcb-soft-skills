@@ -30,7 +30,7 @@ const row3 = [...posters.slice(2), ...posters, ...posters, ...posters.slice(0, 2
 const NeftlexLogo = ({ isHovered }: { isHovered: boolean }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#e50914" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e50914" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z" 
               style={{
                 transformOrigin: '3px 11px',
@@ -63,9 +63,9 @@ const AeroPrimeLogo = ({ isHovered }: { isHovered: boolean }) => {
         transform: isHovered ? 'translate(20px, -20px) scale(1.1) rotate(15deg)' : 'translate(0px, 0px) scale(1) rotate(0deg)',
         opacity: isHovered ? 0.8 : 1
       }}>
-        <Plane size={48} color="#00a8e1" strokeWidth={1.5} />
+        <Plane size={40} color="#00a8e1" strokeWidth={1.5} />
       </div>
-      <span style={{ fontSize: '1.2rem', fontWeight: '800', color: '#00a8e1', letterSpacing: '1px', fontStyle: 'italic' }}>
+      <span style={{ fontSize: '1.1rem', fontWeight: '800', color: '#00a8e1', letterSpacing: '1px', fontStyle: 'italic' }}>
         aero prime
       </span>
     </div>
@@ -79,7 +79,7 @@ const BrunchroLogo = ({ isHovered }: { isHovered: boolean }) => {
         transition: 'all 0.8s ease-in-out',
         transform: isHovered ? 'translateX(30px) translateY(-15px) rotate(-15deg)' : 'translateX(0px) translateY(0px) rotate(0deg)'
       }}>
-        <PlaneTakeoff size={48} color="#f47521" strokeWidth={1.5} />
+        <PlaneTakeoff size={40} color="#f47521" strokeWidth={1.5} />
       </div>
       <span style={{ fontSize: '1.2rem', fontWeight: '900', color: '#f47521', letterSpacing: '1px', textAlign: 'center', lineHeight: '1.1' }}>
         BRUNCH"<br/>RO!!
@@ -92,7 +92,7 @@ const TcbClassicLogo = ({ isHovered }: { isHovered: boolean }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', position: 'relative' }}>
       <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Users size={48} color="#2563eb" strokeWidth={1.5} />
+        <Users size={40} color="#2563eb" strokeWidth={1.5} />
         
         {/* Interviewer Speech Bubble */}
         <div style={{
@@ -142,9 +142,9 @@ const FlyTubeLogo = ({ isHovered }: { isHovered: boolean }) => {
         transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
         transform: isHovered ? 'scale(1.2)' : 'scale(1)',
       }}>
-        <PlaySquare size={48} color="#ff0000" strokeWidth={1.5} />
+        <PlaySquare size={40} color="#ff0000" strokeWidth={1.5} />
       </div>
-      <span style={{ fontSize: '1.4rem', fontWeight: '900', color: '#ff0000', letterSpacing: '-1px', fontFamily: '"Oswald", sans-serif' }}>
+      <span style={{ fontSize: '1.2rem', fontWeight: '900', color: '#ff0000', letterSpacing: '-1px', fontFamily: '"Oswald", sans-serif' }}>
         FlyTube
       </span>
     </div>
@@ -159,7 +159,7 @@ const GameItLogo = ({ isHovered }: { isHovered: boolean }) => {
         transform: isHovered ? 'translateY(-10px) rotate(-5deg)' : 'translateY(0px) rotate(0deg)',
         filter: isHovered ? 'drop-shadow(0 0 15px rgba(34, 197, 94, 0.8))' : 'none'
       }}>
-        <Gamepad2 size={48} color="#22c55e" strokeWidth={1.5} />
+        <Gamepad2 size={40} color="#22c55e" strokeWidth={1.5} />
       </div>
       <span style={{ fontSize: '1.2rem', fontWeight: '900', color: '#22c55e', letterSpacing: '2px', fontFamily: '"Press Start 2P", monospace', textTransform: 'uppercase' }}>
         Let's Game It!
@@ -312,7 +312,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
         </p>
       </div>
 
-      <div style={{ display: 'flex', gap: '1.5rem', zIndex: 10, flexWrap: 'wrap', justifyContent: 'center', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', gap: '1rem', zIndex: 10, flexWrap: 'wrap', justifyContent: 'center', padding: '0 2rem' }}>
         {themes.map((t) => (
           <button
             key={t.id}
@@ -333,8 +333,8 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
             }}
           >
             <div style={{
-              width: '180px',
-              height: '260px',
+              width: '150px',
+              height: '220px',
               borderRadius: '16px',
               backgroundImage: t.bg,
               backgroundSize: 'cover',
@@ -342,7 +342,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-end',
-              padding: '1.25rem',
+              padding: '1rem',
               border: hoveredTheme === t.id ? `4px solid ${t.color}` : '4px solid transparent',
               boxShadow: hoveredTheme === t.id ? `0 0 40px ${t.color}99, 0 20px 25px -5px rgba(0,0,0,0.8)` : '0 10px 15px -3px rgba(0, 0, 0, 0.6)',
               position: 'relative',
@@ -362,7 +362,7 @@ export default function ThemeSelector({ onSelectTheme }: ThemeSelectorProps) {
               </div>
             </div>
             <span style={{ 
-              fontSize: '1.1rem', 
+              fontSize: '1rem', 
               fontWeight: '600', 
               color: hoveredTheme === t.id ? 'white' : '#9ca3af',
               transition: 'color 0.3s',
