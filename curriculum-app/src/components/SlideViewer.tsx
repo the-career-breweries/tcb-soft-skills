@@ -263,6 +263,29 @@ export default function SlideViewer
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [confettiActive, setConfettiActive] = useState(true);
   const [showToast, setShowToast] = useState(false);
+  const [isIdle, setIsIdle] = useState(false);
+  
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    const resetIdle = () => {
+      setIsIdle(false);
+      clearTimeout(timer);
+      timer = setTimeout(() => setIsIdle(true), 2000);
+    };
+    
+    window.addEventListener('mousemove', resetIdle);
+    window.addEventListener('keydown', resetIdle);
+    window.addEventListener('touchstart', resetIdle);
+    
+    resetIdle();
+    
+    return () => {
+      window.removeEventListener('mousemove', resetIdle);
+      window.removeEventListener('keydown', resetIdle);
+      window.removeEventListener('touchstart', resetIdle);
+      clearTimeout(timer);
+    };
+  }, []);
   useEffect(() => {
     if (currentSlide === slides.length - 1 && course === 'soft-skills') {
       setShowToast(true);
@@ -455,7 +478,7 @@ export default function SlideViewer
         <div className="slide-container" style={cinematicBgUrl ? { background: "transparent", border: "none", boxShadow: "none" } : {}}>
 
         {/* Floating Top Right Controls */}
-        <div style={{ position: 'absolute', top: '2rem', right: '2rem', display: 'flex', gap: '1rem', zIndex: 10, alignItems: 'center' }}>
+        <div style={{ position: 'absolute', top: '2rem', right: '2rem', display: 'flex', gap: '1rem', zIndex: 10, alignItems: 'center', opacity: isIdle ? 0 : 1, transition: 'opacity 0.5s ease' }}>
           {(printTemplateId || hasMermaid || hasPrintSlideMarker) && (
             <button 
               onClick={() => {
@@ -819,8 +842,8 @@ export default function SlideViewer
             padding: '2rem 2rem 1.5rem 2rem',
             display: 'flex', flexDirection: 'column', gap: '0.8rem',
             pointerEvents: 'none',
-            opacity: isScrolledDown ? 0 : 1,
-            transform: isScrolledDown ? 'translateY(100%)' : 'translateY(0)',
+            opacity: isScrolledDown || isIdle ? 0 : 1,
+            transform: isScrolledDown || isIdle ? 'translateY(100%)' : 'translateY(0)',
             transition: 'opacity 0.4s ease, transform 0.4s ease'
             /* Let clicks pass through background */
           }}>
