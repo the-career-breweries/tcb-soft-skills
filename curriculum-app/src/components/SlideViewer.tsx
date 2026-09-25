@@ -589,16 +589,6 @@ export default function SlideViewer
                </div>
              )}
              <div className="slide-body" style={{ position: 'relative' }}>
-                {cinematicBgUrl && (
-                  <div className="cinematic-bg-container">
-                    {isVideoBg ? (
-                      <video src={cinematicBgUrl} autoPlay loop muted playsInline className="cinematic-bg-media" />
-                    ) : (
-                      <img src={cinematicBgUrl} alt="Cinematic Background" className="cinematic-bg-media" />
-                    )}
-                    <div className="cinematic-bg-overlay" />
-                  </div>
-                )}
                 {slides.length > 0 && (
                   <div className={`markdown-content-container ${cinematicBgUrl ? 'subtitle-mode' : ''}`} style={{ position: 'relative', width: '100%', minHeight: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: cinematicBgUrl ? 'flex-end' : 'flex-start', paddingTop: '2rem', paddingBottom: '4rem', zIndex: 1 }}>
                     <ReactMarkdown 
