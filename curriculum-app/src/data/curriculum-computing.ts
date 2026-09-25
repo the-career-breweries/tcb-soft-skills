@@ -26,6 +26,7 @@ const computingSem1Weeks: WeekData[] = [
   { week: 4, semester: 1, theme: 'MS Word: Document Creation', focus: 'UI, typing, saving, opening', task: 'Create and save a basic document', rubric: 'Creation' },
   { week: 5, semester: 1, theme: 'MS Word: Formatting', focus: 'Fonts, colors, alignment, spacing', task: 'Format a provided text block', rubric: 'Formatting' },
   { week: 6, semester: 1, theme: 'MS Word: Tables & Reports', focus: 'Inserting tables, report structure', task: 'Build a basic tabular report', rubric: 'Structuring' },
+  { week: 'Mid-Sem', semester: 1, theme: 'Mid-Semester Recap: CO1 & CO2', focus: 'Hardware, OS, Word & PowerPoint', task: 'Interactive Recap & Quiz', rubric: 'Revision' },
   { week: 7, semester: 1, theme: 'MS Excel: Formulas', focus: 'Rows, columns, basic operators', task: 'Calculate values using basic math', rubric: 'Calculation accuracy' },
   { week: 8, semester: 1, theme: 'MS Excel: Functions', focus: 'SUM, AVERAGE, MIN, MAX, IF', task: 'Apply functions to dataset', rubric: 'Function application' },
   { week: 9, semester: 1, theme: 'MS Excel: Charts', focus: 'Pie, Line, Column charts', task: 'Visualize dataset with a chart', rubric: 'Visualization' },

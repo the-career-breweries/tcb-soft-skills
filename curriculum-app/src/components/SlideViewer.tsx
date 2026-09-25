@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import mermaid from 'mermaid';
 import PrintTemplates from './PrintTemplates';
 import RandomTopicGenerator from './RandomTopicGenerator';
+import ComputingQuiz from './ComputingQuiz';
 import QRCodeForm from './QRCodeForm';
 import AbsurdAbstract from './AbsurdAbstract';
 import SentenceActivity from './SentenceActivity';
@@ -616,6 +617,7 @@ export default function SlideViewer
                       .replace(/<!-- PRINT: (.*?) -->/g, '')
                       .replace(/<!-- PRINT_SLIDE -->/g, '')
                       .replace(/<!-- TOPIC_GENERATOR -->/g, '')
+                      .replace(/<!-- COMPUTING_QUIZ -->/g, '')
                       .replace(/<!-- WELCOME_ANIMATIONS -->/g, '')}
                     </ReactMarkdown>
                   </div>
@@ -626,6 +628,10 @@ export default function SlideViewer
                 {slides.length > 0 && slides[currentSlide].includes('<!-- TOPIC_GENERATOR -->') && (
                   <RandomTopicGenerator />
                 )}
+                {slides.length > 0 && slides[currentSlide].includes('<!-- COMPUTING_QUIZ -->') && (
+                  <ComputingQuiz />
+                )}
+
                 
                 
                 {isAdmin && (
