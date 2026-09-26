@@ -406,6 +406,25 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
                         options={SECTIONS.map(sec => ({ label: sec, value: sec }))}
                       />
                     )}
+                    
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto', paddingLeft: '16px', borderLeft: '1px solid rgba(255,255,255,0.2)' }}>
+                      <span style={{ color: 'white', fontWeight: 'bold', fontSize: '0.9rem' }}>Progress: {sectionProgress[activeSection] || 0}%</span>
+                    {/* Reset Progress Button */}
+                    <button 
+                      onClick={(e) => handleResetSection(e, activeSection)}
+                      style={{ 
+                        background: 'none', border: '1px solid rgba(255,255,255,0.2)', color: '#e5e7eb', 
+                        cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', 
+                        padding: '4px 10px', borderRadius: '4px', fontSize: '0.85rem', marginLeft: '8px'
+                      }}
+                      onMouseOver={(e) => { e.currentTarget.style.color = 'white'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)'; }}
+                      onMouseOut={(e) => { e.currentTarget.style.color = '#e5e7eb'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; }}
+                      title={`Reset Progress for ${activeSection}`}
+                    >
+                      <RotateCcw size={14} />
+                      <span>Reset</span>
+                    </button>
+                    </div>
               </div>
             </div>
             
