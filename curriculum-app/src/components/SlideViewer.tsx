@@ -118,8 +118,10 @@ const AssetUploadModal = ({ isOpen, onClose, onSnippetGenerated }: { isOpen: boo
       
       const data = await response.json();
       if (data.secure_url) {
-        setUploadedUrl(data.secure_url);
-      } else {
+          setUploadedUrl(data.secure_url);
+          const snippet = assetType === 'video' ? `<!-- CINEMA_CLIFFHANGER: ${data.secure_url} -->` : assetType === 'image' ? `<!-- CINEMATIC_BG: ${data.secure_url} -->` : `![Activity Asset](${data.secure_url})`;
+          onSnippetGenerated(snippet);
+        } else {
         alert("Upload failed. Please try again.");
       }
     } catch (err) {
@@ -956,12 +958,24 @@ export default function SlideViewer
 
       {/* Admin Asset Upload Modal */}
       {isAdmin && (
-        <AssetUploadModal 
-          isOpen={isUploadModalOpen} 
-          onClose={() => setIsUploadModalOpen(false)} 
-          currentSlideContent={slides[currentSlide] || ''}
-        />
-      )}
+          <AssetUploadModal 
+            isOpen={isUploadModalOpen} 
+            onClose={() => setIsUploadModalOpen(false)} 
+            onSnippetGenerated={async (snippet) => {
+               const updatedSlides = [...slides];
+               if (updatedSlides[currentSlide] === "# New Slide\n\nAdd content here...") {
+                   updatedSlides[currentSlide] = snippet;
+               } else {
+                   updatedSlides[currentSlide] = updatedSlides[currentSlide] + "\n\n" + snippet;
+               }
+               setSlides(updatedSlides);
+               try {
+                 const newContent = updatedSlides.join('\n\n---\n\n');
+                 await fetch('/api/lesson', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ program, stream, semester, week: weekData.week, course, content: newContent }) });
+               } catch (e) { console.error(e); }
+            }}
+          />
+        )}
     </div>
   );
 }
