@@ -76,42 +76,56 @@ export default function CommunicativeEnglishApp() {
   };
 
   // Calculate progress from localStorage
-  useEffect(() => {
-    if (!activeLesson) {
-      try {
-        const data = JSON.parse(localStorage.getItem('tcb-progress') || '{}');
-        const newProgress: Record<string, number> = {};
-        
-        // Filter weeks
-        const currentStreamData = curriculumData[program].streams.find(s => s.streamName === selectedStream);
-        const currentActiveWeeks = currentStreamData?.weeks.filter(w => w.semester === selectedSemester) || [];
-        const totalWeeks = currentActiveWeeks.length || 1;
-        
-        SECTIONS.forEach(sec => {
-          let completedWeeks = 0;
-          let partialProgress = 0;
+    useEffect(() => {
+      if (!activeLesson) {
+        try {
+          const data = JSON.parse(localStorage.getItem('tcb-progress') || '{}');
+          const newProgress: Record<string, number> = {};
+          const newSessionProgress: Record<number, number> = {};
           
-          currentActiveWeeks.forEach(week => {
-            const key = `${program}-${selectedStream}-${selectedSemester}-${sec}-week${week.week}`;
-            const record = data[key];
-            if (record) {
-              if (record.completed) {
-                completedWeeks += 1;
-              } else if (record.totalSlides > 1) {
-                partialProgress += (record.currentSlide / (record.totalSlides - 1));
+          const currentStreamData = curriculumData[program].streams.find(s => s.streamName === selectedStream);
+          const currentActiveWeeks = currentStreamData?.weeks.filter(w => w.semester === selectedSemester) || [];
+          const totalWeeks = currentActiveWeeks.length || 1;
+          
+          const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Default'];
+          
+          currentSections.forEach(sec => {
+            let completedWeeks = 0;
+            let partialProgress = 0;
+            
+            currentActiveWeeks.forEach(week => {
+              const key = `${program}-${selectedStream}-${selectedSemester}-${sec}-week${week.week}`;
+              const record = data[key];
+              
+              if (record) {
+                const progressPercentage = record.completed ? 100 : (record.totalSlides > 1 ? (record.currentSlide / (record.totalSlides - 1)) * 100 : 0);
+                if (sec === activeSection || (currentSections.length === 1 && sec === 'Default')) {
+                   newSessionProgress[week.week] = progressPercentage;
+                }
+                
+                if (record.completed) {
+                  completedWeeks += 1;
+                } else if (record.totalSlides > 1) {
+                  partialProgress += (record.currentSlide / (record.totalSlides - 1));
+                }
+              } else {
+                if (sec === activeSection || (currentSections.length === 1 && sec === 'Default')) {
+                   newSessionProgress[week.week] = 0;
+                }
               }
-            }
+            });
+            
+            const totalProgress = ((completedWeeks + partialProgress) / totalWeeks) * 100;
+            newProgress[sec] = Math.min(100, Math.round(totalProgress));
           });
           
-          const totalProgress = ((completedWeeks + partialProgress) / totalWeeks) * 100;
-          newProgress[sec] = Math.min(100, Math.round(totalProgress));
-        });
-        setSectionProgress(newProgress);
-      } catch (e) {
-        console.error("Error reading progress", e);
+          setSectionProgress(newProgress);
+          setSessionProgress(newSessionProgress);
+        } catch (e) {
+          console.error("Error reading progress", e);
+        }
       }
-    }
-  }, [activeLesson, program, selectedStream, selectedSemester]);
+    }, [activeLesson, program, selectedStream, selectedSemester, activeSection]);
 
 
   // Keyboard Shortcuts (Fullscreen, Light/Dark mode, Navigation)
@@ -360,7 +374,7 @@ export default function CommunicativeEnglishApp() {
                   <p>Select a module from the sidebar to begin learning.</p>
                 </div>
 
-                  {program === 'ug' && !selectedStream.includes('Aviation') && (
+                  {SECTIONS.length > 0 && (
                     <div className="batch-tracker-card">
                       <div className="card-header">
                         <h3><Users size={24} color="#4f46e5" /> Section Progress Tracker</h3>
@@ -434,7 +448,7 @@ export default function CommunicativeEnglishApp() {
 
                   <div className="modules-grid">
                     {activeWeeks.map((week) => (
-                      <div key={week.week} className="module-card" onClick={() => setActiveLesson(week)}>
+                      <div key={week.week} className="module-card" style={{ position: "relative", overflow: "hidden" }} onClick={() => setActiveLesson(week)}>
                         <div className="module-card-header">
                           <span className="week-badge">{week.label || `Session ${week.week}`}</span>
                         </div>

@@ -159,42 +159,56 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
   };
 
   // Calculate progress from localStorage
-  useEffect(() => {
-    if (!activeLesson) {
-      try {
-        const data = JSON.parse(localStorage.getItem('tcb-progress') || '{}');
-        const newProgress: Record<string, number> = {};
-        
-        // Filter weeks
-        const currentStreamData = curriculumData[program].streams.find(s => s.streamName === selectedStream);
-        const currentActiveWeeks = currentStreamData?.weeks.filter(w => w.semester === selectedSemester) || [];
-        const totalWeeks = currentActiveWeeks.length || 1;
-        
-        SECTIONS.forEach(sec => {
-          let completedWeeks = 0;
-          let partialProgress = 0;
+    useEffect(() => {
+      if (!activeLesson) {
+        try {
+          const data = JSON.parse(localStorage.getItem('tcb-progress') || '{}');
+          const newProgress: Record<string, number> = {};
+          const newSessionProgress: Record<number, number> = {};
           
-          currentActiveWeeks.forEach(week => {
-            const key = `${program}-${selectedStream}-${selectedSemester}-${sec}-week${week.week}`;
-            const record = data[key];
-            if (record) {
-              if (record.completed) {
-                completedWeeks += 1;
-              } else if (record.totalSlides > 1) {
-                partialProgress += (record.currentSlide / (record.totalSlides - 1));
+          const currentStreamData = curriculumData[program].streams.find(s => s.streamName === selectedStream);
+          const currentActiveWeeks = currentStreamData?.weeks.filter(w => w.semester === selectedSemester) || [];
+          const totalWeeks = currentActiveWeeks.length || 1;
+          
+          const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Default'];
+          
+          currentSections.forEach(sec => {
+            let completedWeeks = 0;
+            let partialProgress = 0;
+            
+            currentActiveWeeks.forEach(week => {
+              const key = `${program}-${selectedStream}-${selectedSemester}-${sec}-week${week.week}`;
+              const record = data[key];
+              
+              if (record) {
+                const progressPercentage = record.completed ? 100 : (record.totalSlides > 1 ? (record.currentSlide / (record.totalSlides - 1)) * 100 : 0);
+                if (sec === activeSection || (currentSections.length === 1 && sec === 'Default')) {
+                   newSessionProgress[week.week] = progressPercentage;
+                }
+                
+                if (record.completed) {
+                  completedWeeks += 1;
+                } else if (record.totalSlides > 1) {
+                  partialProgress += (record.currentSlide / (record.totalSlides - 1));
+                }
+              } else {
+                if (sec === activeSection || (currentSections.length === 1 && sec === 'Default')) {
+                   newSessionProgress[week.week] = 0;
+                }
               }
-            }
+            });
+            
+            const totalProgress = ((completedWeeks + partialProgress) / totalWeeks) * 100;
+            newProgress[sec] = Math.min(100, Math.round(totalProgress));
           });
           
-          const totalProgress = ((completedWeeks + partialProgress) / totalWeeks) * 100;
-          newProgress[sec] = Math.min(100, Math.round(totalProgress));
-        });
-        setSectionProgress(newProgress);
-      } catch (e) {
-        console.error("Error reading progress", e);
+          setSectionProgress(newProgress);
+          setSessionProgress(newSessionProgress);
+        } catch (e) {
+          console.error("Error reading progress", e);
+        }
       }
-    }
-  }, [activeLesson, program, selectedStream, selectedSemester]);
+    }, [activeLesson, program, selectedStream, selectedSemester, activeSection]);
 
 
   // Keyboard Shortcuts (Fullscreen, Light/Dark mode, Navigation)
@@ -320,6 +334,7 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
           semester={selectedSemester}
           activeSection={activeSection}
           theme={theme}
+                  sessionProgress={sessionProgress}
           onClose={() => {
             setShowOrientation(false);
             setShowWelcome(false);
@@ -372,6 +387,15 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
                     }}
                     options={semesters.map(s => ({ label: `Semester ${s}`, value: s }))}
                   />
+
+                    {/* Section Selector (if applicable) */}
+                    {SECTIONS.length > 0 && (
+                      <CustomDropdown 
+                        value={activeSection}
+                        onChange={(val) => setActiveSection(val)}
+                        options={SECTIONS.map(sec => ({ label: sec, value: sec }))}
+                      />
+                    )}
               </div>
             </div>
             
@@ -403,6 +427,7 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
                 semester={selectedSemester}
                 activeSection={activeSection}
                 theme={theme}
+                  sessionProgress={sessionProgress}
                 onClose={() => setActiveLesson(null)}
               />
             ) : (
@@ -413,6 +438,7 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
                 weeks={curriculumData[program].streams.find(s => s.streamName === selectedStream)?.weeks.filter(w => w.semester === selectedSemester) || []}
                 onSelectLesson={setActiveLesson}
                 theme={theme}
+                  sessionProgress={sessionProgress}
               />
             )}
           </main>
