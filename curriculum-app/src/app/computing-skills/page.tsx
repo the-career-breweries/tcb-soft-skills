@@ -458,7 +458,7 @@ export default function CommunicativeEnglishApp() {
 
                   <div className="modules-grid">
                     {activeWeeks.map((week) => (
-                      <div key={week.week} className="module-card" style={{ position: "relative", overflow: "hidden" }} onClick={() => setActiveLesson(week)}>
+                      <div key={week.week} className="module-card" style={{ position: "relative", overflow: "hidden" }} style={{ position: "relative", overflow: "hidden" }} style={{ position: "relative", overflow: "hidden" }} onClick={() => setActiveLesson(week)}>
                         <div className="module-card-header">
                           <span className="week-badge">{week.label || `Session ${week.week}`}</span>
                         </div>
@@ -468,6 +468,10 @@ export default function CommunicativeEnglishApp() {
                           <span>Begin Module</span>
                           <ChevronRight size={16} />
                         </div>
+                          {/* Progress Bar inside module card */}
+                          <div style={{ width: '100%', height: '4px', background: 'var(--border-sidebar)', position: 'absolute', bottom: 0, left: 0 }}>
+                             <div style={{ width: `${sessionProgress[week.week] || 0}%`, height: '100%', background: 'var(--accent-primary)', transition: 'width 0.3s' }} />
+                          </div>
                       </div>
                     ))}
                   </div>
