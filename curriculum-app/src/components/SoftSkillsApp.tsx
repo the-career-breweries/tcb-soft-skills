@@ -133,11 +133,21 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
   const [activeLesson, setActiveLesson] = useState<WeekData | null>(null);
 
   // Section Tracking State
-  const SECTIONS = ['Section 1', 'Section 2', 'Section 3', 'Section 4'];
-  const [activeSection, setActiveSection] = useState<string>('Section 1');
-  const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({
-    'Section 1': 0, 'Section 2': 0, 'Section 3': 0, 'Section 4': 0
-  });
+  const SECTIONS = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : [];
+    const [activeSection, setActiveSection] = useState<string>('Default');
+    const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({});
+    const [sessionProgress, setSessionProgress] = useState<Record<number, number>>({});
+
+    useEffect(() => {
+      const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : [];
+      if (currentSections.length > 0) {
+        if (!currentSections.includes(activeSection)) {
+            setActiveSection(currentSections[0]);
+        }
+      } else {
+        setActiveSection('Default');
+      }
+    }, [selectedStream, activeSection]);
 
   const handleResetSection = (e: React.MouseEvent, targetSection: string) => {
     e.stopPropagation();
