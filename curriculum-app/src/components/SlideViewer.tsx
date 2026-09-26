@@ -827,11 +827,7 @@ export default function SlideViewer
                             setSlides(updatedSlides);
                             
                             try {
-                              const newContent = updatedSlides.join('
-
----
-
-');
+                              const newContent = updatedSlides.join('\n\n---\n\n');
                               await fetch('/api/lesson', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ program, stream, semester, week: weekData.week, course, content: newContent }) });
                             } catch (e) { console.error(e); }
                          }} style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#8b5cf6', color: 'white', padding: '12px 24px', borderRadius: '50px', border: 'none', cursor: 'pointer', fontWeight: '600', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}>
