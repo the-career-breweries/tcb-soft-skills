@@ -387,7 +387,7 @@ export default function CommunicativeEnglishApp() {
                   {SECTIONS.length > 0 && (
                     <div className="batch-tracker-card">
                       <div className="card-header">
-                        <h3><Users size={24} color="#4f46e5" /> Section Progress Tracker</h3>
+                        <h3><Users size={24} color="#4f46e5" /> {SECTIONS.length > 1 ? 'Section Progress Tracker' : 'Course Progress Tracker'}</h3>
                       </div>
                       <div className="batch-progress-grid">
                         {SECTIONS.map(section => {
@@ -401,7 +401,7 @@ export default function CommunicativeEnglishApp() {
                             >
                               <div className="batch-info" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                                  <span className="batch-name" style={{ fontWeight: '700', whiteSpace: 'nowrap', color: isActive ? 'var(--accent-primary)' : 'var(--text-main)' }}>{section}</span>
+                                  <span className="batch-name" style={{ fontWeight: '700', whiteSpace: 'nowrap', color: isActive ? 'var(--accent-primary)' : 'var(--text-main)' }}>{SECTIONS.length > 1 ? section : selectedStream}</span>
                                   <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', height: '20px' }}>
                                     {isActive && <span style={{ fontSize: '0.65rem', padding: '0.1rem 0.4rem', background: 'var(--accent-primary)', color: 'white', borderRadius: '12px', width: 'fit-content', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Active</span>}
                                     {isActive && progress > 0 && (
