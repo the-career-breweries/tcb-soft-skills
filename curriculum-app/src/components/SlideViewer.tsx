@@ -783,17 +783,11 @@ export default function SlideViewer
                   <div style={{ position: 'absolute', bottom: '2rem', left: '2rem', display: 'flex', gap: '1rem', zIndex: 50, opacity: isIdle ? 0 : 1, transition: 'opacity 0.5s ease' }}>
                     <button onClick={async () => {
                         const updatedSlides = [...slides];
-                        updatedSlides.splice(currentSlide + 1, 0, "# New Slide
-
-Add content here...");
+                        updatedSlides.splice(currentSlide + 1, 0, "# New Slide\n\nAdd content here...");
                         setSlides(updatedSlides);
                         setCurrentSlide(currentSlide + 1);
                         try {
-                          const newContent = updatedSlides.join('
-
----
-
-');
+                          const newContent = updatedSlides.join('\n\n---\n\n');
                           await fetch('/api/lesson', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
