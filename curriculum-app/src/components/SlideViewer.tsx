@@ -474,19 +474,19 @@ export default function SlideViewer
         {cinematicBgUrls.length > 0 && (
           <div className="cinematic-bg-container" style={{ display: 'flex', width: '100vw', height: '100vh', gap: '2rem', padding: '0' }}>
             {/* Ambient Glows */}
-            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', zIndex: -1 }}>
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', zIndex: -1, overflow: 'hidden' }}>
                {cinematicBgUrls.map((url, i) => {
                  const isVideo = url.endsWith('.mp4') || url.endsWith('.webm');
                  return isVideo ? (
-                    <video key={`glow-${i}`} src={url} autoPlay loop muted playsInline className="ambient-glow" style={{ flex: 1, objectFit: 'cover' }} />
+                    <video key={`glow-${i}`} src={url} autoPlay loop muted playsInline style={{ flex: 1, objectFit: 'cover', filter: 'blur(80px) brightness(0.5)', transform: 'scale(1.2)' }} />
                  ) : (
-                    <img key={`glow-${i}`} src={url} alt="" className="ambient-glow" style={{ flex: 1, objectFit: 'cover' }} />
+                    <img key={`glow-${i}`} src={url} alt="" style={{ flex: 1, objectFit: 'cover', filter: 'blur(80px) brightness(0.5)', transform: 'scale(1.2)' }} />
                  );
                })}
             </div>
             
             {/* Sharp Foreground Images */}
-            <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', gap: '2rem', zIndex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', gap: '4rem', padding: '4rem', zIndex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 {cinematicBgUrls.map((url, i) => {
                    const isVideo = url.endsWith('.mp4') || url.endsWith('.webm');
                    return isVideo ? (
