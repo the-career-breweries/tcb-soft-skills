@@ -133,13 +133,13 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
   const [activeLesson, setActiveLesson] = useState<WeekData | null>(null);
 
   // Section Tracking State
-  const SECTIONS = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : [];
+  const SECTIONS = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Global Cohort'];
     const [activeSection, setActiveSection] = useState<string>('Default');
     const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({});
     const [sessionProgress, setSessionProgress] = useState<Record<number, number>>({});
 
     useEffect(() => {
-      const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : [];
+      const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Global Cohort'];
       if (currentSections.length > 0) {
         if (!currentSections.includes(activeSection)) {
             setActiveSection(currentSections[0]);
@@ -180,7 +180,7 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
           const currentActiveWeeks = currentStreamData?.weeks.filter(w => w.semester === selectedSemester) || [];
           const totalWeeks = currentActiveWeeks.length || 1;
           
-          const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Default'];
+          const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Global Cohort'];
           
           currentSections.forEach(sec => {
             let completedWeeks = 0;
@@ -399,7 +399,7 @@ export default function CurriculumApp({ isAdmin = false }: { isAdmin?: boolean }
                   />
 
                     {/* Section Selector (if applicable) */}
-                    {SECTIONS.length > 0 && (
+                    {SECTIONS.length > 1 && (
                       <CustomDropdown 
                         value={activeSection}
                         onChange={(val) => setActiveSection(val)}

@@ -50,13 +50,13 @@ export default function CommunicativeEnglishApp() {
   const [activeLesson, setActiveLesson] = useState<WeekData | null>(null);
 
   // Section Tracking State
-  const SECTIONS = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : [];
+  const SECTIONS = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Global Cohort'];
     const [activeSection, setActiveSection] = useState<string>('Default');
     const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({});
     const [sessionProgress, setSessionProgress] = useState<Record<number, number>>({});
 
     useEffect(() => {
-      const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : [];
+      const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Global Cohort'];
       if (currentSections.length > 0) {
         if (!currentSections.includes(activeSection)) {
             setActiveSection(currentSections[0]);
@@ -97,7 +97,7 @@ export default function CommunicativeEnglishApp() {
           const currentActiveWeeks = currentStreamData?.weeks.filter(w => w.semester === selectedSemester) || [];
           const totalWeeks = currentActiveWeeks.length || 1;
           
-          const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Default'];
+          const currentSections = selectedStream.includes('B.Sc') ? ['Section A', 'Section B'] : ['Global Cohort'];
           
           currentSections.forEach(sec => {
             let completedWeeks = 0;
