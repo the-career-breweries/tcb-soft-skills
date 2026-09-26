@@ -343,6 +343,22 @@ export default function SlideViewer
             completed: false
           };
           localStorage.setItem('tcb-progress', JSON.stringify(data));
+        // --- ERP CLOUD BRIDGE SYNC ---
+        try {
+          fetch('/api/erp-progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              subject: "Slide Viewer Activity",
+              section: typeof targetSection !== 'undefined' ? targetSection : (typeof activeSection !== 'undefined' ? activeSection : 'General'),
+              progress: data,
+              key: "latest_sync",
+              details: "Auto-synced from presentation mode"
+            })
+          }).catch(e => console.log('ERP Sync failed', e));
+        } catch(e) {}
+        // -----------------------------
+
         }
       } catch (e) {
         console.error("Error saving progress", e);
@@ -361,6 +377,22 @@ export default function SlideViewer
           completed: true
         };
         localStorage.setItem('tcb-progress', JSON.stringify(data));
+        // --- ERP CLOUD BRIDGE SYNC ---
+        try {
+          fetch('/api/erp-progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              subject: "Slide Viewer Activity",
+              section: typeof targetSection !== 'undefined' ? targetSection : (typeof activeSection !== 'undefined' ? activeSection : 'General'),
+              progress: data,
+              key: "latest_sync",
+              details: "Auto-synced from presentation mode"
+            })
+          }).catch(e => console.log('ERP Sync failed', e));
+        } catch(e) {}
+        // -----------------------------
+
       } catch (e) {
         console.error("Error completing session", e);
       }

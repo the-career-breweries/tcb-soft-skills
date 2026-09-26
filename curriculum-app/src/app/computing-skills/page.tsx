@@ -79,6 +79,22 @@ export default function CommunicativeEnglishApp() {
       });
       
       localStorage.setItem('tcb-progress', JSON.stringify(data));
+        // --- ERP CLOUD BRIDGE SYNC ---
+        try {
+          fetch('/api/erp-progress', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              subject: "Computing Skills",
+              section: typeof targetSection !== 'undefined' ? targetSection : (typeof activeSection !== 'undefined' ? activeSection : 'General'),
+              progress: data,
+              key: "latest_sync",
+              details: "Auto-synced from presentation mode"
+            })
+          }).catch(e => console.log('ERP Sync failed', e));
+        } catch(e) {}
+        // -----------------------------
+
       setSectionProgress(prev => ({ ...prev, [targetSection]: 0 }));
     } catch (err) {
       console.error(err);
