@@ -463,33 +463,43 @@ export default function SlideViewer
   if (!weekData) return null;
 
 
-  // Extract Cinematic Background URL
-  const currentSlideContent = slides[currentSlide] || '';
-  const cinematicBgMatch = currentSlideContent.match(/<!-- CINEMATIC_BG: (.*?) -->/);
-  const cinematicBgUrl = cinematicBgMatch ? cinematicBgMatch[1].trim() : null;
-  const isVideoBg = cinematicBgUrl && (cinematicBgUrl.endsWith('.mp4') || cinematicBgUrl.endsWith('.webm'));
+  // Extract Cinematic Background URLs
+    const currentSlideContent = slides[currentSlide] || '';
+    const cinematicBgMatches = Array.from(currentSlideContent.matchAll(/<!-- CINEMATIC_BG: (.*?) -->/g));
+    const cinematicBgUrls = cinematicBgMatches.map(m => m[1].trim());
 
   return (
     <div className={`slide-modal-overlay ${isPrintingSlide ? 'is-printing-slide' : ''} ${course === 'soft-skills' ? 'video-player-mode' : ''}`}>
       
-        {cinematicBgUrl && (
-          <div className="cinematic-bg-container">
-            {/* Ambient Glow */}
-            {isVideoBg ? (
-              <video src={cinematicBgUrl} autoPlay loop muted playsInline className="cinematic-bg-media ambient-glow" />
-            ) : (
-              <img src={cinematicBgUrl} alt="" className="cinematic-bg-media ambient-glow" />
-            )}
-            {/* Sharp Foreground Image */}
-            {isVideoBg ? (
-              <video src={cinematicBgUrl} autoPlay loop muted playsInline className="cinematic-bg-media" />
-            ) : (
-              <img src={cinematicBgUrl} alt="Cinematic Background" className="cinematic-bg-media" />
-            )}
+        {cinematicBgUrls.length > 0 && (
+          <div className="cinematic-bg-container" style={{ display: 'flex', width: '100vw', height: '100vh', gap: '2rem', padding: '0' }}>
+            {/* Ambient Glows */}
+            <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'flex', zIndex: -1 }}>
+               {cinematicBgUrls.map((url, i) => {
+                 const isVideo = url.endsWith('.mp4') || url.endsWith('.webm');
+                 return isVideo ? (
+                    <video key={`glow-${i}`} src={url} autoPlay loop muted playsInline className="ambient-glow" style={{ flex: 1, objectFit: 'cover' }} />
+                 ) : (
+                    <img key={`glow-${i}`} src={url} alt="" className="ambient-glow" style={{ flex: 1, objectFit: 'cover' }} />
+                 );
+               })}
+            </div>
+            
+            {/* Sharp Foreground Images */}
+            <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', gap: '2rem', zIndex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                {cinematicBgUrls.map((url, i) => {
+                   const isVideo = url.endsWith('.mp4') || url.endsWith('.webm');
+                   return isVideo ? (
+                      <video key={`sharp-${i}`} src={url} autoPlay loop muted playsInline style={{ flex: 1, height: '100%', objectFit: 'contain', minWidth: 0 }} />
+                   ) : (
+                      <img key={`sharp-${i}`} src={url} alt="Cinematic Background" style={{ flex: 1, height: '100%', objectFit: 'contain', minWidth: 0 }} />
+                   );
+                })}
+            </div>
             <div className="cinematic-bg-overlay" />
           </div>
         )}
-        <div className="slide-container" style={cinematicBgUrl ? { background: "transparent", border: "none", boxShadow: "none" } : {}}>
+        <div className="slide-container" style={cinematicBgUrls.length > 0 ? { background: "transparent", border: "none", boxShadow: "none" } : {}}>
 
         {/* Floating Top Right Controls */}
         <div style={{ position: 'absolute', top: '2rem', right: '2rem', display: 'flex', gap: '1rem', zIndex: 10, alignItems: 'center', opacity: isIdle ? 0 : 1, transition: 'opacity 0.5s ease' }}>
@@ -604,7 +614,7 @@ export default function SlideViewer
              )}
              <div className="slide-body" style={{ position: 'relative' }}>
                                   {slides.length > 0 && (
-                    <div className={`markdown-content-container ${cinematicBgUrl ? 'subtitle-mode' : ''}`} style={{ position: 'relative', width: '100%', minHeight: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: cinematicBgUrl ? 'flex-end' : 'flex-start', paddingTop: '2rem', paddingBottom: '4rem', zIndex: 1 }}>
+                    <div className={`markdown-content-container ${(cinematicBgUrls.length > 0) ? 'subtitle-mode' : ''}`} style={{ position: 'relative', width: '100%', minHeight: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: (cinematicBgUrls.length > 0) ? 'flex-end' : 'flex-start', paddingTop: '2rem', paddingBottom: '4rem', zIndex: 1 }}>
                       {isEditing ? (
                         <div style={{ width: '100%', height: '60vh', background: 'rgba(0,0,0,0.8)', padding: '2rem', borderRadius: '1rem', zIndex: 60, position: 'relative' }}>
                           <textarea 
